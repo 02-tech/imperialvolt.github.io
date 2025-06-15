@@ -23,14 +23,14 @@ window.addEventListener('message', e => {
   }
 });
 
-// 2) DOM Ready
+// 2) Quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
   initWhatsAppLinks();
   initCtaAndSupportLazyLoad();
   initChatbotToggle();
 });
 
-// Gera links de WhatsApp
+// Gera links de WhatsApp com saudação dinâmica
 function initWhatsAppLinks() {
   const agents = [
     { id: 'link-lucas', nome: 'Lucas' },
@@ -51,11 +51,11 @@ function initWhatsAppLinks() {
   });
 }
 
-// CTA + lazy-load do suporte
+// Alterna o conteúdo e faz lazy-load do suporte
 function initCtaAndSupportLazyLoad() {
-  const btn = document.getElementById('cta-btn');
+  const btn     = document.getElementById('cta-btn');
   const content = document.getElementById('conteudo');
-  const sentinel = document.getElementById('suporte-sentinel');
+  const sent    = document.getElementById('suporte-sentinel');
   let aberto = false, loaded = false;
 
   btn.addEventListener('click', () => {
@@ -63,35 +63,35 @@ function initCtaAndSupportLazyLoad() {
     aberto = !content.classList.contains('hidden');
     if (aberto) {
       content.scrollIntoView({ behavior: 'smooth' });
-      maybeLoadSupport();
+      maybeLoad();
     }
   });
 
-  function loadSupport() {
+  function loadFrame() {
     if (loaded) return;
     loaded = true;
     const iframe = document.createElement('iframe');
-    iframe.id = 'suporteFrame';
-    iframe.src = 'suporte.html';
+    iframe.id        = 'suporteFrame';
+    iframe.src       = 'suporte.html';
     iframe.scrolling = 'no';
     iframe.style.cssText = 'width:100%;border:none;overflow:hidden;';
-    sentinel.appendChild(iframe);
+    sent.appendChild(iframe);
   }
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(en => {
-      if (en.isIntersecting && aberto) loadSupport();
+      if (en.isIntersecting && aberto) loadFrame();
     });
   }, { threshold: 0 });
-  obs.observe(sentinel);
+  obs.observe(sent);
 
-  function maybeLoadSupport() {
-    const rect = sentinel.getBoundingClientRect();
-    if (rect.top < window.innerHeight && aberto) loadSupport();
+  function maybeLoad() {
+    const rect = sent.getBoundingClientRect();
+    if (rect.top < window.innerHeight && aberto) loadFrame();
   }
 }
 
-// Chatbot toggle
+// Controla abertura/fechamento do chatbot
 function initChatbotToggle() {
   const toggle = document.getElementById('chatbot-toggle');
   const win    = document.getElementById('chatbot-window');

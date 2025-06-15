@@ -36,17 +36,18 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
   background: var(--color-bg);
   color: #fff;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
 }
 .hidden {
   display: none !important;
 }
+/* Iframes config / suporte */
 iframe#configFrame,
 iframe#suporteFrame {
   width: 100%;
@@ -55,13 +56,13 @@ iframe#suporteFrame {
   transition: height 0.25s cubic-bezier(0.23,1.1,0.32,1);
 }
 
-/* ───────── HERO (MOBILE-FIRST) ───────── */
+/* ───────── HERO (sempre em ROW) ───────── */
 .hero {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   padding: var(--space-xl) 0;
   width: 100%;
   min-height: 100vh;
@@ -79,17 +80,20 @@ iframe#suporteFrame {
   pointer-events: none;
   z-index: 0;
 }
-/* bloco esquerdo: foto colada */
+
+/* ─── Hero Left (Guilherme) ─── */
 .hero-left {
-  align-self: flex-start;
+  flex: 0 0 auto;
+  margin: 0;
   padding-left: var(--space-xs);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  align-items: flex-start;
   z-index: 1;
 }
 .guilherme-img {
-  width: 50vw;
+  width: 25vw;
   max-width: 200px;
   border-radius: var(--radius-md);
 }
@@ -97,16 +101,18 @@ iframe#suporteFrame {
   font-size: 1rem;
   color: var(--color-text-muted);
 }
-/* CTA */
+
+/* ─── Hero CTA ─── */
 .hero-cta {
-  width: 100%;
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
-  margin: var(--space-lg) 0;
+  margin: 0;
+  padding: 0 var(--space-sm);
   z-index: 1;
 }
 #cta-btn {
-  width: 90vw;
+  width: auto;
   max-width: 400px;
   padding: var(--space-sm) var(--space-xl);
   font-size: 1rem;
@@ -124,25 +130,30 @@ iframe#suporteFrame {
   transform: scale(1.05);
   outline: none;
 }
-/* mascote */
+
+/* ─── Hero Right (Mascote + Logo) ─── */
 .hero-right {
+  flex: 0 0 auto;
+  margin: 0;
+  padding-right: var(--space-xs);
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--space-xs);
+  align-items: flex-end;
   z-index: 1;
 }
 .volt-img {
-  width: 60vw;
-  max-width: 250px;
+  width: 25vw;
+  max-width: 200px;
   border-radius: var(--radius-md);
 }
 .logo-name {
-  width: 50vw;
-  max-width: 160px;
+  width: auto;
+  max-width: 120px;
+  height: auto;
 }
 
-/* ───────── CONTENT ───────── */
+/* ───────── CONTEÚDO PRINCIPAL ───────── */
 main#conteudo {
   flex: 1;
   max-width: 960px;
@@ -180,7 +191,7 @@ main section p {
   color: var(--color-text-light);
 }
 
-/* ───────── WHATS & AGENTS ───────── */
+/* ───────── WHATSAPP CTA & AGENTES ───────── */
 .orcamento-centro {
   text-align: center;
   margin-top: var(--space-xl);
@@ -250,7 +261,8 @@ footer {
   background: var(--color-link);
   color: #fff;
   font-size: 1.6rem;
-  border: none; cursor: pointer;
+  border: none;
+  cursor: pointer;
   box-shadow: var(--shadow-sm);
   z-index: 1000;
 }
@@ -271,24 +283,30 @@ footer {
   background: var(--color-link);
   color: #fff;
   padding: var(--space-xs) var(--space-sm);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; justify-content: space-between; align-items: center;
   font-weight: 600;
 }
-#chat-close { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+#chat-close {
+  background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;
+}
 #chat-log {
-  flex: 1; padding: var(--space-sm); overflow-y: auto;
+  flex: 1;
+  padding: var(--space-sm);
+  overflow-y: auto;
   display: flex; flex-direction: column; gap: var(--space-xs);
 }
 .user-msg {
-  align-self: flex-end; background: var(--color-link); color: #fff;
+  align-self: flex-end;
+  background: var(--color-link);
+  color: #fff;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md) var(--radius-md) 0 var(--radius-md);
   max-width: 80%;
 }
 .bot-msg {
-  align-self: flex-start; background: #333; color: #fff;
+  align-self: flex-start;
+  background: #333;
+  color: #fff;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0;
   max-width: 80%;
@@ -299,7 +317,7 @@ footer {
 .sugestoes button {
   background: #222; color: var(--color-cta);
   border: none; padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-xs); cursor: pointer; font-size: .85rem;
+  border-radius: var(--space-xs); cursor: pointer; font-size: .85rem;
 }
 #chat-input {
   border: none; border-top: 1px solid #333;
@@ -310,29 +328,3 @@ footer {
 }
 #chat-input:focus { outline: none; }
 #suporte-sentinel { width: 100%; }
-
-/* ───────── BREAKPOINT (600px) ───────── */
-/* Aplique flex-row em desktop/tablet */
-@media (min-width: 600px) {
-  .hero {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-xl) 0;
-  }
-  .hero-left, .hero-cta, .hero-right {
-    margin: 0; padding: 0;
-  }
-  .hero-cta {
-    flex: 1;
-    justify-content: center;
-  }
-  .guilherme-img { width: 200px; }
-  #cta-btn {
-    width: auto;
-    padding: var(--space-sm) var(--space-xl);
-    font-size: 1.2rem;
-  }
-  .volt-img { width: 180px; }
-  .logo-name { width: 160px; }
-}
