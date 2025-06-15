@@ -15,12 +15,13 @@
   --radius-sm: 8px;
   --radius-md: 12px;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
 
-  --space-xs: 0.8rem;
-  --space-sm: 1.2rem;
-  --space-lg: 2.4rem;
-  --space-xl: 3.2rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
 }
 
 /* ───────── RESET & BASE ───────── */
@@ -47,7 +48,7 @@ body {
 .hidden {
   display: none !important;
 }
-/* Iframes config / suporte */
+/* Iframes (config / suporte) */
 iframe#configFrame,
 iframe#suporteFrame {
   width: 100%;
@@ -63,10 +64,12 @@ iframe#suporteFrame {
   flex-direction: row !important;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-xl) 0;
+  gap: var(--space-md);
+  padding: var(--space-md) 0 var(--space-lg);
   width: 100%;
-  min-height: 100vh;
+  /* min-height removido para não empurrar tanto pra baixo */
   background: var(--color-bg);
+  z-index: 0;
 }
 .hero::before {
   content: '';
@@ -78,43 +81,39 @@ iframe#suporteFrame {
   filter: blur(120px);
   opacity: .35;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* ─── Hero Left (Guilherme) ─── */
+/* bloco esquerdo: foto colada na X=0 */
 .hero-left {
   flex: 0 0 auto;
-  margin: 0;
-  padding-left: var(--space-xs);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
   align-items: flex-start;
+  margin: 0;
+  padding: 0;
   z-index: 1;
 }
 .guilherme-img {
-  width: 25vw;
-  max-width: 200px;
+  width: clamp(180px, 18vw, 260px);
+  height: auto;
   border-radius: var(--radius-md);
 }
 .caption {
+  margin-top: var(--space-xs);
   font-size: 1rem;
   color: var(--color-text-muted);
 }
 
-/* ─── Hero CTA ─── */
+/* bloco central: CTA menor */
 .hero-cta {
-  flex: 1 1 auto;
+  flex: 1;
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0 var(--space-sm);
   z-index: 1;
 }
 #cta-btn {
-  width: auto;
-  max-width: 400px;
-  padding: var(--space-sm) var(--space-xl);
+  width: clamp(120px, 30vw, 200px);
+  padding: var(--space-xs) var(--space-md);
   font-size: 1rem;
   font-weight: 600;
   color: #000;
@@ -131,25 +130,24 @@ iframe#suporteFrame {
   outline: none;
 }
 
-/* ─── Hero Right (Mascote + Logo) ─── */
+/* bloco direito: mascote + logo */
 .hero-right {
   flex: 0 0 auto;
-  margin: 0;
-  padding-right: var(--space-xs);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
   align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-xs);
   z-index: 1;
 }
 .volt-img {
-  width: 25vw;
-  max-width: 200px;
+  width: clamp(180px, 18vw, 260px);
+  height: auto;
   border-radius: var(--radius-md);
 }
 .logo-name {
-  width: auto;
-  max-width: 120px;
+  width: clamp(80px, 12vw, 140px);
   height: auto;
 }
 
@@ -158,7 +156,7 @@ main#conteudo {
   flex: 1;
   max-width: 960px;
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-xs) var(--space-xl);
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
 }
 .content-header {
   text-align: center;
@@ -221,7 +219,7 @@ main section p {
 .agente {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   margin-bottom: var(--space-xl);
   background: var(--color-card-bg);
   border-radius: var(--radius-md);
@@ -229,7 +227,7 @@ main section p {
   box-shadow: var(--shadow-sm);
 }
 .agente-img {
-  width: 120px;
+  width: clamp(80px, 10vw, 120px);
   border-radius: var(--radius-sm);
 }
 .agente-link {
@@ -242,8 +240,6 @@ main section p {
 .agente-link:focus {
   text-decoration: underline;
 }
-.alternado.direita { flex-direction: row; }
-.alternado.esquerda { flex-direction: row-reverse; }
 
 /* ───────── FOOTER & CHATBOT ───────── */
 footer {
@@ -261,8 +257,7 @@ footer {
   background: var(--color-link);
   color: #fff;
   font-size: 1.6rem;
-  border: none;
-  cursor: pointer;
+  border: none; cursor: pointer;
   box-shadow: var(--shadow-sm);
   z-index: 1000;
 }
@@ -327,4 +322,6 @@ footer {
   border-bottom-right-radius: var(--radius-md);
 }
 #chat-input:focus { outline: none; }
-#suporte-sentinel { width: 100%; }
+#suporte-sentinel {
+  width: 100%;
+}
