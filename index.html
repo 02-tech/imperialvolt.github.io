@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperial Volt</title>
+
+  <!-- estilo principal -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ───────── CONFIG (TOP FRAME) ───────── -->
+  <iframe id="configFrame"
+          src="config.html"
+          style="width:100%;border:none;overflow:hidden;"
+          scrolling="no"></iframe>
+
+  <script>
+    /* altura dinâmica do config */
+    window.addEventListener('message',e=>{
+      if(e.data?.type==='config-frame-height'){
+        const f=document.getElementById('configFrame');
+        if(f) f.style.height=e.data.height+'px';
+      }
+    });
+  </script>
+
+  <!-- ───────── HERO ───────── -->
+  <header class="hero">
+    <div class="hero-left">
+      <img src="Guilherme.png" alt="Guilherme – Gestor" class="guilherme-img">
+      <div class="caption">Guilherme – Gestor</div>
+    </div>
+
+    <div class="hero-cta">
+      <button id="cta-btn">⚡ Energize seus projetos</button>
+    </div>
+
+    <div class="hero-right">
+      <img src="Voltz.png" alt="Mascote Voltz" class="volt-img">
+      <img src="nome.png"  alt="Imperial Volt" class="logo-name">
+    </div>
+  </header>
+
+  <!-- ───────── CONTEÚDO PRINCIPAL ───────── -->
+  <main id="conteudo" class="hidden">
+
+    <section class="content-header">
+      <h1>Imperial Volt ⚡</h1>
+      <p>Soluções completas para sua empresa digital.</p>
+    </section>
+
+    <section><h2>🌐 Registro de Domínio e Nome</h2><p>Registro de domínios .com, .store e criação de nomes únicos com verificação no INPI.</p></section>
+    <section><h2>🖥️ Sites Profissionais</h2><p>Landing pages, sites institucionais, lojas virtuais, cine-sites animados — tudo sob medida.</p></section>
+    <section><h2>📱 Aplicativos &amp; Sistemas</h2><p>Criação de apps sob demanda, integração com WhatsApp, controle de pedidos e painel de cliente.</p></section>
+    <section><h2>⚙️ Automações &amp; Scripts</h2><p>Scripts para Windows, integração de processos, backups automáticos e mais.</p></section>
+    <section><h2>🔐 Patentes &amp; Proteção</h2><p>Auxílio na proteção de ideias com processos de patente, documentação técnica e registro de marca.</p></section>
+
+    <div class="orcamento-centro">
+      <a class="btn-whats"
+         href="https://wa.me/5524992144995?text=Olá!%20Quero%20começar%20meu%20projeto%20digital%20com%20a%20Imperial%20Volt!"
+         target="_blank" rel="noopener">Solicitar Orçamento no WhatsApp</a>
+    </div>
+
+    <!-- AGENTES -->
+    <section class="agentes">
+      <h2>👥 Fale com um de nossos agentes</h2>
+
+      <div class="agente alternado direita">
+        <img src="Lucas.png" alt="Lucas — Suporte" class="agente-img">
+        <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
+      </div>
+
+      <div class="agente alternado esquerda">
+        <img src="Eduarda.png" alt="Eduarda — Consultora" class="agente-img">
+        <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">Falar com Eduarda</a>
+      </div>
+
+      <div class="agente alternado direita">
+        <img src="Alex.png" alt="Alex — Desenvolvedor" class="agente-img">
+        <a id="link-alex" class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
+      </div>
+
+      <div class="agente alternado esquerda">
+        <img src="Nicole.png" alt="Nicole — Designer" class="agente-img">
+        <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Imperial Volt</footer>
+
+  <!-- ───────── CHATBOT ───────── -->
+  <button id="chatbot-toggle" title="Abrir chat">💬</button>
+  <div id="chatbot-window" class="hidden">
+    <div id="chat-header">Chat Imperial Volt <span id="chat-close">×</span></div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" placeholder="Digite sua pergunta e tecle Enter…">
+  </div>
+
+  <!-- ───────── SUPORTE (BOTTOM FRAME) ───────── -->
+  <div id="suporte-sentinel" style="width:100%;"></div>
+
+  <!-- ───────── SCRIPTS ───────── -->
+  <script>
+    /* Saudação dinâmica nos links WhatsApp */
+    function saudacao(){
+      const h=new Date().getHours();
+      return h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
+    }
+    const num='5524992144995';
+    [
+      {id:'link-lucas',  nome:'Lucas'},
+      {id:'link-eduarda',nome:'Eduarda'},
+      {id:'link-alex',   nome:'Alex'},
+      {id:'link-nicole', nome:'Nicole'}
+    ].forEach(a=>{
+      const el=document.getElementById(a.id);
+      if(!el)return;
+      const msg=encodeURIComponent(`${saudacao()}, ${a.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`);
+      el.href=`https://wa.me/${num}?text=${msg}`;
+    });
+
+    /* Conteúdo principal (CTA) */
+    const btnCTA=document.getElementById('cta-btn');
+    const bloco =document.getElementById('conteudo');
+    let   ctaAberto=false;          // controla se CTA foi aberto
+
+    btnCTA.addEventListener('click',()=>{
+      bloco.classList.toggle('hidden');
+      ctaAberto=!bloco.classList.contains('hidden');
+      if(ctaAberto){bloco.scrollIntoView({behavior:'smooth'});}
+      verificarSentinela();        // caso já esteja no final
+    });
+
+    /* Chatbot */
+    const toggle   = document.getElementById('chatbot-toggle');
+    const winChat  = document.getElementById('chatbot-window');
+    const closeBtn = document.getElementById('chat-close');
+    const input    = document.getElementById('chat-input');
+    toggle.onclick = ()=>{winChat.classList.remove('hidden');input.focus();}
+    closeBtn.onclick=()=>winChat.classList.add('hidden');
+
+    /* ---------- SUPORTE FRAME LAZY-LOAD COM DUAS CONDIÇÕES ---------- */
+    let suporteCarregado=false;
+    const sentinel=document.getElementById('suporte-sentinel');
+
+    function carregarSuporte(){
+      if(suporteCarregado) return;
+      suporteCarregado=true;
+      const iframe=document.createElement('iframe');
+      iframe.id='suporteFrame';
+      iframe.src='suporte.html';
+      iframe.style='width:100%;border:none;overflow:hidden;';
+      iframe.scrolling='no';
+      sentinel.appendChild(iframe);
+    }
+
+    /* Observa sentinel, mas só carrega se CTA estiver aberto */
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && ctaAberto) carregarSuporte();
+      });
+    },{root:null,threshold:0});
+    observer.observe(sentinel);
+
+    /* Caso o sentinel já esteja visível quando CTA for aberto */
+    function verificarSentinela(){
+      const rect=sentinel.getBoundingClientRect();
+      if(ctaAberto && rect.top<window.innerHeight) carregarSuporte();
+    }
+
+    /* Ajuste de altura do suporte frame */
+    window.addEventListener('message',e=>{
+      if(e.data?.type==='suporte-frame-height'){
+        const f=document.getElementById('suporteFrame');
+        if(f) f.style.height=e.data.height+'px';
+      }
+    });
+  </script>
+
+  <!-- Chatbot script externo -->
+  <script src="chatbot.js"></script>
+</body>
+</html>

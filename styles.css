@@ -1,0 +1,150 @@
+/* ───────── RESET & BASE ───────── */
+*,
+*::before,
+*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  width:100%;height:100%;
+  font-family:'Inter',sans-serif;
+  background:#0c0c0c;color:#fff;
+  scroll-behavior:smooth;
+}
+
+/* ───────── HERO ───────── */
+.hero{
+  position:relative;
+  display:flex;flex-wrap:nowrap;
+  justify-content:space-between;align-items:center;
+  height:100vh;
+  padding:2rem 0 2rem 0;          /* 0 left → Guilherme 100 % colado */
+  overflow:hidden;
+}
+
+/* divisória azul suave */
+.hero::before{
+  content:'';
+  position:absolute;left:50%;top:50%;
+  width:600px;height:600px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,#004eff 0%,transparent 70%);
+  filter:blur(120px);opacity:.35;pointer-events:none;
+}
+
+/* bloco esquerdo (fixo) */
+.hero-left{
+  flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;
+}
+.guilherme-img{max-width:300px;height:auto;border-radius:12px;display:block;}
+.caption{margin-top:.5rem;font-size:1rem;color:#aaa;text-align:left;}
+
+/* CTA central */
+.hero-cta{flex:1;display:flex;justify-content:center;z-index:1;}
+#cta-btn{
+  padding:1rem 2rem;font-size:1.2rem;font-weight:600;
+  background:#ffcc00;color:#000;border:none;border-radius:8px;cursor:pointer;
+  transition:.3s;
+}
+#cta-btn:hover{background:#ffb700;transform:scale(1.05);}
+
+/* bloco direito (Voltz) */
+.hero-right{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;}
+.volt-img {max-width:260px;height:auto;border-radius:12px;display:block;}
+.logo-name{margin-top:.7rem;max-width:160px;height:auto;display:block;}
+
+/* ───────── CONTEÚDO PRINCIPAL ───────── */
+.hidden{display:none;}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem;}
+
+.content-header{text-align:center;margin-bottom:2rem;}
+.content-header h1{font-size:2.5rem;color:#ffcc00;}
+.content-header p{color:#ccc;}
+
+section{
+  background:#161616;border-left:5px solid #004eff;
+  padding:2rem;border-radius:10px;margin-bottom:2rem;
+  box-shadow:0 0 10px rgba(255,255,255,.03);
+}
+section h2{font-size:1.4rem;color:#ffcc00;margin-bottom:.6rem;}
+section p{font-size:1.05rem;line-height:1.6;color:#ddd;}
+
+/* WhatsApp CTA */
+.orcamento-centro{text-align:center;margin-top:3rem;}
+.btn-whats{
+  display:inline-block;padding:14px 28px;
+  background:#004eff;color:#fff;font-weight:700;border-radius:8px;
+  text-decoration:none;transition:.3s;
+}
+.btn-whats:hover{background:#3366ff;}
+
+/* ───────── AGENTES ───────── */
+.agentes{margin-top:4rem;}
+.agentes h2{text-align:center;margin-bottom:2.5rem;font-size:1.6rem;}
+.agente{
+  display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;
+  background:#1a1a1a;border-radius:12px;padding:1.5rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.agente-img{width:120px;height:auto;border-radius:10px;}
+.agente-link{font-size:1.1rem;font-weight:700;color:#ffcc00;text-decoration:none;}
+.agente-link:hover{text-decoration:underline;}
+.alternado.direita {flex-direction:row;justify-content:flex-start;}
+.alternado.esquerda{flex-direction:row-reverse;justify-content:flex-end;}
+
+/* ───────── CHATBOT ───────── */
+#chatbot-toggle{
+  position:fixed;bottom:20px;right:20px;
+  width:56px;height:56px;border-radius:50%;
+  background:#004eff;color:#fff;font-size:1.6rem;border:none;cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);transition:transform .25s;z-index:9999;
+}
+#chatbot-toggle:hover{transform:scale(1.1);}
+
+#chatbot-window{
+  position:fixed;bottom:90px;right:20px;
+  width:320px;height:420px;background:#1a1a1a;
+  border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;z-index:9999;
+}
+#chatbot-window.hidden{display:none;}
+
+#chat-header{
+  background:#004eff;color:#fff;padding:.8rem 1rem;
+  border-top-left-radius:12px;border-top-right-radius:12px;
+  font-weight:600;display:flex;justify-content:space-between;align-items:center;
+}
+#chat-close{cursor:pointer;font-size:1.2rem;}
+
+#chat-log{
+  flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem;
+}
+.user-msg{align-self:flex-end;background:#004eff;padding:.6rem 1rem;border-radius:16px 16px 0 16px;}
+.bot-msg {align-self:flex-start;background:#333;padding:.6rem 1rem;border-radius:16px 16px 16px 0;}
+.sugestoes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;}
+.sugestoes button{
+  background:#222;color:#ffcc00;border:none;padding:.4rem .8rem;border-radius:6px;cursor:pointer;
+  font-size:.85rem;
+}
+
+#chat-input{
+  border:none;border-top:1px solid #333;padding:.8rem 1rem;background:#0c0c0c;color:#fff;
+  border-bottom-left-radius:12px;border-bottom-right-radius:12px;
+}
+#chat-input:focus{outline:none;}
+
+/* ───────── BREAKPOINTS ───────── */
+@media (max-width:1200px){
+  .volt-img{max-width:230px;}
+  .hero-right{margin-right:4vw;}          /* forma o “triângulo” visual  */
+}
+@media (max-width:900px){
+  .guilherme-img{max-width:260px;}
+  .volt-img{max-width:200px;}
+  .hero-right{margin-right:2vw;}
+}
+@media (max-width:600px){
+  .guilherme-img,.volt-img{max-width:40vw;}
+  .logo-name{max-width:25vw;}
+  .hero-right{margin-right:1vw;}
+  .agente{flex-direction:column !important;text-align:center;}
+  .agente-img{margin-bottom:1rem;}
+}
+
+footer{text-align:center;padding:2rem 0;color:#666;font-size:.9rem;}

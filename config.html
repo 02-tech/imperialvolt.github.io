@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frame – Config Imperial Volt</title>
+
+<style>
+/* ---------- VARIÁVEIS BÁSICAS ---------- */
+:root{
+  --neon:#00f0ff;
+  --bg-dim:#111;
+  --txt:silver;
+}
+
+/* ---------- RESET ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:transparent;
+  color:var(--txt);
+  overflow-x:hidden;
+}
+
+/* ---------- CONTÊINER PRINCIPAL ---------- */
+.config-container{
+  margin:20px 0 0;
+  display:flex;
+  align-items:center;
+}
+
+/* ---------- BOTÃO ⚙️ ---------- */
+#config-btn{
+  width:50px;height:50px;border-radius:50%;
+  background:var(--bg-dim);
+  border:2px solid var(--neon);
+  color:var(--txt);
+  font-size:22px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s;
+}
+#config-btn.rotate{transform:rotate(90deg)}
+
+/* ---------- ESPADA LATERAL ---------- */
+#config-panel{
+  margin-left:60px;
+  height:50px;
+  display:none;        /* fica invisível até abrir */
+  align-items:center;
+  gap:12px;
+  padding:0 15px;
+  background:rgba(30,30,30,.4);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--neon);border-left:none;
+  border-radius:0 25px 25px 0;
+  box-shadow:0 0 8px var(--neon)55;
+  overflow-x:auto;white-space:nowrap;
+  scrollbar-width:none;
+}
+#config-panel::-webkit-scrollbar{display:none;}
+#config-panel.active{display:flex}
+
+/* botões dentro da espada */
+.config-btn{
+  background:transparent;border:1px solid transparent;
+  color:var(--txt);font-size:14px;cursor:pointer;
+  padding:6px 12px;border-radius:6px;
+  transition:.3s;
+}
+.config-btn:hover{
+  border:1px solid var(--neon);
+  color:var(--neon);
+  background:rgba(0,240,255,.1);
+}
+
+/* ---------- CARDS ---------- */
+.card{
+  position:absolute;top:70px;left:80px;width:280px;
+  background:rgba(30,30,30,.5);backdrop-filter:blur(12px);
+  border:1px solid var(--neon);border-radius:8px;
+  padding:15px;box-shadow:0 0 15px var(--neon)44;
+  display:none;color:var(--txt);
+}
+.card.active{display:block;animation:slideDown .4s}
+.card h3{margin:0 0 10px;font-size:18px;color:var(--neon)}
+.close-card{float:right;background:none;border:none;color:#ccc;cursor:pointer;font-size:16px}
+a{color:var(--neon);text-decoration:none}a:hover{text-decoration:underline}
+
+/* ---------- ANIMAÇÃO ---------- */
+@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media(max-width:600px){          /* celulares */
+  #config-panel{gap:8px;padding:0 10px}
+  .card{left:50%;transform:translateX(-50%);width:90vw}
+}
+@media(min-width:1200px){         /* telas largas */
+  .card{left:calc(50% - 180px)}   /* centraliza melhor */
+}
+</style>
+</head>
+<body>
+
+<!-- ESPADA + BOTÃO -->
+<div class="config-container">
+  <button id="config-btn">⚙️</button>
+
+  <div id="config-panel">
+    <button class="config-btn" onclick="showCard('contato')">Contatos</button>
+    <button class="config-btn" onclick="showCard('local')">Localização</button>
+    <button class="config-btn" onclick="showCard('ajuda')">Ajuda</button>
+    <button class="config-btn" onclick="showCard('horario')">Horários</button>
+    <button class="config-btn" onclick="showCard('outros')">Outros</button>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div id="card-contato" class="card">
+  <button class="close-card" onclick="closeAll()">✖</button>
+  <h3>Contatos</h3>
+  <p>📲 WhatsApp: <a href="https://wa.me/5524992144995" target="_blank">24 99214-4995</a><br>
+     ✉️ E-mail: suporte.imperialvolt@gmail.com<br>
+     📸 Instagram: <a href="https://instagram.com/imperialvolt" target="_blank">@imperialvolt</a><br>
+     📘 Facebook: <a href="https://www.facebook.com/profile.php?id=61565547707005" target="_blank">Imperial Volt</a><br>
+     🎵 TikTok: Imperial Volt</p>
+</div>
+
+<div id="card-local" class="card">
+  <button class="close-card" onclick="closeAll()">✖</button>
+  <h3>Localização</h3>
+  <p>📍 Estrada das Arcas, Petrópolis – RJ<br>
+     🌐 <a href="https://imperialvolt.com" target="_blank">imperialvolt.com</a><br>
+     🗺️ <a href="https://www.google.com/maps?q=Estrada+das+Arcas,+Petrópolis,+RJ" target="_blank">Ver no Maps</a></p>
+</div>
+
+<div id="card-ajuda" class="card">
+  <button class="close-card" onclick="closeAll()">✖</button>
+  <h3>Ajuda</h3>
+  <p>❓ Dúvidas?<br>
+     👉 <a href="https://wa.me/5524992144995" target="_blank">WhatsApp</a><br>
+     👉 <a href="https://instagram.com/imperialvolt" target="_blank">Instagram DM</a><br><br>
+     Voltz responde 24 h por dia.</p>
+</div>
+
+<div id="card-horario" class="card">
+  <button class="close-card" onclick="closeAll()">✖</button>
+  <h3>Horários</h3>
+  <p>👤 Agentes humanos: Seg-Sáb — 11 h → 18 h<br>
+     🤖 Voltz: 24 h / 7</p>
+</div>
+
+<div id="card-outros" class="card">
+  <button class="close-card" onclick="closeAll()">✖</button>
+  <h3>Outros</h3>
+  <p>🎁 Promoções em breve:<br>
+     <a href="https://imperialvolt.online" target="_blank">imperialvolt.online</a></p>
+</div>
+
+<script>
+/* ---------- CONTROLE DE ESPADA / CARDS ---------- */
+const btn   = document.getElementById('config-btn');
+const panel = document.getElementById('config-panel');
+let   timer = null;
+
+/* abrir/fechar espada */
+btn.addEventListener('click',()=>{
+  panel.classList.toggle('active');
+  btn.classList.toggle('rotate');
+  closeAll(); handleTimer(); sendHeight();
+});
+
+/* mostrar card */
+function showCard(id){
+  closeAll();
+  document.getElementById('card-'+id).classList.add('active');
+  handleTimer(); sendHeight();
+}
+
+/* fechar todos */
+function closeAll(){
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+  clearTimeout(timer); sendHeight();
+}
+
+/* 15 s sem interação → fecha */
+function handleTimer(){
+  clearTimeout(timer);
+  if(panel.classList.contains('active')){
+    timer=setTimeout(()=>{panel.classList.remove('active');btn.classList.remove('rotate');closeAll();},15000);
+  }
+}
+
+/* reset timer se mover/clicar na espada */
+panel.addEventListener('mousemove',handleTimer);
+panel.addEventListener('click',handleTimer);
+
+/* ---------- AJUSTE DE ALTURA (envia p/ pai) ---------- */
+function sendHeight(){
+  const h=document.documentElement.scrollHeight;
+  window.parent.postMessage({type:'config-frame-height',height:h},'*');
+}
+window.addEventListener('load',sendHeight);
+window.addEventListener('resize',()=>setTimeout(sendHeight,50));
+</script>
+</body>
+</html>
