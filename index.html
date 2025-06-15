@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Imperial Volt</title>
-
-  <!-- estilo principal -->
+  <!-- Estilo principal -->
   <link rel="stylesheet" href="styles.css">
-
   <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,17 +14,31 @@
 <body>
 
   <!-- ───────── CONFIG (TOP FRAME) ───────── -->
-  <iframe id="configFrame"
-          src="config.html"
-          style="width:100%;border:none;overflow:hidden;"
-          scrolling="no"></iframe>
+  <iframe
+    id="configFrame"
+    src="config.html"
+    style="width:100%;border:none;overflow:hidden;height:64px;transition:height .25s cubic-bezier(.23,1.1,.32,1);"
+    scrolling="no"
+    allowtransparency="true"
+    tabindex="-1"
+    aria-hidden="false"
+  ></iframe>
 
   <script>
-    /* altura dinâmica do config */
-    window.addEventListener('message',e=>{
-      if(e.data?.type==='config-frame-height'){
-        const f=document.getElementById('configFrame');
-        if(f) f.style.height=e.data.height+'px';
+    // Ajusta altura do configFrame, sempre garantindo pelo menos 60px
+    window.addEventListener('message', function(e) {
+      if(e.data && e.data.type === 'config-frame-height') {
+        const f = document.getElementById('configFrame');
+        if (f) {
+          const newHeight = Math.max(60, Number(e.data.height) || 0); // Nunca deixa menor que 60
+          f.style.height = newHeight + 'px';
+          f.style.minHeight = newHeight + 'px';
+          f.style.maxHeight = newHeight + 'px';
+        }
+      }
+      // Permite que o próprio frame peça para ser fechado (caso use no futuro)
+      if(e.data && e.data.type === 'config-close') {
+        document.getElementById('configFrame').style.display = 'none';
       }
     });
   </script>
@@ -37,11 +49,9 @@
       <img src="Guilherme.png" alt="Guilherme – Gestor" class="guilherme-img">
       <div class="caption">Guilherme – Gestor</div>
     </div>
-
     <div class="hero-cta">
       <button id="cta-btn">⚡ Energize seus projetos</button>
     </div>
-
     <div class="hero-right">
       <img src="Voltz.png" alt="Mascote Voltz" class="volt-img">
       <img src="nome.png"  alt="Imperial Volt" class="logo-name">
@@ -136,7 +146,7 @@
       bloco.classList.toggle('hidden');
       ctaAberto=!bloco.classList.contains('hidden');
       if(ctaAberto){bloco.scrollIntoView({behavior:'smooth'});}
-      verificarSentinela();        // caso já esteja no final
+      verificarSentinela();
     });
 
     /* Chatbot */
