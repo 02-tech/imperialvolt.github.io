@@ -20,9 +20,6 @@ iframe#configFrame,iframe#suporteFrame{width:100%;border:none;overflow:hidden;tr
 .skip-link:focus{top:var(--s);left:var(--s)}
 
 /* ========== 3. HERO ========= */
-.lang-switcher{position:absolute;top:var(--s);right:var(--s);z-index:1001}
-.lang-switcher select{background:var(--sec-bg);color:#fff;border:1px solid var(--link);border-radius:var(--r-sm);padding:.25rem}
-
 .hero{position:relative;display:flex;justify-content:space-between;align-items:center;gap:var(--m);padding:var(--m) 0 var(--l)}
 .hero::before{content:'';position:absolute;left:50%;top:50%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--link)0%,transparent 70%);filter:blur(120px);opacity:.35;pointer-events:none;z-index:-1}
 
@@ -92,9 +89,13 @@ footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
   .guilherme-img,.volt-img{width:clamp(80px,28vw,140px)}
   .logo-name{width:clamp(60px,20vw,100px)}
   #cta-btn{width:60vw;font-size:.8rem}
+  #chatbot-toggle{bottom:calc(40px + env(safe-area-inset-bottom,0px));right:var(--s)}
 }
 
-/* Acessibilidade: reduz motion */
+/* 8. Acessibilidade: reduz motion */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ========== 9. Oculta seletor de idioma ========= */
+.lang-switcher{position:absolute;left:-9999px;top:-9999px;visibility:hidden}

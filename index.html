@@ -15,7 +15,7 @@
 
   <title data-i18n="page.title">Imperial Volt</title>
 
-  <!-- Fonts -->
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -25,16 +25,14 @@
     html,body{margin:0;padding:0;font-family:'Inter',sans-serif;background:#0c0c0c;color:#fff}
     .hero{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0 2rem}
     .skip-link{position:absolute;left:-999px}
-    @media(max-width:400px){
-      .hero{gap:.5rem;padding:1rem .5rem}
-    }
+    @media(max-width:400px){.hero{gap:.5rem;padding:1rem .5rem}}
   </style>
 
-  <!-- Async CSS -->
+  <!-- CSS assíncrono -->
   <link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
-  <!-- Manifest & locale prefetch -->
+  <!-- Manifesto PWA & Locales -->
   <link rel="manifest" href="manifest.json">
   <link rel="prefetch" href="locales/pt-BR.json" as="fetch" crossorigin>
   <link rel="prefetch" href="locales/en-US.json" as="fetch" crossorigin>
@@ -43,20 +41,19 @@
 
   <a class="skip-link" href="#conteudo" data-i18n="skip.link">Ir para o conteúdo</a>
 
-  <!-- Seletor de idioma -->
-  <div class="lang-switcher">
+  <!-- seletor de idioma (oculto, mas mantém i18n funcionando) -->
+  <div class="lang-switcher" aria-hidden="true">
     <label class="sr-only" for="lang-select">Idioma</label>
-    <select id="lang-select">
+    <select id="lang-select" tabindex="-1">
       <option value="pt-BR">PT</option>
       <option value="en-US">EN</option>
     </select>
   </div>
 
-  <!-- Iframe de config -->
   <iframe id="configFrame" src="config.html" title="Configurações do site"
           scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
 
-  <!-- HERO --------------------------------------------------------------- -->
+  <!-- HERO ---------------------------------------------------------------- -->
   <header class="hero" role="banner">
     <div class="hero-left">
       <img src="Guilherme.webp" alt="Guilherme – Gestor" class="guilherme-img" loading="lazy">
@@ -76,7 +73,7 @@
     </div>
   </header>
 
-  <!-- MAIN --------------------------------------------------------------- -->
+  <!-- MAIN ---------------------------------------------------------------- -->
   <main id="conteudo" class="hidden" role="main">
 
     <section class="content-header fade-section">
@@ -159,15 +156,14 @@
     <div id="chat-log" role="log"></div>
     <input id="chat-input" type="text"
            data-i18n-placeholder="chat.placeholder"
-           placeholder="Digite sua pergunta e tecle Enter…" />
+           placeholder="Digite sua pergunta e tecle Enter…">
   </div>
 
   <div id="suporte-sentinel"></div>
 
-  <!-- SW -->
+  <!-- Service Worker -->
   <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js').catch(console.error);}</script>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/i18next@21.6.3/i18next.min.js" defer></script>
   <script type="module" src="main.js" defer></script>
   <script src="chatbot.js" defer></script>
