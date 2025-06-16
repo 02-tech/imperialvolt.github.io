@@ -1,0 +1,16 @@
+{
+  "hero.cta":            "⚡ Energize your projects",
+  "section.domains.title":"🌐 Domain Registration & Naming",
+  "section.domains.desc": "Register .com, .store domains and create unique names with INPI checks.",
+  "section.sites.title":  "🖥️ Professional Websites",
+  "section.sites.desc":   "Custom landing pages, corporate sites and online stores.",
+  "section.apps.title":   "📱 Apps & Systems",
+  "section.apps.desc":    "On-demand apps, WhatsApp integration, client dashboard and more.",
+  "section.scripts.title":"⚙️ Automations & Scripts",
+  "section.scripts.desc": "Windows scripts, process integration, automated backups.",
+  "section.patents.title":"🔐 Patents & Protection",
+  "section.patents.desc": "Full support for patent filings and trademark registration.",
+  "btn.whats":            "Request a Quote on WhatsApp",
+  "agents.title":         "👥 Talk to one of our agents",
+  "chat.placeholder":     "Type your question and press Enter…"
+}
