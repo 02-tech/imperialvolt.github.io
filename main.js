@@ -1,110 +1,145 @@
 // main.js
-'use strict';
+(() => {
+  'use strict';
 
-// 1) Mensagens dos iframes
-window.addEventListener('message', e => {
-  const d = e.data;
-  if (!d || typeof d !== 'object') return;
-
-  if (d.type === 'config-frame-height') {
-    const f = document.getElementById('configFrame');
-    if (f) {
-      const h = Math.max(60, Number(d.height) || 0) + 'px';
-      f.style.height = f.style.minHeight = f.style.maxHeight = h;
-    }
-  }
-  if (d.type === 'config-close') {
-    const f = document.getElementById('configFrame');
-    if (f) f.style.display = 'none';
-  }
-  if (d.type === 'suporte-frame-height') {
-    const sf = document.getElementById('suporteFrame');
-    if (sf) sf.style.height = (d.height || 0) + 'px';
-  }
-});
-
-// 2) Quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-  initWhatsAppLinks();
-  initCtaAndSupportLazyLoad();
-  initChatbotToggle();
-});
-
-// Gera links de WhatsApp com saudação dinâmica
-function initWhatsAppLinks() {
-  const agents = [
-    { id: 'link-lucas', nome: 'Lucas' },
+  // ——————————————————————————————————————————————————————————————————————
+  // ELEMENTOS PRINCIPAIS
+  // ——————————————————————————————————————————————————————————————————————
+  const configFrame    = document.getElementById('configFrame');
+  const whatsappAgents = [
+    { id: 'link-lucas',   nome: 'Lucas'   },
     { id: 'link-eduarda', nome: 'Eduarda' },
-    { id: 'link-alex', nome: 'Alex' },
-    { id: 'link-nicole', nome: 'Nicole' }
+    { id: 'link-alex',    nome: 'Alex'    },
+    { id: 'link-nicole',  nome: 'Nicole'  }
   ];
-  const phone = '5524992144995';
-  function saudacao() {
-    const h = new Date().getHours();
-    return h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
-  }
-  agents.forEach(a => {
-    const el = document.getElementById(a.id);
-    if (!el) return;
-    const msg = encodeURIComponent(`${saudacao()}, ${a.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`);
-    el.href = `https://wa.me/${phone}?text=${msg}`;
-  });
-}
+  const ctaBtn         = document.getElementById('cta-btn');
+  const mainContent    = document.getElementById('conteudo');
+  const supportSent    = document.getElementById('suporte-sentinel');
+  const chatToggle     = document.getElementById('chatbot-toggle');
+  const chatWindow     = document.getElementById('chatbot-window');
+  const chatCloseBtn   = document.getElementById('chat-close');
+  const chatInput      = document.getElementById('chat-input');
 
-// Alterna o conteúdo e faz lazy-load do suporte
-function initCtaAndSupportLazyLoad() {
-  const btn     = document.getElementById('cta-btn');
-  const content = document.getElementById('conteudo');
-  const sent    = document.getElementById('suporte-sentinel');
-  let aberto = false, loaded = false;
+  // ——————————————————————————————————————————————————————————————————————
+  // 1) MENSAGENS DE IFRAME (CONFIG + SUPORTE)
+  // ——————————————————————————————————————————————————————————————————————
+  window.addEventListener('message', ({ data }) => {
+    if (!data || typeof data !== 'object') return;
 
-  btn.addEventListener('click', () => {
-    content.classList.toggle('hidden');
-    aberto = !content.classList.contains('hidden');
-    if (aberto) {
-      content.scrollIntoView({ behavior: 'smooth' });
-      maybeLoad();
+    switch (data.type) {
+      case 'config-frame-height':
+        resizeFrame(configFrame, data.height, 60);
+        break;
+
+      case 'config-close':
+        hide(configFrame);
+        break;
+
+      case 'suporte-frame-height':
+        const suporteFrame = document.getElementById('suporteFrame');
+        resizeFrame(suporteFrame, data.height, 0);
+        break;
     }
   });
 
-  function loadFrame() {
-    if (loaded) return;
-    loaded = true;
-    const iframe = document.createElement('iframe');
-    iframe.id        = 'suporteFrame';
-    iframe.src       = 'suporte.html';
-    iframe.scrolling = 'no';
-    iframe.style.cssText = 'width:100%;border:none;overflow:hidden;';
-    sent.appendChild(iframe);
+  function resizeFrame(frame, height, min) {
+    if (!frame) return;
+    const h = Math.max(min, Number(height) || 0) + 'px';
+    frame.style.height    = h;
+    frame.style.minHeight = h;
+    frame.style.maxHeight = h;
   }
 
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (en.isIntersecting && aberto) loadFrame();
+  function hide(el) {
+    if (el) el.style.display = 'none';
+  }
+
+  // ——————————————————————————————————————————————————————————————————————
+  // 2) INICIALIZAÇÃO AO CARREGAR O DOM
+  // ——————————————————————————————————————————————————————————————————————
+  document.addEventListener('DOMContentLoaded', () => {
+    initWhatsAppLinks();
+    initCtaAndSupportLazyLoad();
+    initChatbotToggle();
+  });
+
+  // ——————————————————————————————————————————————————————————————————————
+  // 3) LINKS DO WHATSAPP COM SAUDAÇÃO DINÂMICA
+  // ——————————————————————————————————————————————————————————————————————
+  function initWhatsAppLinks() {
+    const phone = '5524992144995';
+    const saudacao = () => {
+      const h = new Date().getHours();
+      return h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
+    };
+
+    whatsappAgents.forEach(agent => {
+      const a = document.getElementById(agent.id);
+      if (!a) return;
+      const msg = encodeURIComponent(`${saudacao()}, ${agent.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`);
+      a.href = `https://wa.me/${phone}?text=${msg}`;
     });
-  }, { threshold: 0 });
-  obs.observe(sent);
-
-  function maybeLoad() {
-    const rect = sent.getBoundingClientRect();
-    if (rect.top < window.innerHeight && aberto) loadFrame();
   }
-}
 
-// Controla abertura/fechamento do chatbot
-function initChatbotToggle() {
-  const toggle = document.getElementById('chatbot-toggle');
-  const win    = document.getElementById('chatbot-window');
-  const close  = document.getElementById('chat-close');
-  const input  = document.getElementById('chat-input');
+  // ——————————————————————————————————————————————————————————————————————
+  // 4) CTA + LAYOUT LAZY-LOAD DO SUPORTE
+  // ——————————————————————————————————————————————————————————————————————
+  function initCtaAndSupportLazyLoad() {
+    let opened = false, loaded = false;
 
-  toggle.addEventListener('click', () => {
-    win.classList.remove('hidden');
-    toggle.setAttribute('aria-expanded','true');
-    input.focus();
-  });
-  close.addEventListener('click', () => {
-    win.classList.add('hidden');
-    toggle.setAttribute('aria-expanded','false');
-  });
-}
+    ctaBtn.setAttribute('aria-expanded', 'false');
+    ctaBtn.addEventListener('click', () => {
+      opened = !opened;
+      mainContent.classList.toggle('hidden', !opened);
+      ctaBtn.setAttribute('aria-expanded', opened.toString());
+      if (opened) {
+        mainContent.scrollIntoView({ behavior: 'smooth' });
+        maybeLoadSuporte();
+      }
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && opened) loadSuporteFrame();
+      });
+    }, { threshold: 0 });
+    observer.observe(supportSent);
+
+    function loadSuporteFrame() {
+      if (loaded) return;
+      loaded = true;
+      const iframe = document.createElement('iframe');
+      iframe.id        = 'suporteFrame';
+      iframe.src       = 'suporte.html';
+      iframe.scrolling = 'no';
+      iframe.style.cssText = 'width:100%;border:none;overflow:hidden;';
+      supportSent.appendChild(iframe);
+    }
+
+    function maybeLoadSuporte() {
+      const rect = supportSent.getBoundingClientRect();
+      if (rect.top < window.innerHeight && opened) {
+        loadSuporteFrame();
+      }
+    }
+  }
+
+  // ——————————————————————————————————————————————————————————————————————
+  // 5) TOGGLE DO CHATBOT
+  // ——————————————————————————————————————————————————————————————————————
+  function initChatbotToggle() {
+    chatToggle.setAttribute('aria-expanded', 'false');
+
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.remove('hidden');
+      chatToggle.setAttribute('aria-expanded', 'true');
+      chatInput.focus();
+    });
+
+    chatCloseBtn.addEventListener('click', () => {
+      chatWindow.classList.add('hidden');
+      chatToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+})();

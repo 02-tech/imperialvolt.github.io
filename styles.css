@@ -24,8 +24,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
 
   /* espaçamentos */
-  --space-xxs: 0.4rem;
-  --space-xs: 0.5rem;
+  --space-xs: .5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;
@@ -57,6 +56,23 @@ body {
 .hidden {
   display: none !important;
 }
+
+/* marca de salto para teclado (skip link) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-cta);
+  color: #000;
+  padding: var(--space-xs) var(--space-sm);
+  text-decoration: none;
+  z-index: 10010;
+  transition: top .3s;
+}
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
 /* iframes (config + suporte) */
 iframe#configFrame,
 iframe#suporteFrame {
@@ -67,12 +83,12 @@ iframe#suporteFrame {
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   COMPONENT: LAYOUT TOGGLE
+   COMPONENT: LAYOUT TOGGLE (🔄)
 ───────────────────────────────────────────────────────────────────────────── */
 .layout-toggle {
   position: fixed;
-  top: var(--space-md);
-  right: var(--space-md);
+  top: var(--space-sm);
+  right: var(--space-sm);
   width: 24px;
   height: 24px;
   background: rgba(255,255,255,0.1);
@@ -104,14 +120,12 @@ iframe#suporteFrame {
   gap: var(--space-md);
   padding: var(--space-md) 0 var(--space-lg);
   background: var(--color-bg);
-  z-index: 0;
 }
 .hero::before {
   content: '';
   position: absolute;
-  width: 600px;
-  height: 600px;
   top: 50%; left: 50%;
+  width: 600px; height: 600px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, var(--color-link) 0%, transparent 70%);
   filter: blur(120px);
@@ -120,7 +134,7 @@ iframe#suporteFrame {
   z-index: -1;
 }
 
-/* -- Hero Left */
+/* Hero left (Guilherme) */
 .hero-left {
   flex: 0 0 auto;
   display: flex;
@@ -128,17 +142,17 @@ iframe#suporteFrame {
   align-items: flex-start;
   z-index: 1;
 }
-.hero-left .guilherme-img {
-  width: clamp(180px, 18vw, 260px);
+.guilherme-img {
+  width: clamp(100px, 18vw, 260px);
   border-radius: var(--radius-md);
 }
-.hero-left .caption {
+.caption {
   margin-top: var(--space-xs);
   font-size: 1rem;
   color: var(--color-text-muted);
 }
 
-/* -- Hero CTA */
+/* Hero CTA (botão) */
 .hero-cta {
   flex: 1;
   display: flex;
@@ -164,7 +178,7 @@ iframe#suporteFrame {
   outline: none;
 }
 
-/* -- Hero Right */
+/* Hero right (Voltz + logo) */
 .hero-right {
   flex: 0 0 auto;
   display: flex;
@@ -173,11 +187,11 @@ iframe#suporteFrame {
   gap: var(--space-xs);
   z-index: 1;
 }
-.hero-right .volt-img {
-  width: clamp(180px, 18vw, 260px);
+.volt-img {
+  width: clamp(100px, 18vw, 260px);
   border-radius: var(--radius-md);
 }
-.hero-right .logo-name {
+.logo-name {
   width: clamp(80px, 12vw, 140px);
 }
 
@@ -285,7 +299,6 @@ footer {
   font-size: .9rem;
   color: #666;
 }
-
 #chatbot-toggle {
   position: fixed;
   bottom: var(--space-lg);
@@ -346,7 +359,8 @@ footer {
 }
 .bot-msg {
   align-self: flex-start;
-  background: #333; color: #fff;
+  background: #333;
+  color: #fff;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0;
   max-width: 80%;
@@ -374,8 +388,9 @@ footer {
 #chat-input:focus { outline: none; }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   LAYOUT MODES (mobile/tablet/desktop)
+   LAYOUT MODES (mobile / tablet / desktop)
 ───────────────────────────────────────────────────────────────────────────── */
+/* mobile */
 body.mobile-layout .hero {
   flex-direction: column;
   align-items: flex-start;
@@ -401,6 +416,7 @@ body.mobile-layout .logo-name {
   width: 80px;
 }
 
+/* tablet */
 body.tablet-layout .hero {
   justify-content: space-around;
   padding: var(--space-md) 0;
@@ -418,6 +434,7 @@ body.tablet-layout .logo-name {
   width: 100px;
 }
 
+/* desktop */
 body.desktop-layout .hero {
   justify-content: space-between;
   padding: var(--space-md) 0 var(--space-lg);
