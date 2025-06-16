@@ -4,12 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Imperial Volt</title>
+
   <!-- Estilo principal -->
   <link rel="stylesheet" href="styles.css" />
+
   <!-- Fonte Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" 
+    rel="stylesheet" 
+  />
 </head>
 <body>
 
@@ -17,30 +22,49 @@
   <iframe
     id="configFrame"
     src="config.html"
-    style="width:100%;border:none;overflow:hidden;height:64px;transition:height .25s cubic-bezier(.23,1.1,.32,1);"
     scrolling="no"
     allowtransparency="true"
     tabindex="-1"
     aria-hidden="true"
   ></iframe>
 
+  <!-- ───────── LAYOUT TOGGLE (modo manual) ───────── -->
+  <button 
+    id="layout-toggle" 
+    class="layout-toggle" 
+    aria-label="Alternar layout (mobile/tablet/desktop)"
+  ></button>
+
   <!-- ───────── HERO ───────── -->
   <header class="hero" role="banner">
     <div class="hero-left">
-      <img src="Guilherme.png" alt="Guilherme – Gestor" class="guilherme-img" />
+      <img 
+        src="Guilherme.png" 
+        alt="Guilherme – Gestor" 
+        class="guilherme-img" 
+      />
       <div class="caption">Guilherme – Gestor</div>
     </div>
     <div class="hero-cta">
-      <button id="cta-btn" class="btn-cta">⚡ Energize seus projetos</button>
+      <button id="cta-btn">⚡ Energize seus projetos</button>
     </div>
     <div class="hero-right">
-      <img src="Voltz.png" alt="Mascote Voltz" class="volt-img" />
-      <img src="nome.png" alt="Imperial Volt" class="logo-name" />
+      <img 
+        src="Voltz.png" 
+        alt="Mascote Voltz" 
+        class="volt-img" 
+      />
+      <img 
+        src="nome.png" 
+        alt="Imperial Volt" 
+        class="logo-name" 
+      />
     </div>
   </header>
 
   <!-- ───────── CONTEÚDO PRINCIPAL ───────── -->
   <main id="conteudo" class="hidden" role="main">
+
     <section class="content-header">
       <h1>Imperial Volt ⚡</h1>
       <p>Soluções completas para sua empresa digital.</p>
@@ -48,23 +72,42 @@
 
     <section>
       <h2>🌐 Registro de Domínio e Nome</h2>
-      <p>Registro de domínios .com, .store e criação de nomes únicos com verificação no INPI.</p>
+      <p>
+        Registro de domínios .com, .store e criação de nomes únicos 
+        com verificação no INPI.
+      </p>
     </section>
+
     <section>
       <h2>🖥️ Sites Profissionais</h2>
-      <p>Landing pages, sites institucionais, lojas virtuais, cine-sites animados — tudo sob medida.</p>
+      <p>
+        Landing pages, sites institucionais, lojas virtuais, 
+        cine-sites animados — tudo sob medida.
+      </p>
     </section>
+
     <section>
       <h2>📱 Aplicativos &amp; Sistemas</h2>
-      <p>Criação de apps sob demanda, integração com WhatsApp, controle de pedidos e painel de cliente.</p>
+      <p>
+        Criação de apps sob demanda, integração com WhatsApp, 
+        controle de pedidos e painel de cliente.
+      </p>
     </section>
+
     <section>
       <h2>⚙️ Automações &amp; Scripts</h2>
-      <p>Scripts para Windows, integração de processos, backups automáticos e mais.</p>
+      <p>
+        Scripts para Windows, integração de processos, backups 
+        automáticos e mais.
+      </p>
     </section>
+
     <section>
       <h2>🔐 Patentes &amp; Proteção</h2>
-      <p>Auxílio na proteção de ideias com processos de patente, documentação técnica e registro de marca.</p>
+      <p>
+        Auxílio na proteção de ideias com processos de patente, 
+        documentação técnica e registro de marca.
+      </p>
     </section>
 
     <div class="orcamento-centro">
@@ -78,29 +121,41 @@
       </a>
     </div>
 
-    <!-- AGENTES -->
+    <!-- ───────── AGENTES ───────── -->
     <section class="agentes">
       <h2>👥 Fale com um de nossos agentes</h2>
 
       <div class="agente alternado direita">
         <img src="Lucas.png" alt="Lucas — Suporte" class="agente-img" />
-        <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
+        <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">
+          Falar com Lucas
+        </a>
       </div>
+
       <div class="agente alternado esquerda">
         <img src="Eduarda.png" alt="Eduarda — Consultora" class="agente-img" />
-        <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">Falar com Eduarda</a>
+        <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">
+          Falar com Eduarda
+        </a>
       </div>
+
       <div class="agente alternado direita">
         <img src="Alex.png" alt="Alex — Desenvolvedor" class="agente-img" />
-        <a id="link-alex" class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
+        <a id="link-alex" class="agente-link" target="_blank" rel="noopener">
+          Falar com Alex
+        </a>
       </div>
+
       <div class="agente alternado esquerda">
         <img src="Nicole.png" alt="Nicole — Designer" class="agente-img" />
-        <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
+        <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">
+          Falar com Nicole
+        </a>
       </div>
     </section>
   </main>
 
+  <!-- ───────── FOOTER ───────── -->
   <footer role="contentinfo">© 2025 Imperial Volt</footer>
 
   <!-- ───────── CHATBOT ───────── -->
@@ -111,24 +166,70 @@
     aria-controls="chatbot-window"
     aria-expanded="false"
     title="Abrir chat"
+  >💬</button>
+  <div
+    id="chatbot-window"
+    class="chatbot-window hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="chat-header"
   >
-    💬
-  </button>
-  <div id="chatbot-window" class="chatbot-window hidden" role="dialog" aria-modal="true" aria-labelledby="chat-header">
     <div id="chat-header">
       Chat Imperial Volt
       <button id="chat-close" class="chatbot-close" aria-label="Fechar chat">×</button>
     </div>
     <div id="chat-log"></div>
-    <input id="chat-input" type="text" placeholder="Digite sua pergunta e tecle Enter…" aria-label="Mensagem para o chat" />
+    <input
+      id="chat-input"
+      type="text"
+      placeholder="Digite sua pergunta e tecle Enter…"
+      aria-label="Mensagem para o chat"
+    />
   </div>
 
   <!-- ───────── SUPORTE (BOTTOM FRAME) ───────── -->
   <div id="suporte-sentinel"></div>
 
-  <!-- ───────── SCRIPTS ───────── -->
+  <!-- ───────── SCRIPTS EXTERNOS ───────── -->
   <script src="main.js" defer></script>
-  <script src="chatbot.js" defer></script>
 
+  <!-- ───────── LAYOUT DETECTION & TOGGLE ───────── -->
+  <script>
+  (function(){
+    const btn = document.getElementById('layout-toggle');
+    let overrideMode = null;
+
+    function applyMode(m) {
+      document.body.classList.remove('mobile-layout','tablet-layout','desktop-layout');
+      if(m) document.body.classList.add(m);
+    }
+
+    function detectMode() {
+      if (overrideMode) {
+        applyMode(overrideMode);
+      } else {
+        const w = window.innerWidth;
+        if (w < 600)      applyMode('mobile-layout');
+        else if (w < 900) applyMode('tablet-layout');
+        else              applyMode('desktop-layout');
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      switch (overrideMode) {
+        case 'mobile-layout':   overrideMode = 'tablet-layout';  break;
+        case 'tablet-layout':   overrideMode = 'desktop-layout'; break;
+        case 'desktop-layout':  overrideMode = null;             break;
+        default:                overrideMode = 'mobile-layout';  break;
+      }
+      detectMode();
+    });
+
+    window.addEventListener('resize', detectMode);
+    document.addEventListener('DOMContentLoaded', detectMode);
+  })();
+  </script>
+
+  <script src="chatbot.js" defer></script>
 </body>
 </html>
