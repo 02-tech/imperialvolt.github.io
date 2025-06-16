@@ -103,22 +103,24 @@ footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
   max-width:80%
 }
 
-/* ---- NOVO chat-form ---- */
+/* ---- chat-form corrigido ---- */
 .chat-input-row{
-  display:flex;gap:var(--x);
-  border-top:1px solid #333;padding:var(--x);
-  background:var(--bg)
+  display:flex;align-items:center;gap:var(--x);
+  background:var(--card-bg);          /* mesmo fundo do chat */
+  padding:var(--x);
 }
+
 #chat-input{
   flex:1;background:var(--sec-bg);color:#fff;
-  border:none;border-radius:var(--r-sm);
+  border:1px solid #333;border-radius:var(--r-sm);
   padding:var(--x) var(--s);font-size:1rem;
 }
+
 #chat-send{
-  background:var(--link);color:#fff;border:none;
-  padding:0 var(--m);font-size:1.1rem;
-  border-radius:var(--r-sm);cursor:pointer;
+  flex:0 0 48px;height:48px;
   display:flex;align-items:center;justify-content:center;
+  background:var(--link);color:#fff;border:none;
+  font-size:1.25rem;border-radius:var(--r-sm);cursor:pointer;
   transition:background var(--fast)
 }
 #chat-send:hover,#chat-send:focus{background:var(--link-hov);outline:none}
@@ -130,7 +132,7 @@ footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
   .logo-name{width:clamp(60px,20vw,100px)}
   #cta-btn{width:60vw;font-size:.8rem}
   #chatbot-toggle{bottom:calc(40px + env(safe-area-inset-bottom,0px));right:var(--s)}
-  #chat-send{padding:0 var(--s)}
+  #chat-send{flex:0 0 40px;height:40px}
 }
 
 /* ===== Elevar chat em telas muito baixas (altura < 680px) ===== */
