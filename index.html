@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Imperial Volt</title>
 
+  <!-- CSS principal -->
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Fonte Inter -->
@@ -16,8 +17,10 @@
 </head>
 <body>
 
+  <!-- Skip-link p/ navegação por teclado -->
   <a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
 
+  <!-- CONFIG (top-frame) -->
   <iframe id="configFrame"
           src="config.html"
           title="Configurações do site"
@@ -26,10 +29,10 @@
           tabindex="-1"
           aria-hidden="true"></iframe>
 
-  <!-- HERO ----------------------------------------------------------------- -->
+  <!-- HERO ---------------------------------------------------------------- -->
   <header class="hero" role="banner">
     <div class="hero-left">
-      <img src="Guilherme.png" alt="Guilherme – Gestor" class="guilherme-img" loading="lazy" />
+      <img src="Guilherme.png" alt="Guilherme – Gestor" class="guilherme-img" loading="lazy">
       <p class="caption">Guilherme – Gestor</p>
     </div>
 
@@ -40,15 +43,17 @@
     </div>
 
     <div class="hero-right">
-      <img src="Voltz.png"  alt="Mascote Voltz" class="volt-img"  loading="lazy" />
-      <img src="nome.png"   alt="Logo Imperial Volt" class="logo-name" loading="lazy" />
+      <img src="Voltz.png"  alt="Mascote Voltz"      class="volt-img"  loading="lazy">
+      <img src="nome.png"   alt="Logo Imperial Volt" class="logo-name" loading="lazy">
     </div>
   </header>
 
-  <!-- MAIN ----------------------------------------------------------------- -->
+  <!-- MAIN ---------------------------------------------------------------- -->
   <main id="conteudo" class="hidden" role="main">
+
     <section class="content-header fade-section">
-      <h1>Imperial Volt ⚡</h1><p>Soluções completas para sua empresa digital.</p>
+      <h1>Imperial Volt ⚡</h1>
+      <p>Soluções completas para sua empresa digital.</p>
     </section>
 
     <section class="fade-section"><h2>🌐 Registro de Domínio e Nome</h2><p>Registro de domínios .com, .store e criação de nomes únicos com verificação no INPI.</p></section>
@@ -70,30 +75,30 @@
       <h2>👥 Fale com um de nossos agentes</h2>
 
       <div class="agente alternado direita fade-section">
-        <img src="Lucas.png" alt="Lucas — Suporte" class="agente-img" loading="lazy" />
-        <a id="link-lucas"   class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
+        <img src="Lucas.png" alt="Lucas — Suporte" class="agente-img" loading="lazy">
+        <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
       </div>
 
       <div class="agente alternado esquerda fade-section">
-        <img src="Eduarda.png" alt="Eduarda — Consultora" class="agente-img" loading="lazy" />
+        <img src="Eduarda.png" alt="Eduarda — Consultora" class="agente-img" loading="lazy">
         <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">Falar com Eduarda</a>
       </div>
 
       <div class="agente alternado direita fade-section">
-        <img src="Alex.png" alt="Alex — Desenvolvedor" class="agente-img" loading="lazy" />
-        <a id="link-alex"    class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
+        <img src="Alex.png" alt="Alex — Desenvolvedor" class="agente-img" loading="lazy">
+        <a id="link-alex" class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
       </div>
 
       <div class="agente alternado esquerda fade-section">
-        <img src="Nicole.png" alt="Nicole — Designer" class="agente-img" loading="lazy" />
-        <a id="link-nicole"  class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
+        <img src="Nicole.png" alt="Nicole — Designer" class="agente-img" loading="lazy">
+        <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
       </div>
     </section>
   </main>
 
   <footer role="contentinfo">© 2025 Imperial Volt</footer>
 
-  <!-- CHATBOT -------------------------------------------------------------- -->
+  <!-- CHATBOT ------------------------------------------------------------- -->
   <button id="chatbot-toggle"
           class="chatbot-toggle"
           aria-haspopup="dialog"
@@ -102,20 +107,23 @@
           title="Abrir chat">💬</button>
 
   <div id="chatbot-window" class="chatbot-window hidden"
-       role="dialog" aria-modal="true" aria-labelledby="chat-header">
+       role="dialog" aria-modal="true" aria-labelledby="chat-header-title">
     <div id="chat-header">
       <h2 id="chat-header-title">Chat Imperial Volt</h2>
       <button id="chat-close" class="chatbot-close" aria-label="Fechar chat">×</button>
     </div>
     <div id="chat-log" role="log"></div>
-    <input id="chat-input" type="text"
+    <input id="chat-input"
+           type="text"
            placeholder="Digite sua pergunta e tecle Enter…"
-           aria-label="Mensagem para o chat" />
+           aria-label="Mensagem para o chat">
   </div>
 
   <!-- SENTINELA SUPORTE -->
   <div id="suporte-sentinel"></div>
 
-  <script src="main.js" defer></script>
+  <!-- JS ------------------------------------------------------------------ -->
+  <script src="main.js"    defer></script>
+  <script src="chatbot.js" defer></script><!-- lógica interna do bot -->
 </body>
 </html>
