@@ -2,144 +2,128 @@
 (() => {
   'use strict';
 
-  // ——————————————————————————————————————————————————————————————————————
-  // ELEMENTOS PRINCIPAIS
-  // ——————————————————————————————————————————————————————————————————————
-  const configFrame    = document.getElementById('configFrame');
-  const whatsappAgents = [
-    { id: 'link-lucas',   nome: 'Lucas'   },
-    { id: 'link-eduarda', nome: 'Eduarda' },
-    { id: 'link-alex',    nome: 'Alex'    },
-    { id: 'link-nicole',  nome: 'Nicole'  }
-  ];
-  const ctaBtn         = document.getElementById('cta-btn');
-  const mainContent    = document.getElementById('conteudo');
-  const supportSent    = document.getElementById('suporte-sentinel');
-  const chatToggle     = document.getElementById('chatbot-toggle');
-  const chatWindow     = document.getElementById('chatbot-window');
-  const chatCloseBtn   = document.getElementById('chat-close');
-  const chatInput      = document.getElementById('chat-input');
+  /* ELEMENTOS */
+  const configFrame  = document.getElementById('configFrame');
+  const sentinel     = document.getElementById('suporte-sentinel');
+  const contentBox   = document.getElementById('conteudo');
+  const ctaBtn       = document.getElementById('cta-btn');
+  const chatToggle   = document.getElementById('chatbot-toggle');
+  const chatWindow   = document.getElementById('chatbot-window');
+  const chatClose    = document.getElementById('chat-close');
+  const chatInput    = document.getElementById('chat-input');
 
-  // ——————————————————————————————————————————————————————————————————————
-  // 1) MENSAGENS DE IFRAME (CONFIG + SUPORTE)
-  // ——————————————————————————————————————————————————————————————————————
+  /* 1. MENSAGENS DOS IFRAMES ------------------------------------------------ */
   window.addEventListener('message', ({ data }) => {
     if (!data || typeof data !== 'object') return;
-
-    switch (data.type) {
-      case 'config-frame-height':
-        resizeFrame(configFrame, data.height, 60);
-        break;
-
-      case 'config-close':
-        hide(configFrame);
-        break;
-
-      case 'suporte-frame-height':
-        const suporteFrame = document.getElementById('suporteFrame');
-        resizeFrame(suporteFrame, data.height, 0);
-        break;
+    if (data.type === 'config-frame-height') resizeFrame(configFrame, data.height, 60);
+    if (data.type === 'config-close')        hide(configFrame);
+    if (data.type === 'suporte-frame-height') {
+      const sf = document.getElementById('suporteFrame');
+      resizeFrame(sf, data.height, 0);
     }
   });
 
-  function resizeFrame(frame, height, min) {
-    if (!frame) return;
-    const h = Math.max(min, Number(height) || 0) + 'px';
-    frame.style.height    = h;
-    frame.style.minHeight = h;
-    frame.style.maxHeight = h;
+  function resizeFrame(frame, h, min) {
+    if (frame) {
+      const px = Math.max(min, +h || 0) + 'px';
+      frame.style.height    = px;
+      frame.style.minHeight = px;
+      frame.style.maxHeight = px;
+    }
   }
-
   function hide(el) {
     if (el) el.style.display = 'none';
   }
 
-  // ——————————————————————————————————————————————————————————————————————
-  // 2) INICIALIZAÇÃO AO CARREGAR O DOM
-  // ——————————————————————————————————————————————————————————————————————
+  /* 2. INICIALIZAÇÃO -------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     initWhatsAppLinks();
-    initCtaAndSupportLazyLoad();
-    initChatbotToggle();
+    initCTAandSupport();
+    initChatbot();
+    initScrollAnimations();
   });
 
-  // ——————————————————————————————————————————————————————————————————————
-  // 3) LINKS DO WHATSAPP COM SAUDAÇÃO DINÂMICA
-  // ——————————————————————————————————————————————————————————————————————
+  /* 3. LINKS DO WHATSAPP ---------------------------------------------------- */
   function initWhatsAppLinks() {
     const phone = '5524992144995';
-    const saudacao = () => {
+    const greet = () => {
       const h = new Date().getHours();
       return h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
     };
-
-    whatsappAgents.forEach(agent => {
-      const a = document.getElementById(agent.id);
-      if (!a) return;
-      const msg = encodeURIComponent(`${saudacao()}, ${agent.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`);
-      a.href = `https://wa.me/${phone}?text=${msg}`;
+    [
+      { id: 'link-lucas',  nome: 'Lucas' },
+      { id: 'link-eduarda', nome: 'Eduarda' },
+      { id: 'link-alex',   nome: 'Alex' },
+      { id: 'link-nicole', nome: 'Nicole' }
+    ].forEach(a => {
+      const el = document.getElementById(a.id);
+      if (!el) return;
+      const msg = encodeURIComponent(`${greet()}, ${a.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`);
+      el.href = `https://wa.me/${phone}?text=${msg}`;
     });
   }
 
-  // ——————————————————————————————————————————————————————————————————————
-  // 4) CTA + LAYOUT LAZY-LOAD DO SUPORTE
-  // ——————————————————————————————————————————————————————————————————————
-  function initCtaAndSupportLazyLoad() {
+  /* 4. CTA + SUPORTE (lazy-load) ------------------------------------------- */
+  function initCTAandSupport() {
     let opened = false, loaded = false;
 
-    ctaBtn.setAttribute('aria-expanded', 'false');
     ctaBtn.addEventListener('click', () => {
       opened = !opened;
-      mainContent.classList.toggle('hidden', !opened);
-      ctaBtn.setAttribute('aria-expanded', opened.toString());
+      contentBox.classList.toggle('hidden', !opened);
+      ctaBtn.setAttribute('aria-expanded', opened);
       if (opened) {
-        mainContent.scrollIntoView({ behavior: 'smooth' });
-        maybeLoadSuporte();
+        contentBox.scrollIntoView({ behavior: 'smooth' });
+        maybeLoadSupport();
       }
     });
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting && opened) loadSuporteFrame();
+        if (e.isIntersecting && opened) loadSupport();
       });
     }, { threshold: 0 });
-    observer.observe(supportSent);
+    observer.observe(sentinel);
 
-    function loadSuporteFrame() {
+    function loadSupport() {
       if (loaded) return;
       loaded = true;
-      const iframe = document.createElement('iframe');
-      iframe.id        = 'suporteFrame';
-      iframe.src       = 'suporte.html';
-      iframe.scrolling = 'no';
-      iframe.style.cssText = 'width:100%;border:none;overflow:hidden;';
-      supportSent.appendChild(iframe);
+      const ifr = document.createElement('iframe');
+      ifr.id        = 'suporteFrame';
+      ifr.src       = 'suporte.html';
+      ifr.scrolling = 'no';
+      ifr.style.cssText = 'width:100%;border:none;overflow:hidden;';
+      sentinel.appendChild(ifr);
     }
-
-    function maybeLoadSuporte() {
-      const rect = supportSent.getBoundingClientRect();
-      if (rect.top < window.innerHeight && opened) {
-        loadSuporteFrame();
-      }
+    function maybeLoadSupport() {
+      if (sentinel.getBoundingClientRect().top < innerHeight) loadSupport();
     }
   }
 
-  // ——————————————————————————————————————————————————————————————————————
-  // 5) TOGGLE DO CHATBOT
-  // ——————————————————————————————————————————————————————————————————————
-  function initChatbotToggle() {
-    chatToggle.setAttribute('aria-expanded', 'false');
-
+  /* 5. CHATBOT -------------------------------------------------------------- */
+  function initChatbot() {
     chatToggle.addEventListener('click', () => {
       chatWindow.classList.remove('hidden');
       chatToggle.setAttribute('aria-expanded', 'true');
       chatInput.focus();
     });
-
-    chatCloseBtn.addEventListener('click', () => {
+    chatClose.addEventListener('click', () => {
       chatWindow.classList.add('hidden');
       chatToggle.setAttribute('aria-expanded', 'false');
     });
+  }
+
+  /* 6. ANIMAÇÕES AO SCROLL -------------------------------------------------- */
+  function initScrollAnimations() {
+    const items = document.querySelectorAll('.fade-section');
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('inview');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(el => io.observe(el));
   }
 
 })();
