@@ -20,8 +20,15 @@ iframe#configFrame,iframe#suporteFrame{width:100%;border:none;overflow:hidden;tr
 .skip-link:focus{top:var(--s);left:var(--s)}
 
 /* ========== 3. HERO ========= */
-.hero{position:relative;display:flex;justify-content:space-between;align-items:center;gap:var(--m);padding:var(--m) 0 var(--l)}
-.hero::before{content:'';position:absolute;left:50%;top:50%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--link)0%,transparent 70%);filter:blur(120px);opacity:.35;pointer-events:none;z-index:-1}
+.hero{
+  position:relative;display:flex;justify-content:space-between;align-items:center;
+  gap:var(--m);padding:var(--m) 0 var(--l);overflow:hidden;          /* ← corte do gradiente */
+}
+.hero::before{
+  content:'';position:absolute;left:50%;top:50%;width:600px;height:600px;
+  transform:translate(-50%,-50%);background:radial-gradient(circle,var(--link)0%,transparent 70%);
+  filter:blur(120px);opacity:.35;pointer-events:none;z-index:-1
+}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
 .hero-left,.hero-cta,.hero-right{opacity:0;animation:fadeUp var(--fast) ease forwards}
@@ -32,7 +39,12 @@ iframe#configFrame,iframe#suporteFrame{width:100%;border:none;overflow:hidden;tr
 .caption{margin-top:var(--x);font-size:1rem;color:var(--muted)}
 
 .hero-cta{flex:1;display:flex;justify-content:center}
-#cta-btn{width:clamp(120px,30vw,200px);padding:var(--x)var(--s);font-size:1rem;font-weight:600;color:#000;background:var(--cta);border:none;border-radius:var(--r-sm);cursor:pointer;transition:background var(--fast),transform var(--fast)}
+#cta-btn{
+  width:clamp(120px,30vw,200px);padding:var(--x)var(--s);
+  font-size:1rem;font-weight:600;color:#000;background:var(--cta);
+  border:none;border-radius:var(--r-sm);cursor:pointer;
+  transition:background var(--fast),transform var(--fast)
+}
 #cta-btn:hover,#cta-btn:focus{background:var(--cta-hov);transform:scale(1.05);outline:none}
 
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:var(--x)}
@@ -49,17 +61,27 @@ main{flex:1;max-width:960px;margin:0 auto;padding:var(--l) var(--m) var(--xl)}
 .content-header h1{font-size:2rem;color:var(--cta)}
 .content-header p{color:var(--light);margin-top:var(--x)}
 
-main section{background:var(--sec-bg);border-left:5px solid var(--link);border-radius:var(--r-sm);padding:var(--l);margin-bottom:var(--xl);box-shadow:var(--shadow)}
+main section{
+  background:var(--sec-bg);border-left:5px solid var(--link);
+  border-radius:var(--r-sm);padding:var(--l);margin-bottom:var(--xl);box-shadow:var(--shadow)
+}
 main section h2{font-size:1.25rem;color:var(--cta);margin-bottom:var(--x)}
 main section p{font-size:1rem;line-height:1.6;color:var(--light)}
 
 .orcamento-centro{text-align:center;margin-top:var(--xl)}
-.btn-whats{display:inline-block;padding:var(--s)var(--l);background:var(--link);color:#fff;font-weight:700;border-radius:var(--r-sm);text-decoration:none;transition:background var(--fast),transform var(--fast)}
+.btn-whats{
+  display:inline-block;padding:var(--s)var(--l);background:var(--link);color:#fff;
+  font-weight:700;border-radius:var(--r-sm);text-decoration:none;
+  transition:background var(--fast),transform var(--fast)
+}
 .btn-whats:hover{background:var(--link-hov);transform:translateY(-2px)}
 
 .agentes{margin-top:var(--xl)}
 .agentes h2{text-align:center;margin-bottom:var(--xl);font-size:1.5rem}
-.agente{display:flex;align-items:center;gap:var(--m);margin-bottom:var(--xl);background:var(--card-bg);border-radius:var(--r-md);padding:var(--l);box-shadow:var(--shadow)}
+.agente{
+  display:flex;align-items:center;gap:var(--m);margin-bottom:var(--xl);
+  background:var(--card-bg);border-radius:var(--r-md);padding:var(--l);box-shadow:var(--shadow)
+}
 .agente-img{width:clamp(80px,10vw,120px);border-radius:var(--r-sm)}
 .agente-link{font-size:1.1rem;font-weight:700;color:var(--cta);text-decoration:none}
 .agente-link:hover{text-decoration:underline}
@@ -69,7 +91,11 @@ main section p{font-size:1rem;line-height:1.6;color:var(--light)}
 footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
 
 /* ========== 7. CHAT ========= */
-#chatbot-toggle{position:fixed;bottom:var(--l);right:var(--l);width:56px;height:56px;border-radius:50%;background:var(--link);color:#fff;font-size:1.6rem;border:none;cursor:pointer;box-shadow:var(--shadow);z-index:1000}
+#chatbot-toggle{
+  position:fixed;bottom:calc(var(--l) + 4px);right:var(--l);          /* ↑ 4 px */
+  width:56px;height:56px;border-radius:50%;background:var(--link);color:#fff;
+  font-size:1.6rem;border:none;cursor:pointer;box-shadow:var(--shadow);z-index:1000
+}
 
 #chatbot-window{
   position:fixed;bottom:calc(56px + var(--x));right:var(--l);
@@ -106,22 +132,16 @@ footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
 /* ---- chat-form corrigido ---- */
 .chat-input-row{
   display:flex;align-items:center;gap:var(--x);
-  background:var(--card-bg);          /* mesmo fundo do chat */
-  padding:var(--x);
+  background:var(--card-bg);padding:var(--x)
 }
-
 #chat-input{
-  flex:1;background:var(--sec-bg);color:#fff;
-  border:1px solid #333;border-radius:var(--r-sm);
-  padding:var(--x) var(--s);font-size:1rem;
+  flex:1;background:var(--sec-bg);color:#fff;border:1px solid #333;
+  border-radius:var(--r-sm);padding:var(--x) var(--s);font-size:1rem
 }
-
 #chat-send{
-  flex:0 0 48px;height:48px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--link);color:#fff;border:none;
-  font-size:1.25rem;border-radius:var(--r-sm);cursor:pointer;
-  transition:background var(--fast)
+  flex:0 0 48px;height:48px;display:flex;align-items:center;justify-content:center;
+  background:var(--link);color:#fff;border:none;font-size:1.25rem;
+  border-radius:var(--r-sm);cursor:pointer;transition:background var(--fast)
 }
 #chat-send:hover,#chat-send:focus{background:var(--link-hov);outline:none}
 
@@ -135,7 +155,7 @@ footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
   #chat-send{flex:0 0 40px;height:40px}
 }
 
-/* ===== Elevar chat em telas muito baixas (altura < 680px) ===== */
+/* ===== Elevar chat em telas muito baixas ===== */
 @media(max-height:680px){
   #chatbot-toggle{bottom:calc(48px + env(safe-area-inset-bottom,0px))}
 }
