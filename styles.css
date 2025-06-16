@@ -85,17 +85,22 @@ footer{text-align:center;padding:var(--xl) 0;font-size:.9rem;color:#666}
 
 /* ===== Ajustes extra Mobile ≤400 px ===== */
 @media(max-width:400px){
-  .hero{gap:.5rem;padding:var(--m) var(--x)}
+  .hero{gap:.5rem;padding:var(--m) var(--x);align-items:flex-end}
   .guilherme-img,.volt-img{width:clamp(80px,28vw,140px)}
   .logo-name{width:clamp(60px,20vw,100px)}
   #cta-btn{width:60vw;font-size:.8rem}
   #chatbot-toggle{bottom:calc(40px + env(safe-area-inset-bottom,0px));right:var(--s)}
 }
 
-/* 8. Acessibilidade: reduz motion */
+/* ===== Elevar chat em telas muito baixas (ex.: altura < 680px) ===== */
+@media(max-height:680px){
+  #chatbot-toggle{bottom:calc(48px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ========== 8. Acessibilidade ========= */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 
-/* ========== 9. Oculta seletor de idioma ========= */
+/* ========== 9. OCULTAR seletor de idioma ========= */
 .lang-switcher{position:absolute;left:-9999px;top:-9999px;visibility:hidden}
