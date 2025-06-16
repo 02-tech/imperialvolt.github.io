@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Critical CSS -->
+  <!-- Critical CSS inline p/ FCP -->
   <style>
     html,body{margin:0;padding:0;font-family:'Inter',sans-serif;background:#0c0c0c;color:#fff}
     .hero{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0 2rem}
@@ -32,7 +32,7 @@
   <link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
-  <!-- Manifesto PWA & Locales -->
+  <!-- Manifesto e pré-carregamento dos JSON de idioma -->
   <link rel="manifest" href="manifest.json">
   <link rel="prefetch" href="locales/pt-BR.json" as="fetch" crossorigin>
   <link rel="prefetch" href="locales/en-US.json" as="fetch" crossorigin>
@@ -41,7 +41,7 @@
 
   <a class="skip-link" href="#conteudo" data-i18n="skip.link">Ir para o conteúdo</a>
 
-  <!-- seletor de idioma (oculto, mas mantém i18n funcionando) -->
+  <!-- seletor de idioma oculto (mantém i18n funcional) -->
   <div class="lang-switcher" aria-hidden="true">
     <label class="sr-only" for="lang-select">Idioma</label>
     <select id="lang-select" tabindex="-1">
@@ -153,10 +153,18 @@
       <h2 id="chat-header-title">Chat Imperial Volt</h2>
       <button id="chat-close" class="chatbot-close" aria-label="Fechar chat">×</button>
     </div>
+
     <div id="chat-log" role="log"></div>
-    <input id="chat-input" type="text"
-           data-i18n-placeholder="chat.placeholder"
-           placeholder="Digite sua pergunta e tecle Enter…">
+
+    <!-- NOVA ÁREA DE INPUT + BOTÃO ENVIAR -->
+    <form id="chat-form" class="chat-input-row" autocomplete="off">
+      <input id="chat-input" type="text"
+             data-i18n-placeholder="chat.placeholder"
+             placeholder="Digite sua mensagem…"
+             aria-label="Mensagem"
+             required>
+      <button id="chat-send" type="submit" aria-label="Enviar mensagem">➤</button>
+    </form>
   </div>
 
   <div id="suporte-sentinel"></div>
