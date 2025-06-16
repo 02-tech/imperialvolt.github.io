@@ -4,51 +4,79 @@
   <meta charset="UTF-8" />
   <meta name="description"
         content="Imperial Volt – soluções digitais completas: sites, apps, automações, patentes e mais." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imperial Volt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0c0c" />
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Imperial Volt – Soluções Digitais" />
+  <meta property="og:description" content="Sites, apps, automações e patentes para sua empresa." />
+  <meta property="og:image" content="https://imperialvolt.com/preview.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonte Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <title data-i18n="page.title">Imperial Volt</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Critical CSS -->
+  <style>
+    html,body{margin:0;padding:0;font-family:'Inter',sans-serif;background:#0c0c0c;color:#fff}
+    .hero{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0 2rem}
+    .skip-link{position:absolute;left:-999px}
+    @media(max-width:400px){
+      .hero{gap:.5rem;padding:1rem .5rem}
+    }
+  </style>
+
+  <!-- Async CSS -->
+  <link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+  <!-- Manifest & locale prefetch -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="prefetch" href="locales/pt-BR.json" as="fetch" crossorigin>
+  <link rel="prefetch" href="locales/en-US.json" as="fetch" crossorigin>
 </head>
 <body>
 
-  <!-- Skip-link p/ navegação por teclado -->
-  <a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
+  <a class="skip-link" href="#conteudo" data-i18n="skip.link">Ir para o conteúdo</a>
 
-  <!-- CONFIG (top-frame) -->
-  <iframe id="configFrame"
-          src="config.html"
-          title="Configurações do site"
-          scrolling="no"
-          allowtransparency="true"
-          tabindex="-1"
-          aria-hidden="true"></iframe>
+  <!-- Seletor de idioma -->
+  <div class="lang-switcher">
+    <label class="sr-only" for="lang-select">Idioma</label>
+    <select id="lang-select">
+      <option value="pt-BR">PT</option>
+      <option value="en-US">EN</option>
+    </select>
+  </div>
 
-  <!-- HERO ---------------------------------------------------------------- -->
+  <!-- Iframe de config -->
+  <iframe id="configFrame" src="config.html" title="Configurações do site"
+          scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+
+  <!-- HERO --------------------------------------------------------------- -->
   <header class="hero" role="banner">
     <div class="hero-left">
-      <img src="Guilherme.png" alt="Guilherme – Gestor" class="guilherme-img" loading="lazy">
+      <img src="Guilherme.webp" alt="Guilherme – Gestor" class="guilherme-img" loading="lazy">
       <p class="caption">Guilherme – Gestor</p>
     </div>
 
     <div class="hero-cta">
-      <button id="cta-btn" aria-controls="conteudo" aria-expanded="false">
+      <button id="cta-btn" data-i18n="hero.cta"
+              aria-controls="conteudo" aria-expanded="false">
         ⚡ Energize seus projetos
       </button>
     </div>
 
     <div class="hero-right">
-      <img src="Voltz.png"  alt="Mascote Voltz"      class="volt-img"  loading="lazy">
-      <img src="nome.png"   alt="Logo Imperial Volt" class="logo-name" loading="lazy">
+      <img src="Voltz.webp"  alt="Mascote Voltz" class="volt-img" loading="lazy">
+      <img src="nome.webp"   alt="Logo Imperial Volt" class="logo-name" loading="lazy">
     </div>
   </header>
 
-  <!-- MAIN ---------------------------------------------------------------- -->
+  <!-- MAIN --------------------------------------------------------------- -->
   <main id="conteudo" class="hidden" role="main">
 
     <section class="content-header fade-section">
@@ -56,15 +84,34 @@
       <p>Soluções completas para sua empresa digital.</p>
     </section>
 
-    <section class="fade-section"><h2>🌐 Registro de Domínio e Nome</h2><p>Registro de domínios .com, .store e criação de nomes únicos com verificação no INPI.</p></section>
-    <section class="fade-section"><h2>🖥️ Sites Profissionais</h2><p>Landing pages, sites institucionais e lojas virtuais sob medida.</p></section>
-    <section class="fade-section"><h2>📱 Aplicativos &amp; Sistemas</h2><p>Apps on-demand, integração WhatsApp, painel de cliente e mais.</p></section>
-    <section class="fade-section"><h2>⚙️ Automações &amp; Scripts</h2><p>Scripts Windows, integração de processos, backups automáticos.</p></section>
-    <section class="fade-section"><h2>🔐 Patentes &amp; Proteção</h2><p>Apoio total em patenteamento e registro de marca.</p></section>
+    <section class="fade-section">
+      <h2 data-i18n="section.domains.title">🌐 Registro de Domínio e Nome</h2>
+      <p data-i18n="section.domains.desc">Registro de domínios .com, .store e criação de nomes únicos com verificação no INPI.</p>
+    </section>
+
+    <section class="fade-section">
+      <h2 data-i18n="section.sites.title">🖥️ Sites Profissionais</h2>
+      <p data-i18n="section.sites.desc">Landing pages, sites institucionais e lojas virtuais sob medida.</p>
+    </section>
+
+    <section class="fade-section">
+      <h2 data-i18n="section.apps.title">📱 Aplicativos & Sistemas</h2>
+      <p data-i18n="section.apps.desc">Apps on-demand, integração WhatsApp, painel de cliente e mais.</p>
+    </section>
+
+    <section class="fade-section">
+      <h2 data-i18n="section.scripts.title">⚙️ Automações & Scripts</h2>
+      <p data-i18n="section.scripts.desc">Scripts Windows, integração de processos, backups automáticos.</p>
+    </section>
+
+    <section class="fade-section">
+      <h2 data-i18n="section.patents.title">🔐 Patentes & Proteção</h2>
+      <p data-i18n="section.patents.desc">Apoio total em patenteamento e registro de marca.</p>
+    </section>
 
     <div class="orcamento-centro fade-section">
-      <a class="btn-whats"
-         href="https://wa.me/5524992144995?text=Olá!%20Quero%20começar%20meu%20projeto%20digital%20com%20a%20Imperial%20Volt!"
+      <a class="btn-whats" data-i18n="btn.whats"
+         href="https://wa.me/5524992144995?text=Olá!%20Quero%20começar%20meu%20projeto..."
          target="_blank" rel="noopener">
         Solicitar Orçamento no WhatsApp
       </a>
@@ -72,39 +119,36 @@
 
     <!-- AGENTES -->
     <section class="agentes fade-section">
-      <h2>👥 Fale com um de nossos agentes</h2>
+      <h2 data-i18n="agents.title">👥 Fale com um de nossos agentes</h2>
 
       <div class="agente alternado direita fade-section">
-        <img src="Lucas.png" alt="Lucas — Suporte" class="agente-img" loading="lazy">
+        <img src="Lucas.webp" alt="Lucas — Suporte" class="agente-img" loading="lazy">
         <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
       </div>
 
       <div class="agente alternado esquerda fade-section">
-        <img src="Eduarda.png" alt="Eduarda — Consultora" class="agente-img" loading="lazy">
+        <img src="Eduarda.webp" alt="Eduarda — Consultora" class="agente-img" loading="lazy">
         <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">Falar com Eduarda</a>
       </div>
 
       <div class="agente alternado direita fade-section">
-        <img src="Alex.png" alt="Alex — Desenvolvedor" class="agente-img" loading="lazy">
+        <img src="Alex.webp" alt="Alex — Desenvolvedor" class="agente-img" loading="lazy">
         <a id="link-alex" class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
       </div>
 
       <div class="agente alternado esquerda fade-section">
-        <img src="Nicole.png" alt="Nicole — Designer" class="agente-img" loading="lazy">
+        <img src="Nicole.webp" alt="Nicole — Designer" class="agente-img" loading="lazy">
         <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
       </div>
     </section>
   </main>
 
-  <footer role="contentinfo">© 2025 Imperial Volt</footer>
+  <footer>© 2025 Imperial Volt</footer>
 
   <!-- CHATBOT ------------------------------------------------------------- -->
-  <button id="chatbot-toggle"
-          class="chatbot-toggle"
-          aria-haspopup="dialog"
-          aria-controls="chatbot-window"
-          aria-expanded="false"
-          title="Abrir chat">💬</button>
+  <button id="chatbot-toggle" class="chatbot-toggle"
+          aria-haspopup="dialog" aria-controls="chatbot-window"
+          aria-expanded="false" title="Abrir chat">💬</button>
 
   <div id="chatbot-window" class="chatbot-window hidden"
        role="dialog" aria-modal="true" aria-labelledby="chat-header-title">
@@ -113,17 +157,19 @@
       <button id="chat-close" class="chatbot-close" aria-label="Fechar chat">×</button>
     </div>
     <div id="chat-log" role="log"></div>
-    <input id="chat-input"
-           type="text"
-           placeholder="Digite sua pergunta e tecle Enter…"
-           aria-label="Mensagem para o chat">
+    <input id="chat-input" type="text"
+           data-i18n-placeholder="chat.placeholder"
+           placeholder="Digite sua pergunta e tecle Enter…" />
   </div>
 
-  <!-- SENTINELA SUPORTE -->
   <div id="suporte-sentinel"></div>
 
-  <!-- JS ------------------------------------------------------------------ -->
-  <script src="main.js"    defer></script>
-  <script src="chatbot.js" defer></script><!-- lógica interna do bot -->
+  <!-- SW -->
+  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js').catch(console.error);}</script>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/i18next@21.6.3/i18next.min.js" defer></script>
+  <script type="module" src="main.js" defer></script>
+  <script src="chatbot.js" defer></script>
 </body>
 </html>
