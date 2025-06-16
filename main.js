@@ -2,128 +2,109 @@
 (() => {
   'use strict';
 
-  /* ELEMENTOS */
-  const configFrame  = document.getElementById('configFrame');
-  const sentinel     = document.getElementById('suporte-sentinel');
-  const contentBox   = document.getElementById('conteudo');
-  const ctaBtn       = document.getElementById('cta-btn');
-  const chatToggle   = document.getElementById('chatbot-toggle');
-  const chatWindow   = document.getElementById('chatbot-window');
-  const chatClose    = document.getElementById('chat-close');
-  const chatInput    = document.getElementById('chat-input');
+  /* ELEMENTOS ------------------------------------------------------------- */
+  const configFrame = document.getElementById('configFrame');
+  const sentinel    = document.getElementById('suporte-sentinel');
+  const mainBox     = document.getElementById('conteudo');
+  const ctaBtn      = document.getElementById('cta-btn');
 
-  /* 1. MENSAGENS DOS IFRAMES ------------------------------------------------ */
+  const chatToggle  = document.getElementById('chatbot-toggle');
+  const chatWin     = document.getElementById('chatbot-window');
+  const chatClose   = document.getElementById('chat-close');
+  const chatInput   = document.getElementById('chat-input');
+
+  /* MENSAGENS IFRAMES ----------------------------------------------------- */
   window.addEventListener('message', ({ data }) => {
     if (!data || typeof data !== 'object') return;
     if (data.type === 'config-frame-height') resizeFrame(configFrame, data.height, 60);
     if (data.type === 'config-close')        hide(configFrame);
-    if (data.type === 'suporte-frame-height') {
-      const sf = document.getElementById('suporteFrame');
-      resizeFrame(sf, data.height, 0);
+    if (data.type === 'suporte-frame-height'){
+      const sf=document.getElementById('suporteFrame');
+      resizeFrame(sf,data.height,0);
     }
   });
+  function resizeFrame(f,h,min){ if(f){const px=Math.max(min,+h||0)+'px';f.style.height=f.style.minHeight=f.style.maxHeight=px;} }
+  const hide = el => el&&(el.style.display='none');
 
-  function resizeFrame(frame, h, min) {
-    if (frame) {
-      const px = Math.max(min, +h || 0) + 'px';
-      frame.style.height    = px;
-      frame.style.minHeight = px;
-      frame.style.maxHeight = px;
-    }
-  }
-  function hide(el) {
-    if (el) el.style.display = 'none';
-  }
-
-  /* 2. INICIALIZAÇÃO -------------------------------------------------------- */
+  /* BOOT ------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', () => {
-    initWhatsAppLinks();
-    initCTAandSupport();
-    initChatbot();
-    initScrollAnimations();
+    initWhatsApp();
+    initCTA();
+    initChat();
+    scrollReveal();
   });
 
-  /* 3. LINKS DO WHATSAPP ---------------------------------------------------- */
-  function initWhatsAppLinks() {
-    const phone = '5524992144995';
-    const greet = () => {
-      const h = new Date().getHours();
-      return h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
-    };
+  /* WHATSAPP LINKS -------------------------------------------------------- */
+  function initWhatsApp(){
+    const phone='5524992144995';
+    const hi=()=>{const h=new Date().getHours();return h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';};
     [
-      { id: 'link-lucas',  nome: 'Lucas' },
-      { id: 'link-eduarda', nome: 'Eduarda' },
-      { id: 'link-alex',   nome: 'Alex' },
-      { id: 'link-nicole', nome: 'Nicole' }
-    ].forEach(a => {
-      const el = document.getElementById(a.id);
-      if (!el) return;
-      const msg = encodeURIComponent(`${greet()}, ${a.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`);
-      el.href = `https://wa.me/${phone}?text=${msg}`;
+      {id:'link-lucas',nome:'Lucas'},
+      {id:'link-eduarda',nome:'Eduarda'},
+      {id:'link-alex',nome:'Alex'},
+      {id:'link-nicole',nome:'Nicole'}
+    ].forEach(a=>{
+      const el=document.getElementById(a.id);
+      if(!el)return;
+      el.href=`https://wa.me/${phone}?text=${encodeURIComponent(`${hi()}, ${a.nome}! Vim pelo site da Imperial Volt e gostaria de conversar.`)}`;
     });
   }
 
-  /* 4. CTA + SUPORTE (lazy-load) ------------------------------------------- */
-  function initCTAandSupport() {
-    let opened = false, loaded = false;
-
-    ctaBtn.addEventListener('click', () => {
-      opened = !opened;
-      contentBox.classList.toggle('hidden', !opened);
-      ctaBtn.setAttribute('aria-expanded', opened);
-      if (opened) {
-        contentBox.scrollIntoView({ behavior: 'smooth' });
-        maybeLoadSupport();
-      }
+  /* CTA + suporte --------------------------------------------------------- */
+  function initCTA(){
+    let open=false,loaded=false;
+    ctaBtn.addEventListener('click',()=>{
+      open=!open;
+      mainBox.classList.toggle('hidden',!open);
+      ctaBtn.setAttribute('aria-expanded',open);
+      if(open){mainBox.scrollIntoView({behavior:'smooth'});maybeLoad();}
     });
+    const io=new IntersectionObserver(e=>e.forEach(ent=>{if(ent.isIntersecting&&open)load()}),{threshold:0});
+    io.observe(sentinel);
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting && opened) loadSupport();
-      });
-    }, { threshold: 0 });
-    observer.observe(sentinel);
-
-    function loadSupport() {
-      if (loaded) return;
-      loaded = true;
-      const ifr = document.createElement('iframe');
-      ifr.id        = 'suporteFrame';
-      ifr.src       = 'suporte.html';
-      ifr.scrolling = 'no';
-      ifr.style.cssText = 'width:100%;border:none;overflow:hidden;';
+    function load(){
+      if(loaded)return;loaded=true;
+      const ifr=document.createElement('iframe');
+      ifr.id='suporteFrame';ifr.src='suporte.html';ifr.scrolling='no';
+      ifr.style.cssText='width:100%;border:none;overflow:hidden;';
       sentinel.appendChild(ifr);
     }
-    function maybeLoadSupport() {
-      if (sentinel.getBoundingClientRect().top < innerHeight) loadSupport();
-    }
+    const maybeLoad=()=>{if(sentinel.getBoundingClientRect().top<innerHeight)load();}
   }
 
-  /* 5. CHATBOT -------------------------------------------------------------- */
-  function initChatbot() {
-    chatToggle.addEventListener('click', () => {
-      chatWindow.classList.remove('hidden');
-      chatToggle.setAttribute('aria-expanded', 'true');
+  /* CHAT ------------------------------------------------------------------ */
+  function initChat(){
+    chatToggle.addEventListener('click',()=>{
+      chatWin.classList.remove('hidden');
+      chatToggle.setAttribute('aria-expanded','true');
       chatInput.focus();
+      /* fecha ao tocar fora (mobile) */
+      setTimeout(()=>{
+        document.addEventListener('click',outside,{once:true});
+      },0);
     });
-    chatClose.addEventListener('click', () => {
-      chatWindow.classList.add('hidden');
-      chatToggle.setAttribute('aria-expanded', 'false');
-    });
+    const outside=e=>{
+      if(!chatWin.contains(e.target)&&e.target!==chatToggle)close();
+    };
+    const close=()=>{
+      chatWin.classList.add('hidden');
+      chatToggle.setAttribute('aria-expanded','false');
+    };
+    chatClose.addEventListener('click',close);
   }
 
-  /* 6. ANIMAÇÕES AO SCROLL -------------------------------------------------- */
-  function initScrollAnimations() {
-    const items = document.querySelectorAll('.fade-section');
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('inview');
-          obs.unobserve(e.target);
+  /* SCROLL-REVEAL --------------------------------------------------------- */
+  function scrollReveal(){
+    const items=document.querySelectorAll('.fade-section');
+    const io=new IntersectionObserver((ents,obs)=>{
+      ents.forEach(ent=>{
+        if(ent.isIntersecting){
+          ent.target.classList.add('inview');
+          obs.unobserve(ent.target);
         }
       });
-    }, { threshold: 0.1 });
-    items.forEach(el => io.observe(el));
+    },{threshold:.15});
+    items.forEach(el=>io.observe(el));
   }
 
 })();
