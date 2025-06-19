@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Suporte Adicional</title>
+
 <style>
-  :root{--neon:#00f0ff;--txt:silver;--bg:#1e1e1e;}
-  body{
-    margin:0;padding:30px 15px;text-align:center;
-    font-family:Arial,Helvetica,sans-serif;color:var(--txt);
-    background:rgba(17,17,17,.85);backdrop-filter:blur(5px);
-    border-top:2px solid var(--neon);
-  }
-  .suporte-box{max-width:620px;margin:0 auto;}
-  h2{color:var(--neon);margin-bottom:22px}
-  .btn{
-    background:var(--neon);color:#111;font-weight:bold;
-    padding:10px 24px;border:none;border-radius:6px;
-    cursor:pointer;transition:.3s;margin:0 10px;
-  }
-  .btn:hover{background:#0ff;transform:scale(1.05)}
-  .slide{
-    overflow:hidden;max-height:0;opacity:0;
-    transform:translateY(-12px);
-    transition:max-height .6s ease,opacity .6s ease,transform .6s ease,padding .6s ease;
-    margin-top:22px;background:var(--bg);
-    padding:0 18px;border:1px solid var(--neon);border-radius:8px;
-  }
-  .slide.open{
-    max-height:800px;opacity:1;transform:translateY(0);padding:22px 18px;
-  }
-  iframe {
-    width: 100%;
-    height: 600px;
-    border: none;
-    border-radius: 8px;
-    display: none;
-    margin-top: 20px;
-  }
-  a{color:var(--neon);text-decoration:none}
-  a:hover{text-decoration:underline}
+:root{--neon:#00f0ff;--txt:silver;--bg:#1e1e1e;}
+body{
+  margin:0;padding:30px 15px;text-align:center;
+  font-family:Arial,Helvetica,sans-serif;color:var(--txt);
+  background:rgba(17,17,17,.85);backdrop-filter:blur(5px);
+  border-top:2px solid var(--neon);
+}
+.suporte-box{max-width:620px;margin:0 auto;}
+h2{color:var(--neon);margin-bottom:22px}
+.btn{
+  background:var(--neon);color:#111;font-weight:bold;
+  padding:10px 24px;border:none;border-radius:6px;
+  cursor:pointer;transition:.3s;margin:0 10px;
+}
+.btn:hover{background:#0ff;transform:scale(1.05)}
+.slide{
+  overflow:hidden;max-height:0;opacity:0;
+  transform:translateY(-12px);
+  transition:max-height .6s ease,opacity .6s ease,transform .6s ease,padding .6s ease;
+  margin-top:22px;background:var(--bg);
+  padding:0 18px;border:1px solid var(--neon);border-radius:8px;
+}
+.slide.open{
+  max-height:800px;opacity:1;transform:translateY(0);padding:22px 18px;
+}
+iframe{
+  width:100%;height:600px;border:none;border-radius:8px;
+  display:none;margin-top:20px;
+}
+a{color:var(--neon);text-decoration:none}
+a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -73,33 +70,37 @@ const iframe = document.getElementById('conteudo-frame');
 function abrir(bx){
   [boxSim, boxNao].forEach(b => b.classList.remove('open'));
   bx.classList.add('open');
-  setTimeout(() => enviarAltura(), 650);
+  setTimeout(enviarAltura, 650);
   enviarScroll();
 }
 
 btnSim.onclick = () => {
   abrir(boxSim);
-  iframe.src = "conteudo.html";
-  iframe.style.display = "block";
+  iframe.src = 'conteudo.html';
+  iframe.style.display = 'block';
 };
 
 btnNao.onclick = () => abrir(boxNao);
 
+/* ---------- Comunicação com a página-pai ---------- */
 function enviarAltura(){
   const h = document.documentElement.scrollHeight;
-  parent.postMessage({type: 'suporte-frame-height', height: h}, '*');
+  parent.postMessage({ type: 'suporte-frame-height', height: h }, '*');
 }
+function enviarScroll(){ parent.postMessage({ type: 'suporte-scroll-self' }, '*'); }
 
-function enviarScroll(){
-  parent.postMessage({type: 'suporte-scroll-self'}, '*');
-}
-
-function enviarTopo(){
-  parent.postMessage({type: 'suporte-scroll-top'}, '*');
-}
-
-addEventListener('load', enviarAltura);
+addEventListener('load',   enviarAltura);
 addEventListener('resize', () => setTimeout(enviarAltura, 60));
+
+/* NOVO → fecha tudo quando o pai mandar */
+window.addEventListener('message', ({ data }) => {
+  if (data?.type === 'suporte-close'){
+    [boxSim, boxNao].forEach(b => b.classList.remove('open'));
+    iframe.style.display = 'none';
+    iframe.src = '';          /* libera memória */
+    enviarAltura();
+  }
+});
 </script>
 </body>
 </html>
