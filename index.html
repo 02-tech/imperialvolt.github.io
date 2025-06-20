@@ -26,6 +26,16 @@
     .hero{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.5rem 0 2rem}
     .skip-link{position:absolute;left:-999px}
     @media(max-width:400px){.hero{gap:.5rem;padding:1rem .5rem}}
+
+    /* vídeo de fundo */
+    .bg-video{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      object-fit:cover;z-index:0;pointer-events:none;
+    }
+    /* garante que todo o conteúdo fique acima do vídeo */
+    .hero,main,footer,#configFrame,#chatbot-toggle,#chatbot-window{
+      position:relative;z-index:1;
+    }
   </style>
 
   <!-- CSS assíncrono -->
@@ -38,6 +48,12 @@
   <link rel="prefetch" href="locales/en-US.json" as="fetch" crossorigin>
 </head>
 <body>
+
+  <!-- Vídeo de fundo -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="fundo_desktop.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo de fundo.
+  </video>
 
   <a class="skip-link" href="#conteudo" data-i18n="skip.link">Ir para o conteúdo</a>
 
@@ -114,30 +130,36 @@
       </a>
     </div>
 
-    <!-- AGENTES -->
     <section class="agentes fade-section">
       <h2 data-i18n="agents.title">👥 Fale com um de nossos agentes</h2>
-
       <div class="agente alternado direita fade-section">
         <img src="Lucas.webp" alt="Lucas — Suporte" class="agente-img" loading="lazy">
         <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
       </div>
-
       <div class="agente alternado esquerda fade-section">
         <img src="Eduarda.webp" alt="Eduarda — Consultora" class="agente-img" loading="lazy">
         <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">Falar com Eduarda</a>
       </div>
-
       <div class="agente alternado direita fade-section">
         <img src="Alex.webp" alt="Alex — Desenvolvedor" class="agente-img" loading="lazy">
         <a id="link-alex" class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
       </div>
-
       <div class="agente alternado esquerda fade-section">
         <img src="Nicole.webp" alt="Nicole — Designer" class="agente-img" loading="lazy">
         <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
       </div>
     </section>
+
+    <!-- FRAME DE SUPORTE --------------------------------------------------- -->
+    <iframe
+      id="suporteFrame"
+      src="suporte.html"
+      title="Suporte Imperial Volt"
+      class="fade-section suporte-frame"
+      loading="lazy"
+      role="document">
+    </iframe>
+
   </main>
 
   <footer>© 2025 Imperial Volt</footer>
@@ -153,25 +175,21 @@
       <h2 id="chat-header-title">Chat Imperial Volt</h2>
       <button id="chat-close" class="chatbot-close" aria-label="Fechar chat">×</button>
     </div>
-
     <div id="chat-log" role="log"></div>
-
-    <!-- NOVA ÁREA DE INPUT + BOTÃO ENVIAR -->
     <form id="chat-form" class="chat-input-row" autocomplete="off">
       <input id="chat-input" type="text"
              data-i18n-placeholder="chat.placeholder"
              placeholder="Digite sua mensagem…"
-             aria-label="Mensagem"
-             required>
+             aria-label="Mensagem" required>
       <button id="chat-send" type="submit" aria-label="Enviar mensagem">➤</button>
     </form>
   </div>
 
-  <div id="suporte-sentinel"></div>
+  <!-- sentinel de lazy-load do suporte -->
+  <div id="suporte-sentinel" style="display:block;width:100%;height:1px;"></div>
 
   <!-- Service Worker -->
-  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js').catch(console.error);}</script>
-
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(console.error);}</script>
   <script src="https://unpkg.com/i18next@21.6.3/i18next.min.js" defer></script>
   <script type="module" src="main.js" defer></script>
   <script src="chatbot.js" defer></script>
