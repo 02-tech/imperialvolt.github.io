@@ -1,22 +1,34 @@
-// main.js — versão estável
+// main.js — versão estável + auto-resize do suporte
 (() => {
   'use strict';
 
   /* ------------------------------------------------------------------
-   * 0. Elementos que precisaremos
+   * 0. Elementos principais
    * ---------------------------------------------------------------- */
-  const mainBox   = document.getElementById('conteudo');     // bloco que some/aparece
-  const ctaBtn    = document.getElementById('cta-btn');      // botão “⚡ Energize…”
-  const langSel   = document.getElementById('lang-select');  // seletor de idioma
+  const mainBox = document.getElementById('conteudo');    // <main> que some/mostra
+  const ctaBtn  = document.getElementById('cta-btn');     // botão “⚡ Energize…”
+  const langSel = document.getElementById('lang-select'); // seletor de idioma
 
   /* ------------------------------------------------------------------
-   * 1. Mostrar / esconder o <main>
+   * 1. Ajuste de altura do iframe de suporte
    * ---------------------------------------------------------------- */
-  function initCTA () {
-    if (!ctaBtn || !mainBox) return;            // nada a fazer
+  window.addEventListener('message', evt => {
+    const { data } = evt;
+    if (!data || data.type !== 'suporte-frame-height') return;
 
-    /** Mostra ou oculta o main e, caso mostre,
-        força a verificação de fade das seções. */
+    const sup = document.getElementById('suporteFrame');
+    if (sup) {
+      // Altura mínima: 120 px para evitar “piscadas” em telas estreitas
+      sup.style.height = Math.max(120, +data.height || 0) + 'px';
+    }
+  });
+
+  /* ------------------------------------------------------------------
+   * 2. Mostrar / esconder o <main>
+   * ---------------------------------------------------------------- */
+  function initCTA() {
+    if (!ctaBtn || !mainBox) return;
+
     ctaBtn.addEventListener('click', () => {
       mainBox.classList.toggle('hidden');
 
@@ -25,17 +37,17 @@
 
       if (aberto) {
         mainBox.scrollIntoView({ behavior: 'smooth' });
-        revealNow();                            // garante fade-in de tudo que já estiver visível
+        revealNow(); // garante fade-in imediato do que já estiver na viewport
       }
     });
   }
 
   /* ------------------------------------------------------------------
-   * 2. Fade-in das seções (.fade-section)
+   * 3. Fade-in das seções (.fade-section)
    * ---------------------------------------------------------------- */
-  let revealNow = () => {};   // placeholder; recebe o helper real logo abaixo
+  let revealNow = () => {};          // será preenchido logo abaixo
 
-  function initRevealObserver () {
+  function initRevealObserver() {
     const io = new IntersectionObserver((entries, obs) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -47,8 +59,7 @@
 
     document.querySelectorAll('.fade-section').forEach(sec => io.observe(sec));
 
-    /* Helper: revela imediatamente qualquer .fade-section
-       QUE JÁ esteja dentro da viewport. */
+    // Helper: revela imediatamente tudo que já está visível
     revealNow = () => {
       document
         .querySelectorAll('.fade-section:not(.inview)')
@@ -60,9 +71,9 @@
   }
 
   /* ------------------------------------------------------------------
-   * 3. Links de WhatsApp personalizados
+   * 4. Links de WhatsApp dinâmicos
    * ---------------------------------------------------------------- */
-  function initWhats () {
+  function initWhats() {
     const phone = '5524992144995';
     const saud  = () => ['Bom dia','Boa tarde','Boa noite'][
       [0,12,18,24].findIndex(t => new Date().getHours() < t) - 1
@@ -85,9 +96,9 @@
   }
 
   /* ------------------------------------------------------------------
-   * 4. Chat flutuante
+   * 5. Chat flutuante
    * ---------------------------------------------------------------- */
-  function initChat () {
+  function initChat() {
     const btnChat   = document.getElementById('chatbot-toggle');
     const chatWin   = document.getElementById('chatbot-window');
     const chatClose = document.getElementById('chat-close');
@@ -104,7 +115,7 @@
       btnChat.setAttribute('aria-expanded','false');
     };
 
-    btnChat .addEventListener('click', e => {
+    btnChat.addEventListener('click', e => {
       e.stopPropagation();
       chatWin.classList.contains('hidden') ? abrir() : fechar();
     });
@@ -117,9 +128,9 @@
   }
 
   /* ------------------------------------------------------------------
-   * 5. Internacionalização simples
+   * 6. Internacionalização (i18n) simples
    * ---------------------------------------------------------------- */
-  async function initI18n () {
+  async function initI18n() {
     if (!langSel) return;
 
     const saved = localStorage.getItem('lang') || navigator.language || 'pt-BR';
@@ -129,7 +140,7 @@
     langSel.addEventListener('change', () => setLang(langSel.value));
   }
 
-  async function setLang (lang) {
+  async function setLang(lang) {
     try {
       const dict = await fetch(`locales/${lang}.json`).then(r => r.json());
       document.documentElement.lang = lang;
@@ -139,7 +150,6 @@
         const k = el.dataset.i18n;
         if (dict[k]) el.textContent = dict[k];
       });
-
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const k = el.dataset.i18nPlaceholder;
         if (dict[k]) el.placeholder = dict[k];
@@ -154,7 +164,7 @@
   }
 
   /* ------------------------------------------------------------------
-   * 6. Bootstrap quando DOM pronto
+   * 7. Bootstrap quando o DOM estiver pronto
    * ---------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     initCTA();
