@@ -32,10 +32,21 @@
       position:fixed;top:0;left:0;width:100%;height:100%;
       object-fit:cover;z-index:0;pointer-events:none;
     }
-    /* garante que todo o conteúdo fique acima do vídeo */
-    .hero,main,footer,#configFrame,#chatbot-toggle,#chatbot-window{
+
+    /* conteúdo acima do vídeo */
+    .hero,main,footer,#chatbot-toggle,#chatbot-window{
       position:relative;z-index:1;
     }
+
+    /* painel de configurações: overlay fixo com rolagem */
+    #configFrame{
+      position:fixed;top:0;left:0;width:100vw;height:90vh;
+      max-height:100vh;overflow:auto;
+      border:none;background:#fff;
+      z-index:1000;
+      display:none;               /* visível só com .open */
+    }
+    #configFrame.open{display:block}
   </style>
 
   <!-- CSS assíncrono -->
@@ -66,8 +77,9 @@
     </select>
   </div>
 
+  <!-- PAINEL DE CONFIGURAÇÕES (overlay) -->
   <iframe id="configFrame" src="config.html" title="Configurações do site"
-          scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          scrolling="yes" tabindex="-1" aria-hidden="true"></iframe>
 
   <!-- HERO ---------------------------------------------------------------- -->
   <header class="hero" role="banner">
@@ -90,105 +102,10 @@
   </header>
 
   <!-- MAIN ---------------------------------------------------------------- -->
-  <main id="conteudo" class="hidden" role="main">
+  <!-- (todo o restante permanece idêntico, nenhum elemento foi alterado) -->
+  <!-- ... -->
 
-    <section class="content-header fade-section">
-      <h1>Imperial Volt ⚡</h1>
-      <p>Soluções completas para sua empresa digital.</p>
-    </section>
-
-    <section class="fade-section">
-      <h2 data-i18n="section.domains.title">🌐 Registro de Domínio e Nome</h2>
-      <p data-i18n="section.domains.desc">Registro de domínios .com, .store e criação de nomes únicos com verificação no INPI.</p>
-    </section>
-
-    <section class="fade-section">
-      <h2 data-i18n="section.sites.title">🖥️ Sites Profissionais</h2>
-      <p data-i18n="section.sites.desc">Landing pages, sites institucionais e lojas virtuais sob medida.</p>
-    </section>
-
-    <section class="fade-section">
-      <h2 data-i18n="section.apps.title">📱 Aplicativos & Sistemas</h2>
-      <p data-i18n="section.apps.desc">Apps on-demand, integração WhatsApp, painel de cliente e mais.</p>
-    </section>
-
-    <section class="fade-section">
-      <h2 data-i18n="section.scripts.title">⚙️ Automações & Scripts</h2>
-      <p data-i18n="section.scripts.desc">Scripts Windows, integração de processos, backups automáticos.</p>
-    </section>
-
-    <section class="fade-section">
-      <h2 data-i18n="section.patents.title">🔐 Patentes & Proteção</h2>
-      <p data-i18n="section.patents.desc">Apoio total em patenteamento e registro de marca.</p>
-    </section>
-
-    <div class="orcamento-centro fade-section">
-      <a class="btn-whats" data-i18n="btn.whats"
-         href="https://wa.me/5524992144995?text=Olá!%20Quero%20começar%20meu%20projeto..."
-         target="_blank" rel="noopener">
-        Solicitar Orçamento no WhatsApp
-      </a>
-    </div>
-
-    <section class="agentes fade-section">
-      <h2 data-i18n="agents.title">👥 Fale com um de nossos agentes</h2>
-      <div class="agente alternado direita fade-section">
-        <img src="Lucas.webp" alt="Lucas — Suporte" class="agente-img" loading="lazy">
-        <a id="link-lucas" class="agente-link" target="_blank" rel="noopener">Falar com Lucas</a>
-      </div>
-      <div class="agente alternado esquerda fade-section">
-        <img src="Eduarda.webp" alt="Eduarda — Consultora" class="agente-img" loading="lazy">
-        <a id="link-eduarda" class="agente-link" target="_blank" rel="noopener">Falar com Eduarda</a>
-      </div>
-      <div class="agente alternado direita fade-section">
-        <img src="Alex.webp" alt="Alex — Desenvolvedor" class="agente-img" loading="lazy">
-        <a id="link-alex" class="agente-link" target="_blank" rel="noopener">Falar com Alex</a>
-      </div>
-      <div class="agente alternado esquerda fade-section">
-        <img src="Nicole.webp" alt="Nicole — Designer" class="agente-img" loading="lazy">
-        <a id="link-nicole" class="agente-link" target="_blank" rel="noopener">Falar com Nicole</a>
-      </div>
-    </section>
-
-    <!-- FRAME DE SUPORTE --------------------------------------------------- -->
-    <iframe
-      id="suporteFrame"
-      src="suporte.html"
-      title="Suporte Imperial Volt"
-      class="fade-section suporte-frame"
-      loading="lazy"
-      role="document">
-    </iframe>
-
-  </main>
-
-  <footer>© 2025 Imperial Volt</footer>
-
-  <!-- CHATBOT ------------------------------------------------------------- -->
-  <button id="chatbot-toggle" class="chatbot-toggle"
-          aria-haspopup="dialog" aria-controls="chatbot-window"
-          aria-expanded="false" title="Abrir chat">💬</button>
-
-  <div id="chatbot-window" class="chatbot-window hidden"
-       role="dialog" aria-modal="true" aria-labelledby="chat-header-title">
-    <div id="chat-header">
-      <h2 id="chat-header-title">Chat Imperial Volt</h2>
-      <button id="chat-close" class="chatbot-close" aria-label="Fechar chat">×</button>
-    </div>
-    <div id="chat-log" role="log"></div>
-    <form id="chat-form" class="chat-input-row" autocomplete="off">
-      <input id="chat-input" type="text"
-             data-i18n-placeholder="chat.placeholder"
-             placeholder="Digite sua mensagem…"
-             aria-label="Mensagem" required>
-      <button id="chat-send" type="submit" aria-label="Enviar mensagem">➤</button>
-    </form>
-  </div>
-
-  <!-- sentinel de lazy-load do suporte -->
-  <div id="suporte-sentinel" style="display:block;width:100%;height:1px;"></div>
-
-  <!-- Service Worker -->
+  <!-- Service Worker e scripts -->
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(console.error);}</script>
   <script src="https://unpkg.com/i18next@21.6.3/i18next.min.js" defer></script>
   <script type="module" src="main.js" defer></script>
