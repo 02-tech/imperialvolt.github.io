@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b5cff" />
+  <title>Imperial Volt — Sites, Sistemas e Automação</title>
+  <meta name="description" content="Sites, sistemas e automação com padrão premium. Entrega limpa, rápida e com foco em conversão." />
+
+  <link rel="stylesheet" href="./src/css/styles.css" />
+  <link rel="icon" href="./icons/favicon.ico" />
+
+  <link rel="preload" as="image" href="./src/imagens/portfolio.jpeg" />
+
+  <script>
+  (function(){
+    try{
+      var saved = localStorage.getItem("iv_theme");
+      if(saved === "light" || saved === "dark"){
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    }catch(e){}
+  })();
+  </script>
+</head>
+
+<body>
+  <a class="skip" href="#conteudo">Pular para conteúdo</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <span class="brand__bolt">⚡</span>
+        <div class="brand__text">
+          <strong>Imperial Volt</strong>
+          <span>Sites • Sistemas • Automação</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav__cta" href="#orcamento">Fazer orçamento</a>
+      </nav>
+
+      <button id="themeBtn" class="iconBtn" type="button" aria-label="Alternar tema" title="Alternar tema">
+        <span class="iconBtn__icon" aria-hidden="true">◐</span>
+      </button>
+
+      <button id="menuBtn" class="iconBtn iconBtn--menu" type="button" aria-label="Abrir menu" title="Menu">
+        <span class="iconBtn__icon" aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+    <div id="mobileNav" class="mobileNav" hidden>
+      <div class="mobileNav__inner container">
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#faq">FAQ</a>
+        <a class="mobileNav__cta" href="#orcamento">Fazer orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <h1>Sites, sistemas e automação que <span class="accent">vendem</span>.</h1>
+          <p class="lead">
+            Entrega organizada, performance real e visual premium.
+            A Imperial Volt executa com precisão — <strong>sem enrolação</strong>.
+          </p>
+
+          <div class="hero__badges">
+            <span>⚡ Performance</span>
+            <span>🧠 UX / Clareza</span>
+            <span>🔧 Integrações</span>
+            <span>🔒 Boas práticas</span>
+          </div>
+
+          <div class="hero__ctaRow">
+            <a class="btn btn--primary" href="#orcamento">Quero um orçamento</a>
+            <a class="btn btn--ghost" href="#servicos">Ver serviços</a>
+          </div>
+
+          <div class="hero__note">
+            Atendimento remoto e presencial • WhatsApp direto • Chat pelo ícone 💬
+          </div>
+        </div>
+
+        <!-- VISUAL: arco/efeitos + card lado a lado (sempre) -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="heroVisual__grid">
+            <div class="heroArt" aria-hidden="true">
+              <div class="orb orb--a"></div>
+              <div class="orb orb--b"></div>
+              <div class="gridLines"></div>
+              <div class="heroArc" aria-hidden="true"></div>
+            </div>
+
+            <div class="glassCard">
+              <div class="glassCard__title">Entrega Premium</div>
+              <ul class="glassCard__list">
+                <li><b>Clareza</b> de texto e hierarquia</li>
+                <li><b>Conversão</b> com CTAs certos</li>
+                <li><b>Velocidade</b> e SEO base</li>
+                <li><b>Confiança</b> com visual consistente</li>
+              </ul>
+              <div class="glassCard__mini">
+                <div class="miniStat"><span>Sites</span><b>Landing + Institucional</b></div>
+                <div class="miniStat"><span>Sistemas</span><b>Painel + Rotinas</b></div>
+                <div class="miniStat"><span>Automação</span><b>Processos + Integrações</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- IMAGEM (SOZINHA) ABAIXO DO HERO -->
+    <section class="heroPhoto" aria-label="Prova visual">
+      <div class="container">
+        <img class="heroPhoto__img" src="./src/imagens/portfolio.jpeg?v=20251219221615" alt="Imperial Volt - prova visual" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section id="servicos" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Serviços</h2>
+          <p>Escolha o que você precisa. Eu entrego com organização e acabamento.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Site profissional</h3>
+            <p>Landing pages, portfólios e páginas institucionais prontas para vender.</p>
+            <ul>
+              <li>Design premium</li>
+              <li>Responsivo (mobile-first)</li>
+              <li>SEO base + performance</li>
+            </ul>
+            <a class="card__cta" href="#orcamento" data-pref="Site profissional">Fazer orçamento →</a>
+          </article>
+
+          <article class="card">
+            <h3>Sistema / Painel</h3>
+            <p>Interface operacional para organizar processos, clientes e rotinas.</p>
+            <ul>
+              <li>Dashboard</li>
+              <li>Logs, relatórios, exportação</li>
+              <li>Automação de tarefas</li>
+            </ul>
+            <a class="card__cta" href="#orcamento" data-pref="Sistema/Painel">Fazer orçamento →</a>
+          </article>
+
+          <article class="card">
+            <h3>Automação</h3>
+            <p>Scripts e integrações para reduzir trabalho manual e erro humano.</p>
+            <ul>
+              <li>PowerShell / Node</li>
+              <li>Rotinas e validações</li>
+              <li>Entrega com checklist</li>
+            </ul>
+            <a class="card__cta" href="#orcamento" data-pref="Automação">Fazer orçamento →</a>
+          </article>
+
+          <article class="card">
+            <h3>Identidade visual</h3>
+            <p>Marca forte, consistente e pronta para redes, site e materiais.</p>
+            <ul>
+              <li>Logo + variações</li>
+              <li>Paleta + tipografia</li>
+              <li>Artes e templates</li>
+            </ul>
+            <a class="card__cta" href="#orcamento" data-pref="Identidade visual">Fazer orçamento →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Processo</h2>
+          <p>Sem enrolação. Um fluxo objetivo que evita retrabalho.</p>
+        </div>
+
+        <ol class="steps">
+          <li><b>Diagnóstico</b><span>Objetivo + referência + checklist.</span></li>
+          <li><b>Protótipo</b><span>Estrutura e visual principal.</span></li>
+          <li><b>Construção</b><span>Implementação + ajustes finos.</span></li>
+          <li><b>Entrega</b><span>Testes + validação + publicação.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="faq" class="section section--soft">
+      <div class="container">
+        <div class="section__head">
+          <h2>FAQ</h2>
+          <p>Respostas rápidas.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Você atende remoto ou presencial?</summary>
+            <div class="faq__body">
+              Atendo remoto e presencial (dependendo da cidade/agenda). Remoto resolve a maioria dos projetos.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quanto tempo leva?</summary>
+            <div class="faq__body">
+              Depende do escopo. Landing simples pode ser rápida. Sistema/painel varia conforme integrações.
+            </div>
+          </details>
+
+          <details>
+            <summary>Você faz manutenção?</summary>
+            <div class="faq__body">
+              Sim. Posso manter, evoluir e acompanhar performance/SEO. Também entrego checklist para não virar bagunça.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="orcamento" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Contato / Orçamento</h2>
+          <p>Me diga o objetivo. Eu respondo com direção e próximos passos.</p>
+        </div>
+
+        <div class="ctaBox">
+          <div class="ctaBox__text">
+            <b>WhatsApp direto</b>
+            <span>Clique e já abre com mensagem pronta.</span>
+          </div>
+          <a class="btn btn--primary" id="whatsMain" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <b>Imperial Volt</b>
+        <span>Sites • Sistemas • Automação</span>
+      </div>
+      <small>© <span id="year"></span> Imperial Volt. Entrega com padrão.</small>
+    </div>
+  </footer>
+
+  <!-- FABS: Whats (esquerda) + Chat (direita) -->
+  <a id="whatsFab" class="fab fab--whats"
+     href="#"
+     target="_blank" rel="noopener"
+     aria-label="Falar no WhatsApp">
+    <span aria-hidden="true">✆</span>
+  </a>
+
+  <button id="chatFab" class="fab fab--chat" type="button" aria-label="Abrir chat">
+    <span aria-hidden="true">💬</span>
+  </button>
+
+  <!-- Janela do chat (fica fechada por padrão) -->
+  <section id="ivChat" class="chat" hidden aria-label="Chat Imperial Volt">
+    <header class="chat__top">
+      <div class="chat__title">Imperial Volt • Chat</div>
+      <button id="chatClose" class="chat__close" type="button" aria-label="Fechar chat">✕</button>
+    </header>
+
+    <div id="chatBody" class="chat__body" role="log" aria-live="polite"></div>
+
+    <form id="chatForm" class="chat__form" autocomplete="off">
+      <input id="chatInput" class="chat__input" type="text" placeholder="Digite sua mensagem..." />
+      <button class="chat__send" type="submit" aria-label="Enviar">➤</button>
+    </form>
+  </section>
+
+  <script type="module" src="./src/js/main.js"></script>
+  <script src="./chatbot/engine.js"></script>
+  <script src="./chatbot/iv-chat-override.js"></script>
+</body>
+</html>
