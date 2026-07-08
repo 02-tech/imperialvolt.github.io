@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Checkout - Maria Bolsas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./assets/logo-maria-bolsas.webp">
+  <link rel="stylesheet" href="./styles.css?v=20260708-previa-onsite-v1">
+  <link rel="stylesheet" href="./header-scroll.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./reveal-scroll.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./commerce-navigation-fix.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./header-fixed-hide-fix.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./footer-premium.css" />
+</head>
+<body class="checkout-body">
+  <header class="checkout-header">
+    <a href="./index.html"><img src="./assets/logo-maria-bolsas.webp" alt="Maria Bolsas"></a>
+  </header>
+
+  <main class="checkout-page">
+    <section class="checkout-main">
+      <div class="checkout-head">
+        <span class="checkout-kicker">Compra segura</span>
+        <h1>Finalizar compra</h1>
+        <p>Revise seu pedido, informe seus dados e confirme a entrega.</p>
+      </div>
+
+      <div class="order-toggle"><span>Resumo do pedido</span><strong data-checkout-total>R$0,00</strong></div>
+      <div class="steps-line">
+        <div class="step done">Carrinho</div>
+        <div class="step active">Dados</div>
+        <div class="step">Finalizar</div>
+      </div>
+
+      <section class="mb-first-benefit-card mb-first-benefit-card--checkout mb-checkout-fast-card" data-first-purchase-benefit="checkout">
+        <div class="mb-first-benefit-kicker">Compra rápida</div>
+        <strong>Finalize em poucos passos</strong>
+        <p>Informe contato, entrega e pagamento. Sem cadastro extra obrigatório durante a finalização.</p>
+      </section>
+
+      <button class="coupon">Tenho um cupom de desconto</button>
+
+      <form class="checkout-form" onsubmit="mostrarFretes(event)">
+        <h2 class="checkout-section-title">Contato</h2>
+        <input type="email" placeholder="E-mail" aria-label="E-mail" autocomplete="email">
+        <label class="newsletter"><input type="checkbox"> Quero receber e-mails com ofertas e novidades</label>
+
+        <h2 class="checkout-section-title">Dados de entrega</h2>
+        <div class="checkout-fields-grid">
+          <input type="text" placeholder="Nome completo" aria-label="Nome completo" autocomplete="name" data-field="nome">
+          <input type="tel" placeholder="WhatsApp" aria-label="WhatsApp" autocomplete="tel" data-field="whatsapp">
+        </div>
+
+        <p class="mb-shipping-static-note">Entrega via SEDEX disponível para todo o Brasil. Prazo e valor são confirmados na finalização.</p>
+
+        <div class="cep-row">
+          <input type="text" placeholder="CEP" aria-label="CEP">
+          <span>Não sei meu CEP</span>
+        </div>
+
+        <input type="text" placeholder="Endereço" aria-label="Endereço" autocomplete="address-line1" data-field="endereco">
+        <div class="checkout-fields-grid checkout-fields-grid--3">
+          <input type="text" placeholder="Número" aria-label="Número" autocomplete="address-line2" data-field="numero">
+          <input type="text" placeholder="Complemento (opcional)" aria-label="Complemento" data-field="complemento">
+          <input type="text" placeholder="Bairro" aria-label="Bairro" data-field="bairro">
+        </div>
+        <div class="checkout-fields-grid">
+          <input type="text" placeholder="Cidade" aria-label="Cidade" data-field="cidade">
+          <input type="text" placeholder="UF" aria-label="UF" maxlength="2" data-field="uf">
+        </div>
+
+        <button class="green-btn" type="submit">Ver frete e continuar</button>
+      </form>
+
+      <section id="shippingOptions" class="shipping-options hidden sedex-only-checkout" aria-label="Método de envio">
+      <div class="shipping-head">
+        <span>Entrega</span>
+        <h2>Escolha de envio</h2>
+        <p>Para agilizar sua compra, trabalhamos com um único método de envio: SEDEX.</p>
+      </div>
+
+      <div class="shipping-method-single" aria-label="Método de envio selecionado">
+        <div class="shipping-method-info">
+          <span class="shipping-pill">Método único</span>
+          <h2>SEDEX</h2>
+          <p>Envio pelos Correios via SEDEX para todo o Brasil.</p>
+          <small>Valor informado no resumo da compra antes da finalização.</small>
+        </div>
+
+        <div class="shipping-method-price">
+          <span>Frete</span>
+          <strong>R$15,59</strong>
+        </div>
+      </div>
+
+      <section class="mb-payment-safe-panel" data-payment-safe-panel="true">
+        <div class="mb-payment-safe-head">
+          <span>Pagamento seguro</span>
+          <strong>Escolha a forma de pagamento na finalização</strong>
+          <p>Pix, cartão ou boleto serão processados em ambiente seguro do provedor escolhido. A loja não armazena dados de cartão.</p>
+        </div>
+        <div class="mb-payment-safe-methods">
+          <article>
+            <b>Pix</b>
+            <small>Confirmação rápida por QR Code ou copia e cola.</small>
+          </article>
+          <article>
+            <b>Cartão</b>
+            <small>Dados inseridos apenas no ambiente seguro de pagamento.</small>
+          </article>
+          <article>
+            <b>Boleto</b>
+            <small>Gerado após a confirmação do pedido.</small>
+          </article>
+        </div>
+      </section>
+
+      <div class="shipping-actions">
+        <button type="button" class="continue checkout-finish" onclick="mostrarConfirmacaoPrevia(event)">Finalizar compra</button>
+        <button class="more" type="button" onclick="voltarParaDados(event)">Voltar aos dados</button>
+      </div>
+
+      <p class="mb-checkout-trust-line">Compra segura · Envio para todo o Brasil · Atendimento Maria Bolsas · Fabricação própria</p>
+    </section>
+
+    <section id="previewConfirmation" class="preview-confirmation hidden" aria-live="polite">
+      <div class="preview-confirmation-card">
+        <span class="preview-confirmation-kicker">Prévia</span>
+        <h2>Prévia de pedido gerada.</h2>
+        <p class="preview-confirmation-disclaimer">Esta é uma prévia visual da nova loja Maria Bolsas. Nenhum pagamento foi processado e nenhum pedido real foi enviado.</p>
+
+        <div class="preview-confirmation-summary">
+          <div class="preview-confirmation-row"><span>Produto</span><strong data-preview-product></strong></div>
+          <div class="preview-confirmation-row"><span>Frete — SEDEX</span><strong data-preview-shipping></strong></div>
+          <div class="preview-confirmation-row preview-confirmation-total"><span>Total</span><strong data-preview-total></strong></div>
+        </div>
+
+        <div class="preview-confirmation-customer" data-preview-customer></div>
+      </div>
+    </section>
+    </section>
+
+    <aside class="checkout-summary">
+      <h2 class="checkout-summary-title">Resumo do pedido</h2>
+      <div class="checkout-summary-body" data-checkout-product></div>
+    </aside>
+  </main>
+  <script src="./app.js?v=20260708-previa-onsite-v1"></script>
+  <script src="./header-scroll.js?v=20260706-light-pass1"></script>
+  <script src="./reveal-scroll.js?v=20260706-light-pass1"></script>
+  <script src="./commerce-navigation-fix.js?v=20260708-account-v1"></script>
+  <script src="./header-fixed-hide-fix.js?v=20260706-light-pass1"></script>
+<footer class="mb-footer-premium" aria-label="Rodapé Maria Bolsas">
+  <div class="mb-footer-social-row" aria-label="Redes sociais Maria Bolsas">
+    <span class="mb-footer-social-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+        <circle cx="12" cy="12" r="3.2"></circle>
+        <circle cx="17.2" cy="6.8" r="0.8"></circle>
+      </svg>
+    </span>
+    <span class="mb-footer-followers">24,2 mil seguidores</span>
+
+    <span class="mb-footer-social-icon" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 8.5h2V5h-2.5C10.8 5 9 6.7 9 9.5V12H7v3.4h2V21h3.6v-5.6H15l.5-3.4h-2.9V9.8c0-.8.4-1.3 1.4-1.3Z"></path>
+      </svg>
+    </span>
+    <span class="mb-footer-followers">5,3 mil seguidores</span>
+  </div>
+
+  <div class="mb-footer-grid">
+    <section class="mb-footer-col mb-footer-brand" aria-label="Sobre a Maria Bolsas">
+      <h2>Maria Bolsas</h2>
+      <p>
+        Mais de 25 anos criando bolsas de fabricação própria para mulheres que buscam beleza, espaço e resistência no dia a dia.
+      </p>
+    </section>
+
+    <nav class="mb-footer-col" aria-label="Navegação do rodapé">
+      <h3>Navegação</h3>
+      <a href="./index.html">Início</a>
+      <a href="./produtos.html">Produtos</a>
+      <a href="./index.html#contato">Contato</a>
+      <a href="./trocas-e-devolucoes.html">Trocas e Devoluções</a>
+    </nav>
+
+    <section class="mb-footer-col" aria-label="Atendimento Maria Bolsas">
+      <h3>Atendimento</h3>
+      <p><strong>WhatsApp:</strong> (24) 98806-5147</p>
+      <p><strong>E-mail:</strong> rbrbolsas@gmail.com</p>
+      <p>
+        Rua do Imperador, 625<br>
+        Lojas 06 e 08<br>
+        Petrópolis - RJ
+      </p>
+    </section>
+
+    <section class="mb-footer-col" aria-label="Compra segura">
+      <h3>Compra segura</h3>
+      <p>Pagamento via Pix, cartão e boleto.</p>
+      <p>Trocas e devoluções conforme política da loja.</p>
+      <p>Atendimento direto com a equipe Maria Bolsas.</p>
+      <p class="mb-preview-note">Prévia visual para aprovação — ambiente sem processamento real de pagamento.</p>
+    </section>
+  </div>
+
+  <div class="mb-footer-payment" aria-label="Formas de pagamento">
+    <span>Visa</span>
+    <span>Mastercard</span>
+    <span>Amex</span>
+    <span>Elo</span>
+    <span>Pix</span>
+    <span>Boleto</span>
+  </div>
+
+  <div class="mb-footer-bottom">
+    <p>
+      © 2026 Maria Bolsas. Todos os direitos reservados.
+      <br>
+      Rodrigo Barbosa Rodrigues Comércio de Roupas e Acessórios ME — CNPJ: 20.639.790/0001-67
+    </p>
+  </div>
+</footer>
+  <script src="./cep-auto-sedex.js?v=20260708-autofill-v3"></script>
+  <script src="./first-purchase-benefit.js"></script>
+  <script src="./registration-benefit-banner.js?v=20260708-account-v1"></script>
+  <script src="./email-assistant.js"></script>
+  <script src="./payment-safe-panel.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

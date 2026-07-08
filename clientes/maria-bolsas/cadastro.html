@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro | Maria Bolsas</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="mb-registration-header">
+    <a class="mb-registration-brand" href="./index.html">Maria Bolsas</a>
+    <a class="mb-registration-back" href="./produto.html?p=bolsa-juliana">Continuar comprando</a>
+  </header>
+
+  <main class="mb-registration-page">
+    <section class="mb-registration-card">
+      <div class="mb-registration-copy">
+        <span>Cadastro com vantagens</span>
+        <h1>Cadastre-se conosco</h1>
+        <p>Receba descontos e promoções disponíveis antes da finalização da compra.</p>
+      </div>
+
+      <form class="mb-registration-form" id="quickRegistrationForm" novalidate>
+        <label>
+          <span>Nome</span>
+          <input type="text" name="nome" autocomplete="name" placeholder="Seu nome" required>
+        </label>
+
+        <label>
+          <span>E-mail</span>
+          <input type="email" name="email" autocomplete="email" placeholder="seuemail@exemplo.com" required>
+        </label>
+
+        <label>
+          <span>WhatsApp</span>
+          <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(24) 99999-9999" required>
+        </label>
+
+        <label>
+          <span>CEP</span>
+          <input type="text" name="cep" autocomplete="postal-code" inputmode="numeric" maxlength="9" placeholder="00000-000">
+        </label>
+
+        <button type="submit" class="mb-registration-submit">Salvar cadastro e continuar</button>
+
+        <p class="mb-registration-note">Seus dados serão usados para facilitar a compra e apresentar benefícios disponíveis.</p>
+        <div class="mb-registration-status" id="quickRegistrationStatus" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="./quick-registration.js"></script>
+  <script src="./email-assistant.js"></script>
+</body>
+</html>

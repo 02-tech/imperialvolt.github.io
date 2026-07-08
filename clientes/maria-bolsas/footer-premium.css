@@ -1,0 +1,233 @@
+/*
+  Maria Bolsas - Rodapé premium compacto
+  Aplicado somente em sites/novo.
+
+  Direção:
+  - fundo preto profundo;
+  - títulos em dourado suave;
+  - texto secundário em cinza claro;
+  - pagamento sem botões azuis;
+  - rodapé mais compacto e profissional.
+*/
+
+.mb-footer-premium {
+  background: #030303;
+  color: rgba(255,255,255,0.82);
+  padding: 28px 24px 18px;
+  border-top: 1px solid rgba(212,175,55,0.18);
+  font-family: inherit;
+}
+
+.mb-footer-premium * {
+  box-sizing: border-box;
+}
+
+.mb-footer-social-row {
+  width: min(1120px, 100%);
+  margin: 0 auto 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(212,175,55,0.12);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mb-footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid rgba(212,175,55,0.34);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.86);
+}
+
+.mb-footer-social-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+.mb-footer-social-icon[aria-label="Facebook"] svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.mb-footer-followers {
+  margin-right: 8px;
+  color: #d6b45d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mb-footer-grid {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr 1.15fr 1.1fr;
+  gap: 26px;
+
+  padding: 0 0 18px;
+}
+
+.mb-footer-col h2,
+.mb-footer-col h3 {
+  margin: 0 0 10px;
+  color: #d6b45d;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mb-footer-brand h2 {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+
+.mb-footer-col p {
+  margin: 0 0 8px;
+  color: rgba(255,255,255,0.72);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.mb-footer-col p:last-child {
+  margin-bottom: 0;
+}
+
+.mb-preview-note {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.mb-footer-col strong {
+  color: rgba(255,255,255,0.90);
+  font-weight: 800;
+}
+
+.mb-footer-col a {
+  display: table;
+  margin: 0 0 8px;
+
+  color: rgba(255,255,255,0.74);
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: 650;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.mb-footer-col a:hover {
+  color: #d6b45d;
+  transform: translateX(2px);
+}
+
+.mb-footer-payment {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 12px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.025);
+}
+
+.mb-footer-payment span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 28px;
+  padding: 0 11px;
+
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.78);
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+
+  cursor: default;
+  user-select: none;
+}
+
+.mb-footer-bottom {
+  width: min(1120px, 100%);
+  margin: 14px auto 0;
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.mb-footer-bottom p {
+  margin: 0;
+  color: rgba(255,255,255,0.50);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+/* Neutraliza eventuais estilos antigos de pagamento dentro do rodapé novo */
+.mb-footer-premium .payment-icons,
+.mb-footer-premium .payments,
+.mb-footer-premium .payment-methods,
+.mb-footer-premium .footer-payments {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .mb-footer-premium {
+    padding: 24px 18px 16px;
+  }
+
+  .mb-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 24px;
+    padding-bottom: 16px;
+  }
+
+  .mb-footer-social-row {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .mb-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .mb-footer-payment {
+    justify-content: flex-start;
+  }
+
+  .mb-footer-bottom {
+    text-align: left;
+  }
+}

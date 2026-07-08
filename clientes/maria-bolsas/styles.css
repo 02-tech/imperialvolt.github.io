@@ -1,0 +1,2437 @@
+:root {
+  --black: #020202;
+  --gold: #b89735;
+  --green: #26b85a;
+  --line: #e5e5e5;
+  --text: #111;
+  --muted: #6f6f6f;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: #050505;
+}
+
+body {
+  margin: 0;
+  font-family: "Public Sans", Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #f7f7f7;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button, input, select { font: inherit; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.site-header {
+  background: var(--black);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-main {
+  min-height: 118px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 50px 10px;
+}
+
+.search {
+  width: min(250px, 100%);
+  height: 43px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  background: transparent;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.search input::placeholder { color: #fff; opacity: 1; }
+
+.search button {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.search button::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1.8px solid #fff;
+  border-radius: 50%;
+}
+
+.search button::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 1.8px;
+  background: #fff;
+  right: 10px;
+  bottom: 12px;
+  transform: rotate(45deg);
+}
+
+.logo img {
+  width: 120px;
+  margin: 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+}
+
+.account-icon,
+.cart-icon {
+  width: 24px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  color: #fff;
+}
+
+.account-icon::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border: 1.6px solid #fff;
+  border-radius: 50%;
+}
+
+.account-icon::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  width: 20px;
+  height: 11px;
+  border: 1.6px solid #fff;
+  border-radius: 12px 12px 0 0;
+}
+
+.cart-icon::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  width: 14px;
+  height: 16px;
+  border: 1.6px solid #fff;
+  border-radius: 2px;
+}
+
+.cart-icon::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  border: 1.6px solid #fff;
+  border-bottom: 0;
+  border-radius: 9px 9px 0 0;
+}
+
+.cart-icon span {
+  position: absolute;
+  left: 9px;
+  top: 12px;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.nav {
+  display: flex;
+  gap: 34px;
+  padding: 0 64px 34px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.chevron { font-size: 15px; font-weight: 400; }
+
+.hero a {
+  display: block;
+  position: relative;
+  background: #050505;
+  overflow: hidden;
+}
+
+.hero a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.32), rgba(0,0,0,.05) 48%, rgba(0,0,0,.18));
+  pointer-events: none;
+}
+
+.hero img {
+  width: 100%;
+  height: clamp(320px, 43vw, 560px);
+  max-height: 560px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero-cta {
+  position: absolute;
+  left: clamp(42px, 6.5vw, 88px);
+  bottom: clamp(26px, 7vw, 62px);
+  border: 0;
+  color: #fff;
+  padding: 0;
+  font-size: clamp(14px, 1.45vw, 18px);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  background: transparent;
+  text-shadow: 0 2px 10px rgba(0,0,0,.4);
+  z-index: 1;
+  animation: hero-buy-pulse 2.7s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+@keyframes hero-buy-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: .92;
+  }
+  50% {
+    transform: scale(1.09);
+    opacity: 1;
+  }
+}
+
+.featured-juliana {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+  gap: 44px;
+  align-items: center;
+  background:
+    linear-gradient(180deg, #d2d2d2 0%, #e7e7e7 58%, #f7f7f7 100%);
+  color: #151515;
+  padding: 48px 7vw 72px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.featured-copy h1 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(34px, 5vw, 66px);
+  font-weight: 700;
+  line-height: .95;
+}
+
+.featured-copy p {
+  max-width: 660px;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 22px 0;
+}
+
+.benefit-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+}
+
+.benefit-pills li {
+  border: 1px solid rgba(184,151,53,.82);
+  color: #2b2517;
+  background: rgba(255,255,255,.28);
+  padding: 9px 12px;
+  font-size: 13px;
+}
+
+.featured-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background: #050505;
+  color: #fff;
+}
+
+.btn-secondary {
+  border: 1px solid var(--gold);
+  color: #2d240f;
+  background: rgba(255,255,255,.18);
+}
+
+.featured-media img {
+  width: 100%;
+  height: min(46vw, 430px);
+  max-height: 430px;
+  object-fit: contain;
+  background: rgba(255,255,255,.18);
+}
+
+.category-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 42px;
+  padding: 58px 9vw 36px;
+}
+
+.category-card img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+}
+
+.section { padding: 56px 6vw 70px; }
+
+.section h1 {
+  margin: 0 0 26px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 18px;
+}
+
+.product-grid,
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 46px 22px;
+}
+
+.grid-products {
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+}
+
+.product-card a {
+  display: block;
+  position: relative;
+  background: #f7f7f7;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.product-card:hover > a {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0,0,0,.08);
+}
+
+.product-card img {
+  width: 100%;
+  height: clamp(230px, 28vw, 360px);
+  object-fit: contain;
+  padding: 12px;
+  transition: transform 220ms ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.025);
+}
+
+.product-card h2 {
+  margin: 13px 0 5px;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 36px;
+}
+
+.product-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.old-price {
+  color: var(--muted);
+  text-decoration: line-through;
+  margin-right: 7px;
+}
+
+.discount,
+.sale-flag {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #fff;
+  color: #111;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.about-banner {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.about-banner img {
+  width: 100%;
+  min-height: 520px;
+  object-fit: cover;
+}
+
+.about-text {
+  position: absolute;
+  inset: auto 7vw 56px auto;
+  max-width: 520px;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0,0,0,.45);
+}
+
+.about-text h2 {
+  font-size: 30px;
+  margin: 0 0 16px;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.footer {
+  background: #020202;
+  color: #cfcfcf;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.25fr;
+  gap: 48px;
+  padding: 48px 7vw 42px;
+  min-height: 260px;
+}
+
+.footer h3 {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.footer a,
+.footer p {
+  display: block;
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.socials {
+  display: flex;
+  gap: 34px;
+  color: #fff;
+  font-size: 25px;
+}
+
+.payments {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.payments span {
+  min-width: 44px;
+  text-align: center;
+  background: #0643bf;
+  color: #80a7ff;
+  padding: 8px 10px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.payments.compact {
+  justify-content: flex-start;
+  margin-top: 14px;
+}
+
+.whatsapp {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #fff;
+  z-index: 25;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.22));
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.whatsapp:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: drop-shadow(0 14px 24px rgba(0,0,0,.26));
+}
+
+.whatsapp img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: 58% 62%;
+  animation: whatsapp-call 4.8s ease-in-out infinite;
+}
+
+@keyframes whatsapp-call {
+  0%, 78%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  82% {
+    transform: rotate(-7deg) scale(1.04);
+  }
+  86% {
+    transform: rotate(7deg) scale(1.04);
+  }
+  90% {
+    transform: rotate(-5deg) scale(1.03);
+  }
+  94% {
+    transform: rotate(4deg) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta,
+  .whatsapp,
+  .whatsapp img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.products-page {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 30px;
+  padding: 30px 18px 72px;
+}
+
+.filters h1 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.filters h2 {
+  font-size: 19px;
+  font-weight: 400;
+  margin-top: 34px;
+}
+
+.filter-block {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.filter-block h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.filter-block label {
+  display: block;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.price-inputs {
+  display: flex;
+  gap: 4px;
+}
+
+.price-inputs input {
+  width: 58px;
+  padding: 8px;
+  border: 1px solid #bbb;
+}
+
+.price-inputs button,
+.change-cep {
+  border: 1px solid var(--green);
+  color: var(--green);
+  background: #fff;
+  padding: 8px 12px;
+}
+
+.list-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.list-top select {
+  min-width: 180px;
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+
+.product-page {
+  display: grid;
+  grid-template-columns: minmax(420px, 52vw) minmax(360px, 440px);
+  gap: 30px;
+  align-items: start;
+}
+
+.gallery-area {
+  position: relative;
+  padding: 18px 0 42px 18px;
+}
+
+.large-product-photo {
+  width: 100%;
+  height: min(62vh, 620px);
+  max-height: 620px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  background: #f6f6f6;
+  padding: 12px;
+}
+
+.product-info-sticky {
+  position: sticky;
+  top: 150px;
+  align-self: start;
+  padding: 30px 24px 50px 0;
+}
+
+.mb-sticky-buy-bar {
+  display: none;
+}
+
+.breadcrumb,
+.product-category {
+  color: #777;
+  font-size: 13px;
+}
+
+.product-category {
+  display: block;
+  margin-top: 16px;
+}
+
+.product-info-sticky h1 {
+  margin: 18px 0 14px;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.product-benefit {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0 0 18px;
+}
+
+.price-line,
+.cart-line,
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+}
+
+.price-line {
+  justify-content: flex-start;
+  gap: 14px;
+  border-top: 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 19px;
+}
+
+.price-line strong {
+  font-size: 28px;
+}
+
+.variant { margin: 22px 0; }
+
+.variant span {
+  font-size: 11px;
+  text-transform: lowercase;
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.thumb {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #111;
+  background: var(--swatch, #111);
+  cursor: pointer;
+}
+
+.thumb.active { outline: 2px solid #111; outline-offset: 3px; }
+
+.product-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.buy-btn,
+.green-btn,
+.continue {
+  width: 100%;
+  display: block;
+  border: 0;
+  background: var(--green);
+  color: #fff;
+  text-align: center;
+  padding: 17px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.buy-btn:hover,
+.green-btn:hover,
+.continue:hover {
+  transform: translateY(-1px);
+}
+
+.buy-now {
+  background: #111;
+}
+
+.buy-now:hover {
+  background: #000;
+}
+
+.add-cart {
+  border: 1px solid var(--green);
+}
+
+.add-cart:hover,
+.green-btn:hover,
+.continue:hover {
+  background: #1da450;
+}
+
+.trust-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 18px 0 4px;
+}
+
+.trust-block div {
+  border: 1px solid #d8d8d8;
+  padding: 13px 14px;
+}
+
+.trust-block strong {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.trust-block span {
+  display: block;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.45;
+  margin-top: 5px;
+}
+
+.product-detail {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+
+.product-detail summary {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cep-row {
+  position: relative;
+  margin-top: 14px;
+}
+
+.cep-row input {
+  width: 100%;
+  height: 54px;
+  border: 1px solid #999;
+  padding: 0 16px;
+}
+
+.cep-row a,
+.cep-row span {
+  position: absolute;
+  right: 14px;
+  top: 18px;
+  color: #777;
+  font-size: 13px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.description h2,
+.description h3 { font-size: 15px; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 90;
+  display: none;
+}
+
+.overlay.open { display: block; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -430px;
+  width: min(420px, 100%);
+  height: 100vh;
+  z-index: 100;
+  background: #fff;
+  padding: 28px;
+  overflow: auto;
+  box-shadow: -10px 0 30px rgba(0,0,0,.18);
+  transition: right .25s ease;
+}
+
+.cart-drawer.open { right: 0; }
+
+.close {
+  float: right;
+  border: 0;
+  background: transparent;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.cart-drawer h2 {
+  clear: both;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin: 42px 0;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+}
+
+.cart-product,
+.cart-item,
+.summary-product {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.cart-product p,
+.cart-item p {
+  color: #777;
+  margin: 6px 0;
+}
+
+.cart-thumb,
+.cart-item img {
+  width: 64px;
+  height: 72px;
+  object-fit: contain;
+  background: #f7f7f7;
+}
+
+.qty {
+  display: inline-flex;
+  border: 1px solid #bbb;
+  margin-top: 18px;
+}
+
+.qty button {
+  width: 36px;
+  height: 34px;
+  border: 0;
+  background: #fff;
+}
+
+.qty span { padding: 8px 18px; }
+
+.more {
+  display: block;
+  text-align: center;
+  margin-top: 22px;
+}
+
+.cart-page-full {
+  min-height: 100vh;
+  padding: 36px 20px;
+  background: #f6f6f6;
+}
+
+.mini-logo img {
+  width: 120px;
+  margin: 0 auto 28px;
+}
+
+.cart-box {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+}
+
+.cart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.cart-head h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.cart-item {
+  grid-template-columns: 80px minmax(0, 1fr) auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 92px;
+}
+
+.checkout-body { background: #fff; }
+
+.checkout-header {
+  background: #020202;
+  padding: 18px 0;
+}
+
+.checkout-header img {
+  width: 118px;
+  margin: 0 auto;
+}
+
+.checkout-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 34px 24px 70px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 36px;
+}
+
+.checkout-head {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 26px;
+}
+
+.checkout-kicker {
+  color: #8a6a18;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.checkout-head h1 {
+  margin: 0;
+  color: #111;
+  font-size: clamp(26px, 3.4vw, 34px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.checkout-head p {
+  margin: 0;
+  max-width: 480px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.order-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  border-radius: 14px;
+  background: #fafafa;
+}
+
+.order-toggle span {
+  color: #666;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.order-toggle strong {
+  font-size: 20px;
+  color: #111;
+}
+
+.steps-line {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 22px 0 28px;
+}
+
+.step {
+  text-align: center;
+  padding: 8px 4px;
+  border-bottom: 2px solid var(--line);
+  color: #999;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.step.active,
+.step.done {
+  color: #111;
+  border-bottom-color: #111;
+}
+
+.coupon {
+  width: 100%;
+  border: 1px solid rgba(17, 17, 17, 0.18);
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  padding: 12px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.checkout-form { margin-top: 34px; }
+
+.checkout-form h2.checkout-section-title,
+.shipping-options h2 {
+  margin: 30px 0 16px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.checkout-form h2.checkout-section-title:first-child {
+  margin-top: 0;
+}
+
+.checkout-form input {
+  width: 100%;
+  height: 62px;
+  border: 1px solid #999;
+  padding: 0 18px;
+  margin-bottom: 18px;
+}
+
+.checkout-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+.checkout-fields-grid--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.mb-shipping-static-note {
+  margin: -4px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(184, 148, 53, 0.20);
+  border-radius: 12px;
+  background: rgba(184, 148, 53, 0.08);
+  color: #6c5a24;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.newsletter {
+  display: block;
+  margin-bottom: 32px;
+  color: #777;
+}
+
+.checkout-summary {
+  padding: 24px;
+  height: max-content;
+  position: sticky;
+  top: 90px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+}
+
+.checkout-summary-title {
+  margin: 0 0 18px;
+  color: #8a6a18;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.checkout-summary .cart-total strong {
+  font-size: 22px;
+  color: #111;
+}
+
+.checkout-summary .summary-product {
+  grid-template-columns: 70px 1fr;
+  margin-bottom: 26px;
+}
+
+.summary-product img {
+  width: 70px;
+  height: 88px;
+  object-fit: contain;
+  background: #f7f7f7;
+}
+
+.summary-product span {
+  display: block;
+  margin-top: 6px;
+  color: #777;
+}
+
+.shipping-options.hidden { display: none; }
+
+.shipping-options label {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.shipping-options small { color: #777; }
+
+@media (max-width: 860px) {
+  .header-main {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .search {
+    width: 100%;
+    order: 2;
+  }
+
+  .header-actions { justify-content: center; }
+
+  .nav {
+    overflow-x: auto;
+    gap: 24px;
+    padding: 0 20px 22px;
+    white-space: nowrap;
+  }
+
+  .category-strip,
+  .featured-juliana,
+  .product-grid,
+  .grid-products,
+  .products-page,
+  .product-page,
+  .checkout-page,
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .category-strip,
+  .section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .hero-cta {
+    left: 28px;
+    right: auto;
+    bottom: 18px;
+    text-align: left;
+  }
+
+  .featured-juliana {
+    padding: 34px 22px;
+  }
+
+  .featured-copy h1 {
+    font-size: 38px;
+  }
+
+  .featured-copy p {
+    font-size: 16px;
+  }
+
+  .featured-media {
+    order: -1;
+  }
+
+  .hero img {
+    height: min(58vw, 270px);
+    max-height: 270px;
+    object-position: center top;
+  }
+
+  .featured-media img {
+    height: min(82vw, 340px);
+    max-height: 340px;
+  }
+
+  .product-card img {
+    height: clamp(210px, 68vw, 310px);
+  }
+
+  .large-product-photo {
+    height: min(44vh, 220px);
+    max-height: 220px;
+    padding: 10px;
+  }
+
+  .gallery-area .large-product-photo:not(:first-of-type) {
+    display: none;
+  }
+
+  .product-info-sticky {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    padding: 16px 22px 28px;
+  }
+
+  .product-actions { order: 1; }
+  .variant { order: 2; }
+  .trust-block { order: 3; }
+  .product-detail { order: 4; }
+  .description { order: 5; }
+
+  .mb-sticky-buy-bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(2, 2, 2, 0.92), rgba(2, 2, 2, 0.98));
+    border-top: 1px solid rgba(184, 148, 53, 0.30);
+    box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.20);
+    transition: transform 220ms ease, opacity 220ms ease;
+  }
+
+  .mb-sticky-buy-bar--hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mb-sticky-buy-info {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+    color: #fff;
+  }
+
+  .mb-sticky-buy-info strong {
+    overflow: hidden;
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 800;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .mb-sticky-buy-info span {
+    color: #d6b45d;
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  .mb-sticky-buy-cta {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    min-width: 152px;
+    height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11.5px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 160ms ease, transform 160ms ease;
+  }
+
+  .mb-sticky-buy-cta:hover {
+    background: #000;
+    transform: translateY(-1px);
+  }
+
+  body.has-sticky-buy .whatsapp {
+    bottom: 86px;
+  }
+
+  .product-info-sticky h1 {
+    margin: 10px 0;
+    font-size: 23px;
+  }
+
+  .product-benefit {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .price-line {
+    padding: 12px 0;
+  }
+
+  .price-line strong {
+    font-size: 24px;
+  }
+
+  .variant {
+    margin: 12px 0;
+  }
+
+  .thumb {
+    width: 42px;
+    height: 42px;
+  }
+
+  .gallery-area { padding: 10px 0 12px; }
+
+  .about-text {
+    position: static;
+    color: #111;
+    text-shadow: none;
+    padding: 24px;
+  }
+
+  .about-banner img { min-height: auto; }
+
+  .checkout-summary {
+    position: static;
+    top: auto;
+  }
+
+  .checkout-fields-grid,
+  .checkout-fields-grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-head,
+  .list-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+/* =========================================================
+   Maria Bolsas - SEDEX único no checkout
+   Aplicado somente em sites/novo.
+   ========================================================= */
+
+.single-shipping-note {
+  display: grid;
+  gap: 4px;
+  margin: 10px 0 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.single-shipping-note strong {
+  color: #111;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.single-shipping-note span {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.sedex-only-checkout {
+  display: grid;
+  gap: 14px;
+  padding: clamp(18px, 3vw, 26px);
+  border: 1px solid rgba(212, 175, 55, 0.20);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,248,242,0.96));
+  box-shadow: 0 16px 38px rgba(0,0,0,0.08);
+}
+
+.sedex-only-checkout.hidden {
+  display: none !important;
+}
+
+.shipping-head {
+  display: grid;
+  gap: 5px;
+}
+
+.shipping-head span {
+  color: #b89435;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.shipping-head h2 {
+  margin: 0;
+  color: #111;
+  font-size: clamp(24px, 3.2vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.shipping-head p {
+  margin: 0;
+  max-width: 520px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.shipping-method-single {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(3,3,3,0.98), rgba(20,18,14,0.96));
+  color: #fff;
+}
+
+.shipping-method-info {
+  display: grid;
+  gap: 6px;
+}
+
+.shipping-pill {
+  width: max-content;
+  padding: 5px 9px;
+  border: 1px solid rgba(212, 175, 55, 0.36);
+  border-radius: 999px;
+  color: #d6b45d;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.shipping-method-info h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 23px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.shipping-method-info p {
+  margin: 0;
+  color: rgba(255,255,255,0.80);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.shipping-method-info small {
+  color: rgba(255,255,255,0.52);
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.shipping-method-price {
+  min-width: 112px;
+  padding: 12px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.26);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.055);
+  text-align: right;
+}
+
+.shipping-method-price span {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(255,255,255,0.62);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.shipping-method-price strong {
+  color: #d6b45d;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.shipping-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.shipping-actions .continue,
+.shipping-actions .checkout-finish {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  order: -1;
+  min-height: 58px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.20);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.shipping-actions .continue:hover,
+.shipping-actions .checkout-finish:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.26);
+}
+
+.shipping-actions .more {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  color: #777;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mb-checkout-trust-line {
+  margin: 4px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  color: #8a8a8a;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.preview-confirmation.hidden {
+  display: none;
+}
+
+.preview-confirmation-card {
+  display: grid;
+  gap: 14px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 248, 242, 0.96));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.08);
+}
+
+.preview-confirmation-kicker {
+  width: max-content;
+  padding: 5px 10px;
+  border: 1px solid rgba(212, 175, 55, 0.36);
+  border-radius: 999px;
+  color: #8a6a18;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.preview-confirmation-card h2 {
+  margin: 0;
+  color: #111;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.preview-confirmation-disclaimer {
+  margin: 0;
+  max-width: 560px;
+  color: #555;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.preview-confirmation-summary {
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  padding-top: 10px;
+}
+
+.preview-confirmation-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  color: #333;
+  font-size: 14px;
+}
+
+.preview-confirmation-row:last-child {
+  border-bottom: 0;
+}
+
+.preview-confirmation-total strong {
+  font-size: 20px;
+  color: #111;
+}
+
+.preview-confirmation-customer {
+  display: grid;
+  gap: 4px;
+}
+
+.preview-confirmation-customer p {
+  margin: 0;
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.preview-confirmation-customer strong {
+  color: #111;
+}
+
+@media (max-width: 640px) {
+  .shipping-method-single {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .shipping-method-price {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   Maria Bolsas - CEP automático para SEDEX
+   ========================================================= */
+
+.cep-auto-status {
+  margin-top: 8px;
+  color: #666;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.cep-auto-status.is-loading {
+  color: #8a6a18;
+  font-weight: 800;
+}
+
+.cep-auto-status.is-ready {
+  color: #1f6b3a;
+  font-weight: 800;
+}
+
+.cep-auto-status.is-error {
+  color: #9b1c1c;
+  font-weight: 800;
+}
+
+/* Ajuste fino - CEP na página do produto */
+.cep-row + .cep-auto-status {
+  margin: -4px 0 14px;
+  padding-left: 2px;
+}
+
+.cep-row input[data-cep-auto-sedex="true"] {
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   Maria Bolsas - correção visual limpa do CEP
+   ========================================================= */
+
+.cep-row.has-cep-status {
+  margin-bottom: 8px;
+}
+
+.cep-auto-status,
+.cep-auto-status-clean {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  margin: 10px 0 16px;
+  padding: 11px 13px;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.35;
+  position: static !important;
+  transform: none !important;
+  z-index: auto !important;
+}
+
+.cep-auto-status-clean strong {
+  display: block;
+  color: #111;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.cep-auto-status-clean span {
+  display: block;
+  color: #555;
+  font-size: 12.5px;
+}
+
+.cep-auto-status-clean.is-loading {
+  border-color: rgba(184, 148, 53, 0.34);
+  background: rgba(184, 148, 53, 0.08);
+}
+
+.cep-auto-status-clean.is-loading strong {
+  color: #8a6a18;
+}
+
+.cep-auto-status-clean.is-ready {
+  border-color: rgba(31, 107, 58, 0.24);
+  background: rgba(31, 107, 58, 0.07);
+}
+
+.cep-auto-status-clean.is-ready strong {
+  color: #1f6b3a;
+}
+
+.cep-auto-status-clean.is-error {
+  border-color: rgba(155, 28, 28, 0.24);
+  background: rgba(155, 28, 28, 0.07);
+}
+
+.cep-auto-status-clean.is-error strong {
+  color: #9b1c1c;
+}
+
+/* =========================================================
+   Maria Bolsas - compra guiada após CEP validado
+   ========================================================= */
+
+.mb-buy-pulse {
+  animation: mbBuyPulse 1.05s ease-in-out 0s 4;
+  box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.28);
+}
+
+@keyframes mbBuyPulse {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.26);
+  }
+
+  45% {
+    transform: translateY(-3px) scale(1.025);
+    box-shadow: 0 10px 24px rgba(17, 17, 17, 0.18);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 10px rgba(17, 17, 17, 0);
+  }
+}
+
+.mb-cep-focus {
+  outline: 2px solid rgba(184, 148, 53, 0.65) !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(184, 148, 53, 0.12) !important;
+}
+
+.cep-auto-status-clean.is-ready span {
+  margin-top: 2px;
+}
+
+/* =========================================================
+   Maria Bolsas - guia CEP ao clicar em Comprar agora
+   ========================================================= */
+
+.cep-auto-status-clean.is-nudge {
+  border-color: rgba(184, 148, 53, 0.34);
+  background: rgba(184, 148, 53, 0.08);
+}
+
+.cep-auto-status-clean.is-nudge strong {
+  color: #8a6a18;
+}
+
+/* =========================================================
+   Maria Bolsas - benefício seguro de primeira compra
+   ========================================================= */
+
+.mb-first-benefit-card {
+  display: grid;
+  gap: 5px;
+  width: 100%;
+  margin: 12px 0 14px;
+  padding: 13px 14px;
+  border: 1px solid rgba(184, 148, 53, 0.24);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(184, 148, 53, 0.10), rgba(255, 255, 255, 0.96));
+  box-sizing: border-box;
+}
+
+.mb-first-benefit-card--checkout {
+  margin: 0 0 16px;
+}
+
+.mb-first-benefit-kicker {
+  color: #8a6a18;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.mb-first-benefit-card strong {
+  color: #111;
+  font-size: 14px;
+  font-weight: 950;
+  line-height: 1.25;
+}
+
+.mb-first-benefit-card p {
+  margin: 0;
+  color: #4f4a43;
+  font-size: 12.8px;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .mb-first-benefit-card {
+    margin: 10px 0 12px;
+    padding: 11px 12px;
+    border-radius: 14px;
+  }
+
+  .mb-first-benefit-card strong {
+    font-size: 13.5px;
+  }
+
+  .mb-first-benefit-card p {
+    font-size: 12.4px;
+  }
+}
+
+/* =========================================================
+   Maria Bolsas - notificação ligada ao ícone de cadastro
+   ========================================================= */
+
+.mb-register-notice-root {
+  position: fixed;
+  z-index: 9999;
+  width: 326px;
+  pointer-events: none;
+}
+
+.mb-register-toast {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 24px;
+  gap: 10px;
+  width: 100%;
+  padding: 11px;
+  border: 1px solid rgba(184, 148, 53, 0.28);
+  border-radius: 17px;
+  background: rgba(18, 18, 18, 0.97);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.985);
+  transform-origin: top left;
+  transition:
+    opacity 180ms ease,
+    transform 220ms ease;
+}
+
+.mb-register-notice-root[data-mode="open"] .mb-register-toast {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.mb-register-notice-root[data-mode="returning"] .mb-register-toast {
+  opacity: 0;
+  pointer-events: none;
+  transform:
+    translate(var(--mb-register-return-x, 0), var(--mb-register-return-y, -40px))
+    scale(0.22);
+}
+
+.mb-register-notice-root[data-mode="hidden"] .mb-register-toast {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.96);
+}
+
+.mb-register-toast-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(184, 148, 53, 0.35);
+  box-sizing: border-box;
+}
+
+.mb-register-toast-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.mb-register-toast-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.mb-register-toast-copy span {
+  color: #d9b85f;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.mb-register-toast-copy strong {
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 950;
+  line-height: 1.16;
+}
+
+.mb-register-toast-copy p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.mb-register-toast-action {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  margin-top: 4px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: #d9b85f;
+  color: #111;
+  font-size: 11.8px;
+  font-weight: 950;
+  text-decoration: none;
+}
+
+.mb-register-toast-close {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+.mb-account-register-clickable {
+  cursor: pointer !important;
+}
+
+.mb-account-register-target {
+  animation: mbAccountRegisterPulse 0.72s ease-in-out 0s 2;
+}
+
+@keyframes mbAccountRegisterPulse {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(217, 184, 95, 0));
+    transform: scale(1);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 10px rgba(217, 184, 95, 0.72));
+    transform: scale(1.06);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 0 rgba(217, 184, 95, 0));
+    transform: scale(1);
+  }
+}
+
+.mb-first-benefit-link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-top: 3px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+/* Cadastro direto */
+.mb-registration-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(1040px, calc(100% - 32px));
+  margin: 22px auto 0;
+}
+
+.mb-registration-brand {
+  color: #111;
+  font-size: 18px;
+  font-weight: 950;
+  text-decoration: none;
+}
+
+.mb-registration-back {
+  color: #6d5519;
+  font-size: 13px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.mb-registration-page {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 90px);
+  padding: 28px 16px 42px;
+  box-sizing: border-box;
+}
+
+.mb-registration-card {
+  display: grid;
+  gap: 22px;
+  width: min(560px, 100%);
+  padding: 26px;
+  border: 1px solid rgba(184, 148, 53, 0.22);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.10);
+  box-sizing: border-box;
+}
+
+.mb-registration-copy {
+  display: grid;
+  gap: 7px;
+}
+
+.mb-registration-copy span {
+  color: #8a6a18;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.mb-registration-copy h1 {
+  margin: 0;
+  color: #111;
+  font-size: clamp(26px, 4vw, 38px);
+  line-height: 1.04;
+}
+
+.mb-registration-copy p {
+  margin: 0;
+  color: #5f5a52;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.mb-registration-form {
+  display: grid;
+  gap: 13px;
+}
+
+.mb-registration-form label {
+  display: grid;
+  gap: 6px;
+}
+
+.mb-registration-form label span {
+  color: #2a2926;
+  font-size: 12.5px;
+  font-weight: 850;
+}
+
+.mb-registration-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: 14px;
+  background: #fbfaf7;
+  color: #111;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.mb-registration-form input:focus {
+  outline: 2px solid rgba(184, 148, 53, 0.35);
+  outline-offset: 2px;
+}
+
+.mb-registration-submit {
+  min-height: 46px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.mb-registration-note {
+  margin: 0;
+  color: #68635b;
+  font-size: 12.4px;
+  line-height: 1.4;
+}
+
+.mb-registration-status {
+  min-height: 18px;
+  color: #5f5a52;
+  font-size: 12.8px;
+  font-weight: 800;
+}
+
+.mb-registration-status.is-error {
+  color: #a43a2a;
+}
+
+.mb-registration-status.is-ready {
+  color: #316b35;
+}
+
+@media (max-width: 640px) {
+  .mb-register-notice-root {
+    width: calc(100vw - 24px) !important;
+  }
+
+  .mb-register-toast {
+    grid-template-columns: 34px minmax(0, 1fr) 24px;
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .mb-register-toast-icon {
+    width: 34px;
+    height: 34px;
+    padding: 3px;
+  }
+
+  .mb-registration-header {
+    width: calc(100% - 28px);
+    margin-top: 16px;
+  }
+
+  .mb-registration-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
+
+/* =========================================================
+   Maria Bolsas - checkout sem duplicidade de cadastro
+   ========================================================= */
+
+.checkout-form input[type="checkbox"],
+input[type="checkbox"] {
+  width: 16px !important;
+  min-width: 16px !important;
+  max-width: 16px !important;
+  height: 16px !important;
+  min-height: 16px !important;
+  max-height: 16px !important;
+  padding: 0 !important;
+  margin: 0 8px 0 0 !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  vertical-align: middle;
+  accent-color: #111;
+}
+
+.checkout-form label:has(input[type="checkbox"]) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+  min-height: auto !important;
+  line-height: 1.35;
+}
+
+.mb-checkout-fast-card {
+  margin: 0 0 16px !important;
+  border-color: rgba(17, 17, 17, 0.12);
+  background:
+    linear-gradient(135deg, rgba(17, 17, 17, 0.035), rgba(184, 148, 53, 0.08));
+}
+
+.mb-checkout-fast-card .mb-first-benefit-kicker {
+  color: #8a6a18;
+}
+
+.mb-checkout-fast-card strong {
+  color: #111;
+}
+
+.mb-checkout-fast-card p {
+  color: #4f4a43;
+}
+
+@media (max-width: 640px) {
+  .checkout-form input[type="checkbox"],
+  input[type="checkbox"] {
+    width: 15px !important;
+    min-width: 15px !important;
+    max-width: 15px !important;
+    height: 15px !important;
+    min-height: 15px !important;
+    max-height: 15px !important;
+  }
+}
+
+/* =========================================================
+   Maria Bolsas - e-mail assistido e pagamento seguro
+   ========================================================= */
+
+.mb-email-assistant {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 7px 0 0;
+  color: #6c6258;
+  font-size: 12.4px;
+  line-height: 1.35;
+}
+
+.mb-email-assistant span {
+  color: #6c6258;
+}
+
+.mb-email-suggestion {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(184, 148, 53, 0.26);
+  border-radius: 999px;
+  background: rgba(184, 148, 53, 0.10);
+  color: #111;
+  cursor: pointer;
+  font-size: 12.4px;
+  font-weight: 900;
+}
+
+.mb-payment-safe-panel {
+  display: grid;
+  gap: 13px;
+  margin: 16px 0;
+  padding: 15px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(17, 17, 17, 0.035), rgba(184, 148, 53, 0.075));
+  box-sizing: border-box;
+}
+
+.mb-payment-safe-head {
+  display: grid;
+  gap: 4px;
+}
+
+.mb-payment-safe-head span {
+  color: #8a6a18;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.10em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.mb-payment-safe-head strong {
+  color: #111;
+  font-size: 15px;
+  font-weight: 950;
+  line-height: 1.22;
+}
+
+.mb-payment-safe-head p {
+  margin: 0;
+  color: #4f4a43;
+  font-size: 12.8px;
+  line-height: 1.42;
+}
+
+.mb-payment-safe-methods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.mb-payment-safe-methods article {
+  display: grid;
+  gap: 4px;
+  padding: 11px;
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.mb-payment-safe-methods b {
+  color: #111;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.mb-payment-safe-methods small {
+  color: #5f5a52;
+  font-size: 11.8px;
+  line-height: 1.35;
+}
+
+@media (max-width: 720px) {
+  .mb-payment-safe-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .mb-payment-safe-panel {
+    padding: 13px;
+    border-radius: 16px;
+  }
+}

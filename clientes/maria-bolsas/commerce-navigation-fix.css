@@ -1,0 +1,25 @@
+/*
+  Maria Bolsas - Navegação controlada de compra/carrinho
+  Aplicado somente em sites/novo.
+
+  Objetivo:
+  - impedir drawer branco/original de abrir;
+  - carrinho vai para carrinho.html;
+  - conta/cadastro vai para contato;
+  - manter mini-header funcionando.
+*/
+
+body.mb-control-commerce .cart-drawer,
+body.mb-control-commerce #cartDrawer,
+body.mb-control-commerce .overlay,
+body.mb-control-commerce #overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translate3d(100%, 0, 0) !important;
+}
+
+body.mb-control-commerce {
+  overflow-x: hidden;
+}

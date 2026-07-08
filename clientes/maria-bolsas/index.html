@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Loja online de Maria Bolsas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compre produtos de Maria Bolsas por internet. Temos mochila, bolsa e mais. Faça seu pedido e pague-o online">
+  <link rel="icon" href="./assets/logo-maria-bolsas.webp">
+  <link rel="preload" as="image" href="./assets/hero-bolsa-juliana-sem-texto.webp" fetchpriority="high">
+  <link rel="stylesheet" href="./styles.css?v=20260708-account-v1">
+  <link rel="stylesheet" href="./header-scroll.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./reveal-scroll.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./commerce-navigation-fix.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./header-fixed-hide-fix.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./hero-static-clean.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./footer-premium.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-main">
+      <form class="search" action="./produtos.html">
+        <input type="search" placeholder="O que você está buscando?" aria-label="Buscar produtos">
+        <button type="submit" aria-label="Buscar"></button>
+      </form>
+      <a class="logo" href="./index.html" aria-label="Maria Bolsas">
+        <img src="./assets/logo-maria-bolsas.webp" alt="Maria Bolsas Design e Estilo">
+      </a>
+      <div class="header-actions">
+        <a class="account-icon" href="#" aria-label="Acesse sua conta"></a>
+        <button class="cart-icon" type="button" onclick="abrirCarrinho()" aria-label="Abrir carrinho"><span id="cartCount">0</span></button>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="./index.html">Início</a>
+      <a href="./produtos.html">Produtos <span class="chevron">⌄</span></a>
+      <a href="#contato">Contato</a>
+      <a href="./trocas-e-devolucoes.html">Trocas e Devoluções</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <section class="mb-hero-static" aria-label="Bolsa Juliana - destaque Maria Bolsas">
+  <img class="mb-hero-brand-mark" src="./assets/logo-m-assinatura-96.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
+  <div class="mb-hero-static-copy">
+    <span class="mb-hero-static-kicker">Maria Bolsas apresenta</span>
+    <h1>Elegância para sua rotina</h1>
+    <p class="mb-hero-static-subtitle">
+      Nylon durável, material resistente à água e acabamento cuidadoso para acompanhar sua rotina.
+    </p>
+
+    <div class="mb-hero-static-points" aria-label="Diferenciais da Bolsa Juliana">
+      <ul class="mb-hero-static-points-track">
+        <li>Fabricação própria</li>
+        <li>Acabamento cuidadoso</li>
+        <li>Envio para todo o Brasil</li>
+        <li aria-hidden="true">Fabricação própria</li>
+        <li aria-hidden="true">Acabamento cuidadoso</li>
+        <li aria-hidden="true">Envio para todo o Brasil</li>
+      </ul>
+    </div>
+
+    <div class="mb-hero-static-actions">
+      <a class="mb-hero-static-btn" href="./produto.html?p=bolsa-juliana">Comprar agora</a>
+      <span>Beleza, espaço e resistência no mesmo modelo.</span>
+    </div>
+  </div>
+</section>
+    </section>
+
+    <section class="featured-juliana" data-featured-juliana></section>
+
+    <section class="category-strip" aria-label="Categorias">
+      <a class="category-card" href="./produtos.html#bolsas"><img src="./assets/categoria-bolsas.webp" alt="Bolsas" loading="lazy" decoding="async"></a>
+      <a class="category-card" href="./produtos.html#mochilas"><img src="./assets/categoria-mochilas.webp" alt="Mochilas" loading="lazy" decoding="async"></a>
+    </section>
+
+    <section class="section">
+      <h1>Mais produtos Maria Bolsas</h1>
+      <div class="product-grid" data-home-products></div>
+    </section>
+
+    <section class="about-banner">
+      <img src="./assets/institucional.webp" alt="Prazer, Maria Bolsas." loading="lazy" decoding="async">
+      <div class="about-text">
+        <h2>Prazer, Maria Bolsas.</h2>
+        <p>Mais de 25 anos construindo uma marca com dedicação, qualidade e um olhar atento ao que realmente importa. Cada bolsa nasce de um processo cuidadoso, da escolha dos materiais ao acabamento final, porque acreditamos que qualidade não precisa ser explicada. É percebida.</p>
+        <strong>Excelência, qualidade e cuidado. Em cada bolsa que sai daqui.</strong>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mb-footer-premium" aria-label="Rodapé Maria Bolsas">
+  <div class="mb-footer-social-row" aria-label="Redes sociais Maria Bolsas">
+    <span class="mb-footer-social-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+        <circle cx="12" cy="12" r="3.2"></circle>
+        <circle cx="17.2" cy="6.8" r="0.8"></circle>
+      </svg>
+    </span>
+    <span class="mb-footer-followers">24,2 mil seguidores</span>
+
+    <span class="mb-footer-social-icon" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 8.5h2V5h-2.5C10.8 5 9 6.7 9 9.5V12H7v3.4h2V21h3.6v-5.6H15l.5-3.4h-2.9V9.8c0-.8.4-1.3 1.4-1.3Z"></path>
+      </svg>
+    </span>
+    <span class="mb-footer-followers">5,3 mil seguidores</span>
+  </div>
+
+  <div class="mb-footer-grid">
+    <section class="mb-footer-col mb-footer-brand" aria-label="Sobre a Maria Bolsas">
+      <h2>Maria Bolsas</h2>
+      <p>Mais de 25 anos criando bolsas de fabricação própria para mulheres que buscam beleza, espaço e resistência no dia a dia.</p>
+    </section>
+
+    <nav class="mb-footer-col" aria-label="Navegação do rodapé">
+      <h3>Navegação</h3>
+      <a href="./index.html">Início</a>
+      <a href="./produtos.html">Produtos</a>
+      <a href="./index.html#contato">Contato</a>
+      <a href="./trocas-e-devolucoes.html">Trocas e Devoluções</a>
+    </nav>
+
+    <section class="mb-footer-col" aria-label="Atendimento Maria Bolsas" id="contato">
+      <h3>Atendimento</h3>
+      <p><strong>WhatsApp:</strong> (24) 98806-5147</p>
+      <p><strong>E-mail:</strong> rbrbolsas@gmail.com</p>
+      <p>Rua do Imperador, 625<br>Lojas 06 e 08<br>Petrópolis - RJ</p>
+    </section>
+
+    <section class="mb-footer-col" aria-label="Compra segura">
+      <h3>Compra segura</h3>
+      <p>Pagamento via Pix, cartão e boleto.</p>
+      <p>Trocas e devoluções conforme política da loja.</p>
+      <p>Atendimento direto com a equipe Maria Bolsas.</p>
+    </section>
+  </div>
+
+  <div class="mb-footer-payment" aria-label="Formas de pagamento">
+    <span>Visa</span>
+    <span>Mastercard</span>
+    <span>Amex</span>
+    <span>Elo</span>
+    <span>Pix</span>
+    <span>Boleto</span>
+  </div>
+
+  <div class="mb-footer-bottom">
+    <p>© 2026 Maria Bolsas. Todos os direitos reservados.<br>Rodrigo Barbosa Rodrigues Comércio de Roupas e Acessórios ME — CNPJ: 20.639.790/0001-67</p>
+  </div>
+</footer>
+
+  <a class="whatsapp" href="https://wa.me/5524988065147" aria-label="WhatsApp">
+    <img src="./assets/whatsapp-bolsa-160.webp" alt="WhatsApp Maria Bolsas" loading="lazy" decoding="async">
+  </a>
+  <div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho">
+    <button class="close" onclick="fecharCarrinho()" aria-label="Fechar">×</button>
+    <h2>Carrinho de compras</h2>
+    <div data-cart-content></div>
+  </aside>
+  <script src="./app.js?v=20260708-sticky-cta-v1"></script>
+  <script src="./header-scroll.js?v=20260706-light-pass1"></script>
+  <script src="./reveal-scroll.js?v=20260706-light-pass1"></script>
+  <script src="./commerce-navigation-fix.js?v=20260708-account-v1"></script>
+  <script src="./header-fixed-hide-fix.js?v=20260706-light-pass1"></script>
+  <script src="./registration-benefit-banner.js?v=20260708-account-v1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

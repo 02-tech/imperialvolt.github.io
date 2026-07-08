@@ -1,0 +1,580 @@
+const products = [
+  {
+    slug: "bolsa-juliana",
+    name: "Bolsa Juliana",
+    displayName: "Bolsa Juliana Grande em Nylon Impermeável",
+    category: "Bolsa",
+    oldPrice: "R$220,00",
+    price: "R$195,00",
+    badge: "11% OFF",
+    image: "./assets/bolsa-juliana-preta.webp",
+    gallery: [
+      "./assets/bolsa-juliana-preta.webp",
+      "./assets/bolsa-juliana-azul.webp",
+      "./assets/bolsa-juliana-caramelo.webp",
+      "./assets/bolsa-juliana-verde.webp",
+      "./assets/bolsa-juliana-cinza-uso.webp"
+    ],
+    colors: [
+      { label: "Preto", value: "#111111", image: "./assets/bolsa-juliana-preta.webp" },
+      { label: "Azul marinho", value: "#1d2d4b", image: "./assets/bolsa-juliana-azul.webp" },
+      { label: "Caramelo", value: "#a97945", image: "./assets/bolsa-juliana-caramelo.webp" },
+      { label: "Verde militar", value: "#535f43", image: "./assets/bolsa-juliana-verde.webp" }
+    ],
+    description: "Bolsa Juliana Grande em Nylon Impermeável. Ideal para quem busca praticidade, espaço e estilo no dia a dia.",
+    pitch: "Elegante, resistente e espaçosa para acompanhar trabalho, estudos, viagens curtas e rotina intensa sem perder o estilo.",
+    benefitLead: "A Bolsa Juliana une visual premium, nylon durável, material resistente à água e organização real para quem precisa carregar bastante com praticidade.",
+    homeBenefits: ["Elegante", "Resistente", "Espaçosa", "Fabricação própria", "Envio para todo o Brasil"],
+    trust: ["Pagamento seguro", "Troca facilitada", "Envio para todo o Brasil"],
+    details: [
+      "Material em nylon durável, resistente à água e fácil de limpar.",
+      "Duas repartições grandes com zíper.",
+      "Bolso interno com zíper no forro.",
+      "Bolso traseiro com zíper e bolso frontal com zíper.",
+      "Bolsos laterais para garrafa de água ou guarda-chuva.",
+      "Alça de ombro reforçada e alça longa ajustável."
+    ]
+  },
+  {
+    slug: "bolsa-amelia-rsqua",
+    name: "Bolsa Amélia",
+    category: "Bolsa",
+    oldPrice: "R$120,00",
+    price: "R$99,00",
+    badge: "18% OFF",
+    image: "./assets/bolsa-amelia.webp",
+    gallery: ["./assets/bolsa-amelia.webp", "./assets/bolsa-amelia-2.webp"],
+    colors: [{ label: "Variações", value: "#1f1f1f", image: "./assets/bolsa-amelia.webp" }],
+    description: "Bolsa compacta para rotina, passeio e organização dos itens essenciais.",
+    details: ["Modelo leve em nylon.", "Alça confortável.", "Bolso frontal e fechamento por zíper."]
+  },
+  {
+    slug: "mochila-antifurto-nylon",
+    name: "Mochila Antifurto Nylon",
+    category: "Mochila",
+    oldPrice: "R$175,00",
+    price: "R$155,00",
+    badge: "11% OFF",
+    image: "./assets/mochila-antifurto.webp",
+    gallery: ["./assets/mochila-antifurto.webp", "./assets/mochila-antifurto-2.webp"],
+    colors: [
+      { label: "Preto", value: "#111111", image: "./assets/mochila-antifurto.webp" },
+      { label: "Azul marinho", value: "#1d2d4b", image: "./assets/mochila-antifurto-2.webp" }
+    ],
+    description: "Mochila antifurto em nylon impermeável, ideal para trabalho, escola, universidade e passeios.",
+    details: ["Abertura principal protegida.", "Material impermeável.", "Compartimentos internos para organização."]
+  },
+  {
+    slug: "mochila-antifurto-grande-nylon-bvec4",
+    name: "Mochila Antifurto Grande Nylon",
+    category: "Mochila",
+    oldPrice: "R$220,00",
+    price: "R$195,00",
+    badge: "11% OFF",
+    image: "./assets/mochila-antifurto-grande.webp",
+    gallery: ["./assets/mochila-antifurto-grande.webp"],
+    colors: [{ label: "Preto", value: "#111111", image: "./assets/mochila-antifurto-grande.webp" }],
+    description: "Versão grande da mochila antifurto, com mais espaço e praticidade.",
+    details: ["Boa capacidade interna.", "Uso diário e viagens curtas.", "Acabamento resistente."]
+  },
+  {
+    slug: "bolsa-baby",
+    name: "Bolsa Baby",
+    category: "Bolsa",
+    oldPrice: "R$160,00",
+    price: "R$145,00",
+    badge: "",
+    image: "./assets/bolsa-baby.webp",
+    gallery: ["./assets/bolsa-baby.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-baby.webp" }],
+    description: "Bolsa prática para rotina com bebê, com espaço interno e bolsos.",
+    details: ["Compartimentos funcionais.", "Nylon resistente.", "Fácil de limpar."]
+  },
+  {
+    slug: "bolsa-bau-4fnqg",
+    name: "Bolsa Baú",
+    category: "Bolsa",
+    oldPrice: "R$160,00",
+    price: "R$145,00",
+    badge: "",
+    image: "./assets/bolsa-bau.webp",
+    gallery: ["./assets/bolsa-bau.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-bau.webp" }],
+    description: "Bolsa em formato baú com estrutura e boa abertura.",
+    details: ["Formato espaçoso.", "Fechamento por zíper.", "Alças reforçadas."]
+  },
+  {
+    slug: "bolsa-carioca",
+    name: "Bolsa Carioca",
+    category: "Bolsa",
+    oldPrice: "",
+    price: "R$155,00",
+    badge: "",
+    image: "./assets/bolsa-carioca.webp",
+    gallery: ["./assets/bolsa-carioca.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-carioca.webp" }],
+    description: "Bolsa leve e espaçosa para uso casual.",
+    details: ["Modelo versátil.", "Nylon impermeável.", "Boa capacidade interna."]
+  },
+  {
+    slug: "bolsa-maricia",
+    name: "Bolsa Marícia",
+    category: "Bolsa",
+    oldPrice: "",
+    price: "R$195,00",
+    badge: "",
+    image: "./assets/bolsa-maricia.webp",
+    gallery: ["./assets/bolsa-maricia.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-maricia.webp" }],
+    description: "Bolsa estruturada, resistente e elegante.",
+    details: ["Acabamento reforçado.", "Bolsos externos.", "Uso profissional e cotidiano."]
+  },
+  {
+    slug: "pasta-universitaria",
+    name: "Pasta Universitária",
+    category: "Bolsa",
+    oldPrice: "",
+    price: "R$175,00",
+    badge: "",
+    image: "./assets/pasta-universitaria.webp",
+    gallery: ["./assets/pasta-universitaria.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/pasta-universitaria.webp" }],
+    description: "Pasta para universidade, trabalho e organização de documentos.",
+    details: ["Formato prático.", "Boa proteção interna.", "Alças reforçadas."]
+  },
+  {
+    slug: "bolsa-julia",
+    name: "Bolsa Julia",
+    category: "Bolsa",
+    oldPrice: "",
+    price: "R$165,00",
+    badge: "",
+    image: "./assets/bolsa-julia.webp",
+    gallery: ["./assets/bolsa-julia.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-julia.webp" }],
+    description: "Bolsa de ombro com visual casual e funcional.",
+    details: ["Modelo amplo.", "Material resistente.", "Ideal para rotina."]
+  },
+  {
+    slug: "bolsa-academia",
+    name: "Bolsa Academia",
+    category: "Bolsa",
+    oldPrice: "",
+    price: "R$180,00",
+    badge: "",
+    image: "./assets/bolsa-academia.webp",
+    gallery: ["./assets/bolsa-academia.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-academia.webp" }],
+    description: "Bolsa para academia, viagens curtas e uso esportivo.",
+    details: ["Espaço para roupas e acessórios.", "Alça longa.", "Fechamento com zíper."]
+  },
+  {
+    slug: "bolsa-maria",
+    name: "Bolsa Maria",
+    category: "Bolsa",
+    oldPrice: "",
+    price: "R$165,00",
+    badge: "",
+    image: "./assets/bolsa-maria.webp",
+    gallery: ["./assets/bolsa-maria.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-maria.webp" }],
+    description: "Modelo Maria Bolsas para uso diário com acabamento resistente.",
+    details: ["Nylon impermeável.", "Design limpo.", "Boa organização."]
+  },
+  {
+    slug: "necessaire-plastificada-f1prb",
+    name: "Necessaire Plastificada",
+    category: "Acessórios",
+    oldPrice: "",
+    price: "R$45,00",
+    badge: "",
+    image: "./assets/necessaire-plastificada.webp",
+    gallery: ["./assets/necessaire-plastificada.webp"],
+    colors: [{ label: "Estampas", value: "#d8c8b4", image: "./assets/necessaire-plastificada.webp" }],
+    description: "Necessaire plastificada resistente e fácil de limpar.",
+    details: ["Ideal para organização.", "Material prático.", "Opções estampadas."]
+  },
+  {
+    slug: "necessaire-1h9v6",
+    name: "Nécessaire",
+    category: "Acessórios",
+    oldPrice: "",
+    price: "R$45,00",
+    badge: "",
+    image: "./assets/necessaire.webp",
+    gallery: ["./assets/necessaire.webp"],
+    colors: [{ label: "Única", value: "#111111", image: "./assets/necessaire.webp" }],
+    description: "Nécessaire para carregar pequenos itens no dia a dia.",
+    details: ["Compacta.", "Leve.", "Fácil de transportar."]
+  }
+];
+
+const moneyNumber = (value) => Number(String(value).replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+const formatMoney = (value) => value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+let cartProductSlug = null;
+
+function getProductFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("p") || "bolsa-juliana";
+  return products.find((product) => product.slug === slug) || products[0];
+}
+
+function productUrl(slug) {
+  return `./produto.html?p=${encodeURIComponent(slug)}`;
+}
+
+function productCard(product) {
+  return `
+    <article class="product-card">
+      <a href="${productUrl(product.slug)}">
+        <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
+        ${product.badge ? `<span class="discount">${product.badge}</span>` : ""}
+      </a>
+      <h2><a href="${productUrl(product.slug)}">${product.name}</a></h2>
+      <p>${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ""}<strong>${product.price}</strong></p>
+    </article>
+  `;
+}
+
+function renderHomeProducts() {
+  const target = document.querySelector("[data-home-products]");
+  if (!target) return;
+  target.innerHTML = products.filter((product) => product.slug !== "bolsa-juliana").slice(0, 6).map(productCard).join("");
+}
+
+function renderFeaturedJuliana() {
+  const target = document.querySelector("[data-featured-juliana]");
+  if (!target) return;
+  const product = products.find((item) => item.slug === "bolsa-juliana");
+  if (!product) return;
+  target.innerHTML = `
+    <div class="featured-copy">
+      <h1>${product.displayName || product.name}</h1>
+      <p>${product.pitch}</p>
+      <ul class="benefit-pills">
+        ${product.homeBenefits.map((benefit) => `<li>${benefit}</li>`).join("")}
+      </ul>
+      <div class="featured-actions">
+        <a class="btn-primary" href="${productUrl(product.slug)}">Ver detalhes</a>
+        <a class="btn-secondary" href="./checkout.html?p=${product.slug}">Comprar agora</a>
+      </div>
+    </div>
+    <a class="featured-media" href="${productUrl(product.slug)}" aria-label="Ver Bolsa Juliana">
+      <img src="./assets/bolsa-juliana-cinza-uso-home.webp" alt="${product.name} em uso" loading="lazy" decoding="async">
+    </a>
+  `;
+}
+
+function renderProductsPage() {
+  const target = document.querySelector("[data-products-grid]");
+  const counter = document.querySelector("[data-products-count]");
+  if (!target) return;
+  target.innerHTML = products.map(productCard).join("");
+  if (counter) counter.textContent = `${products.length} produtos encontrados`;
+}
+
+function renderProductPage() {
+  const root = document.querySelector("[data-product-page]");
+  if (!root) return;
+  const product = getProductFromUrl();
+  document.title = `${product.name} - Maria Bolsas`;
+  const isJuliana = product.slug === "bolsa-juliana";
+  const title = product.displayName || product.name;
+  const benefitLead = product.benefitLead || product.description;
+  const trustItems = product.trust || ["Pagamento seguro", "Troca facilitada", "Envio para todo o Brasil"];
+  root.innerHTML = `
+    <section class="gallery-area" aria-label="Galeria do produto">
+      ${product.badge ? `<span class="sale-flag">${product.badge}</span>` : ""}
+      ${product.gallery.map((src, index) => `<img id="${index === 0 ? "mainProductImage" : ""}" class="large-product-photo" src="${src}" alt="${product.name}" ${index === 0 ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"'}>`).join("")}
+    </section>
+    <aside class="product-info-sticky">
+      <a class="breadcrumb" href="./index.html">Início</a>
+      <span class="product-category">${product.category}</span>
+      <h1>${title}</h1>
+      <p class="product-benefit">${benefitLead}</p>
+      <div class="price-line">
+        ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ""}
+        <strong>${product.price}</strong>
+      </div>
+      <div class="variant">
+        <span>cor</span>
+        <div class="thumbs">
+          ${product.colors.map((color, index) => `<button class="thumb ${index === 0 ? "active" : ""}" style="--swatch:${color.value}" onclick="trocarProduto('${color.image}', this)" aria-label="${color.label}"></button>`).join("")}
+        </div>
+      </div>
+      <div class="product-actions">
+        <a class="buy-btn buy-now" href="./checkout.html?p=${product.slug}">Comprar agora</a>
+        <button class="buy-btn add-cart" onclick="adicionarCarrinho('${product.slug}')">Adicionar ao carrinho</button>
+      </div>
+      ${isJuliana ? `
+        <div class="trust-block" aria-label="Confiança de compra">
+          ${trustItems.map((item) => `<div><strong>${item}</strong><span>${trustText(item)}</span></div>`).join("")}
+        </div>
+      ` : ""}
+      <details class="product-detail" open>
+        <summary>Meios de pagamento</summary>
+        <div class="payments compact"><span>VISA</span><span>Master</span><span>Pix</span><span>Boleto</span></div>
+      </details>
+      <details class="product-detail" open>
+        <summary>Meio de envio</summary>
+        <div class="single-shipping-note" aria-label="Envio por SEDEX">
+          <strong>SEDEX</strong>
+          <span>Envio pelos Correios via SEDEX para todo o Brasil.</span>
+        </div>
+        <form class="cep-row">
+          <input type="text" placeholder="Seu CEP" aria-label="CEP">
+          <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" rel="noreferrer">Não sei meu CEP</a>
+        </form>
+      </details>
+      <section class="description">
+        <h2>Detalhes do produto:</h2>
+        <p><strong>${product.name}</strong></p>
+        <p>${product.description}</p>
+        <h3>Características:</h3>
+        <ul>${product.details.map((detail) => `<li>${detail}</li>`).join("")}</ul>
+      </section>
+    </aside>
+  `;
+
+  const stickyName = document.querySelector("[data-sticky-buy-name]");
+  const stickyPrice = document.querySelector("[data-sticky-buy-price]");
+  const stickyCta = document.querySelector("[data-sticky-buy-cta]");
+
+  if (stickyName && stickyPrice && stickyCta) {
+    stickyName.textContent = title;
+    stickyPrice.textContent = product.price;
+    stickyCta.href = `./checkout.html?p=${product.slug}`;
+  }
+}
+
+function initStickyBuyBarFooterGuard() {
+  const stickyBar = document.querySelector("[data-sticky-buy-bar]");
+  const footer = document.querySelector(".mb-footer-premium");
+  if (!stickyBar || !footer || !("IntersectionObserver" in window)) return;
+  if (stickyBar.dataset.footerGuardBound === "true") return;
+  stickyBar.dataset.footerGuardBound = "true";
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      stickyBar.classList.toggle("mb-sticky-buy-bar--hidden", entry.isIntersecting);
+    });
+  });
+
+  observer.observe(footer);
+}
+
+function trustText(item) {
+  const texts = {
+    "Pagamento seguro": "Compra protegida com informações claras antes da finalização.",
+    "Troca facilitada": "Política de troca destacada antes da compra.",
+    "Envio para todo o Brasil": "Envio via SEDEX com informações claras antes da finalização."
+  };
+  return texts[item] || "Informação visível antes da decisão de compra.";
+}
+
+function cartItemMarkup(product) {
+  return `
+    <div class="cart-product">
+      <img class="cart-thumb" src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
+      <div>
+        <strong>${product.name}</strong>
+        <p>Cor: padrão</p>
+        <div class="qty"><button type="button">-</button><span>1</span><button type="button">+</button></div>
+      </div>
+      <strong>${product.price}</strong>
+    </div>
+  `;
+}
+
+function updateCartDrawer(product) {
+  const drawer = document.getElementById("cartDrawer");
+  if (!drawer) return;
+  if (!product) {
+    drawer.querySelector("[data-cart-content]").innerHTML = `
+      <p class="empty">O seu carrinho está vazio.</p>
+      <a class="continue" href="./produtos.html">Continuar comprando</a>
+    `;
+    return;
+  }
+  const total = product.price;
+  drawer.querySelector("[data-cart-content]").innerHTML = `
+    ${cartItemMarkup(product)}
+    <div class="cart-total"><span>Total</span><strong>${total}</strong></div>
+    <a class="continue" href="./checkout.html?p=${product.slug}">Iniciar compra</a>
+    <a class="more" href="./produtos.html">Ver mais produtos</a>
+  `;
+}
+
+function abrirCarrinho() {
+  const product = products.find((item) => item.slug === cartProductSlug);
+  updateCartDrawer(product);
+  document.getElementById("cartDrawer")?.classList.add("open");
+  document.getElementById("overlay")?.classList.add("open");
+}
+
+function fecharCarrinho() {
+  document.getElementById("cartDrawer")?.classList.remove("open");
+  document.getElementById("overlay")?.classList.remove("open");
+}
+
+function adicionarCarrinho(slug = "bolsa-juliana") {
+  const product = products.find((item) => item.slug === slug) || products[0];
+  cartProductSlug = product.slug;
+  const count = document.getElementById("cartCount");
+  if (count) count.textContent = "1";
+  updateCartDrawer(product);
+  abrirCarrinho();
+}
+
+function trocarProduto(src, selectedThumb) {
+  const mainImage = document.getElementById("mainProductImage");
+  if (mainImage) mainImage.src = src;
+  document.querySelectorAll(".thumb").forEach((thumb) => thumb.classList.remove("active"));
+  if (selectedThumb) selectedThumb.classList.add("active");
+}
+
+function renderStandaloneCart() {
+  const target = document.querySelector("[data-cart-page]");
+  if (!target) return;
+  const params = new URLSearchParams(window.location.search);
+  const product = products.find((item) => item.slug === params.get("p")) || products[0];
+  target.innerHTML = `
+    <div class="cart-head">
+      <h1>Carrinho de compras</h1>
+      <a href="./produtos.html">Continuar comprando</a>
+    </div>
+    <div class="cart-item">
+      <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
+      <div>
+        <h2>${product.name}</h2>
+        <p>Cor: padrão</p>
+        <div class="qty"><button type="button">-</button><span>1</span><button type="button">+</button></div>
+      </div>
+      <strong>${product.price}</strong>
+    </div>
+    <div class="cart-line"><span>Subtotal</span><strong>${product.price}</strong></div>
+    <div class="cart-line"><span>Entrega</span><strong>SEDEX</strong></div>
+    <div class="cart-total"><span>Total</span><strong>${product.price}</strong></div>
+    <a class="continue" href="./checkout.html?p=${product.slug}">Iniciar compra</a>
+    <a class="more" href="${productUrl(product.slug)}">Ver detalhes do produto</a>
+  `;
+}
+
+let checkoutState = null;
+
+function fieldValue(name) {
+  const input = document.querySelector('[data-field="' + name + '"]');
+  return input ? input.value.trim() : "";
+}
+
+function buildEntregaLine() {
+  const endereco = fieldValue("endereco");
+  const numero = fieldValue("numero");
+  const complemento = fieldValue("complemento");
+  const bairro = fieldValue("bairro");
+  const cidade = fieldValue("cidade");
+  const uf = fieldValue("uf");
+
+  const enderecoParts = [endereco, numero].filter(Boolean);
+  let enderecoLine = enderecoParts.join(", ");
+  if (complemento) {
+    enderecoLine = enderecoLine ? enderecoLine + ", " + complemento : complemento;
+  }
+
+  const cidadeUf = [cidade, uf].filter(Boolean).join("/");
+  const localLine = [bairro, cidadeUf].filter(Boolean).join(", ");
+
+  return [enderecoLine, localLine].filter(Boolean).join(" - ");
+}
+
+function renderCheckout() {
+  const target = document.querySelector("[data-checkout-product]");
+  if (!target) return;
+  const params = new URLSearchParams(window.location.search);
+  const product = products.find((item) => item.slug === params.get("p")) || products[0];
+  const subtotal = moneyNumber(product.price);
+  const shipping = 15.59;
+  const shippingLabel = "SEDEX";
+  const total = subtotal + shipping;
+  checkoutState = { product, subtotal, shipping, total };
+  target.innerHTML = `
+    <div class="summary-product">
+      <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
+      <div>
+        <strong>${product.name}</strong>
+        <span>1 unidade</span>
+      </div>
+    </div>
+    <div class="cart-line"><span>Subtotal</span><strong>${formatMoney(subtotal)}</strong></div>
+    <div class="cart-line"><span>Frete — ${shippingLabel}</span><strong>${formatMoney(shipping)}</strong></div>
+    <div class="cart-total"><span>Total</span><strong>${formatMoney(total)}</strong></div>
+  `;
+  document.querySelector("[data-checkout-total]").textContent = formatMoney(total);
+}
+
+function mostrarFretes(event) {
+  event.preventDefault();
+  const form = document.querySelector(".checkout-form");
+  const shipping = document.getElementById("shippingOptions");
+  if (form && shipping) {
+    form.style.display = "none";
+    shipping.classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+function voltarParaDados(event) {
+  if (event) event.preventDefault();
+  const form = document.querySelector(".checkout-form");
+  const shipping = document.getElementById("shippingOptions");
+  if (form && shipping) {
+    shipping.classList.add("hidden");
+    form.style.display = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+function mostrarConfirmacaoPrevia(event) {
+  if (event) event.preventDefault();
+  if (!checkoutState) return;
+
+  const confirmation = document.getElementById("previewConfirmation");
+  if (!confirmation) return;
+
+  const form = document.querySelector(".checkout-form");
+  const shippingSection = document.getElementById("shippingOptions");
+  if (form) form.style.display = "none";
+  if (shippingSection) shippingSection.classList.add("hidden");
+
+  const { product, shipping, total } = checkoutState;
+  confirmation.querySelector("[data-preview-product]").textContent = product.name;
+  confirmation.querySelector("[data-preview-shipping]").textContent = formatMoney(shipping);
+  confirmation.querySelector("[data-preview-total]").textContent = formatMoney(total);
+
+  const nome = fieldValue("nome");
+  const entregaLine = buildEntregaLine();
+  const customerParts = [];
+  if (nome) customerParts.push("<p><strong>Nome:</strong> " + nome + "</p>");
+  if (entregaLine) customerParts.push("<p><strong>Entrega:</strong> " + entregaLine + "</p>");
+  confirmation.querySelector("[data-preview-customer]").innerHTML = customerParts.join("");
+
+  confirmation.classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+window.abrirCarrinho = abrirCarrinho;
+window.fecharCarrinho = fecharCarrinho;
+window.adicionarCarrinho = adicionarCarrinho;
+window.trocarProduto = trocarProduto;
+window.mostrarFretes = mostrarFretes;
+window.voltarParaDados = voltarParaDados;
+window.mostrarConfirmacaoPrevia = mostrarConfirmacaoPrevia;
+
+renderHomeProducts();
+renderFeaturedJuliana();
+renderProductsPage();
+renderProductPage();
+initStickyBuyBarFooterGuard();
+renderStandaloneCart();
+renderCheckout();
+updateCartDrawer(null);

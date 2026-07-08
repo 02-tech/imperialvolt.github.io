@@ -1,0 +1,107 @@
+/*
+  Maria Bolsas - Ajuste de navegação do carrinho
+  Aplicado somente em sites/novo.
+
+  Objetivo:
+  - deixar claro que o carrinho é uma página;
+  - criar saída/volta;
+  - evitar sensação de tela presa.
+*/
+
+.mb-cart-nav-wrap {
+  width: min(100%, 1120px);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.mb-cart-back,
+.mb-cart-continue,
+.mb-cart-checkout {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.mb-cart-back,
+.mb-cart-continue {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #ffffff;
+  color: #111111;
+}
+
+.mb-cart-checkout {
+  border: 1px solid #1faa59;
+  background: #26b85d;
+  color: #ffffff;
+}
+
+.mb-cart-back:hover,
+.mb-cart-continue:hover,
+.mb-cart-checkout:hover {
+  transform: translateY(-1px);
+}
+
+.mb-cart-back:hover,
+.mb-cart-continue:hover {
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+.mb-cart-checkout:hover {
+  background: #15994a;
+}
+
+.mb-cart-page-actions {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cart-page-full,
+.cart-box {
+  position: relative;
+}
+
+.cart-box .cart-head a,
+.cart-box .cart-head button {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mb-cart-nav-wrap {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .mb-cart-back,
+  .mb-cart-continue,
+  .mb-cart-checkout {
+    width: 100%;
+  }
+
+  .mb-cart-page-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

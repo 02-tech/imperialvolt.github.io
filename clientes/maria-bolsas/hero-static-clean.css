@@ -1,0 +1,372 @@
+/*
+  Maria Bolsas - Hero identidade leve
+  Aplicado somente em sites/novo.
+
+  Direção:
+  - imagem como protagonista;
+  - texto menor e elegante;
+  - CTA discreto preto/dourado;
+  - sem bloco pesado na parte de baixo;
+  - alinhado com identidade premium da marca.
+*/
+
+.mb-hero-static {
+  position: relative;
+  display: block;
+  min-height: clamp(350px, 48vh, 520px);
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #050505;
+
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.22) 34%, rgba(0,0,0,0.03) 72%),
+    url("./assets/hero-bolsa-juliana-sem-texto.webp");
+  background-size: cover;
+  background-position: center 54%;
+  background-repeat: no-repeat;
+}
+
+.mb-hero-static::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(0,0,0,0.28), transparent 34%),
+    linear-gradient(0deg, rgba(0,0,0,0.16), transparent 44%);
+  pointer-events: none;
+}
+
+.hero .mb-hero-brand-mark {
+  position: absolute;
+  z-index: 2;
+  top: clamp(22px, 4.2vh, 42px);
+  right: clamp(24px, 5.2vw, 74px);
+  width: clamp(38px, 4.4vw, 60px) !important;
+  height: auto !important;
+  max-height: 60px;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.58;
+  pointer-events: none;
+  user-select: none;
+  filter:
+    sepia(1)
+    saturate(2.7)
+    hue-rotate(358deg)
+    brightness(0.92)
+    drop-shadow(0 0 7px rgba(241,210,123,0.16));
+  animation: mb-brand-mark-glow 6.8s ease-in-out infinite;
+}
+
+.mb-hero-static-copy {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 1120px);
+  margin: 0 auto;
+  padding: clamp(34px, 5.2vh, 58px) 22px 22px;
+  color: #ffffff;
+  transform: none !important;
+}
+
+.mb-hero-static-kicker {
+  display: block;
+  margin-bottom: 10px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.96);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  text-shadow: 0 8px 24px rgba(0,0,0,0.42);
+}
+
+.mb-hero-static h1 {
+  max-width: 620px;
+  margin: 0;
+
+  color: #ffffff;
+  font-size: clamp(34px, 4.5vw, 58px);
+  line-height: 0.98;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+
+  text-shadow: 0 12px 32px rgba(0,0,0,0.42);
+}
+
+.mb-hero-static-subtitle {
+  max-width: 430px;
+  margin: 12px 0 0;
+
+  color: rgba(255,255,255,0.92);
+  font-size: clamp(14px, 1.45vw, 18px);
+  line-height: 1.36;
+  font-weight: 600;
+
+  text-shadow: 0 8px 22px rgba(0,0,0,0.34);
+}
+
+.mb-hero-static-points {
+  width: min(100%, 520px);
+  max-width: 520px;
+  margin: 16px 0 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent);
+}
+
+.mb-hero-static-points-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 9px;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: mb-hero-seal-marquee 24s linear infinite;
+}
+
+.mb-hero-static-points-track li {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.20);
+  color: rgba(255,255,255,0.92);
+
+  font-size: 11.5px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.mb-hero-static-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  margin-top: 16px;
+}
+
+.hero .mb-hero-static-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+
+  width: auto !important;
+  min-width: 0;
+  max-width: max-content;
+  min-height: 28px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: #ffffff;
+
+  text-decoration: none;
+  font-size: clamp(13px, 1.25vw, 16px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: none;
+
+  text-shadow: 0 8px 20px rgba(0,0,0,0.55);
+  box-shadow: none;
+  backdrop-filter: none;
+  animation: mb-hero-cta-text-pulse 2.8s ease-in-out infinite;
+  transform-origin: left center;
+
+  transition:
+    transform 160ms ease,
+    color 160ms ease;
+}
+
+.hero .mb-hero-static-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0.72);
+  transform-origin: left center;
+  animation: mb-hero-cta-line-pulse 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero .mb-hero-static-btn:hover {
+  transform: scale(1.04);
+  color: #ffffff;
+}
+
+@keyframes mb-hero-cta-breathe {
+  0%, 100% {
+    color: #f1d27b;
+    border-color: rgba(241,210,123,0.62);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.20);
+  }
+  50% {
+    color: #ffe8a1;
+    border-color: rgba(241,210,123,0.88);
+    box-shadow: 0 9px 24px rgba(212,175,55,0.16), 0 8px 22px rgba(0,0,0,0.20);
+  }
+}
+
+@keyframes mb-hero-cta-text-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.075);
+    opacity: 1;
+  }
+}
+
+@keyframes mb-hero-cta-line-pulse {
+  0%, 100% {
+    opacity: 0.42;
+    transform: scaleX(0.72);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes mb-hero-cta-shine {
+  0%, 54% {
+    transform: translateX(-130%);
+  }
+  78%, 100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes mb-hero-seal-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 4.5px));
+  }
+}
+
+@keyframes mb-brand-mark-glow {
+  0%, 100% {
+    opacity: 0.48;
+    filter:
+      sepia(1)
+      saturate(2.45)
+      hue-rotate(358deg)
+      brightness(0.86)
+      drop-shadow(0 0 5px rgba(241,210,123,0.12));
+  }
+  50% {
+    opacity: 0.68;
+    filter:
+      sepia(1)
+      saturate(3)
+      hue-rotate(358deg)
+      brightness(1)
+      drop-shadow(0 0 12px rgba(241,210,123,0.28));
+  }
+}
+
+/* Remove a frase extra que deixava o CTA pesado no comparador */
+.mb-hero-static-actions span {
+  display: none !important;
+}
+
+/* Comparador / telas médias */
+@media (max-width: 900px) {
+  .mb-hero-static {
+    min-height: 420px;
+    background-position: center 56%;
+  }
+
+  .mb-hero-static-copy {
+    padding: 34px 18px 22px;
+  }
+
+  .hero .mb-hero-brand-mark {
+    top: 20px;
+    right: 22px;
+    width: 46px !important;
+    opacity: 0.5;
+  }
+
+  .mb-hero-static h1 {
+    max-width: 420px;
+    font-size: clamp(36px, 10vw, 58px);
+  }
+
+  .mb-hero-static-subtitle {
+    max-width: 390px;
+    font-size: 14.5px;
+  }
+
+  .mb-hero-static-points {
+    width: min(100%, 390px);
+    max-width: 390px;
+  }
+
+  .mb-hero-static-points-track li {
+    font-size: 11px;
+  }
+
+  .hero .mb-hero-static-btn {
+    min-height: 30px;
+  }
+}
+
+/* Celular estreito */
+@media (max-width: 520px) {
+  .mb-hero-static {
+    min-height: 500px;
+    background-position: center bottom;
+  }
+
+  .mb-hero-static::after {
+    background:
+      linear-gradient(0deg, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0.42) 42%, transparent 100%);
+  }
+
+  .mb-hero-static-copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 34px 18px 26px;
+  }
+
+  .hero .mb-hero-brand-mark {
+    top: 18px;
+    right: 18px;
+    width: 40px !important;
+    opacity: 0.44;
+  }
+
+  .mb-hero-static h1 {
+    font-size: clamp(38px, 14vw, 60px);
+  }
+
+  .hero .mb-hero-static-btn {
+    width: auto !important;
+    max-width: none;
+  }
+}

@@ -1,0 +1,433 @@
+/*
+  Maria Bolsas - Header fluido lateral
+  Aplicado somente em sites/novo.
+
+  Objetivos:
+  - remover aparência feia dos ícones reposicionados;
+  - reduzir topo preto sem deixar duro;
+  - criar mini-header lateral;
+  - mini-header aparece no centro e desliza para lateral;
+  - hover expande por acesso rápido;
+  - ao sair o mouse, recolhe após 2s;
+  - header normal volta ao rolar para cima;
+  - melhorar enquadramento do M no banner principal.
+*/
+
+.mb-smart-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 900 !important;
+  background: #030303 !important;
+  padding: 8px 24px 12px !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition:
+    transform 320ms cubic-bezier(0.18, 0.78, 0.22, 1),
+    box-shadow 220ms ease !important;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.mb-smart-header.mb-header-hidden {
+  transform: translate3d(0, -112%, 0) !important;
+  pointer-events: none;
+}
+
+.mb-smart-header.mb-header-compact {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+}
+
+.mb-original-header-hidden {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.mb-refined-topline {
+  display: grid;
+  grid-template-columns: 48px minmax(120px, 1fr) 48px;
+  align-items: center;
+  width: 100%;
+  max-width: 1180px;
+  min-height: 42px;
+  margin: 0 auto 8px auto;
+}
+
+.mb-refined-left,
+.mb-refined-right,
+.mb-refined-logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.mb-refined-left {
+  justify-content: flex-start;
+}
+
+.mb-refined-right {
+  justify-content: flex-end;
+}
+
+.mb-refined-logo-wrap {
+  justify-content: center;
+  min-width: 0;
+}
+
+.mb-refined-logo-node {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+}
+
+.mb-refined-logo-node img {
+  display: block !important;
+  width: auto !important;
+  max-width: 150px !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+}
+
+.mb-refined-logo-text {
+  color: #d4af37;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+.mb-refined-action {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #f1d27b !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  line-height: 1 !important;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease !important;
+}
+
+.mb-refined-action:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  background: rgba(212, 175, 55, 0.08) !important;
+  color: #ffd978 !important;
+}
+
+.mb-refined-action svg {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.mb-smart-header form,
+.mb-smart-header [role="search"],
+.mb-smart-header .search,
+.mb-smart-header .search-form,
+.mb-smart-header .search-wrapper,
+.mb-smart-header .header-search,
+.mb-smart-header .form-search {
+  max-width: 1180px !important;
+  margin: 0 auto 9px auto !important;
+}
+
+.mb-smart-header input[type="search"],
+.mb-smart-header input[type="text"] {
+  min-height: 40px !important;
+}
+
+.mb-smart-header .header-main {
+  display: block !important;
+  min-height: 0 !important;
+  max-width: 1180px !important;
+  margin: 0 auto 8px !important;
+  padding: 0 !important;
+}
+
+.mb-smart-header .header-main .search {
+  width: min(360px, 100%) !important;
+  height: 38px !important;
+  margin: 0 auto !important;
+}
+
+.mb-smart-header .header-main .search button {
+  height: 38px !important;
+}
+
+.mb-smart-header nav,
+.mb-smart-header .nav,
+.mb-smart-header .navbar,
+.mb-smart-header .menu,
+.mb-smart-header .main-menu {
+  justify-content: center !important;
+  gap: 26px !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.mb-smart-header nav a,
+.mb-smart-header .nav a,
+.mb-smart-header .navbar a,
+.mb-smart-header .menu a,
+.mb-smart-header .main-menu a {
+  line-height: 1.15 !important;
+  transition: color 160ms ease, opacity 160ms ease !important;
+}
+
+.mb-smart-header nav a:hover,
+.mb-smart-header .nav a:hover {
+  color: #f1d27b !important;
+}
+
+/* Mini-header lateral */
+
+.mb-floating-mini {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  z-index: 880;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 54px;
+  height: 42px;
+  padding: 4px 7px;
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  border-radius: 999px;
+  background: rgba(5, 5, 5, 0.86);
+  color: #f1d27b;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, -14px, 0) scale(0.96);
+  transition:
+    left 420ms cubic-bezier(0.18, 0.78, 0.22, 1),
+    width 280ms cubic-bezier(0.18, 0.78, 0.22, 1),
+    opacity 220ms ease,
+    transform 320ms cubic-bezier(0.18, 0.78, 0.22, 1),
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.mb-floating-mini.mb-mini-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0) scale(1);
+}
+
+.mb-floating-mini.mb-mini-docked {
+  left: calc(100% - 72px);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.mb-floating-mini.mb-mini-expanded {
+  left: calc(100% - 208px);
+  width: 194px;
+  border-color: rgba(212, 175, 55, 0.68);
+  background: rgba(5, 5, 5, 0.94);
+}
+
+.mb-mini-main,
+.mb-mini-icon {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.mb-mini-main {
+  width: 38px;
+  height: 34px;
+}
+
+.mb-mini-main img {
+  display: block;
+  width: auto;
+  max-width: 34px;
+  max-height: 28px;
+  object-fit: contain;
+}
+
+.mb-mini-main span {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.mb-mini-icon {
+  width: 0;
+  height: 34px;
+  margin-left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(8px);
+  transition:
+    width 220ms ease,
+    margin-left 220ms ease,
+    opacity 180ms ease,
+    transform 220ms ease,
+    color 160ms ease;
+}
+
+.mb-floating-mini.mb-mini-expanded .mb-mini-icon {
+  width: 34px;
+  margin-left: 8px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.mb-mini-icon:hover,
+.mb-mini-main:hover {
+  color: #ffd978;
+}
+
+.mb-mini-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Hero/Banner Bolsa Juliana */
+
+.mb-juliana-hero-frame {
+  background-position: left center !important;
+  background-size: cover !important;
+}
+
+.mb-juliana-hero-frame img,
+.mb-juliana-hero-frame picture img,
+.mb-juliana-hero-frame video {
+  object-position: left top !important;
+}
+
+@media (max-width: 768px) {
+  .mb-smart-header {
+    padding: 7px 15px 10px !important;
+  }
+
+  .mb-refined-topline {
+    grid-template-columns: 42px minmax(100px, 1fr) 42px;
+    min-height: 38px;
+    margin-bottom: 7px;
+  }
+
+  .mb-refined-logo-node img {
+    max-width: 128px !important;
+    max-height: 38px !important;
+  }
+
+  .mb-refined-action {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+
+  .mb-refined-action svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .mb-smart-header .header-main {
+    margin-bottom: 7px !important;
+  }
+
+  .mb-smart-header .header-main .search {
+    height: 36px !important;
+  }
+
+  .mb-smart-header nav,
+  .mb-smart-header .nav {
+    justify-content: flex-start !important;
+    gap: 20px !important;
+    overflow-x: auto !important;
+    padding-bottom: 2px !important;
+  }
+
+  .mb-floating-mini {
+    top: 9px;
+    width: 50px;
+    height: 38px;
+  }
+
+  .mb-floating-mini.mb-mini-docked {
+    left: calc(100% - 64px);
+  }
+
+  .mb-floating-mini.mb-mini-expanded {
+    left: calc(100% - 188px);
+    width: 176px;
+  }
+
+  .mb-mini-main {
+    width: 34px;
+    height: 30px;
+  }
+
+  .mb-mini-icon {
+    height: 30px;
+  }
+
+  .mb-floating-mini.mb-mini-expanded .mb-mini-icon {
+    width: 30px;
+    margin-left: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-smart-header,
+  .mb-refined-action,
+  .mb-floating-mini,
+  .mb-mini-icon {
+    transition: none !important;
+  }
+}
+
+/* Ajuste funcional do mini-header */
+.mb-floating-mini {
+  cursor: pointer;
+}
+
+.mb-floating-mini .mb-mini-icon,
+.mb-floating-mini .mb-mini-main {
+  cursor: pointer;
+}

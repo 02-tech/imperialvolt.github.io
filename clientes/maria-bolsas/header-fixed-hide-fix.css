@@ -1,0 +1,87 @@
+/*
+  Maria Bolsas - Header hide fix seguro
+  Aplicado somente em sites/novo.
+
+  Objetivo:
+  - substituir o header-gap-fix;
+  - evitar faixa branca;
+  - evitar header sumindo definitivamente;
+  - manter mini-header funcionando.
+*/
+
+body.mb-header-fixed-hide-active {
+  overflow-x: hidden;
+}
+
+.mb-smart-header.mb-header-hidden {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: translate3d(0, -112%, 0) !important;
+}
+
+.mb-smart-header:not(.mb-header-hidden) {
+  position: sticky !important;
+  top: 0 !important;
+}
+
+.mb-smart-header .header-main {
+  display: block !important;
+  min-height: 0 !important;
+  max-width: 1180px !important;
+  margin: 0 auto 8px !important;
+  padding: 0 !important;
+}
+
+.mb-smart-header .header-main .search {
+  width: min(360px, 100%) !important;
+  height: 38px !important;
+  margin: 0 auto !important;
+}
+
+.mb-smart-header .header-main .search button {
+  height: 38px !important;
+}
+
+.mb-smart-header .nav {
+  justify-content: center !important;
+  gap: 26px !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.mb-smart-header .nav a {
+  transition: color 160ms ease, opacity 160ms ease !important;
+}
+
+.mb-smart-header .nav a:hover {
+  color: #f1d27b !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-smart-header.mb-header-hidden {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mb-smart-header .header-main {
+    margin-bottom: 7px !important;
+  }
+
+  .mb-smart-header .header-main .search {
+    height: 36px !important;
+  }
+
+  .mb-smart-header .nav {
+    justify-content: flex-start !important;
+    gap: 20px !important;
+    overflow-x: auto !important;
+    padding-bottom: 2px !important;
+  }
+}
