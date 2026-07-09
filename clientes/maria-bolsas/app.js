@@ -18,17 +18,19 @@ const products = [
     colors: [
       { label: "Preto", value: "#111111", image: "./assets/bolsa-juliana-preta.webp" },
       { label: "Azul marinho", value: "#1d2d4b", image: "./assets/bolsa-juliana-azul.webp" },
-      { label: "Caramelo", value: "#a97945", image: "./assets/bolsa-juliana-caramelo.webp" },
-      { label: "Verde militar", value: "#535f43", image: "./assets/bolsa-juliana-verde.webp" }
+      { label: "Cáqui", value: "#8a7a58", image: "./assets/bolsa-juliana-caramelo.webp" },
+      { label: "Verde musgo", value: "#535f43", image: "./assets/bolsa-juliana-verde.webp" },
+      { label: "Bege claro", value: "#d8c8ad", image: "./assets/bolsa-juliana-caramelo.webp" },
+      { label: "Vinho", value: "#6f1d2b", image: "./assets/bolsa-juliana-preta.webp", available: false }
     ],
     description: "Bolsa Juliana Grande em Nylon Impermeável. Ideal para quem busca praticidade, espaço e estilo no dia a dia.",
     pitch: "Elegante, resistente e espaçosa para acompanhar trabalho, estudos, viagens curtas e rotina intensa sem perder o estilo.",
-    benefitLead: "A Bolsa Juliana une visual premium, nylon durável, material resistente à água e organização real para quem precisa carregar bastante com praticidade.",
+    benefitLead: "A Bolsa Juliana une visual premium, nylon durável, material resistente à água e organização real para quem precisa levar itens do dia a dia com praticidade, espaço e elegância.",
     homeBenefits: ["Elegante", "Resistente", "Espaçosa", "Fabricação própria", "Envio para todo o Brasil"],
     trust: ["Pagamento seguro", "Troca facilitada", "Envio para todo o Brasil"],
     details: [
       "Material em nylon durável, resistente à água e fácil de limpar.",
-      "Duas repartições grandes com zíper.",
+      "Três repartições grandes com zíper.",
       "Bolso interno com zíper no forro.",
       "Bolso traseiro com zíper e bolso frontal com zíper.",
       "Bolsos laterais para garrafa de água ou guarda-chuva.",
@@ -37,11 +39,11 @@ const products = [
   },
   {
     slug: "bolsa-amelia-rsqua",
-    name: "Bolsa Amélia",
+    name: "Bolsa Amarele",
     category: "Bolsa",
-    oldPrice: "R$120,00",
-    price: "R$99,00",
-    badge: "18% OFF",
+    oldPrice: "",
+    price: "R$185,00",
+    badge: "",
     image: "./assets/bolsa-amelia.webp",
     gallery: ["./assets/bolsa-amelia.webp", "./assets/bolsa-amelia-2.webp"],
     colors: [{ label: "Variações", value: "#1f1f1f", image: "./assets/bolsa-amelia.webp" }],
@@ -50,27 +52,27 @@ const products = [
   },
   {
     slug: "mochila-antifurto-nylon",
-    name: "Mochila Antifurto Nylon",
+    name: "Mochila Amarele",
     category: "Mochila",
-    oldPrice: "R$175,00",
+    oldPrice: "",
     price: "R$155,00",
-    badge: "11% OFF",
+    badge: "",
     image: "./assets/mochila-antifurto.webp",
     gallery: ["./assets/mochila-antifurto.webp", "./assets/mochila-antifurto-2.webp"],
     colors: [
       { label: "Preto", value: "#111111", image: "./assets/mochila-antifurto.webp" },
       { label: "Azul marinho", value: "#1d2d4b", image: "./assets/mochila-antifurto-2.webp" }
     ],
-    description: "Mochila antifurto em nylon impermeável, ideal para trabalho, escola, universidade e passeios.",
-    details: ["Abertura principal protegida.", "Material impermeável.", "Compartimentos internos para organização."]
+    description: "Mochila em nylon impermeável, ideal para trabalho, escola, universidade e passeios.",
+    details: ["Material em nylon impermeável.", "Compartimentos internos para organização.", "Modelo prático para rotina."]
   },
   {
     slug: "mochila-antifurto-grande-nylon-bvec4",
     name: "Mochila Antifurto Grande Nylon",
     category: "Mochila",
-    oldPrice: "R$220,00",
-    price: "R$195,00",
-    badge: "11% OFF",
+    oldPrice: "",
+    price: "R$185,00",
+    badge: "",
     image: "./assets/mochila-antifurto-grande.webp",
     gallery: ["./assets/mochila-antifurto-grande.webp"],
     colors: [{ label: "Preto", value: "#111111", image: "./assets/mochila-antifurto-grande.webp" }],
@@ -79,23 +81,23 @@ const products = [
   },
   {
     slug: "bolsa-baby",
-    name: "Bolsa Baby",
+    name: "Bolsa Baby Pequena",
     category: "Bolsa",
-    oldPrice: "R$160,00",
-    price: "R$145,00",
+    oldPrice: "",
+    price: "R$130,00",
     badge: "",
     image: "./assets/bolsa-baby.webp",
     gallery: ["./assets/bolsa-baby.webp"],
     colors: [{ label: "Única", value: "#111111", image: "./assets/bolsa-baby.webp" }],
-    description: "Bolsa prática para rotina com bebê, com espaço interno e bolsos.",
+    description: "Bolsa Baby Pequena prática para rotina com bebê, com espaço interno e bolsos.",
     details: ["Compartimentos funcionais.", "Nylon resistente.", "Fácil de limpar."]
   },
   {
     slug: "bolsa-bau-4fnqg",
     name: "Bolsa Baú",
     category: "Bolsa",
-    oldPrice: "R$160,00",
-    price: "R$145,00",
+    oldPrice: "",
+    price: "R$185,00",
     badge: "",
     image: "./assets/bolsa-bau.webp",
     gallery: ["./assets/bolsa-bau.webp"],
@@ -108,7 +110,7 @@ const products = [
     name: "Bolsa Carioca",
     category: "Bolsa",
     oldPrice: "",
-    price: "R$155,00",
+    price: "R$195,00",
     badge: "",
     image: "./assets/bolsa-carioca.webp",
     gallery: ["./assets/bolsa-carioca.webp"],
@@ -298,8 +300,14 @@ function renderProductPage() {
       </div>
       <div class="variant">
         <span>cor</span>
+        <strong class="selected-color-label" data-selected-color>Cor selecionada: ${product.colors[0]?.label || "Única"}</strong>
         <div class="thumbs">
-          ${product.colors.map((color, index) => `<button class="thumb ${index === 0 ? "active" : ""}" style="--swatch:${color.value}" onclick="trocarProduto('${color.image}', this)" aria-label="${color.label}"></button>`).join("")}
+          ${product.colors.map((color, index) => `<button class="thumb ${index === 0 ? "active" : ""} ${color.available === false ? "is-unavailable" : ""}" style="--swatch:${color.value}" onclick="trocarProduto('${color.image}', this)" aria-label="${color.label}" title="${color.available === false ? color.label + " indisponível no site" : color.label}" data-color-label="${color.label}" data-color-available="${color.available === false ? "false" : "true"}"><span class="sr-only">${color.label}</span></button>`).join("")}
+        </div>
+        <div class="color-unavailable-box hidden" data-color-unavailable-box>
+          <strong data-color-unavailable-title>Cor indisponível no site</strong>
+          <p data-color-unavailable-text>Essa cor pode não estar disponível para compra direta pelo site. Fale com a loja para consultar disponibilidade.</p>
+          <a data-color-unavailable-whatsapp href="#" target="_blank" rel="noreferrer">Consultar no WhatsApp</a>
         </div>
       </div>
       <div class="product-actions">
@@ -428,9 +436,56 @@ function adicionarCarrinho(slug = "bolsa-juliana") {
 
 function trocarProduto(src, selectedThumb) {
   const mainImage = document.getElementById("mainProductImage");
-  if (mainImage) mainImage.src = src;
+  const selectedColor = document.querySelector("[data-selected-color]");
+  const unavailableBox = document.querySelector("[data-color-unavailable-box]");
+  const unavailableTitle = document.querySelector("[data-color-unavailable-title]");
+  const unavailableText = document.querySelector("[data-color-unavailable-text]");
+  const unavailableWhatsapp = document.querySelector("[data-color-unavailable-whatsapp]");
+
   document.querySelectorAll(".thumb").forEach((thumb) => thumb.classList.remove("active"));
-  if (selectedThumb) selectedThumb.classList.add("active");
+
+  if (!selectedThumb) return;
+
+  selectedThumb.classList.add("active");
+
+  const colorName = selectedThumb.getAttribute("data-color-label") || selectedThumb.getAttribute("aria-label") || "";
+  const isAvailable = selectedThumb.getAttribute("data-color-available") !== "false";
+
+  if (isAvailable) {
+    if (mainImage) mainImage.src = src;
+
+    if (selectedColor && colorName) {
+      selectedColor.textContent = `Cor selecionada: ${colorName}`;
+    }
+
+    if (unavailableBox) {
+      unavailableBox.classList.add("hidden");
+    }
+
+    return;
+  }
+
+  if (selectedColor && colorName) {
+    selectedColor.textContent = `Cor selecionada: ${colorName} — indisponível no site`;
+  }
+
+  if (unavailableBox) {
+    unavailableBox.classList.remove("hidden");
+  }
+
+  if (unavailableTitle) {
+    unavailableTitle.textContent = `${colorName} indisponível no site`;
+  }
+
+  if (unavailableText) {
+    unavailableText.textContent = "Essa cor não está disponível para compra direta pelo site no momento. Fale com a loja para consultar se há disponibilidade no atendimento.";
+  }
+
+  if (unavailableWhatsapp) {
+    const productTitle = document.querySelector(".product-info-sticky h1")?.textContent?.trim() || "Bolsa Juliana Grande em Nylon Impermeável";
+    const message = `Olá! Vi no site a ${productTitle} na cor ${colorName}, mas ela aparece como indisponível. Vocês têm essa cor disponível na loja ou conseguem me ajudar?`;
+    unavailableWhatsapp.href = `https://wa.me/5524988065147?text=${encodeURIComponent(message)}`;
+  }
 }
 
 function renderStandaloneCart() {

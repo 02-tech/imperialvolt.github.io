@@ -2473,3 +2473,619 @@ input[type="checkbox"] {
     border-radius: 16px;
   }
 }
+
+/* === PLANO_C_MANUAL_MOBILE_CLIENTE_INICIO === */
+
+/* Segurança geral contra estouro lateral */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Cards de produto mais claros: foto, nome e preço bem associados */
+.product-card {
+  min-width: 0;
+}
+
+.product-card > a {
+  background: #fff;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.product-card h2,
+.product-card p {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.product-card h2 a {
+  color: #111;
+}
+
+.product-card p strong {
+  color: #111;
+  font-weight: 800;
+}
+
+/* Página de produto: melhora leitura do título e texto */
+.product-info-sticky h1 {
+  overflow-wrap: anywhere;
+}
+
+.product-benefit {
+  max-width: 100%;
+}
+
+/* Cores/swatch: mais elegante */
+.thumb {
+  border-radius: 999px;
+}
+
+/* Tablet / celular grande */
+@media (max-width: 860px) {
+  .site-header {
+    position: sticky;
+  }
+
+  .header-main {
+    gap: 14px;
+    padding: 14px 18px 10px;
+  }
+
+  .logo img {
+    width: 104px;
+  }
+
+  .header-actions {
+    gap: 22px;
+  }
+
+  .search {
+    height: 40px;
+  }
+
+  .search button {
+    height: 40px;
+  }
+
+  .nav {
+    padding: 0 16px 16px;
+    gap: 18px;
+    font-size: 11.5px;
+    scrollbar-width: thin;
+  }
+
+  .featured-juliana {
+    gap: 22px;
+    padding: 28px 20px 34px;
+  }
+
+  .featured-copy h1 {
+    max-width: 100%;
+    font-size: clamp(27px, 8vw, 38px);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+
+  .featured-copy p {
+    max-width: 100%;
+    margin: 16px 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  .benefit-pills {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .benefit-pills li {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .featured-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 11px;
+    letter-spacing: .08em;
+  }
+
+  .featured-media img {
+    height: min(72vw, 300px);
+    max-height: 300px;
+    padding: 8px;
+  }
+
+  .section {
+    padding-top: 38px;
+    padding-bottom: 46px;
+  }
+
+  .section h1 {
+    margin-bottom: 22px;
+  }
+
+  .product-grid,
+  .grid-products {
+    gap: 22px;
+  }
+
+  .product-card {
+    padding: 0 0 14px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(0,0,0,.045);
+    overflow: hidden;
+  }
+
+  .product-card > a {
+    border: 0;
+  }
+
+  .product-card img {
+    height: clamp(190px, 56vw, 260px);
+    padding: 12px;
+    background: #fff;
+  }
+
+  .product-card h2 {
+    min-height: auto;
+    margin: 12px 12px 5px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .product-card p {
+    margin: 0 12px;
+    font-size: 14px;
+  }
+
+  .discount,
+  .sale-flag {
+    font-size: 10px;
+    padding: 4px 7px;
+  }
+
+  .products-page {
+    padding: 22px 14px 58px;
+  }
+
+  .filters {
+    display: none;
+  }
+
+  .list-top {
+    margin-bottom: 18px;
+  }
+
+  .list-top select {
+    width: 100%;
+  }
+
+  .product-page {
+    gap: 0;
+  }
+
+  .gallery-area {
+    padding: 8px 12px 4px;
+  }
+
+  .large-product-photo {
+    height: min(42vh, 245px);
+    max-height: 245px;
+    margin-bottom: 0;
+    padding: 8px;
+  }
+
+  .product-info-sticky {
+    padding: 14px 18px 96px;
+  }
+
+  .product-info-sticky h1 {
+    margin: 8px 0 9px;
+    font-size: clamp(21px, 6.2vw, 25px);
+    line-height: 1.16;
+  }
+
+  .product-benefit {
+    font-size: 13.8px;
+    line-height: 1.45;
+  }
+
+  .price-line {
+    gap: 10px;
+    padding: 11px 0;
+  }
+
+  .price-line strong {
+    font-size: 23px;
+  }
+
+  .product-actions {
+    gap: 8px;
+  }
+
+  .buy-btn,
+  .green-btn,
+  .continue {
+    padding: 15px 12px;
+    font-size: 11.5px;
+    letter-spacing: .12em;
+  }
+
+  .trust-block div {
+    padding: 11px 12px;
+  }
+
+  .trust-block strong {
+    font-size: 11.5px;
+  }
+
+  .trust-block span {
+    font-size: 12.5px;
+  }
+
+  .description {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+}
+
+/* Celular estreito */
+@media (max-width: 480px) {
+  .header-main {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "logo logo actions"
+      "search search search";
+    padding: 12px 14px 8px;
+    gap: 10px 12px;
+  }
+
+  .logo {
+    grid-area: logo;
+    justify-self: start;
+  }
+
+  .logo img {
+    width: 88px;
+    margin: 0;
+  }
+
+  .header-actions {
+    grid-area: actions;
+    justify-self: end;
+    gap: 18px;
+  }
+
+  .search {
+    grid-area: search;
+    width: 100%;
+    height: 38px;
+  }
+
+  .search input {
+    font-size: 11.5px;
+  }
+
+  .search button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav {
+    gap: 16px;
+    padding: 0 14px 13px;
+    font-size: 10.8px;
+    letter-spacing: .02em;
+  }
+
+  .hero img {
+    height: 210px;
+    max-height: 210px;
+  }
+
+  .hero-cta {
+    left: 18px;
+    bottom: 14px;
+    font-size: 13px;
+  }
+
+  .featured-juliana {
+    padding: 22px 16px 28px;
+  }
+
+  .featured-copy h1 {
+    font-size: clamp(24px, 7.6vw, 31px);
+    line-height: 1.08;
+  }
+
+  .featured-copy p {
+    font-size: 13.6px;
+    line-height: 1.45;
+  }
+
+  .benefit-pills {
+    gap: 7px;
+  }
+
+  .benefit-pills li {
+    padding: 7px 9px;
+    font-size: 11.5px;
+  }
+
+  .featured-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-media img {
+    height: 235px;
+    max-height: 235px;
+  }
+
+  .category-strip,
+  .section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .product-grid,
+  .grid-products {
+    gap: 18px;
+  }
+
+  .product-card {
+    border-radius: 14px;
+  }
+
+  .product-card img {
+    height: 218px;
+    padding: 10px;
+  }
+
+  .product-card h2 {
+    margin: 10px 11px 4px;
+    font-size: 13.7px;
+  }
+
+  .product-card p {
+    margin: 0 11px;
+    font-size: 13.5px;
+  }
+
+  .old-price {
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .products-page {
+    padding: 18px 12px 52px;
+  }
+
+  .product-info-sticky {
+    padding: 12px 16px 94px;
+  }
+
+  .large-product-photo {
+    height: 218px;
+    max-height: 218px;
+  }
+
+  .product-info-sticky h1 {
+    font-size: 22px;
+  }
+
+  .product-benefit {
+    font-size: 13.5px;
+  }
+
+  .thumb {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mb-sticky-buy-bar {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .mb-sticky-buy-info strong {
+    max-width: 145px;
+    font-size: 11.5px;
+  }
+
+  .mb-sticky-buy-info span {
+    font-size: 13px;
+  }
+
+  .mb-sticky-buy-cta {
+    min-width: 132px;
+    height: 42px;
+    padding: 0 14px;
+    font-size: 10.5px;
+  }
+
+  body.has-sticky-buy .whatsapp {
+    bottom: 78px;
+  }
+
+  .whatsapp {
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+/* Celular muito estreito — 320px/360px */
+@media (max-width: 380px) {
+  .nav {
+    gap: 14px;
+    font-size: 10.2px;
+  }
+
+  .featured-copy h1 {
+    font-size: 23px;
+  }
+
+  .featured-copy p {
+    font-size: 13.2px;
+  }
+
+  .featured-media img {
+    height: 212px;
+    max-height: 212px;
+  }
+
+  .product-card img {
+    height: 198px;
+  }
+
+  .product-info-sticky h1 {
+    font-size: 20.5px;
+  }
+
+  .large-product-photo {
+    height: 196px;
+    max-height: 196px;
+  }
+
+  .buy-btn,
+  .green-btn,
+  .continue {
+    font-size: 10.8px;
+    letter-spacing: .09em;
+  }
+
+  .mb-sticky-buy-info strong {
+    max-width: 122px;
+  }
+
+  .mb-sticky-buy-cta {
+    min-width: 118px;
+    font-size: 10px;
+  }
+}
+
+/* === PLANO_C_MANUAL_MOBILE_CLIENTE_FIM === */
+
+/* === PLANO_C_COR_SELECIONADA_INICIO === */
+
+.selected-color-label {
+  display: block;
+  margin: 7px 0 8px;
+  color: #111;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 480px) {
+  .selected-color-label {
+    margin: 6px 0 9px;
+    font-size: 12.8px;
+  }
+}
+
+/* === PLANO_C_COR_SELECIONADA_FIM === */
+
+/* === PLANO_C_VINHO_INDISPONIVEL_INICIO === */
+
+.thumb.is-unavailable {
+  position: relative;
+  opacity: 0.72;
+  border-style: dashed;
+}
+
+.thumb.is-unavailable::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.82);
+  transform: rotate(-35deg);
+  box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.28);
+}
+
+.color-unavailable-box {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 13px 14px;
+  border: 1px solid rgba(111, 29, 43, 0.28);
+  border-radius: 16px;
+  background: rgba(111, 29, 43, 0.055);
+}
+
+.color-unavailable-box.hidden {
+  display: none !important;
+}
+
+.color-unavailable-box strong {
+  color: #3b1018;
+  font-size: 13.5px;
+  font-weight: 950;
+  line-height: 1.25;
+}
+
+.color-unavailable-box p {
+  margin: 0;
+  color: #4f3f42;
+  font-size: 12.8px;
+  line-height: 1.42;
+}
+
+.color-unavailable-box a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-height: 36px;
+  margin-top: 2px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 11.8px;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .color-unavailable-box {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .color-unavailable-box a {
+    width: 100%;
+  }
+}
+
+/* === PLANO_C_VINHO_INDISPONIVEL_FIM === */
