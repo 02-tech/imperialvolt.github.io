@@ -558,6 +558,11 @@ function mostrarConfirmacaoPrevia(event) {
   if (entregaLine) customerParts.push("<p><strong>Entrega:</strong> " + entregaLine + "</p>");
   confirmation.querySelector("[data-preview-customer]").innerHTML = customerParts.join("");
 
+  const summary = document.querySelector(".checkout-summary");
+  if (summary) {
+    summary.innerHTML = '<p class="checkout-summary-done">Prévia concluída — veja os detalhes acima.</p>';
+  }
+
   confirmation.classList.remove("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
