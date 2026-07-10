@@ -1,73 +1,102 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKJQKXN4');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trocas e Devoluções - Maria Bolsas</title>
   <meta name="description" content="Política de trocas e devoluções da Maria Bolsas.">
-  <link rel="stylesheet" href="./styles.css?v=20260709-plano-c-vinho-indisponivel-v1">
+  <link rel="icon" href="./assets/logo-maria-bolsas.webp">
+  <link rel="stylesheet" href="./styles.css?v=20260710-preview-cliente-v1">
+  <link rel="stylesheet" href="./header-scroll.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./reveal-scroll.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./commerce-navigation-fix.css?v=20260706-light-pass1" />
+  <link rel="stylesheet" href="./header-fixed-hide-fix.css?v=20260706-light-pass1" />
   <link rel="stylesheet" href="./footer-premium.css">
 </head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="./index.html" aria-label="Maria Bolsas">
-      <span>Maria Bolsas</span>
-    </a>
-
-    <nav class="nav">
+<body class="mb-policy-page">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKJQKXN4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <header class="site-header">
+    <div class="header-main">
+      <form class="search" action="./produtos.html">
+        <input type="search" placeholder="O que você está buscando?" aria-label="Buscar produtos">
+        <button type="submit" aria-label="Buscar"></button>
+      </form>
+      <a class="logo" href="./index.html" aria-label="Maria Bolsas"><img src="./assets/logo-maria-bolsas.webp" alt="Maria Bolsas Design e Estilo"></a>
+      <div class="header-actions">
+        <a class="account-icon" href="#" aria-label="Acesse sua conta"></a>
+        <button class="cart-icon" onclick="abrirCarrinho()" type="button" aria-label="Abrir carrinho"><span id="cartCount">0</span></button>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Menu principal">
       <a href="./index.html">Início</a>
-      <a href="./produtos.html">Produtos</a>
+      <a href="./produtos.html">Produtos <span class="chevron">⌄</span></a>
       <a href="./index.html#contato">Contato</a>
+      <a href="./trocas-e-devolucoes.html">Trocas e Devoluções</a>
     </nav>
   </header>
 
-  <main class="policy-page" style="max-width: 920px; margin: 0 auto; padding: 64px 20px;">
+  <main class="policy-page">
     <a class="breadcrumb" href="./index.html">Início</a>
 
-    <section style="display: grid; gap: 18px;">
-      <span style="color: #b89435; font-size: 12px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase;">Atendimento</span>
+    <section class="policy-intro">
+      <span class="policy-kicker">Atendimento</span>
 
-      <h1 style="margin: 0; color: #111; font-size: clamp(34px, 5vw, 58px); line-height: .95; letter-spacing: -.05em;">
-        Trocas e devoluções
-      </h1>
+      <h1>Trocas e devoluções</h1>
 
-      <p style="max-width: 720px; color: #555; font-size: 17px; line-height: 1.6;">
+      <p>
         A Maria Bolsas trabalha para que cada compra seja feita com clareza, segurança e bom atendimento.
         Caso precise de ajuda com troca, ajuste ou orientação sobre um pedido, entre em contato pelo WhatsApp da loja.
       </p>
     </section>
 
-    <section style="display: grid; gap: 18px; margin-top: 34px;">
-      <article style="padding: 22px; border: 1px solid rgba(17,17,17,.10); border-radius: 20px; background: #fff;">
-        <h2 style="margin: 0 0 8px; color: #111;">Como solicitar atendimento</h2>
-        <p style="margin: 0; color: #555; line-height: 1.55;">
+    <section class="policy-cards">
+      <article class="policy-card">
+        <h2>Como solicitar atendimento</h2>
+        <p>
           Fale com a equipe da Maria Bolsas pelo WhatsApp, informe o produto comprado e descreva o motivo da solicitação.
           O atendimento irá orientar os próximos passos conforme o caso.
         </p>
       </article>
 
-      <article style="padding: 22px; border: 1px solid rgba(17,17,17,.10); border-radius: 20px; background: #fff;">
-        <h2 style="margin: 0 0 8px; color: #111;">Condição do produto</h2>
-        <p style="margin: 0; color: #555; line-height: 1.55;">
+      <article class="policy-card">
+        <h2>Condição do produto</h2>
+        <p>
           Para análise de troca, o produto deve ser apresentado em boas condições, preferencialmente com embalagem,
           etiqueta e comprovante de compra.
         </p>
       </article>
 
-      <article style="padding: 22px; border: 1px solid rgba(17,17,17,.10); border-radius: 20px; background: #fff;">
-        <h2 style="margin: 0 0 8px; color: #111;">Atendimento próximo</h2>
-        <p style="margin: 0; color: #555; line-height: 1.55;">
+      <article class="policy-card">
+        <h2>Atendimento próximo</h2>
+        <p>
           Como a loja possui atendimento físico em Petrópolis, algumas solicitações podem ser resolvidas diretamente
           com a equipe da loja, de forma mais rápida e personalizada.
         </p>
       </article>
 
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+      <div class="policy-actions">
         <a class="buy-btn" href="https://wa.me/5524988065147" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
         <a class="more" href="./produtos.html">Ver produtos</a>
       </div>
     </section>
   </main>
+
+  <div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho">
+    <button class="close" onclick="fecharCarrinho()" aria-label="Fechar">×</button>
+    <h2>Carrinho de compras</h2>
+    <div data-cart-content></div>
+  </aside>
 
   <footer class="mb-footer-premium" id="contato">
     <div class="mb-footer-grid">
@@ -108,7 +137,10 @@
       <p>© 2026 Maria Bolsas. Todos os direitos reservados.<br>Rodrigo Barbosa Rodrigues Comércio de Roupas e Acessórios ME — CNPJ: 20.639.790/0001-67</p>
     </div>
   </footer>
+  <script src="./app.js?v=20260710-preview-cliente-v1"></script>
+  <script src="./header-scroll.js?v=20260706-light-pass1"></script>
+  <script src="./reveal-scroll.js?v=20260706-light-pass1"></script>
+  <script src="./commerce-navigation-fix.js?v=20260708-account-v1"></script>
+  <script src="./header-fixed-hide-fix.js?v=20260706-light-pass1"></script>
 </body>
 </html>
-
-

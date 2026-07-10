@@ -262,7 +262,7 @@
         setStatus(
           input,
           "is-nudge",
-          "<strong>Informe seu CEP para continuar.</strong><span>Assim mostramos a entrega via SEDEX antes da finalização.</span>"
+          "<strong>Informe seu CEP para continuar.</strong><span>Assim mostramos a entrega pelos Correios antes da finalização.</span>"
         );
       }
 
@@ -301,7 +301,7 @@
     setStatus(
       input,
       "is-loading",
-      "<strong>Consultando entrega via SEDEX...</strong><span>Validando o CEP informado.</span>"
+      "<strong>Consultando entrega pelos Correios...</strong><span>Validando o CEP informado.</span>"
     );
 
     let data = null;
@@ -340,7 +340,7 @@
       setStatus(
         input,
         "is-ready",
-        "<strong>SEDEX disponível para este endereço.</strong>" + addressHtml
+        "<strong>Entrega pelos Correios disponível para este endereço.</strong>" + addressHtml
       );
 
       window.setTimeout(openCheckoutSedex, 1400);
@@ -350,7 +350,7 @@
     setStatus(
       input,
       "is-ready",
-      "<strong>Entrega via SEDEX disponível.</strong>" + addressHtml
+      "<strong>Entrega pelos Correios disponível.</strong>" + addressHtml
     );
 
     guideToBuyButton();

@@ -1,11 +1,18 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKJQKXN4');</script>
+<!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <title>Checkout - Maria Bolsas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="./assets/logo-maria-bolsas.webp">
-  <link rel="stylesheet" href="./styles.css?v=20260709-plano-c-vinho-indisponivel-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260710-preview-cliente-v1">
   <link rel="stylesheet" href="./header-scroll.css?v=20260706-light-pass1" />
   <link rel="stylesheet" href="./reveal-scroll.css?v=20260706-light-pass1" />
   <link rel="stylesheet" href="./commerce-navigation-fix.css?v=20260706-light-pass1" />
@@ -13,6 +20,10 @@
   <link rel="stylesheet" href="./footer-premium.css" />
 </head>
 <body class="checkout-body">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKJQKXN4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header class="checkout-header">
     <a href="./index.html"><img src="./assets/logo-maria-bolsas.webp" alt="Maria Bolsas"></a>
   </header>
@@ -23,6 +34,10 @@
         <span class="checkout-kicker">Compra segura</span>
         <h1>Finalizar compra</h1>
         <p>Revise seu pedido, informe seus dados e confirme a entrega.</p>
+        <nav class="checkout-quick-nav" aria-label="Navegação rápida">
+          <a href="./produtos.html" class="checkout-quick-nav-link" data-checkout-back-product>← Voltar ao produto</a>
+          <a href="./produtos.html" class="checkout-quick-nav-link">Continuar comprando</a>
+        </nav>
       </div>
 
       <div class="order-toggle"><span>Resumo do pedido</span><strong data-checkout-total>R$0,00</strong></div>
@@ -51,7 +66,7 @@
           <input type="tel" placeholder="WhatsApp" aria-label="WhatsApp" autocomplete="tel" data-field="whatsapp">
         </div>
 
-        <p class="mb-shipping-static-note">Entrega via SEDEX disponível para todo o Brasil. Prazo e valor são confirmados na finalização.</p>
+        <p class="mb-shipping-static-note">Entrega pelos Correios disponível para todo o Brasil. Prazo e valor são confirmados na finalização.</p>
 
         <div class="cep-row">
           <input type="text" placeholder="CEP" aria-label="CEP">
@@ -72,18 +87,18 @@
         <button class="green-btn" type="submit">Ver frete e continuar</button>
       </form>
 
-      <section id="shippingOptions" class="shipping-options hidden sedex-only-checkout" aria-label="Método de envio">
+      <section id="shippingOptions" class="shipping-options hidden correios-only-checkout" aria-label="Método de envio">
       <div class="shipping-head">
         <span>Entrega</span>
         <h2>Escolha de envio</h2>
-        <p>Para agilizar sua compra, trabalhamos com um único método de envio: SEDEX.</p>
+        <p>Trabalhamos com envio pelos Correios para todo o Brasil. O valor do frete é informado no resumo da compra antes da finalização.</p>
       </div>
 
       <div class="shipping-method-single" aria-label="Método de envio selecionado">
         <div class="shipping-method-info">
           <span class="shipping-pill">Método único</span>
-          <h2>SEDEX</h2>
-          <p>Envio pelos Correios via SEDEX para todo o Brasil.</p>
+          <h2>Envio pelos Correios</h2>
+          <p>Entrega pelos Correios para todo o Brasil.</p>
           <small>Valor informado no resumo da compra antes da finalização.</small>
         </div>
 
@@ -96,50 +111,21 @@
       <section class="mb-payment-safe-panel" data-payment-safe-panel="true">
         <div class="mb-payment-safe-head">
           <span>Pagamento seguro</span>
-          <strong>Escolha a forma de pagamento na finalização</strong>
-          <p>Pix, cartão ou boleto serão processados em ambiente seguro do provedor escolhido. A loja não armazena dados de cartão.</p>
-        </div>
-        <div class="mb-payment-safe-methods">
-          <article>
-            <b>Pix</b>
-            <small>Confirmação rápida por QR Code ou copia e cola.</small>
-          </article>
-          <article>
-            <b>Cartão</b>
-            <small>Dados inseridos apenas no ambiente seguro de pagamento.</small>
-          </article>
-          <article>
-            <b>Boleto</b>
-            <small>Gerado após a confirmação do pedido.</small>
-          </article>
+          <strong>Pagamento pelo Mercado Pago</strong>
+          <p>Ao finalizar, você será direcionado para o ambiente seguro do Mercado Pago. A forma de pagamento será escolhida diretamente lá, conforme as opções disponíveis.</p>
+          <p>A Maria Bolsas não coleta nem armazena dados de cartão.</p>
         </div>
       </section>
 
       <div class="shipping-actions">
-        <button type="button" class="continue checkout-finish" onclick="mostrarConfirmacaoPrevia(event)">Finalizar compra</button>
+        <button type="button" class="continue checkout-finish" onclick="finalizarCompra(event)">Finalizar compra</button>
         <button class="more" type="button" onclick="voltarParaDados(event)">Voltar aos dados</button>
       </div>
+      <p class="checkout-payment-status hidden" data-checkout-status></p>
 
       <p class="mb-checkout-trust-line">Compra segura · Envio para todo o Brasil · Atendimento Maria Bolsas · Fabricação própria</p>
     </section>
 
-    <section id="previewConfirmation" class="preview-confirmation hidden" aria-live="polite">
-      <div class="preview-confirmation-card">
-        <span class="preview-confirmation-kicker">Prévia</span>
-        <h2>Prévia de pedido gerada.</h2>
-        <p class="preview-confirmation-disclaimer">Esta é uma prévia visual da nova loja Maria Bolsas. Nenhum pagamento foi processado e nenhum pedido real foi enviado.</p>
-
-        <div class="preview-confirmation-summary">
-          <div class="preview-confirmation-row"><span>Produto</span><strong data-preview-product></strong></div>
-          <div class="preview-confirmation-row"><span>Frete — SEDEX</span><strong data-preview-shipping></strong></div>
-          <div class="preview-confirmation-row preview-confirmation-total"><span>Total</span><strong data-preview-total></strong></div>
-        </div>
-
-        <div class="preview-confirmation-customer" data-preview-customer></div>
-
-        <a class="preview-confirmation-cta" href="./index.html">Voltar à loja</a>
-      </div>
-    </section>
     </section>
 
     <aside class="checkout-summary">
@@ -147,7 +133,7 @@
       <div class="checkout-summary-body" data-checkout-product></div>
     </aside>
   </main>
-  <script src="./app.js?v=20260709-plano-c-vinho-indisponivel-v1"></script>
+  <script src="./app.js?v=20260710-preview-cliente-v1"></script>
   <script src="./header-scroll.js?v=20260706-light-pass1"></script>
   <script src="./reveal-scroll.js?v=20260706-light-pass1"></script>
   <script src="./commerce-navigation-fix.js?v=20260708-account-v1"></script>
@@ -200,10 +186,9 @@
 
     <section class="mb-footer-col" aria-label="Compra segura">
       <h3>Compra segura</h3>
-      <p>Pagamento via Pix, cartão e boleto.</p>
+      <p>Pagamento via Mercado Pago.</p>
       <p>Trocas e devoluções conforme política da loja.</p>
       <p>Atendimento direto com a equipe Maria Bolsas.</p>
-      <p class="mb-preview-note">Prévia visual para aprovação — ambiente sem processamento real de pagamento.</p>
     </section>
   </div>
 
@@ -212,8 +197,8 @@
     <span>Mastercard</span>
     <span>Amex</span>
     <span>Elo</span>
-    <span>Pix</span>
-    <span>Boleto</span>
+    <span>Mercado Pago</span>
+    <span>Checkout seguro</span>
   </div>
 
   <div class="mb-footer-bottom">
@@ -224,27 +209,10 @@
     </p>
   </div>
 </footer>
-  <script src="./cep-auto-sedex.js?v=20260708-autofill-v3"></script>
+  <script src="./cep-auto-sedex.js?v=20260710-fix-src-v1"></script>
   <script src="./first-purchase-benefit.js"></script>
   <script src="./registration-benefit-banner.js?v=20260708-account-v1"></script>
   <script src="./email-assistant.js"></script>
   <script src="./payment-safe-panel.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

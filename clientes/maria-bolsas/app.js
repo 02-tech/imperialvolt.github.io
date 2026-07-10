@@ -4,9 +4,9 @@ const products = [
     name: "Bolsa Juliana",
     displayName: "Bolsa Juliana Grande em Nylon Impermeável",
     category: "Bolsa",
-    oldPrice: "R$220,00",
+    oldPrice: "",
     price: "R$195,00",
-    badge: "11% OFF",
+    badge: "",
     image: "./assets/bolsa-juliana-preta.webp",
     gallery: [
       "./assets/bolsa-juliana-preta.webp",
@@ -25,7 +25,7 @@ const products = [
     ],
     description: "Bolsa Juliana Grande em Nylon Impermeável. Ideal para quem busca praticidade, espaço e estilo no dia a dia.",
     pitch: "Elegante, resistente e espaçosa para acompanhar trabalho, estudos, viagens curtas e rotina intensa sem perder o estilo.",
-    benefitLead: "A Bolsa Juliana une visual premium, nylon durável, material resistente à água e organização real para quem precisa levar itens do dia a dia com praticidade, espaço e elegância.",
+    benefitLead: "A Bolsa Juliana Grande em Nylon Impermeável é ideal para quem precisa levar itens do dia a dia com praticidade, espaço e organização, sem abrir mão de um visual elegante.",
     homeBenefits: ["Elegante", "Resistente", "Espaçosa", "Fabricação própria", "Envio para todo o Brasil"],
     trust: ["Pagamento seguro", "Troca facilitada", "Envio para todo o Brasil"],
     details: [
@@ -234,6 +234,7 @@ function productCard(product) {
       </a>
       <h2><a href="${productUrl(product.slug)}">${product.name}</a></h2>
       <p>${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ""}<strong>${product.price}</strong></p>
+      <a class="card-cta" href="${productUrl(product.slug)}">Ver produto</a>
     </article>
   `;
 }
@@ -262,7 +263,7 @@ function renderFeaturedJuliana() {
       </div>
     </div>
     <a class="featured-media" href="${productUrl(product.slug)}" aria-label="Ver Bolsa Juliana">
-      <img src="./assets/bolsa-juliana-cinza-uso-home.webp" alt="${product.name} em uso" loading="lazy" decoding="async">
+      <img src="./assets/bolsa-juliana-preta.webp" alt="${product.name}" loading="lazy" decoding="async">
     </a>
   `;
 }
@@ -325,9 +326,9 @@ function renderProductPage() {
       </details>
       <details class="product-detail" open>
         <summary>Meio de envio</summary>
-        <div class="single-shipping-note" aria-label="Envio por SEDEX">
-          <strong>SEDEX</strong>
-          <span>Envio pelos Correios via SEDEX para todo o Brasil.</span>
+        <div class="single-shipping-note" aria-label="Envio pelos Correios">
+          <strong>Envio pelos Correios</strong>
+          <span>Entrega pelos Correios para todo o Brasil.</span>
         </div>
         <form class="cep-row">
           <input type="text" placeholder="Seu CEP" aria-label="CEP">
@@ -375,7 +376,7 @@ function trustText(item) {
   const texts = {
     "Pagamento seguro": "Compra protegida com informações claras antes da finalização.",
     "Troca facilitada": "Política de troca destacada antes da compra.",
-    "Envio para todo o Brasil": "Envio via SEDEX com informações claras antes da finalização."
+    "Envio para todo o Brasil": "Envio pelos Correios com informações claras antes da finalização."
   };
   return texts[item] || "Informação visível antes da decisão de compra.";
 }
@@ -508,7 +509,7 @@ function renderStandaloneCart() {
       <strong>${product.price}</strong>
     </div>
     <div class="cart-line"><span>Subtotal</span><strong>${product.price}</strong></div>
-    <div class="cart-line"><span>Entrega</span><strong>SEDEX</strong></div>
+    <div class="cart-line"><span>Entrega</span><strong>Envio pelos Correios</strong></div>
     <div class="cart-total"><span>Total</span><strong>${product.price}</strong></div>
     <a class="continue" href="./checkout.html?p=${product.slug}">Iniciar compra</a>
     <a class="more" href="${productUrl(product.slug)}">Ver detalhes do produto</a>
@@ -517,31 +518,6 @@ function renderStandaloneCart() {
 
 let checkoutState = null;
 
-function fieldValue(name) {
-  const input = document.querySelector('[data-field="' + name + '"]');
-  return input ? input.value.trim() : "";
-}
-
-function buildEntregaLine() {
-  const endereco = fieldValue("endereco");
-  const numero = fieldValue("numero");
-  const complemento = fieldValue("complemento");
-  const bairro = fieldValue("bairro");
-  const cidade = fieldValue("cidade");
-  const uf = fieldValue("uf");
-
-  const enderecoParts = [endereco, numero].filter(Boolean);
-  let enderecoLine = enderecoParts.join(", ");
-  if (complemento) {
-    enderecoLine = enderecoLine ? enderecoLine + ", " + complemento : complemento;
-  }
-
-  const cidadeUf = [cidade, uf].filter(Boolean).join("/");
-  const localLine = [bairro, cidadeUf].filter(Boolean).join(", ");
-
-  return [enderecoLine, localLine].filter(Boolean).join(" - ");
-}
-
 function renderCheckout() {
   const target = document.querySelector("[data-checkout-product]");
   if (!target) return;
@@ -549,7 +525,7 @@ function renderCheckout() {
   const product = products.find((item) => item.slug === params.get("p")) || products[0];
   const subtotal = moneyNumber(product.price);
   const shipping = 15.59;
-  const shippingLabel = "SEDEX";
+  const shippingLabel = "Envio pelos Correios";
   const total = subtotal + shipping;
   checkoutState = { product, subtotal, shipping, total };
   target.innerHTML = `
@@ -565,6 +541,22 @@ function renderCheckout() {
     <div class="cart-total"><span>Total</span><strong>${formatMoney(total)}</strong></div>
   `;
   document.querySelector("[data-checkout-total]").textContent = formatMoney(total);
+
+  const backLink = document.querySelector("[data-checkout-back-product]");
+  if (backLink) {
+    const slugFromUrl = params.get("p");
+    if (slugFromUrl) {
+      backLink.href = `./produto.html?p=${encodeURIComponent(slugFromUrl)}`;
+    } else {
+      backLink.href = "./produtos.html";
+      backLink.addEventListener("click", function (event) {
+        if (window.history.length > 1) {
+          event.preventDefault();
+          window.history.back();
+        }
+      });
+    }
+  }
 }
 
 function mostrarFretes(event) {
@@ -589,37 +581,77 @@ function voltarParaDados(event) {
   }
 }
 
-function mostrarConfirmacaoPrevia(event) {
+const CHECKOUT_API_URL =
+  window.MB_CHECKOUT_API_URL ||
+  ((window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+    ? "http://localhost:3033/criar-preferencia"
+    : "/api/criar-preferencia");
+
+function setCheckoutStatus(message, isError) {
+  const status = document.querySelector("[data-checkout-status]");
+  if (!status) return;
+  status.textContent = message || "";
+  status.classList.toggle("hidden", !message);
+  status.classList.toggle("checkout-status-error", Boolean(isError));
+}
+
+async function finalizarCompra(event) {
   if (event) event.preventDefault();
   if (!checkoutState) return;
 
-  const confirmation = document.getElementById("previewConfirmation");
-  if (!confirmation) return;
+  if (window.location.hostname === "imperialvolt.com") {
+    const { product, total } = checkoutState;
+    const mensagem = encodeURIComponent(
+      "Olá! Vi a prévia do site Maria Bolsas e quero finalizar a compra do produto: " +
+      (product.displayName || product.name) +
+      " | Total aproximado: " +
+      formatMoney(total) +
+      "."
+    );
 
-  const form = document.querySelector(".checkout-form");
-  const shippingSection = document.getElementById("shippingOptions");
-  if (form) form.style.display = "none";
-  if (shippingSection) shippingSection.classList.add("hidden");
+    setCheckoutStatus("Prévia publicada: o pagamento Mercado Pago será ativado no domínio oficial. Redirecionando para o WhatsApp...", false);
 
-  const { product, shipping, total } = checkoutState;
-  confirmation.querySelector("[data-preview-product]").textContent = product.name;
-  confirmation.querySelector("[data-preview-shipping]").textContent = formatMoney(shipping);
-  confirmation.querySelector("[data-preview-total]").textContent = formatMoney(total);
+    window.setTimeout(function () {
+      window.location.href = "https://wa.me/5524988065147?text=" + mensagem;
+    }, 900);
 
-  const nome = fieldValue("nome");
-  const entregaLine = buildEntregaLine();
-  const customerParts = [];
-  if (nome) customerParts.push("<p><strong>Nome:</strong> " + nome + "</p>");
-  if (entregaLine) customerParts.push("<p><strong>Entrega:</strong> " + entregaLine + "</p>");
-  confirmation.querySelector("[data-preview-customer]").innerHTML = customerParts.join("");
+    return;
+  }
+const button = event ? event.currentTarget : document.querySelector(".checkout-finish");
+  const { product, subtotal, shipping } = checkoutState;
+  const textoOriginal = button ? button.textContent : "";
 
-  const summary = document.querySelector(".checkout-summary");
-  if (summary) {
-    summary.innerHTML = '<p class="checkout-summary-done">Prévia concluída — veja os detalhes acima.</p>';
+  setCheckoutStatus("Processando pagamento...", false);
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Processando...";
   }
 
-  confirmation.classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  try {
+    const resposta = await fetch(CHECKOUT_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        itens: [
+          { titulo: product.displayName || product.name, preco: subtotal, quantidade: 1 },
+          { titulo: "Frete - Envio pelos Correios", preco: shipping, quantidade: 1 }
+        ]
+      })
+    });
+
+    const dados = await resposta.json();
+    if (!resposta.ok || !dados.init_point) {
+      throw new Error(dados.erro || "Não foi possível iniciar o pagamento. Tente novamente.");
+    }
+
+    window.location.href = dados.init_point;
+  } catch (erro) {
+    setCheckoutStatus(erro.message || "Não foi possível iniciar o pagamento. Tente novamente.", true);
+    if (button) {
+      button.disabled = false;
+      button.textContent = textoOriginal || "Finalizar compra";
+    }
+  }
 }
 
 window.abrirCarrinho = abrirCarrinho;
@@ -628,7 +660,7 @@ window.adicionarCarrinho = adicionarCarrinho;
 window.trocarProduto = trocarProduto;
 window.mostrarFretes = mostrarFretes;
 window.voltarParaDados = voltarParaDados;
-window.mostrarConfirmacaoPrevia = mostrarConfirmacaoPrevia;
+window.finalizarCompra = finalizarCompra;
 
 renderHomeProducts();
 renderFeaturedJuliana();
