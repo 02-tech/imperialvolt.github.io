@@ -1,0 +1,37 @@
+{
+  "empresa": {
+    "nome": "Imperial Volt",
+    "dominio": "https://imperialvolt.com",
+    "instagram": "https://www.instagram.com/imperialvolt",
+    "cidade": "Petrópolis",
+    "estado": "RJ",
+    "email": "suporte.imperialvolt@gmail.com",
+    "whatsapp": "5524992144995",
+    "cnpj": "60.179.279/0001-44"
+  },
+  "marca": {
+    "posicionamento": "Tecnologia, produtos personalizados e soluções digitais",
+    "publico": [
+      "pessoas físicas",
+      "pequenos negócios",
+      "empresas",
+      "revendedores"
+    ],
+    "estilo": [
+      "premium",
+      "tecnológico",
+      "profissional",
+      "confiável",
+      "navegável"
+    ]
+  },
+  "site": {
+    "tipo": "site estático comercial",
+    "objetivo": "apresentar produtos e serviços com valores claros e encaminhar pedidos ao WhatsApp",
+    "idioma": "pt-BR",
+    "moeda": "BRL",
+    "publicacao": "GitHub Pages",
+    "branchDesenvolvimento": "imperialvolt-2.0",
+    "branchProducao": "main"
+  }
+}

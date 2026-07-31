@@ -1,0 +1,48 @@
+{
+  "pagamento": {
+    "pixIntegral": {
+      "disponivel": true,
+      "descontoPercentual": 5,
+      "descricao": "Pagamento integral antecipado via Pix com 5% de desconto."
+    },
+    "servicosPersonalizados": {
+      "modalidade": "50% para iniciar e 50% antes da entrega definitiva",
+      "entradaPercentual": 50,
+      "saldoPercentual": 50,
+      "possuiDesconto": false,
+      "momentoDoSaldo": "antes da entrega, instalação, publicação ou liberação definitiva"
+    },
+    "cartaoCredito": {
+      "disponivel": true,
+      "parcelasSemJuros": 3,
+      "parcelaMinimaServicos": 100,
+      "parcelaMinimaProdutos": 50,
+      "parcelamentoAdicional": "sujeito aos juros e condições da operadora de pagamento"
+    },
+    "produtosFisicos": {
+      "regraPadrao": "pagamento integral antes do início da produção",
+      "pedidosAcimaDe": 500,
+      "pagamentoEmDuasEtapasParaPedidosMaiores": true,
+      "entradaPercentual": 50,
+      "saldoPercentual": 50,
+      "freteIncluso": false
+    }
+  },
+  "orcamento": {
+    "precosPublicados": true,
+    "negociacaoIndividualDePreco": false,
+    "validadeDias": 7,
+    "alteracoesForaDoEscopo": "cobradas separadamente",
+    "custosDeTerceiros": "domínio, hospedagem, APIs, licenças, taxas e serviços externos não estão inclusos, salvo indicação expressa"
+  },
+  "producao": {
+    "inicio": "após confirmação do pagamento aplicável e recebimento dos materiais necessários",
+    "prazo": "informado em cada produto ou serviço",
+    "personalizacao": "deve ser aprovada pelo cliente antes da produção definitiva",
+    "entregaDefinitiva": "somente após a quitação integral"
+  },
+  "textoPublico": {
+    "titulo": "Formas de pagamento",
+    "descricao": "No Pix integral, você recebe 5% de desconto. Projetos personalizados também podem ser pagos em duas etapas: 50% para iniciar e 50% antes da entrega definitiva, sem desconto. No cartão de crédito, o pagamento pode ser realizado em até 3 vezes sem juros, respeitando o valor mínimo da parcela. Parcelamentos adicionais estão sujeitos às condições e aos juros da operadora."
+  }
+}

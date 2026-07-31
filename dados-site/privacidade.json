@@ -1,0 +1,138 @@
+{
+  "titulo": "Política de Privacidade",
+  "ultimaAtualizacao": "2026-07-31",
+  "controlador": {
+    "nomeEmpresarial": "Imperial Volt",
+    "cnpj": "60.179.279/0001-44",
+    "cidade": "Petrópolis",
+    "estado": "RJ",
+    "emailPrivacidade": "suporte.imperialvolt@gmail.com"
+  },
+  "principios": [
+    "finalidade",
+    "adequação",
+    "necessidade",
+    "livre acesso",
+    "qualidade dos dados",
+    "transparência",
+    "segurança",
+    "prevenção",
+    "não discriminação",
+    "responsabilização"
+  ],
+  "dadosTratados": [
+    {
+      "categoria": "Dados de contato",
+      "exemplos": ["nome", "telefone", "e-mail"],
+      "finalidades": [
+        "responder solicitações",
+        "elaborar propostas",
+        "executar contratos",
+        "prestar suporte"
+      ]
+    },
+    {
+      "categoria": "Dados de pedido e contratação",
+      "exemplos": [
+        "produto ou serviço solicitado",
+        "personalizações",
+        "quantidades",
+        "endereço de entrega",
+        "comprovantes necessários"
+      ],
+      "finalidades": [
+        "produzir e entregar pedidos",
+        "cumprir obrigações contratuais",
+        "emitir documentos comerciais e fiscais"
+      ]
+    },
+    {
+      "categoria": "Comunicações",
+      "exemplos": [
+        "mensagens enviadas pelo WhatsApp",
+        "mensagens por e-mail",
+        "histórico de suporte"
+      ],
+      "finalidades": [
+        "atendimento",
+        "registro do escopo",
+        "resolução de dúvidas e conflitos"
+      ]
+    },
+    {
+      "categoria": "Dados técnicos",
+      "exemplos": [
+        "endereço IP",
+        "tipo de navegador",
+        "data e horário de acesso",
+        "registros técnicos da hospedagem"
+      ],
+      "finalidades": [
+        "segurança",
+        "diagnóstico",
+        "prevenção de fraude",
+        "funcionamento do site"
+      ]
+    }
+  ],
+  "dadosNaoSolicitadosDiretamente": [
+    "senha bancária",
+    "código de segurança de cartão",
+    "número completo de cartão",
+    "dados pessoais sensíveis sem necessidade",
+    "documentos excessivos ou sem finalidade definida"
+  ],
+  "basesLegaisPossiveis": [
+    "execução de contrato ou procedimentos preliminares",
+    "cumprimento de obrigação legal ou regulatória",
+    "exercício regular de direitos",
+    "legítimo interesse, quando aplicável e avaliado",
+    "consentimento, quando necessário"
+  ],
+  "compartilhamento": [
+    {
+      "destinatario": "instituições financeiras e operadoras de pagamento",
+      "finalidade": "processar pagamentos"
+    },
+    {
+      "destinatario": "transportadoras e serviços postais",
+      "finalidade": "entregar produtos"
+    },
+    {
+      "destinatario": "fornecedores de hospedagem, domínio, e-mail e infraestrutura",
+      "finalidade": "viabilizar os serviços digitais"
+    },
+    {
+      "destinatario": "órgãos públicos e autoridades",
+      "finalidade": "cumprir obrigações legais ou determinações válidas"
+    }
+  ],
+  "retencao": {
+    "regra": "Os dados serão mantidos pelo período necessário ao atendimento, execução contratual, cumprimento de obrigações legais, exercício de direitos e prevenção de fraudes.",
+    "eliminacao": "Após o término das finalidades e dos prazos aplicáveis, os dados poderão ser eliminados, anonimizados ou conservados nas hipóteses autorizadas pela legislação."
+  },
+  "direitosDoTitular": [
+    "confirmação da existência de tratamento",
+    "acesso aos dados",
+    "correção de dados incompletos, inexatos ou desatualizados",
+    "anonimização, bloqueio ou eliminação quando cabível",
+    "informações sobre compartilhamento",
+    "revogação de consentimento quando aplicável",
+    "oposição nas hipóteses legais",
+    "revisão de decisões automatizadas, quando existentes"
+  ],
+  "seguranca": [
+    "controle de acesso",
+    "senhas fortes e autenticação quando disponível",
+    "atualizações de segurança",
+    "backup",
+    "restrição de dados ao mínimo necessário",
+    "registro e tratamento de incidentes",
+    "uso de fornecedores adequados"
+  ],
+  "canal": {
+    "email": "suporte.imperialvolt@gmail.com",
+    "prazoResposta": "dentro de prazo razoável e conforme as exigências legais aplicáveis"
+  },
+  "observacao": "Este documento deverá refletir apenas os tratamentos realmente realizados. Qualquer nova ferramenta de analytics, publicidade, formulário, chatbot externo ou banco de dados exige revisão desta política."
+}
