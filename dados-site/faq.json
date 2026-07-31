@@ -1,0 +1,60 @@
+{
+  "categorias": [
+    {
+      "nome": "Sites",
+      "perguntas": [
+        {
+          "pergunta": "O domínio está incluído?",
+          "resposta": "Não por padrão. Se você já possui domínio, podemos configurá-lo quando isso estiver previsto no plano. Se ainda não possui, verificamos a disponibilidade e orientamos a contratação."
+        },
+        {
+          "pergunta": "O site fica pronto em quanto tempo?",
+          "resposta": "O prazo depende do plano e começa após o pagamento inicial e o recebimento de todos os materiais necessários."
+        },
+        {
+          "pergunta": "Posso pedir alterações?",
+          "resposta": "Sim, dentro das rodadas incluídas no plano. Alterações adicionais ou mudanças de escopo são cobradas separadamente."
+        }
+      ]
+    },
+    {
+      "nome": "Pagamento",
+      "perguntas": [
+        {
+          "pergunta": "Existe desconto no Pix?",
+          "resposta": "Sim. O pagamento integral antecipado via Pix possui 5% de desconto."
+        },
+        {
+          "pergunta": "Posso pagar metade no início?",
+          "resposta": "Serviços personalizados podem ser pagos em 50% para iniciar e 50% antes da entrega definitiva, sem desconto."
+        },
+        {
+          "pergunta": "Aceita cartão?",
+          "resposta": "Sim. É possível pagar em até 3 vezes sem juros, respeitando o valor mínimo de parcela. Parcelamentos maiores seguem as condições da operadora."
+        }
+      ]
+    },
+    {
+      "nome": "NFC",
+      "perguntas": [
+        {
+          "pergunta": "Funciona em qualquer celular?",
+          "resposta": "Não. O aparelho precisa possuir NFC compatível e estar configurado adequadamente."
+        },
+        {
+          "pergunta": "Posso trocar o link depois?",
+          "resposta": "Sim, quando a tag for regravável e não tiver sido bloqueada permanentemente."
+        }
+      ]
+    },
+    {
+      "nome": "Registro de marca",
+      "perguntas": [
+        {
+          "pergunta": "A aprovação é garantida?",
+          "resposta": "Não. A Imperial Volt prepara e acompanha o processo contratado, mas a decisão final é exclusiva do INPI."
+        }
+      ]
+    }
+  ]
+}

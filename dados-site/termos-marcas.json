@@ -1,0 +1,33 @@
+{
+  "titulo": "Condições para Assessoria em Registro de Marca",
+  "servico": [
+    "levantamento inicial",
+    "busca de anterioridade quando prevista",
+    "orientação de apresentação",
+    "avaliação preliminar de classes",
+    "preparação documental",
+    "orientação ou emissão de GRU",
+    "protocolo quando incluído",
+    "acompanhamento conforme o plano"
+  ],
+  "naoGarantido": [
+    "deferimento",
+    "concessão",
+    "ausência de oposição",
+    "ausência de exigências",
+    "prazo exato",
+    "exclusividade antes da concessão",
+    "resultado jurídico ou administrativo específico"
+  ],
+  "declaracaoPublica": "A Imperial Volt presta suporte técnico e documental no processo de pedido de registro de marca perante o INPI. O protocolo não representa garantia de deferimento, pois a decisão final compete exclusivamente ao INPI.",
+  "busca": "A busca prévia reduz incertezas, mas não elimina todos os riscos de colisão, oposição ou indeferimento.",
+  "taxas": "Taxas do INPI, recursos, oposições, manifestações, exigências e serviços adicionais somente estarão incluídos quando expressamente indicados.",
+  "responsabilidadeCliente": [
+    "fornecer informações verdadeiras",
+    "aprovar dados do requerente",
+    "aprovar apresentação da marca",
+    "informar produtos e serviços",
+    "realizar pagamentos necessários",
+    "responder solicitações dentro do prazo"
+  ]
+}

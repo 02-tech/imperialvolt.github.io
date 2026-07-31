@@ -1,0 +1,56 @@
+{
+  "titulo": "Termos Gerais de Uso e Contratação",
+  "ultimaAtualizacao": "2026-07-31",
+  "identificacao": {
+    "nome": "Imperial Volt",
+    "cnpj": "60.179.279/0001-44",
+    "dominio": "https://imperialvolt.com",
+    "email": "suporte.imperialvolt@gmail.com"
+  },
+  "usoDoSite": [
+    "O site apresenta produtos, serviços, preços iniciais, condições e canais de contratação.",
+    "O envio de mensagem, simulação ou pedido não representa aceitação automática pela Imperial Volt.",
+    "A contratação será confirmada após definição do escopo aplicável e confirmação do pagamento."
+  ],
+  "precos": [
+    "Preços fixos aplicam-se somente ao escopo expressamente indicado.",
+    "Serviços identificados como a partir de dependem da complexidade e do escopo.",
+    "Custos de domínio, hospedagem, APIs, licenças, frete, taxas públicas e terceiros não estão incluídos, salvo indicação expressa.",
+    "Alterações fora do escopo serão cobradas separadamente."
+  ],
+  "pagamento": [
+    "Pix integral com 5% de desconto.",
+    "Serviços personalizados podem ser pagos em 50% para início e 50% antes da entrega definitiva, sem desconto.",
+    "Cartão de crédito em até 3 vezes sem juros, respeitando o valor mínimo de parcela.",
+    "Parcelamentos adicionais estão sujeitos aos juros e condições da operadora."
+  ],
+  "inicioDosTrabalhos": [
+    "O prazo começa após confirmação do pagamento aplicável.",
+    "O cliente deve entregar textos, imagens, acessos, medidas, documentos e demais materiais solicitados.",
+    "A falta de materiais ou aprovações suspende o prazo sem caracterizar atraso da Imperial Volt."
+  ],
+  "aprovacao": [
+    "O cliente é responsável por revisar nomes, textos, medidas, links, imagens e dados antes da aprovação.",
+    "Após aprovação, alterações podem gerar novo custo e novo prazo.",
+    "Produtos físicos personalizados somente serão produzidos após aprovação quando houver prévia visual."
+  ],
+  "propriedadeIntelectual": [
+    "Materiais fornecidos pelo cliente permanecem sob responsabilidade dele quanto a direitos e autorizações.",
+    "Código-fonte, arquivos editáveis, modelos, métodos e ferramentas internas somente serão entregues quando expressamente incluídos no escopo.",
+    "Licença de uso não implica transferência automática de autoria ou propriedade intelectual.",
+    "A Imperial Volt pode reutilizar componentes genéricos, estruturas técnicas e conhecimentos que não revelem informações confidenciais do cliente."
+  ],
+  "portfolio": {
+    "regra": "A utilização pública do projeto no portfólio dependerá das condições acordadas e não deverá expor dados confidenciais.",
+    "opcaoSigilo": "O cliente poderá solicitar análise de confidencialidade antes da publicação."
+  },
+  "limitacao": [
+    "A Imperial Volt não responde por falhas causadas por terceiros, provedores, APIs, operadoras, registradores, plataformas, dispositivos incompatíveis ou uso indevido.",
+    "Nenhum serviço será apresentado como garantia de resultado comercial, aprovação administrativa, lucro, tráfego, vendas ou disponibilidade permanente de terceiros.",
+    "As limitações não afastam responsabilidades que não possam ser excluídas pela legislação."
+  ],
+  "atendimento": {
+    "canal": "WhatsApp e e-mail informados no site",
+    "registro": "As comunicações poderão ser mantidas para comprovação de escopo, atendimento e exercício de direitos."
+  }
+}

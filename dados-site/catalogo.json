@@ -1,0 +1,119 @@
+{
+  "regrasGerais": {
+    "moeda": "BRL",
+    "pixIntegralDescontoPercentual": 5,
+    "freteIncluso": false,
+    "producaoAposPagamento": true,
+    "observacao": "Produtos personalizados exigem aprovação dos dados antes da produção."
+  },
+  "categorias": [
+    {
+      "id": "impressao-3d",
+      "nome": "Impressão 3D",
+      "descricao": "Produtos prontos, peças personalizadas e produção sob demanda.",
+      "produtos": [
+        {
+          "id": "caveira-subida-da-morte",
+          "nome": "Caveira Subida da Morte",
+          "preco": 29.90,
+          "tipoPreco": "fixo",
+          "material": "PLA",
+          "descricao": "Peça decorativa produzida em impressão 3D.",
+          "personalizavel": true,
+          "adicionais": [
+            {
+              "nome": "Personalização simples de texto ou cor",
+              "preco": 10
+            },
+            {
+              "nome": "Modelagem ou adaptação exclusiva",
+              "precoInicial": 50
+            }
+          ]
+        },
+        {
+          "id": "impressao-sob-medida",
+          "nome": "Impressão 3D sob medida",
+          "precoMinimo": 25,
+          "tipoPreco": "orçamento mínimo",
+          "descricao": "Produção calculada conforme material, tempo de máquina, complexidade e acabamento."
+        }
+      ]
+    },
+    {
+      "id": "nfc",
+      "nome": "Tags e Chaveiros NFC",
+      "descricao": "Produtos personalizados e regraváveis para abrir links por aproximação.",
+      "produtos": [
+        {
+          "id": "tag-nfc-personalizada",
+          "nome": "Tag NFC Personalizada",
+          "descricao": "Tag gravada com site, Instagram, WhatsApp ou outro link aprovado.",
+          "gravada": true,
+          "regravavel": true,
+          "faixas": [
+            { "quantidade": 1, "valorTotal": 24.90, "valorUnitario": 24.90 },
+            { "quantidade": 5, "valorTotal": 109.90, "valorUnitario": 21.98 },
+            { "quantidade": 10, "valorTotal": 199.90, "valorUnitario": 19.99 },
+            { "quantidade": 25, "valorTotal": 449.90, "valorUnitario": 18.00 },
+            { "quantidade": 50, "valorTotal": 799.90, "valorUnitario": 16.00 }
+          ]
+        },
+        {
+          "id": "chaveiro-nfc-personalizado",
+          "nome": "Chaveiro NFC Personalizado",
+          "descricao": "Chaveiro personalizado com chip NFC configurado e testado.",
+          "gravada": true,
+          "regravavel": true,
+          "faixas": [
+            { "quantidade": 1, "valorTotal": 34.90, "valorUnitario": 34.90 },
+            { "quantidade": 5, "valorTotal": 159.90, "valorUnitario": 31.98 },
+            { "quantidade": 10, "valorTotal": 289.90, "valorUnitario": 28.99 },
+            { "quantidade": 25, "valorTotal": 649.90, "valorUnitario": 26.00 },
+            { "quantidade": 50, "valorTotal": 1149.90, "valorUnitario": 23.00 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kits-revenda",
+      "nome": "Kits NFC para Revendedores",
+      "descricao": "Pacotes com produtos NFC e aplicativo personalizado para operação e revenda.",
+      "produtos": [
+        {
+          "id": "kit-revenda-start",
+          "nome": "Kit Revenda Start",
+          "preco": 1490,
+          "tipoPreco": "fixo",
+          "inclui": [
+            "20 tags NFC",
+            "aplicativo desktop personalizado",
+            "identidade visual básica do revendedor",
+            "guia de utilização",
+            "suporte inicial"
+          ]
+        },
+        {
+          "id": "kit-revenda-pro",
+          "nome": "Kit Revenda Pro",
+          "preco": 2490,
+          "tipoPreco": "fixo",
+          "inclui": [
+            "50 tags NFC",
+            "aplicativo desktop personalizado",
+            "identidade visual do revendedor",
+            "guia de utilização",
+            "suporte inicial ampliado"
+          ]
+        },
+        {
+          "id": "aplicativo-mobile-adicional",
+          "nome": "Aplicativo Mobile Adicional",
+          "precoInicial": 1500,
+          "tipoPreco": "a partir de",
+          "descricao": "Versão para celular, quando tecnicamente viável e contratada separadamente."
+        }
+      ]
+    }
+  ]
+}

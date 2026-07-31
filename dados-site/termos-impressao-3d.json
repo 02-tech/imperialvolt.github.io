@@ -1,0 +1,25 @@
+{
+  "titulo": "Condições para Impressão 3D",
+  "caracteristicas": [
+    "Peças impressas podem apresentar linhas de camada, marcas de suporte e pequenas variações de acabamento.",
+    "Dimensões possuem tolerâncias inerentes ao processo e ao material.",
+    "Cores podem variar entre lotes, telas e fornecedores.",
+    "Resistência depende de material, geometria, orientação, temperatura e uso."
+  ],
+  "uso": [
+    "A finalidade decorativa ou funcional será informada em cada produto.",
+    "Peças não devem ser usadas como componentes médicos, alimentícios, estruturais, automotivos críticos ou de segurança sem validação específica.",
+    "Materiais como PLA podem deformar sob calor elevado."
+  ],
+  "arquivosCliente": [
+    "O cliente declara possuir autorização para produzir os arquivos enviados.",
+    "A Imperial Volt poderá recusar conteúdos ilícitos ou que violem direitos de terceiros.",
+    "Correções, adaptação e modelagem serão cobradas quando não incluídas."
+  ],
+  "personalizacao": [
+    "Texto, medidas, formato e prévia devem ser conferidos antes da aprovação.",
+    "Após o início da produção, alterações exigem novo pedido ou cobrança.",
+    "Aprovação incorreta de dados fornecidos pelo cliente não caracteriza defeito de fabricação."
+  ],
+  "garantia": "Defeitos de fabricação serão avaliados conforme evidências e condições de uso. Desgaste, calor, impacto, esforço inadequado e modificação pelo usuário não são defeitos de fabricação."
+}

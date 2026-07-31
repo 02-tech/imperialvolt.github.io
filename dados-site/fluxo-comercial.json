@@ -1,0 +1,76 @@
+{
+  "entrada": {
+    "titulo": "O que você precisa?",
+    "opcoes": [
+      {
+        "id": "criar-site",
+        "rotulo": "Criar um site",
+        "destino": "servicos-sites"
+      },
+      {
+        "id": "criar-app",
+        "rotulo": "Criar aplicativo ou sistema",
+        "destino": "servicos-software"
+      },
+      {
+        "id": "automatizar",
+        "rotulo": "Automatizar uma tarefa",
+        "destino": "servicos-automacao"
+      },
+      {
+        "id": "impressao-3d",
+        "rotulo": "Comprar produto 3D",
+        "destino": "produtos-3d"
+      },
+      {
+        "id": "nfc",
+        "rotulo": "Comprar tags ou chaveiros NFC",
+        "destino": "produtos-nfc"
+      },
+      {
+        "id": "revender-nfc",
+        "rotulo": "Revender soluções NFC",
+        "destino": "kits-revenda"
+      },
+      {
+        "id": "registro-marca",
+        "rotulo": "Registrar uma marca",
+        "destino": "servicos-marcas"
+      }
+    ]
+  },
+  "camadas": [
+    {
+      "nivel": 1,
+      "objetivo": "mostrar necessidade, resultado, preço inicial e chamada para ação"
+    },
+    {
+      "nivel": 2,
+      "objetivo": "comparar planos, escopo e diferenças"
+    },
+    {
+      "nivel": 3,
+      "objetivo": "mostrar termos, perguntas frequentes, limitações e detalhes técnicos"
+    }
+  ],
+  "conversaoWhatsapp": {
+    "mensagemBase": "Olá! Vim pelo site da Imperial Volt e tenho interesse em: {produtoOuServico}. Opção: {plano}. Valor exibido: {valor}. Forma de pagamento pretendida: {pagamento}.",
+    "campos": [
+      "produto ou serviço",
+      "plano",
+      "valor",
+      "quantidade",
+      "personalização",
+      "forma de pagamento"
+    ]
+  },
+  "regras": [
+    "Não esconder preço disponível.",
+    "Não usar urgência falsa.",
+    "Não prometer resultado garantido.",
+    "Não criar depoimentos fictícios.",
+    "Não apresentar desconto falso.",
+    "Não iniciar com excesso de informação.",
+    "Permitir acesso fácil aos detalhes completos."
+  ]
+}

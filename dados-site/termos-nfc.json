@@ -1,0 +1,31 @@
+{
+  "titulo": "Condições para Tags e Chaveiros NFC",
+  "funcionamento": [
+    "O produto depende de aparelho compatível com NFC.",
+    "O NFC deve estar ativado quando exigido pelo dispositivo.",
+    "A experiência pode variar conforme aparelho, sistema operacional, capa, posição da antena e configurações.",
+    "A tag não possui internet, GPS ou rastreamento próprio.",
+    "Links exigem conexão à internet para abrir conteúdo online."
+  ],
+  "gravacao": [
+    "Tags vendidas como gravadas serão configuradas com o conteúdo aprovado pelo cliente.",
+    "Tags regraváveis poderão ser alteradas enquanto não estiverem bloqueadas permanentemente.",
+    "Bloqueio permanente, quando aplicado, pode impedir futuras alterações.",
+    "A capacidade de armazenamento varia conforme o chip."
+  ],
+  "conteudo": {
+    "responsabilidadeCliente": "O cliente é responsável pelo link, texto, arquivo ou destino solicitado.",
+    "proibicoes": [
+      "conteúdo ilícito",
+      "fraudulento",
+      "malicioso",
+      "enganoso",
+      "que viole direitos de terceiros"
+    ]
+  },
+  "compatibilidade": "Não prometer funcionamento universal em todos os celulares.",
+  "revendedores": {
+    "aplicativo": "O aplicativo personalizado seguirá plataforma, licença, quantidade de dispositivos e funções descritas no pacote.",
+    "suporte": "Treinamento, suporte e atualizações serão limitados ao que estiver incluído."
+  }
+}

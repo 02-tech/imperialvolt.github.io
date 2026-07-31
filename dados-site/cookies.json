@@ -1,0 +1,30 @@
+{
+  "titulo": "Política de Cookies",
+  "ultimaAtualizacao": "2026-07-31",
+  "estadoAtual": {
+    "usaCookiesNaoEssenciais": false,
+    "usaAnalytics": false,
+    "usaPublicidadeComportamental": false,
+    "usaMetaPixel": false,
+    "usaGoogleAnalytics": false
+  },
+  "categorias": [
+    {
+      "nome": "Cookies estritamente necessários",
+      "descricao": "Utilizados somente quando indispensáveis ao funcionamento, segurança ou manutenção da sessão."
+    },
+    {
+      "nome": "Cookies de preferência",
+      "descricao": "Podem guardar escolhas do usuário, quando essa funcionalidade existir."
+    },
+    {
+      "nome": "Cookies de análise",
+      "descricao": "Somente poderão ser ativados após implementação adequada e revisão da política."
+    },
+    {
+      "nome": "Cookies de publicidade",
+      "descricao": "Não estão autorizados nesta fase do projeto."
+    }
+  ],
+  "regraImplementacao": "Não exibir banner de consentimento falso ou desnecessário. Se forem instaladas tecnologias não essenciais, implementar gestão real de consentimento antes de carregá-las."
+}

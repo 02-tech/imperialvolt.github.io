@@ -1,0 +1,42 @@
+{
+  "titulo": "Condições para Sites e Páginas Digitais",
+  "incluidoGeralmente": [
+    "desenvolvimento conforme o plano contratado",
+    "layout responsivo",
+    "integração com WhatsApp quando prevista",
+    "publicação inicial quando prevista",
+    "SEO técnico básico quando previsto",
+    "configuração de domínio existente quando tecnicamente possível e incluída"
+  ],
+  "naoIncluidoPorPadrao": [
+    "compra ou renovação de domínio",
+    "hospedagem paga",
+    "e-mail profissional",
+    "APIs e serviços pagos",
+    "gateway de pagamento",
+    "banco de dados",
+    "painel administrativo",
+    "manutenção contínua",
+    "produção ilimitada de conteúdo",
+    "fotografia profissional",
+    "identidade visual completa",
+    "licenças de imagens, fontes ou plugins"
+  ],
+  "dominio": {
+    "clienteJaPossui": "A Imperial Volt poderá configurar o domínio dentro do escopo contratado, desde que o cliente forneça os acessos necessários.",
+    "clienteNaoPossui": "Será verificada a disponibilidade no registrador aplicável. Compra e renovação serão cobradas separadamente.",
+    "titularidade": "Sempre que possível, o domínio deverá ser registrado em nome do cliente."
+  },
+  "revisoes": {
+    "regra": "Cada plano deverá declarar o número de rodadas de ajustes.",
+    "foraDoEscopo": "Novas páginas, novas funções, mudanças estruturais e revisões excedentes serão cobradas."
+  },
+  "entrega": {
+    "condicao": "A publicação ou transferência definitiva ocorrerá após quitação.",
+    "dependencias": "Falhas ou indisponibilidades de hospedagem, DNS, domínio e serviços de terceiros podem afetar a publicação."
+  },
+  "manutencao": {
+    "incluida": false,
+    "regra": "Suporte, manutenção, atualizações e alterações posteriores exigem plano ou contratação específica."
+  }
+}

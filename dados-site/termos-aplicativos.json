@@ -1,0 +1,43 @@
+{
+  "titulo": "Condições para Aplicativos, Sistemas e Automações",
+  "escopo": [
+    "funcionalidades",
+    "plataformas suportadas",
+    "sistemas operacionais",
+    "número de usuários ou dispositivos",
+    "integrações",
+    "forma de armazenamento",
+    "entregáveis",
+    "prazo",
+    "suporte"
+  ],
+  "codigoFonte": {
+    "entregaAutomatica": false,
+    "regra": "Código-fonte e arquivos editáveis somente serão entregues quando expressamente contratados."
+  },
+  "licenca": {
+    "regra": "A licença de uso, quantidade de instalações, possibilidade de revenda e restrições serão descritas no plano contratado.",
+    "revenda": "Somente será permitida quando o produto ou contrato indicar expressamente licença para revendedores."
+  },
+  "suporte": {
+    "correcoes": "Erros reproduzíveis diretamente relacionados ao escopo entregue serão tratados conforme o período definido na proposta.",
+    "melhorias": "Novas funções, mudanças de regra e ampliações não são correções e serão cobradas separadamente.",
+    "vitalicio": false
+  },
+  "dependencias": [
+    "sistemas operacionais",
+    "APIs",
+    "serviços em nuvem",
+    "lojas de aplicativos",
+    "bibliotecas",
+    "hardware",
+    "rede",
+    "dispositivos"
+  ],
+  "dados": {
+    "responsabilidadeCliente": "O cliente deve manter cópias e operar o sistema conforme as instruções.",
+    "backup": "Backup automático somente existe quando expressamente contratado.",
+    "migracao": "Importação, limpeza e migração de dados serão orçadas conforme volume e complexidade."
+  },
+  "seguranca": "Nenhum sistema será descrito como inviolável. Serão adotadas medidas proporcionais ao escopo e ao risco."
+}

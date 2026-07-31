@@ -1,0 +1,331 @@
+{
+  "regrasGerais": {
+    "moeda": "BRL",
+    "pixIntegralDescontoPercentual": 5,
+    "pagamentoDividido": "50% para iniciar e 50% antes da entrega definitiva",
+    "cartao": "até 3x sem juros, respeitando parcela mínima",
+    "custosTerceirosInclusos": false,
+    "observacao": "Domínio, hospedagem, APIs, licenças, taxas e serviços externos são cobrados separadamente, salvo indicação expressa."
+  },
+  "categorias": [
+    {
+      "id": "sites",
+      "nome": "Sites e páginas digitais",
+      "servicos": [
+        {
+          "id": "pagina-express",
+          "nome": "Página Express",
+          "preco": 397,
+          "tipoPreco": "fixo",
+          "descricao": "Página profissional de entrada para apresentar um negócio, serviço ou campanha.",
+          "inclui": [
+            "1 página",
+            "até 5 seções",
+            "layout responsivo",
+            "botão de WhatsApp",
+            "configuração básica de SEO",
+            "publicação inicial",
+            "1 rodada de ajustes"
+          ],
+          "naoInclui": [
+            "domínio",
+            "hospedagem paga",
+            "painel administrativo",
+            "banco de dados",
+            "produção extensa de conteúdo",
+            "identidade visual completa"
+          ],
+          "prazoEstimadoDiasUteis": {
+            "minimo": 3,
+            "maximo": 7
+          }
+        },
+        {
+          "id": "landing-page-profissional",
+          "nome": "Landing Page Profissional",
+          "preco": 697,
+          "tipoPreco": "fixo",
+          "descricao": "Página estratégica focada em apresentação, captação de contatos e conversão.",
+          "inclui": [
+            "design personalizado",
+            "estrutura comercial",
+            "até 8 seções",
+            "integração com WhatsApp",
+            "formulário simples quando aplicável",
+            "animações discretas",
+            "SEO básico",
+            "publicação inicial",
+            "2 rodadas de ajustes"
+          ],
+          "naoInclui": [
+            "domínio",
+            "hospedagem paga",
+            "automação externa",
+            "painel administrativo",
+            "banco de dados",
+            "campanhas de anúncios"
+          ],
+          "prazoEstimadoDiasUteis": {
+            "minimo": 5,
+            "maximo": 10
+          }
+        },
+        {
+          "id": "site-institucional",
+          "nome": "Site Institucional",
+          "preco": 1290,
+          "tipoPreco": "fixo",
+          "descricao": "Site completo para apresentar empresa, serviços, diferenciais, avaliações e contato.",
+          "inclui": [
+            "até 5 páginas",
+            "design personalizado",
+            "layout responsivo",
+            "integração com WhatsApp",
+            "seção de avaliações",
+            "SEO técnico básico",
+            "publicação inicial",
+            "2 rodadas de ajustes"
+          ],
+          "naoInclui": [
+            "domínio",
+            "hospedagem paga",
+            "painel administrativo",
+            "banco de dados",
+            "e-mail profissional",
+            "manutenção contínua"
+          ],
+          "prazoEstimadoDiasUteis": {
+            "minimo": 10,
+            "maximo": 20
+          }
+        },
+        {
+          "id": "site-comercial-catalogo",
+          "nome": "Site Comercial com Catálogo",
+          "preco": 1890,
+          "tipoPreco": "fixo",
+          "descricao": "Site navegável com produtos, serviços, preços e pedidos encaminhados ao WhatsApp.",
+          "inclui": [
+            "catálogo navegável",
+            "páginas ou modais de produtos",
+            "preços visíveis",
+            "filtros simples quando aplicáveis",
+            "mensagem automática para WhatsApp",
+            "layout responsivo",
+            "SEO básico",
+            "publicação inicial",
+            "2 rodadas de ajustes"
+          ],
+          "naoInclui": [
+            "pagamento online",
+            "painel administrativo",
+            "controle de estoque",
+            "banco de dados",
+            "domínio",
+            "hospedagem paga"
+          ],
+          "prazoEstimadoDiasUteis": {
+            "minimo": 15,
+            "maximo": 30
+          }
+        },
+        {
+          "id": "site-premium",
+          "nome": "Site Premium Personalizado",
+          "precoInicial": 2900,
+          "tipoPreco": "a partir de",
+          "descricao": "Projeto avançado com arquitetura, design e recursos definidos sob medida.",
+          "inclui": [
+            "planejamento de estrutura",
+            "design exclusivo",
+            "experiência de navegação avançada",
+            "animações",
+            "integrações previstas no orçamento",
+            "SEO técnico",
+            "publicação inicial"
+          ],
+          "prazoEstimadoDiasUteis": {
+            "minimo": 20,
+            "maximo": 45
+          }
+        }
+      ]
+    },
+    {
+      "id": "software",
+      "nome": "Aplicativos, sistemas e automações",
+      "servicos": [
+        {
+          "id": "automacao-simples",
+          "nome": "Automação Simples",
+          "precoInicial": 690,
+          "tipoPreco": "a partir de",
+          "descricao": "Automação de uma rotina específica, local e de baixa complexidade."
+        },
+        {
+          "id": "automacao-integrada",
+          "nome": "Automação Integrada",
+          "precoInicial": 1490,
+          "tipoPreco": "a partir de",
+          "descricao": "Automação com múltiplas etapas, arquivos, relatórios, APIs ou serviços externos."
+        },
+        {
+          "id": "aplicativo-desktop",
+          "nome": "Aplicativo Desktop Essencial",
+          "precoInicial": 1990,
+          "tipoPreco": "a partir de",
+          "descricao": "Aplicativo personalizado para computador, com operação local e instalador."
+        },
+        {
+          "id": "aplicativo-mobile",
+          "nome": "Aplicativo Mobile ou PWA",
+          "precoInicial": 2490,
+          "tipoPreco": "a partir de",
+          "descricao": "Aplicativo para celular ou PWA, com funções e telas definidas no escopo."
+        },
+        {
+          "id": "sistema-personalizado",
+          "nome": "Sistema Personalizado",
+          "precoInicial": 2990,
+          "tipoPreco": "a partir de",
+          "descricao": "Sistema com cadastros, regras de negócio, painéis e armazenamento de informações."
+        },
+        {
+          "id": "sistema-avancado",
+          "nome": "Sistema com Login, Banco e Integrações",
+          "precoInicial": 4900,
+          "tipoPreco": "a partir de",
+          "descricao": "Sistema avançado com autenticação, permissões, banco remoto e integrações."
+        }
+      ]
+    },
+    {
+      "id": "marcas",
+      "nome": "Registro de marcas",
+      "servicos": [
+        {
+          "id": "analise-preliminar-marca",
+          "nome": "Análise Preliminar de Marca",
+          "preco": 197,
+          "tipoPreco": "fixo",
+          "descricao": "Busca preliminar, análise inicial de riscos e indicação de classe para o pedido de marca.",
+          "inclui": [
+            "levantamento inicial",
+            "busca preliminar de anterioridades",
+            "análise do nome e da apresentação",
+            "indicação preliminar de uma classe",
+            "relatório resumido de riscos"
+          ],
+          "naoInclui": [
+            "protocolo",
+            "taxa do INPI",
+            "garantia de deferimento",
+            "parecer jurídico"
+          ]
+        },
+        {
+          "id": "pedido-registro-marca",
+          "nome": "Assessoria para Pedido de Registro de Marca",
+          "preco": 890,
+          "tipoPreco": "fixo",
+          "descricao": "Suporte técnico e documental para preparação, protocolo e acompanhamento inicial do pedido perante o INPI.",
+          "inclui": [
+            "análise preliminar",
+            "orientação da apresentação da marca",
+            "definição preliminar de uma classe",
+            "conferência dos dados do requerente",
+            "preparação documental",
+            "geração ou orientação da GRU",
+            "protocolo do pedido",
+            "organização do comprovante",
+            "acompanhamento por 12 meses",
+            "avisos sobre movimentações identificadas"
+          ],
+          "naoInclui": [
+            "taxas oficiais do INPI",
+            "classes adicionais",
+            "oposição",
+            "manifestação",
+            "exigência complexa",
+            "recurso administrativo",
+            "processo judicial",
+            "acompanhamento após 12 meses"
+          ],
+          "observacao": "O protocolo não garante deferimento. A decisão final compete exclusivamente ao INPI."
+        },
+        {
+          "id": "classe-adicional-marca",
+          "nome": "Classe Adicional",
+          "preco": 390,
+          "tipoPreco": "por classe, além das taxas"
+        },
+        {
+          "id": "renovacao-acompanhamento-marca",
+          "nome": "Renovação do Acompanhamento",
+          "preco": 149,
+          "tipoPreco": "por 12 meses"
+        },
+        {
+          "id": "exigencia-marca",
+          "nome": "Cumprimento de Exigência",
+          "precoInicial": 290,
+          "tipoPreco": "a partir de"
+        },
+        {
+          "id": "manifestacao-oposicao",
+          "nome": "Manifestação contra Oposição",
+          "precoInicial": 590,
+          "tipoPreco": "a partir de"
+        },
+        {
+          "id": "recurso-marca",
+          "nome": "Recurso Administrativo",
+          "precoInicial": 790,
+          "tipoPreco": "a partir de"
+        },
+        {
+          "id": "alteracao-cadastral-marca",
+          "nome": "Alteração de Titularidade ou Dados",
+          "precoInicial": 290,
+          "tipoPreco": "a partir de, além das taxas"
+        }
+      ]
+    },
+    {
+      "id": "manutencao",
+      "nome": "Manutenção e suporte",
+      "servicos": [
+        {
+          "id": "alteracao-avulsa",
+          "nome": "Alteração Pequena Avulsa",
+          "precoInicial": 80,
+          "tipoPreco": "a partir de"
+        },
+        {
+          "id": "hora-tecnica",
+          "nome": "Hora Técnica",
+          "preco": 100,
+          "tipoPreco": "por hora"
+        },
+        {
+          "id": "manutencao-basica",
+          "nome": "Manutenção Básica Mensal",
+          "preco": 149,
+          "tipoPreco": "mensal"
+        },
+        {
+          "id": "manutencao-comercial",
+          "nome": "Manutenção Comercial Mensal",
+          "preco": 299,
+          "tipoPreco": "mensal"
+        },
+        {
+          "id": "prioridade",
+          "nome": "Atendimento ou Entrega Prioritária",
+          "acrescimoPercentual": 30,
+          "tipoPreco": "acréscimo"
+        }
+      ]
+    }
+  ]
+}
