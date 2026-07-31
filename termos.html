@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b5cff" />
+  <title>Termos de Uso e Contratação — Imperial Volt</title>
+  <meta name="description" content="Termos gerais e condições específicas por categoria: sites, aplicativos, impressão 3D, NFC e registro de marcas." />
+  <link rel="canonical" href="https://imperialvolt.com/termos.html" />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="./src/css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg" />
+  <script>
+  (function(){
+    try{
+      var saved = localStorage.getItem("iv_theme");
+      if(saved === "light" || saved === "dark"){ document.documentElement.setAttribute("data-theme", saved); }
+    }catch(e){}
+  })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#legalConteudo">Pular para conteúdo</a>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="./index.html" style="text-decoration:none">
+        <span class="brand__bolt">⚡</span>
+        <div class="brand__text"><strong>Imperial Volt</strong><span>Termos de Uso e Contratação</span></div>
+      </a>
+      <nav class="nav"><a href="./index.html">← Voltar ao site</a></nav>
+    </div>
+  </header>
+
+  <main class="section container legalPage" id="legalConteudo">
+    <p>Carregando conteúdo…</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div><b>Imperial Volt</b><span> — CNPJ 60.179.279/0001-44</span></div>
+      <small>© <span id="year"></span> Imperial Volt.</small>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { renderDocumentoLegal } from "./src/js/legal.js";
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderDocumentoLegal({
+      arquivos: [
+        "./dados-site/termos-gerais.json",
+        { arquivo: "./dados-site/politicas.json", titulo: "Políticas de Pagamento e Orçamento" },
+        "./dados-site/termos-sites.json",
+        "./dados-site/termos-aplicativos.json",
+        "./dados-site/termos-impressao-3d.json",
+        "./dados-site/termos-nfc.json",
+        "./dados-site/termos-marcas.json"
+      ],
+      alvoId: "legalConteudo"
+    });
+  </script>
+</body>
+</html>
