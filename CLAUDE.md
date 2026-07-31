@@ -70,3 +70,20 @@ Não inventar:
 A fase atual é somente preparação.
 
 Não reconstruir o site até que o briefing final esteja completo.
+
+## Presença digital e contatos
+
+Ler também:
+
+- dados-site/presenca-digital.json
+
+Regras:
+
+- usar contato.imperialvolt@gmail.com como e-mail comercial;
+- usar suporte.imperialvolt@gmail.com para suporte e privacidade;
+- não publicar métricas administrativas internas;
+- não exibir números de seguidores como informação permanente;
+- não inventar URL do Facebook;
+- diferenciar atendimento automatizado 24h de atendimento humano;
+- não afirmar sincronização automática com Google, Instagram ou Facebook;
+- utilizar somente avaliações reais cadastradas em dados-site/avaliacoes.json.

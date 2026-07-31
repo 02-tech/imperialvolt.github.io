@@ -1,0 +1,170 @@
+{
+  "ultimaVerificacao": "2026-07-31",
+  "observacoes": [
+    "Os números de seguidores, publicações, avaliações e status das plataformas podem mudar.",
+    "Métricas administrativas internas não devem ser exibidas publicamente.",
+    "Não afirmar integração automática ou sincronização em tempo real com nenhuma plataforma."
+  ],
+  "contatos": {
+    "whatsapp": {
+      "numeroInternacional": "5524992144995",
+      "numeroExibicao": "+55 24 99214-4995",
+      "link": "https://wa.me/5524992144995",
+      "principal": true
+    },
+    "emails": {
+      "comercial": "contato.imperialvolt@gmail.com",
+      "suporteEPrivacidade": "suporte.imperialvolt@gmail.com"
+    },
+    "site": {
+      "nome": "Imperial Volt",
+      "url": "https://imperialvolt.com"
+    }
+  },
+  "localizacao": {
+    "enderecoPublico": {
+      "logradouro": "Estrada das Arcas",
+      "numero": "1772",
+      "bairro": "Itaipava",
+      "cidade": "Petrópolis",
+      "estado": "RJ",
+      "cep": "25745-122",
+      "textoCompleto": "Estrada das Arcas, 1772 - Itaipava, Petrópolis - RJ, 25745-122"
+    },
+    "regiaoDeAtendimento": [
+      "Petrópolis",
+      "Itaipava",
+      "Pedro do Rio",
+      "Rio de Janeiro",
+      "atendimento remoto"
+    ],
+    "observacao": "Não apresentar Pedro do Rio como endereço comercial principal. A referência aparece em perfil social, enquanto o perfil empresarial do Google exibe o endereço em Itaipava."
+  },
+  "instagram": {
+    "nome": "Imperial Volt",
+    "usuario": "imperialvolt",
+    "url": "https://www.instagram.com/imperialvolt?igsh=MWJwOHRwN2QxNHBrOQ==",
+    "bio": [
+      "Sites, Apps, Marcas & Patentes",
+      "Atendimento 24h via Voltz-Bot",
+      "imperialvolt.com"
+    ],
+    "destaques": [
+      "portfólio",
+      "contato",
+      "clientes",
+      "serviços"
+    ],
+    "metricasCapturadas": {
+      "data": "2026-07-31",
+      "publicacoes": 2,
+      "seguidores": 10,
+      "seguindo": 13,
+      "exibirNoSite": false,
+      "motivo": "Métricas variáveis envelhecem rapidamente e podem deixar o site desatualizado."
+    },
+    "chamadasParaAcao": [
+      "Ver Instagram",
+      "Acompanhar projetos",
+      "Conhecer o portfólio"
+    ]
+  },
+  "facebook": {
+    "nome": "Imperial Volt",
+    "url": null,
+    "urlPendente": true,
+    "categoriaCapturada": "Electronics",
+    "frasePerfil": "Voltz, guardião e amante da tecnologia!",
+    "localizacaoCapturada": "Pedro do Rio, Rio de Janeiro, Brazil",
+    "contatosCapturados": {
+      "telefone": "+55 24 99214-4995",
+      "email": "contato.imperialvolt@gmail.com",
+      "site": "https://imperialvolt.com",
+      "messenger": "Imperial Volt"
+    },
+    "avaliacoesCapturadas": {
+      "texto": "Ainda sem avaliação",
+      "quantidade": 0,
+      "exibirComoProvaSocial": false
+    },
+    "observacao": "O link direto da página ainda precisa ser informado. Não criar URL presumida."
+  },
+  "googleEmpresa": {
+    "nome": "Imperial Volt",
+    "categoriaCapturada": "Empresa de software no Rio de Janeiro",
+    "notaCapturada": 5.0,
+    "quantidadeAvaliacoesCapturada": 3,
+    "dataCaptura": "2026-07-31",
+    "enderecoCapturado": "Estrada das Arcas, 1772 - Itaipava, Petrópolis - RJ, 25745-122",
+    "telefoneCapturado": "(24) 99214-4995",
+    "siteCapturado": "https://imperialvolt.com",
+    "statusCapturado": "Aberto 24 horas",
+    "linkAvaliacao": "https://g.page/r/CSuYu2CYXArnEAE/review",
+    "botoesPermitidos": [
+      {
+        "rotulo": "Avaliar no Google",
+        "url": "https://g.page/r/CSuYu2CYXArnEAE/review"
+      }
+    ],
+    "metricasAdministrativas": {
+      "interacoesComClientes": 193,
+      "exibirNoSite": false,
+      "motivo": "A captura indica que essa métrica é visível somente aos administradores e não constitui prova social pública."
+    },
+    "regrasDeExibicao": [
+      "Exibir a nota e a quantidade de avaliações somente como dados capturados na data informada.",
+      "Não afirmar atualização automática.",
+      "Não usar o status Aberto 24 horas como promessa de atendimento humano ininterrupto.",
+      "Distinguir atendimento automatizado 24h via Voltz-Bot de atendimento humano."
+    ]
+  },
+  "seo": {
+    "tituloSugerido": "Imperial Volt — Sites, Sistemas, Automação, NFC e Soluções Digitais",
+    "descricaoSugerida": "A Imperial Volt cria sites, aplicativos, automações, soluções NFC, impressão 3D e serviços digitais com entrega organizada, performance real e visual premium.",
+    "frasesAprovadas": [
+      "Sites, sistemas e automação que vendem.",
+      "Entrega organizada, performance real e visual premium.",
+      "A Imperial Volt executa com precisão — sem enrolação."
+    ]
+  },
+  "usoNoSite": {
+    "secoes": [
+      {
+        "id": "contato",
+        "dados": [
+          "WhatsApp",
+          "e-mail comercial",
+          "site oficial",
+          "localização"
+        ]
+      },
+      {
+        "id": "presenca-digital",
+        "dados": [
+          "Instagram",
+          "Facebook",
+          "Perfil da Empresa no Google"
+        ]
+      },
+      {
+        "id": "prova-social",
+        "dados": [
+          "nota capturada no Google",
+          "quantidade capturada de avaliações",
+          "avaliações reais cadastradas em avaliacoes.json"
+        ]
+      },
+      {
+        "id": "rodape",
+        "dados": [
+          "CNPJ",
+          "WhatsApp",
+          "e-mail comercial",
+          "políticas",
+          "Instagram",
+          "Google"
+        ]
+      }
+    ]
+  }
+}
