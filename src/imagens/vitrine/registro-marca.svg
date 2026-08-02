@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" fill="none">
+  <rect width="640" height="440" rx="36" fill="#F0D3FF"/>
+  <circle cx="320" cy="220" r="124" fill="#F4F0E8" stroke="#172019" stroke-width="10"/>
+  <path d="M320 119L346 188L420 192L362 238L381 310L320 269L259 310L278 238L220 192L294 188L320 119Z" fill="#3659E7"/>
+  <circle cx="320" cy="220" r="56" fill="#C7F34D"/>
+  <path d="M294 221L313 241L350 200" stroke="#172019" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="42" y="62" fill="#172019" font-family="monospace" font-size="18" letter-spacing="3">MARCA / REGISTRO</text>
+</svg>

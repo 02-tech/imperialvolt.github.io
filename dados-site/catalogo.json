@@ -74,46 +74,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "kits-revenda",
-      "nome": "Kits NFC para Revendedores",
-      "descricao": "Pacotes com produtos NFC e aplicativo personalizado para operação e revenda.",
-      "produtos": [
-        {
-          "id": "kit-revenda-start",
-          "nome": "Kit Revenda Start",
-          "preco": 1490,
-          "tipoPreco": "fixo",
-          "inclui": [
-            "20 tags NFC",
-            "aplicativo desktop personalizado",
-            "identidade visual básica do revendedor",
-            "guia de utilização",
-            "suporte inicial"
-          ]
-        },
-        {
-          "id": "kit-revenda-pro",
-          "nome": "Kit Revenda Pro",
-          "preco": 2490,
-          "tipoPreco": "fixo",
-          "inclui": [
-            "50 tags NFC",
-            "aplicativo desktop personalizado",
-            "identidade visual do revendedor",
-            "guia de utilização",
-            "suporte inicial ampliado"
-          ]
-        },
-        {
-          "id": "aplicativo-mobile-adicional",
-          "nome": "Aplicativo Mobile Adicional",
-          "precoInicial": 1500,
-          "tipoPreco": "a partir de",
-          "descricao": "Versão para celular, quando tecnicamente viável e contratada separadamente."
-        }
-      ]
     }
   ]
 }

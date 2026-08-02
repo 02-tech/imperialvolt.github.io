@@ -1,196 +1,263 @@
-/* Imperial Volt — main.js */
+/* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, unificarCategorias } from "./data.js";
-import { renderCatalogo, renderComparacaoSites, renderDestaques } from "./catalogo.js";
+import { renderCatalogo, renderDestaques } from "./catalogo.js";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
-const $ = (s, elx = document) => elx.querySelector(s);
+const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
+const CHAT_AUTO_CLOSE_MS = 3500;
 
-function setWhatsLinks() {
-  const url = linkWhatsApp(montarMensagem({ observacoes: "Quero um orçamento." }));
-  ["#whatsFab", "#whatsMain", "#whatsContato"].forEach((sel) => {
-    const a = $(sel);
-    if (a) a.href = url;
-  });
+function criar(tag, className, texto) {
+  const elemento = document.createElement(tag);
+  if (className) elemento.className = className;
+  if (texto != null) elemento.textContent = texto;
+  return elemento;
 }
 
 function setYear() {
-  const y = $("#year");
-  if (y) y.textContent = String(new Date().getFullYear());
+  const ano = $("#year");
+  if (ano) ano.textContent = String(new Date().getFullYear());
 }
 
-function themeToggle() {
-  const btn = $("#themeBtn");
-  if (!btn) return;
-  btn.addEventListener("click", () => {
-    const html = document.documentElement;
-    const cur = html.getAttribute("data-theme") || "dark";
-    const next = cur === "dark" ? "light" : "dark";
-    html.setAttribute("data-theme", next);
-    try { localStorage.setItem("iv_theme", next); } catch (e) {}
-  });
-}
+function setupMenu() {
+  const botao = $("#menuBtn");
+  const menu = $("#mobileNav");
+  if (!botao || !menu) return;
 
-function mobileMenu() {
-  const btn = $("#menuBtn");
-  const nav = $("#mobileNav");
-  if (!btn || !nav) return;
-
-  btn.addEventListener("click", () => {
-    if (nav.hasAttribute("hidden")) nav.removeAttribute("hidden");
-    else nav.setAttribute("hidden", "");
-  });
-
-  nav.addEventListener("click", (e) => {
-    if (e.target.closest("a")) nav.setAttribute("hidden", "");
-  });
-}
-
-function chatUI() {
-  const fab = $("#chatFab");
-  const box = $("#ivChat");
-  const close = $("#chatClose");
-
-  const open = () => {
-    if (!box) return;
-    box.removeAttribute("hidden");
-    try { window.IV_CHAT && window.IV_CHAT.focus(); } catch (e) {}
+  const fechar = () => {
+    menu.hidden = true;
+    botao.setAttribute("aria-expanded", "false");
   };
-  const hide = () => box && box.setAttribute("hidden", "");
-
-  if (fab) fab.addEventListener("click", open);
-  if (close) close.addEventListener("click", hide);
-
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") hide();
+  botao.addEventListener("click", () => {
+    const aberto = !menu.hidden;
+    menu.hidden = aberto;
+    botao.setAttribute("aria-expanded", String(!aberto));
+  });
+  menu.addEventListener("click", (evento) => {
+    if (evento.target.closest("a")) fechar();
   });
 }
 
-function renderChipsSolucoes(categorias) {
-  const cont = $("#chipsCategorias");
-  if (!cont) return;
-  cont.innerHTML = "";
-  categorias.forEach((cat) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "chip";
-    b.textContent = `${cat.icone} ${cat.nome}`;
-    b.addEventListener("click", () => {
-      const filtroChip = document.querySelector(`#filtrosCatalogo [data-filtro="${cat.id}"]`);
-      filtroChip?.click();
-      document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    cont.appendChild(b);
-  });
-}
-
-function renderFaq(dados) {
-  const cont = $("#listaFaq");
-  if (!cont || !dados.faq) return;
-  cont.innerHTML = "";
-
-  dados.faq.categorias.forEach((cat) => {
-    const bloco = document.createElement("div");
-    bloco.className = "faq__grupo";
-    bloco.innerHTML = `<h3 class="faq__grupoTitulo">${cat.nome}</h3>`;
-    cat.perguntas.forEach((p) => {
-      const det = document.createElement("details");
-      det.innerHTML = `<summary>${p.pergunta}</summary><div class="faq__body">${p.resposta}</div>`;
-      bloco.appendChild(det);
-    });
-    cont.appendChild(bloco);
-  });
-}
-
-function renderPagamento(dados) {
-  const alvo = $("#textoPagamento");
-  if (alvo && dados.politicas?.textoPublico) {
-    alvo.textContent = dados.politicas.textoPublico.descricao;
+function setupReveal() {
+  const elementos = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    elementos.forEach((elemento) => elemento.classList.add("is-visible"));
+    return;
   }
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+      entrada.target.classList.add("is-visible");
+      observador.unobserve(entrada.target);
+    });
+  }, { threshold: 0.12 });
+  elementos.forEach((elemento) => observador.observe(elemento));
+}
+
+function setupChat() {
+  const fab = $("#chatFab");
+  const caixa = $("#ivChat");
+  const fecharBotao = $("#chatClose");
+  if (!fab || !caixa || !fecharBotao) return;
+
+  let temporizador;
+  const limparTimer = () => window.clearTimeout(temporizador);
+  const fechar = () => {
+    limparTimer();
+    caixa.hidden = true;
+    fab.setAttribute("aria-expanded", "false");
+  };
+  const reiniciarTimer = () => {
+    if (caixa.hidden) return;
+    limparTimer();
+    // Small margin keeps the visible time within the promised five seconds.
+    temporizador = window.setTimeout(fechar, CHAT_AUTO_CLOSE_MS);
+  };
+  const abrir = () => {
+    caixa.hidden = false;
+    fab.setAttribute("aria-expanded", "true");
+    window.IV_CHAT?.boot?.();
+    window.IV_CHAT?.reset?.();
+    reiniciarTimer();
+  };
+
+  caixa.hidden = true;
+  fab.setAttribute("aria-expanded", "false");
+  fab.setAttribute("aria-controls", "ivChat");
+  const alternar = () => (caixa.hidden ? abrir() : fechar());
+  fab.addEventListener("click", alternar);
+  fab.addEventListener("keydown", (evento) => {
+    if (evento.key !== "Enter" && evento.key !== " ") return;
+    evento.preventDefault();
+    alternar();
+  });
+  fecharBotao.addEventListener("click", (evento) => {
+    evento.stopPropagation();
+    fechar();
+  });
+  caixa.addEventListener("pointerdown", (evento) => {
+    if (!evento.target.closest("#chatClose")) reiniciarTimer();
+  });
+  caixa.addEventListener("keydown", reiniciarTimer);
+  document.addEventListener("pointerdown", (evento) => {
+    if (!caixa.hidden && !caixa.contains(evento.target) && !fab.contains(evento.target)) fechar();
+  });
+  window.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape") fechar();
+  });
+
+  window.ImperialVoltApp = { ...(window.ImperialVoltApp || {}), abrirChat: abrir, fecharChat: fechar, reiniciarChat: reiniciarTimer };
+}
+
+function renderCategorias(categorias, selecionar) {
+  const alvo = $("#categoryNav");
+  if (!alvo) return;
+  alvo.replaceChildren();
+  [...categorias, { id: "empresas-revendedores", nome: "Empresas e revendedores", icone: "07" }].forEach((categoria) => {
+    const botao = criar("button", "category-nav__item");
+    botao.type = "button";
+    botao.append(criar("strong", "", categoria.nome), criar("span", "", categoria.icone));
+    botao.addEventListener("click", () => selecionar(categoria.id));
+    alvo.appendChild(botao);
+  });
+}
+
+function renderFaq(faq) {
+  const alvo = $("#listaFaq");
+  if (!alvo || !faq?.categorias) return;
+  alvo.replaceChildren();
+  faq.categorias.forEach((categoria) => {
+    categoria.perguntas.forEach((pergunta) => {
+      const detalhes = criar("details", "faq-item");
+      detalhes.append(criar("summary", "", pergunta.pergunta), criar("p", "", pergunta.resposta));
+      alvo.appendChild(detalhes);
+    });
+  });
+}
+
+function dataBrasil(iso) {
+  const [ano, mes, dia] = String(iso || "").split("-");
+  return ano && mes && dia ? `${dia}/${mes}/${ano}` : "data não informada";
 }
 
 function renderProvaSocial(dados) {
   const alvo = $("#provaSocial");
   if (!alvo) return;
-
-  const google = dados.presenca?.googleEmpresa;
+  alvo.replaceChildren();
+  const google = dados.publico?.google;
   const avaliacoes = dados.avaliacoes?.avaliacoes || [];
 
-  if (avaliacoes.length) {
-    alvo.innerHTML = avaliacoes.map((a) => `
-      <div class="avaliacao">
-        <b>${a.nome || "Cliente"}</b>
-        <p>${a.comentario || ""}</p>
-      </div>
-    `).join("");
-    return;
+  if (google?.notaCapturada != null) {
+    alvo.appendChild(criar("strong", "proof-card__score", `${String(google.notaCapturada).replace(".", ",")} ★`));
+    alvo.appendChild(criar("p", "", `${google.quantidadeAvaliacoesCapturada} avaliações no Google. Informação capturada em ${dataBrasil(google.dataCaptura)}, sem atualização automática.`));
   }
 
-  if (google?.notaCapturada) {
-    alvo.innerHTML = `
-      <div class="ctaBox__text">
-        <b>${google.notaCapturada.toFixed(1)} ★ no Google</b>
-        <span>${google.quantidadeAvaliacoesCapturada} avaliação(ões) — dado capturado em ${google.dataCaptura}. Não representa atualização automática.</span>
-      </div>
-      <a class="btn btn--ghost" href="${google.linkAvaliacao}" target="_blank" rel="noopener">Ver/avaliar no Google →</a>
-    `;
-  } else {
-    alvo.innerHTML = `<div class="ctaBox__text"><span>Ainda não há avaliações públicas cadastradas.</span></div>`;
+  if (avaliacoes.length) {
+    const lista = criar("div", "review-list");
+    avaliacoes.forEach((avaliacao) => {
+      const card = criar("article", "review-card");
+      const cabecalho = criar("div", "review-card__head");
+      cabecalho.append(criar("strong", "", avaliacao.nome), criar("span", "", "★★★★★"));
+      const comentario = criar("p", "", avaliacao.comentario);
+      comentario.classList.add("review-card__comment");
+      const resposta = criar("div", "review-card__reply");
+      resposta.append(criar("small", "", "Resposta da Imperial Volt"), criar("p", "", avaliacao.respostaEmpresa));
+      card.append(cabecalho, comentario, resposta);
+      lista.appendChild(card);
+    });
+    alvo.appendChild(lista);
   }
+
+  if (google?.linkAvaliacao) {
+    const link = criar("a", "button button--ink button--small", "Ver todas avaliações");
+    link.href = google.linkAvaliacao;
+    link.target = "_blank";
+    link.rel = "noopener";
+    alvo.appendChild(link);
+  }
+}
+
+function preencherContato(publico) {
+  const empresa = publico?.empresa;
+  if (!empresa) return;
+  const whats = linkWhatsApp(montarMensagem({ origem: "Site institucional" }));
+  ["#heroWhats", "#whatsMain", "#whatsContato", "#whatsFab"].forEach((seletor) => {
+    const link = $(seletor);
+    if (link) link.href = whats;
+  });
+  const endereco = $("#contactAddress");
+  if (endereco) {
+    endereco.textContent = empresa.endereco;
+    endereco.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(empresa.endereco)}`;
+  }
+  const contato = $("#whatsContato");
+  if (contato) contato.textContent = empresa.telefoneExibicao;
+  const email = $("#contactEmail");
+  if (email) {
+    email.textContent = empresa.emailComercial;
+    email.href = `mailto:${empresa.emailComercial}`;
+  }
+  const instagram = $("#contactInstagram");
+  if (instagram) instagram.href = empresa.instagram;
+  const instagramLink = $("#instagramLink");
+  if (instagramLink) instagramLink.href = empresa.instagram;
+  const instagramDescricao = $("#instagramDescription");
+  if (instagramDescricao && empresa.instagramDescricao) instagramDescricao.textContent = empresa.instagramDescricao;
+  const cidade = $("#footerCity");
+  if (cidade) cidade.textContent = `${empresa.cidade} - ${empresa.estado}`;
+}
+
+function rolarPara(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 async function boot() {
   setYear();
-  themeToggle();
-  mobileMenu();
-  chatUI();
-  setWhatsLinks();
+  setupMenu();
+  setupChat();
+  setupReveal();
+  window.IV_CHAT?.boot?.();
 
-  const dados = await carregarDados();
-  const categorias = unificarCategorias(dados);
-
-  renderChipsSolucoes(categorias);
-
-  renderCatalogo(categorias, {
-    gridEl: document.getElementById("gridCatalogo"),
-    filtrosEl: document.getElementById("filtrosCatalogo")
-  });
-
-  renderDestaques(categorias, document.getElementById("gridDestaques"), [
-    "site-comercial-catalogo",
-    "tag-nfc-personalizada",
-    "impressao-sob-medida",
-    "kit-revenda-start",
-    "pedido-registro-marca"
-  ]);
-
-  renderDestaques(categorias, document.getElementById("gridRevenda"), [
-    "kit-revenda-start",
-    "kit-revenda-pro",
-    "aplicativo-mobile-adicional"
-  ]);
-
-  renderComparacaoSites(categorias, document.getElementById("tabelaComparativa"));
-  renderFaq(dados);
-  renderPagamento(dados);
-  renderProvaSocial(dados);
-
-  const raizOrcamento = document.getElementById("assistenteOrcamento");
-  if (raizOrcamento) {
-    iniciarOrcamento({
-      raiz: raizOrcamento,
-      opcoesEntrada: dados.fluxo?.entrada?.opcoes || [],
-      categorias
+  try {
+    const dados = await carregarDados();
+    const categorias = unificarCategorias(dados);
+    const quote = iniciarOrcamento({ raiz: $("#quoteBuilder"), categorias, politicas: dados.politicas });
+    const selecionarProduto = (selecao) => {
+      quote.selecionar(selecao);
+      rolarPara("orcamento");
+    };
+    const catalogo = renderCatalogo(categorias, {
+      gridEl: $("#gridCatalogo"),
+      filtrosEl: $("#catalogFilters"),
+      maisEl: $("#catalogMore"),
+      onSelect: selecionarProduto
     });
+    renderDestaques(categorias, $("#gridDestaques"), [
+      "landing-page-profissional",
+      "tag-nfc-personalizada",
+      "impressao-sob-medida",
+      "pedido-registro-marca"
+    ], selecionarProduto);
+    renderCategorias(categorias, (categoriaId) => {
+      if (categoriaId === "empresas-revendedores") {
+        quote.selecionar({ categoriaId });
+        rolarPara("orcamento");
+        return;
+      }
+      catalogo.filtrar(categoriaId);
+      rolarPara("catalogo");
+    });
+    document.querySelectorAll("[data-quote-category]").forEach((link) => {
+      link.addEventListener("click", () => quote.selecionar({ categoriaId: link.dataset.quoteCategory }));
+    });
+    renderFaq(dados.faq);
+    renderProvaSocial(dados);
+    preencherContato(dados.publico);
+  } catch (erro) {
+    console.error("[Imperial Volt] Falha ao iniciar o site", erro);
+    const destino = $("#quoteBuilder");
+    if (destino) destino.textContent = "Não foi possível carregar as opções agora. Fale conosco pelo WhatsApp.";
   }
 }
 
 boot();
-
-setTimeout(() => {
-  try {
-    if (window.IV_CHAT && typeof window.IV_CHAT.boot === "function") {
-      window.IV_CHAT.boot();
-    }
-  } catch (e) {}
-}, 0);

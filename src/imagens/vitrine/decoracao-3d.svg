@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" fill="none">
+  <rect width="640" height="440" rx="36" fill="#172019"/>
+  <path d="M0 355C111 280 169 406 290 344C406 284 480 156 640 219V440H0V355Z" fill="#3659E7" opacity=".95"/>
+  <g transform="translate(185 87)">
+    <path d="M136 6C198 6 244 58 244 121V195C244 263 200 312 136 312C72 312 28 263 28 195V121C28 58 74 6 136 6Z" fill="#F4F0E8"/>
+    <path d="M74 116C90 84 112 69 136 69C160 69 183 84 198 116" stroke="#172019" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="93" cy="153" r="17" fill="#172019"/>
+    <circle cx="179" cy="153" r="17" fill="#172019"/>
+    <path d="M100 222C120 239 151 239 172 222" stroke="#172019" stroke-width="14" stroke-linecap="round"/>
+    <path d="M61 276H211" stroke="#C7F34D" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <text x="42" y="62" fill="#C7F34D" font-family="monospace" font-size="18" letter-spacing="3">OBJETO / 3D</text>
+</svg>

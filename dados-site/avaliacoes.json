@@ -1,8 +1,21 @@
 {
   "resumo": {
-    "nota": null,
-    "quantidade": null,
+    "nota": 5.0,
+    "quantidade": 3,
     "fonte": "Google"
   },
-  "avaliacoes": []
+  "avaliacoes": [
+    {
+      "nome": "Caique Dos Anjos",
+      "nota": 5,
+      "comentario": "Excelente trabalho.\nMuito obrigado irmão",
+      "respostaEmpresa": "Muito obrigado, meu irmão! Fico feliz demais em saber que gostou do serviço.\n\nPrecisando de qualquer coisa, só me chamar 🤝"
+    },
+    {
+      "nome": "Clayton Teodoro Cathoud",
+      "nota": 5,
+      "comentario": "Profissional dedicado, atencioso, educado.\nRecomendo.",
+      "respostaEmpresa": "Muito obrigado pelo feedback, Clayton! Fico feliz em saber que ficou satisfeito com o atendimento.\n\nSempre que precisar, estou à disposição 🤝"
+    }
+  ]
 }

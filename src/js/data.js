@@ -1,102 +1,91 @@
-/* Imperial Volt — carregamento central dos dados públicos (dados-site/*.json) */
+/* Dados estritamente publicos usados pela experiencia comercial. */
 
 const ARQUIVOS = {
-  config: "./dados-site/configuracoes.json",
-  presenca: "./dados-site/presenca-digital.json",
-  catalogo: "./dados-site/catalogo.json",
+  publico: "./dados-site/publico.json",
+  catalogo: "./dados-site/catalogo-publico.json",
   servicos: "./dados-site/servicos.json",
   politicas: "./dados-site/politicas.json",
   avaliacoes: "./dados-site/avaliacoes.json",
-  faq: "./dados-site/faq.json",
-  fluxo: "./dados-site/fluxo-comercial.json"
+  faq: "./dados-site/faq.json"
+};
+
+const ROTULOS = {
+  sites: { titulo: "Sites e páginas digitais", icone: "01" },
+  software: { titulo: "Sistemas e automação", icone: "02" },
+  marcas: { titulo: "Registro de marcas", icone: "03" },
+  manutencao: { titulo: "Manutenção e suporte", icone: "04" },
+  "impressao-3d": { titulo: "Impressão 3D", icone: "05" },
+  nfc: { titulo: "Tags e chaveiros NFC", icone: "06" }
 };
 
 async function carregarJson(caminho) {
-  const resp = await fetch(caminho, { cache: "no-store" });
-  if (!resp.ok) throw new Error("Falha ao carregar " + caminho);
-  return resp.json();
+  const resposta = await fetch(caminho, { cache: "no-store" });
+  if (!resposta.ok) throw new Error(`Falha ao carregar ${caminho}`);
+  return resposta.json();
 }
 
-let promessa = null;
+let promessa;
 
 export function carregarDados() {
   if (!promessa) {
-    promessa = Promise.all(Object.entries(ARQUIVOS).map(async ([chave, caminho]) => {
-      try {
-        return [chave, await carregarJson(caminho)];
-      } catch (e) {
-        console.error("[Imperial Volt] Não foi possível carregar", caminho, e);
-        return [chave, null];
-      }
-    })).then((pares) => Object.fromEntries(pares));
+    promessa = Promise.all(
+      Object.entries(ARQUIVOS).map(async ([chave, caminho]) => [chave, await carregarJson(caminho)])
+    ).then((pares) => Object.fromEntries(pares));
   }
   return promessa;
 }
 
-/* Une servicos.json + catalogo.json numa única lista de categorias comerciais */
 export function unificarCategorias(dados) {
-  const lista = [];
+  const categorias = [];
 
-  const rotulos = {
-    sites: { titulo: "Sites e páginas digitais", icone: "🌐" },
-    software: { titulo: "Aplicativos, sistemas e automação", icone: "⚙️" },
-    marcas: { titulo: "Registro de marcas", icone: "📝" },
-    manutencao: { titulo: "Manutenção e suporte", icone: "🛠️" },
-    "impressao-3d": { titulo: "Impressão 3D", icone: "🧊" },
-    nfc: { titulo: "Tags e chaveiros NFC", icone: "📶" },
-    "kits-revenda": { titulo: "Kits NFC para revendedores", icone: "📦" }
-  };
-
-  (dados.servicos?.categorias || []).forEach((cat) => {
-    lista.push({
-      id: cat.id,
-      nome: rotulos[cat.id]?.titulo || cat.nome,
-      icone: rotulos[cat.id]?.icone || "•",
-      itens: (cat.servicos || []).map(normalizarItem)
-    });
+  (dados.servicos?.categorias || []).forEach((categoria) => {
+    if (!ROTULOS[categoria.id]) return;
+    categorias.push(normalizarCategoria(categoria, categoria.servicos || []));
   });
 
-  (dados.catalogo?.categorias || []).forEach((cat) => {
-    lista.push({
-      id: cat.id,
-      nome: rotulos[cat.id]?.titulo || cat.nome,
-      icone: rotulos[cat.id]?.icone || "•",
-      descricao: cat.descricao,
-      itens: (cat.produtos || []).map(normalizarItem)
-    });
+  (dados.catalogo?.categorias || []).forEach((categoria) => {
+    if (!ROTULOS[categoria.id]) return;
+    categorias.push(normalizarCategoria(categoria, categoria.produtos || []));
   });
 
-  return lista;
+  return categorias;
 }
 
-function normalizarItem(item) {
+function normalizarCategoria(categoria, itens) {
+  const rotulo = ROTULOS[categoria.id];
   return {
-    id: item.id,
-    nome: item.nome,
-    descricao: item.descricao || "",
-    preco: item.preco ?? null,
-    precoInicial: item.precoInicial ?? null,
-    precoMinimo: item.precoMinimo ?? null,
-    tipoPreco: item.tipoPreco || null,
-    inclui: item.inclui || null,
-    naoInclui: item.naoInclui || null,
-    faixas: item.faixas || null,
-    adicionais: item.adicionais || null,
-    prazoEstimadoDiasUteis: item.prazoEstimadoDiasUteis || null,
-    acrescimoPercentual: item.acrescimoPercentual ?? null,
-    original: item
+    id: categoria.id,
+    nome: rotulo?.titulo || categoria.nome,
+    icone: rotulo?.icone || "--",
+    descricao: categoria.descricao || "",
+    itens: itens.map((item) => ({
+      id: item.id,
+      nome: item.nome,
+      descricao: item.descricao || "",
+      preco: item.preco ?? null,
+      precoInicial: item.precoInicial ?? null,
+      precoMinimo: item.precoMinimo ?? null,
+      tipoPreco: item.tipoPreco || null,
+      inclui: item.inclui || [],
+      naoInclui: item.naoInclui || [],
+      faixas: item.faixas || [],
+      adicionais: item.adicionais || [],
+      prazoEstimadoDiasUteis: item.prazoEstimadoDiasUteis || null
+    }))
   };
+}
+
+export function formatarMoeda(valor) {
+  return Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 export function precoFormatado(item) {
-  const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
-  if (item.faixas && item.faixas.length) {
-    return "a partir de " + brl(item.faixas[item.faixas.length - 1].valorUnitario) + " /un";
+  if (item.faixas?.length) {
+    const menor = Math.min(...item.faixas.map((faixa) => faixa.valorUnitario));
+    return `a partir de ${formatarMoeda(menor)} /un`;
   }
-  if (item.preco != null) return brl(item.preco);
-  if (item.precoInicial != null) return "a partir de " + brl(item.precoInicial);
-  if (item.precoMinimo != null) return "orçamento a partir de " + brl(item.precoMinimo);
-  if (item.acrescimoPercentual != null) return "+" + item.acrescimoPercentual + "%";
+  if (item.preco != null) return formatarMoeda(item.preco);
+  if (item.precoInicial != null) return `a partir de ${formatarMoeda(item.precoInicial)}`;
+  if (item.precoMinimo != null) return `a partir de ${formatarMoeda(item.precoMinimo)}`;
   return "sob orçamento";
 }
