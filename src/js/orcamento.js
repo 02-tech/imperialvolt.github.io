@@ -1,263 +1,242 @@
-/* Imperial Volt — orçamento guiado (fluxo por etapas, sem backend) */
-import { precoFormatado } from "./data.js";
-import { montarMensagem, linkWhatsApp } from "./whatsapp.js";
+/* Orçamento guiado de uma tela: seleção clara e envio contextual ao WhatsApp. */
+import { formatarMoeda, precoFormatado } from "./data.js";
+import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
-const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
-const MAPA_CATEGORIA = {
-  "criar-site": "sites",
-  "criar-app": "software",
-  "automatizar": "software",
-  "impressao-3d": "impressao-3d",
-  "nfc": "nfc",
-  "revender-nfc": "kits-revenda",
-  "registro-marca": "marcas"
+const CATEGORIA_EMPRESAS = {
+  id: "empresas-revendedores",
+  nome: "Empresas e revendedores",
+  icone: "07",
+  itens: [{
+    id: "solucao-empresarial",
+    nome: "Solução empresarial sob medida",
+    descricao: "Fornecimento em quantidade, personalização visual, gravação de links ou contatos, página personalizada, aplicação personalizada, identidade própria e desenvolvimento sob orçamento."
+  }]
 };
 
-export function iniciarOrcamento({ raiz, opcoesEntrada, categorias }) {
-  const passos = Array.from(raiz.querySelectorAll("[data-passo]"));
-  const progresso = raiz.querySelector("[data-progresso]");
-  const btnVoltar = raiz.querySelector("[data-voltar]");
-  const btnAvancar = raiz.querySelector("[data-avancar]");
+function criar(tag, className, texto) {
+  const elemento = document.createElement(tag);
+  if (className) elemento.className = className;
+  if (texto != null) elemento.textContent = texto;
+  return elemento;
+}
 
+export function iniciarOrcamento({ raiz, categorias, politicas }) {
+  const todasCategorias = [...categorias, CATEGORIA_EMPRESAS];
   const estado = {
-    passoAtual: 1,
     categoriaId: null,
-    categoriaLabel: null,
-    produto: null,
-    uso: null,
+    itemId: null,
     quantidade: 1,
-    faixaIndex: null,
+    faixaIndex: 0,
+    finalidade: "",
     personalizacao: "",
-    paginaPersonalizada: "",
-    observacoes: ""
+    observacoes: "",
+    pagamento: ""
   };
 
-  const totalPassos = passos.length;
+  const categoriaAtual = () => todasCategorias.find((categoria) => categoria.id === estado.categoriaId) || null;
+  const itemAtual = () => categoriaAtual()?.itens.find((item) => item.id === estado.itemId) || null;
 
-  function mostrarPasso(n) {
-    raiz.querySelector(".assistenteAviso")?.remove();
-    passos.forEach((p) => {
-      p.hidden = Number(p.getAttribute("data-passo")) !== n;
-    });
-    progresso.textContent = "Etapa " + n + " de " + totalPassos;
-    btnVoltar.hidden = n === 1;
-    btnAvancar.textContent = n === totalPassos ? "Enviar ao WhatsApp" : "Avançar";
-    if (n === 2) montarPassoProduto();
-    if (n === 4) montarPassoQuantidade();
-    if (n === totalPassos) montarResumo();
-    raiz.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function renderEntrada() {
-    const cont = raiz.querySelector("[data-passo='1'] .assistente__opcoes");
-    cont.innerHTML = "";
-    opcoesEntrada.forEach((op) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "opcaoBtn";
-      b.textContent = op.rotulo;
-      b.addEventListener("click", () => {
-        estado.categoriaId = MAPA_CATEGORIA[op.id] || null;
-        estado.categoriaLabel = op.rotulo;
-        cont.querySelectorAll(".opcaoBtn").forEach((x) => x.classList.remove("opcaoBtn--ativo"));
-        b.classList.add("opcaoBtn--ativo");
-      });
-      cont.appendChild(b);
-    });
-  }
-
-  function categoriaAtual() {
-    return categorias.find((c) => c.id === estado.categoriaId);
-  }
-
-  function montarPassoProduto() {
-    const cont = raiz.querySelector("[data-passo='2'] .assistente__opcoes");
-    cont.innerHTML = "";
-    const cat = categoriaAtual();
-    if (!cat) {
-      cont.innerHTML = "<p class='muted'>Selecione uma opção na etapa anterior para continuar.</p>";
-      return;
+  const valorAtual = () => {
+    const item = itemAtual();
+    if (!item) return "A confirmar no atendimento";
+    if (item.faixas?.length) {
+      const faixa = item.faixas[estado.faixaIndex] || item.faixas[0];
+      return `${formatarMoeda(faixa.valorTotal)} (${formatarMoeda(faixa.valorUnitario)}/un)`;
     }
-    cat.itens.forEach((item) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "opcaoBtn opcaoBtn--produto";
-      b.innerHTML = `<b>${item.nome}</b><span>${precoFormatado(item)}</span>`;
-      b.addEventListener("click", () => {
-        estado.produto = item;
-        estado.faixaIndex = item.faixas ? 0 : null;
-        cont.querySelectorAll(".opcaoBtn").forEach((x) => x.classList.remove("opcaoBtn--ativo"));
-        b.classList.add("opcaoBtn--ativo");
-      });
-      cont.appendChild(b);
+    if (item.preco != null) {
+      const total = estado.categoriaId === "impressao-3d" ? item.preco * estado.quantidade : item.preco;
+      return formatarMoeda(total);
+    }
+    if (item.precoInicial != null || item.precoMinimo != null) return precoFormatado(item);
+    return "Sob orçamento";
+  };
+
+  const quantidadeAtual = () => {
+    const item = itemAtual();
+    if (item?.faixas?.length) return String((item.faixas[estado.faixaIndex] || item.faixas[0]).quantidade);
+    return estado.categoriaId === "impressao-3d" ? String(estado.quantidade) : "";
+  };
+
+  function botaoEscolha(item, ativo, acao, pequeno) {
+    const botao = criar("button", `quote-choice${ativo ? " is-active" : ""}${pequeno ? " quote-choice--compact" : ""}`);
+    botao.type = "button";
+    botao.dataset.action = acao;
+    botao.dataset.id = item.id;
+    botao.append(criar("strong", "", item.nome), criar("small", "", item.icone || item.preco));
+    return botao;
+  }
+
+  function campo(label, control) {
+    const envoltorio = criar("label", "quote-field");
+    envoltorio.append(criar("span", "", label), control);
+    return envoltorio;
+  }
+
+  function atualizarResumo() {
+    const categoria = categoriaAtual();
+    const item = itemAtual();
+    const valores = {
+      categoria: categoria?.nome || "Escolha uma categoria",
+      item: item?.nome || "Escolha uma opção",
+      valor: item ? valorAtual() : "--",
+      quantidade: quantidadeAtual() || "--"
+    };
+    Object.entries(valores).forEach(([chave, valor]) => {
+      const alvo = raiz.querySelector(`[data-summary="${chave}"]`);
+      if (alvo) alvo.textContent = valor;
     });
   }
 
-  function montarPassoQuantidade() {
-    const cont = raiz.querySelector("[data-passo='4'] .assistente__opcoes");
-    cont.innerHTML = "";
+  function renderizar() {
+    raiz.replaceChildren();
+    const painel = criar("div", "quote-panel");
+    painel.appendChild(criar("p", "quote-panel__label", "1. Selecione a categoria"));
+    const categoriasEl = criar("div", "quote-categories");
+    todasCategorias.forEach((categoria) => categoriasEl.appendChild(botaoEscolha({ id: categoria.id, nome: categoria.nome, icone: categoria.icone }, estado.categoriaId === categoria.id, "category")));
+    painel.appendChild(categoriasEl);
 
-    if (estado.produto?.faixas) {
-      const sel = document.createElement("select");
-      sel.className = "assistenteSelect";
-      estado.produto.faixas.forEach((f, i) => {
-        const o = document.createElement("option");
-        o.value = i;
-        o.textContent = `${f.quantidade} un — ${brl(f.valorTotal)} (${brl(f.valorUnitario)}/un)`;
-        sel.appendChild(o);
-      });
-      sel.addEventListener("change", () => {
-        estado.faixaIndex = Number(sel.value);
-        estado.quantidade = estado.produto.faixas[estado.faixaIndex].quantidade;
-      });
-      estado.faixaIndex = 0;
-      estado.quantidade = estado.produto.faixas[0].quantidade;
-      cont.appendChild(sel);
-    } else {
-      const label = document.createElement("label");
-      label.className = "assistenteCampo";
-      label.innerHTML = `<span>Quantidade desejada</span>`;
-      const input = document.createElement("input");
-      input.type = "number";
-      input.min = "1";
-      input.value = String(estado.quantidade || 1);
-      input.addEventListener("input", () => {
-        estado.quantidade = Number(input.value) || 1;
-      });
-      label.appendChild(input);
-      cont.appendChild(label);
+    const categoria = categoriaAtual();
+    if (categoria) {
+      painel.appendChild(criar("p", "quote-panel__label quote-panel__label--next", "2. Escolha a opção"));
+      const itensEl = criar("div", "quote-items");
+      categoria.itens.forEach((item) => itensEl.appendChild(botaoEscolha({ id: item.id, nome: item.nome, preco: precoFormatado(item) }, estado.itemId === item.id, "item", true)));
+      painel.appendChild(itensEl);
     }
-  }
 
-  function calcularValor() {
-    const p = estado.produto;
-    if (!p) return null;
+    const item = itemAtual();
+    if (item) {
+      const campos = criar("div", "quote-fields");
+      if (item.faixas?.length) {
+        const select = criar("select", "");
+        select.dataset.field = "faixaIndex";
+        item.faixas.forEach((faixa, indice) => {
+          const opcao = criar("option", "", `${faixa.quantidade} un - ${formatarMoeda(faixa.valorTotal)} (${formatarMoeda(faixa.valorUnitario)}/un)`);
+          opcao.value = String(indice);
+          opcao.selected = indice === estado.faixaIndex;
+          select.appendChild(opcao);
+        });
+        campos.appendChild(campo("Quantidade", select));
+      } else if (estado.categoriaId === "impressao-3d") {
+        const quantidade = criar("input", "");
+        quantidade.type = "number";
+        quantidade.min = "1";
+        quantidade.value = String(estado.quantidade);
+        quantidade.dataset.field = "quantidade";
+        campos.appendChild(campo("Quantidade desejada", quantidade));
+      }
 
-    if (p.faixas && estado.faixaIndex != null) {
-      return brl(p.faixas[estado.faixaIndex].valorTotal) + " (" + brl(p.faixas[estado.faixaIndex].valorUnitario) + "/un)";
+      const finalidade = criar("select", "");
+      finalidade.dataset.field = "finalidade";
+      ["", "Uso pessoal", "Empresa", "Revenda"].forEach((opcao) => {
+        const option = criar("option", "", opcao || "Selecione uma finalidade");
+        option.value = opcao;
+        option.selected = opcao === estado.finalidade;
+        finalidade.appendChild(option);
+      });
+      campos.appendChild(campo("Finalidade", finalidade));
+
+      const personalizacao = criar("textarea", "");
+      personalizacao.placeholder = "Ex.: cor, texto, link, acabamento ou necessidade do projeto";
+      personalizacao.value = estado.personalizacao;
+      personalizacao.dataset.field = "personalizacao";
+      campos.appendChild(campo("Personalização ou detalhes", personalizacao));
+
+      const observacoes = criar("textarea", "");
+      observacoes.placeholder = "Informe o que ajuda a entender melhor sua solicitação.";
+      observacoes.value = estado.observacoes;
+      observacoes.dataset.field = "observacoes";
+      campos.appendChild(campo("Observações", observacoes));
+
+      const pagamento = criar("select", "");
+      pagamento.dataset.field = "pagamento";
+      const descontoPix = politicas?.pagamento?.pixIntegral?.descontoPercentual;
+      ["", descontoPix ? `Pix integral (${descontoPix}% de desconto)` : "Pix integral", "Cartão de crédito", "Quero orientação sobre pagamento"].forEach((opcao) => {
+        const option = criar("option", "", opcao || "Forma de pagamento pretendida");
+        option.value = opcao;
+        option.selected = opcao === estado.pagamento;
+        pagamento.appendChild(option);
+      });
+      campos.appendChild(campo("Pagamento", pagamento));
+      painel.appendChild(campos);
     }
-    if (p.preco != null) {
-      const multiplica = estado.categoriaId === "impressao-3d";
-      const total = multiplica ? p.preco * (estado.quantidade || 1) : p.preco;
-      return brl(total) + (multiplica && estado.quantidade > 1 ? " (total para " + estado.quantidade + " un)" : "");
-    }
-    if (p.precoInicial != null) return "a partir de " + brl(p.precoInicial) + " — confirmado no atendimento";
-    if (p.precoMinimo != null) return "a partir de " + brl(p.precoMinimo) + " — confirmado no atendimento";
-    return "valor a confirmar no atendimento";
-  }
 
-  function montarResumo() {
-    const cont = raiz.querySelector("[data-passo='" + totalPassos + "'] .assistente__resumo");
-    const campos = [
-      ["1", "O que procura", estado.categoriaLabel || "—"],
-      ["2", "Produto/serviço", estado.produto?.nome || "—"],
-      ["3", "Uso", estado.uso || "—"],
-      ["4", "Quantidade", estado.quantidade ? String(estado.quantidade) : "—"],
-      ["5", "Personalização", estado.personalizacao || "Nenhuma informada"],
-      ["6", "Página/aplicação personalizada", estado.paginaPersonalizada || "Não informado"],
-      ["7", "Observações", estado.observacoes || "Nenhuma"],
+    const resumo = criar("aside", "quote-summary");
+    resumo.appendChild(criar("p", "quote-summary__label", "Sua solicitação"));
+    const linhas = [
+      ["categoria", "Categoria", categoria?.nome || "Escolha uma categoria"],
+      ["item", "Opção", item?.nome || "Escolha uma opção"],
+      ["valor", "Valor de referência", item ? valorAtual() : "--"],
+      ["quantidade", "Quantidade", quantidadeAtual() || "--"]
     ];
-
-    cont.innerHTML = campos.map(([passo, rotulo, valor]) => `
-      <div class="resumoLinha" data-ir-para="${passo}">
-        <span>${rotulo}</span>
-        <b>${valor}</b>
-        <button type="button" class="resumoEditar" data-ir-para="${passo}">Editar</button>
-      </div>
-    `).join("") + `
-      <div class="resumoLinha resumoLinha--valor">
-        <span>Valor estimado</span>
-        <b>${calcularValor() || "a confirmar no atendimento"}</b>
-      </div>
-    `;
-
-    cont.querySelectorAll("[data-ir-para]").forEach((elx) => {
-      elx.addEventListener("click", () => mostrarPasso(Number(elx.getAttribute("data-ir-para"))));
+    linhas.forEach(([id, rotulo, valor]) => {
+      const linha = criar("div", "quote-summary__item");
+      const dado = criar("strong", "", valor);
+      dado.dataset.summary = id;
+      linha.append(criar("span", "", rotulo), dado);
+      resumo.appendChild(linha);
     });
+    resumo.appendChild(criar("p", "quote-summary__note", "Valores e prazos dependentes de escopo são confirmados no atendimento."));
+    const enviar = criar("button", "button button--lime", "Enviar solicitação pelo WhatsApp");
+    enviar.type = "button";
+    enviar.disabled = !item;
+    enviar.dataset.action = "send";
+    resumo.appendChild(enviar);
+    raiz.append(painel, resumo);
   }
 
-  raiz.querySelector("[data-passo='3'] .assistente__opcoes")?.addEventListener("click", (e) => {
-    const b = e.target.closest(".opcaoBtn");
-    if (!b) return;
-    estado.uso = b.textContent;
-    raiz.querySelectorAll("[data-passo='3'] .opcaoBtn").forEach((x) => x.classList.remove("opcaoBtn--ativo"));
-    b.classList.add("opcaoBtn--ativo");
-  });
-
-  const campoPersonalizacao = raiz.querySelector("[data-campo='personalizacao']");
-  campoPersonalizacao?.addEventListener("input", () => { estado.personalizacao = campoPersonalizacao.value; });
-
-  const campoPagina = raiz.querySelector("[data-campo='paginaPersonalizada']");
-  campoPagina?.addEventListener("input", () => { estado.paginaPersonalizada = campoPagina.value; });
-
-  const campoObs = raiz.querySelector("[data-campo='observacoes']");
-  campoObs?.addEventListener("input", () => { estado.observacoes = campoObs.value; });
-
-  function avisar(mensagem) {
-    let aviso = raiz.querySelector(".assistenteAviso");
-    if (!aviso) {
-      aviso = document.createElement("p");
-      aviso.className = "assistenteAviso";
-      btnAvancar.parentElement.insertAdjacentElement("beforebegin", aviso);
-    }
-    aviso.textContent = mensagem;
-  }
-
-  function limparAviso() {
-    raiz.querySelector(".assistenteAviso")?.remove();
-  }
-
-  btnAvancar.addEventListener("click", () => {
-    if (estado.passoAtual === 1 && !estado.categoriaId) {
-      avisar("Selecione uma opção para continuar.");
+  raiz.addEventListener("click", (evento) => {
+    const botao = evento.target.closest("button[data-action]");
+    if (!botao) return;
+    if (botao.dataset.action === "category") {
+      estado.categoriaId = botao.dataset.id;
+      estado.itemId = null;
+      estado.faixaIndex = 0;
+      estado.quantidade = 1;
+      renderizar();
       return;
     }
-    if (estado.passoAtual === 2 && !estado.produto) {
-      avisar("Escolha um produto ou serviço para continuar.");
+    if (botao.dataset.action === "item") {
+      estado.itemId = botao.dataset.id;
+      estado.faixaIndex = 0;
+      estado.quantidade = 1;
+      renderizar();
       return;
     }
-    limparAviso();
-
-    if (estado.passoAtual === totalPassos) {
-      const msg = montarMensagem({
-        produto: estado.produto?.nome,
-        quantidade: estado.quantidade ? String(estado.quantidade) : null,
-        finalidade: estado.uso,
+    if (botao.dataset.action === "send") {
+      const item = itemAtual();
+      if (!item) return;
+      const mensagem = montarMensagem({
+        produto: item.nome,
+        quantidade: quantidadeAtual(),
+        finalidade: estado.finalidade,
         personalizacao: estado.personalizacao,
-        paginaPersonalizada: estado.paginaPersonalizada,
         observacoes: estado.observacoes,
-        valor: calcularValor(),
+        valor: valorAtual(),
+        pagamento: estado.pagamento,
         origem: "Orçamento guiado"
       });
-      window.open(linkWhatsApp(msg), "_blank", "noopener");
-      return;
+      window.open(linkWhatsApp(mensagem), "_blank", "noopener");
     }
-
-    estado.passoAtual = Math.min(totalPassos, estado.passoAtual + 1);
-    mostrarPasso(estado.passoAtual);
   });
 
-  btnVoltar.addEventListener("click", () => {
-    estado.passoAtual = Math.max(1, estado.passoAtual - 1);
-    mostrarPasso(estado.passoAtual);
-  });
+  const atualizarCampo = (evento) => {
+    const campo = evento.target.closest("[data-field]");
+    if (!campo) return;
+    if (campo.dataset.field === "quantidade") estado.quantidade = Math.max(1, Number(campo.value) || 1);
+    else estado[campo.dataset.field] = campo.dataset.field === "faixaIndex" ? Number(campo.value) : campo.value;
+    atualizarResumo();
+  };
+  raiz.addEventListener("input", atualizarCampo);
+  raiz.addEventListener("change", atualizarCampo);
 
-  renderEntrada();
-  mostrarPasso(1);
-
+  renderizar();
   return {
-    irParaCategoria(categoriaId) {
-      const alvo = Object.entries(MAPA_CATEGORIA).find(([, v]) => v === categoriaId);
-      if (!alvo) return;
+    selecionar({ categoriaId, itemId }) {
       estado.categoriaId = categoriaId;
-      estado.categoriaLabel = opcoesEntrada.find((o) => o.id === alvo[0])?.rotulo || categoriaId;
-      const cont = raiz.querySelector("[data-passo='1'] .assistente__opcoes");
-      cont.querySelectorAll(".opcaoBtn").forEach((x) => x.classList.remove("opcaoBtn--ativo"));
-      const btnAlvo = Array.from(cont.querySelectorAll(".opcaoBtn")).find((b) => b.textContent === estado.categoriaLabel);
-      btnAlvo?.classList.add("opcaoBtn--ativo");
-      estado.passoAtual = 2;
-      mostrarPasso(2);
+      estado.itemId = itemId || null;
+      estado.faixaIndex = 0;
+      estado.quantidade = 1;
+      renderizar();
     }
   };
 }

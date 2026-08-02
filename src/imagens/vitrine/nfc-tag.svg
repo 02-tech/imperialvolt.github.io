@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" fill="none">
+  <rect width="640" height="440" rx="36" fill="#FFD7B9"/>
+  <path d="M0 355C122 291 210 431 351 359C472 297 534 195 640 225V440H0V355Z" fill="#F4B887"/>
+  <g transform="rotate(-10 324 216)">
+    <rect x="173" y="85" width="294" height="244" rx="30" fill="#172019"/>
+    <rect x="194" y="106" width="252" height="202" rx="19" stroke="#C7F34D" stroke-width="2"/>
+    <circle cx="393" cy="132" r="14" fill="#C7F34D"/>
+    <path d="M257 210C280 186 318 186 341 210M246 235C276 204 323 204 353 235M235 260C270 221 329 221 365 260" stroke="#C7F34D" stroke-width="11" stroke-linecap="round"/>
+    <path d="M228 284H413" stroke="#C7F34D" stroke-width="2" opacity=".65"/>
+  </g>
+  <text x="42" y="62" fill="#172019" font-family="monospace" font-size="18" letter-spacing="3">NFC / TAG</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" fill="none">
+  <rect width="640" height="440" rx="36" fill="#C8ECE0"/>
+  <circle cx="510" cy="86" r="164" fill="#B3DDCF"/>
+  <circle cx="180" cy="324" r="151" fill="#A0D1C3" opacity=".6"/>
+  <g transform="rotate(14 330 220)">
+    <path d="M253 105C206 105 168 143 168 190C168 237 206 275 253 275H329V315H422V236H370V190C370 143 332 105 285 105H253Z" fill="#172019"/>
+    <circle cx="253" cy="190" r="42" stroke="#C7F34D" stroke-width="16"/>
+    <path d="M309 161C327 145 355 145 373 161M302 184C326 162 362 162 385 184" stroke="#C7F34D" stroke-width="8" stroke-linecap="round"/>
+    <rect x="340" y="258" width="58" height="35" rx="9" fill="#C7F34D"/>
+  </g>
+  <text x="42" y="62" fill="#172019" font-family="monospace" font-size="18" letter-spacing="3">NFC / CHAVEIRO</text>
+</svg>

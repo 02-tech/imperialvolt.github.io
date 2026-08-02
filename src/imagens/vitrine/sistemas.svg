@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" fill="none">
+  <rect width="640" height="440" rx="36" fill="#3659E7"/>
+  <rect x="75" y="67" width="490" height="307" rx="26" fill="#172019"/>
+  <rect x="99" y="91" width="108" height="259" rx="16" fill="#28332A"/>
+  <rect x="126" y="124" width="55" height="12" rx="6" fill="#C7F34D"/>
+  <rect x="126" y="160" width="42" height="9" rx="4.5" fill="#F4F0E8" opacity=".6"/>
+  <rect x="126" y="190" width="52" height="9" rx="4.5" fill="#F4F0E8" opacity=".3"/>
+  <rect x="126" y="220" width="38" height="9" rx="4.5" fill="#F4F0E8" opacity=".3"/>
+  <rect x="234" y="105" width="137" height="95" rx="16" fill="#C7F34D"/>
+  <path d="M258 171L288 142L311 157L347 123" stroke="#172019" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="390" y="105" width="145" height="95" rx="16" fill="#F4F0E8"/>
+  <circle cx="430" cy="152" r="24" fill="#3659E7"/>
+  <rect x="234" y="220" width="301" height="106" rx="16" fill="#28332A"/>
+  <path d="M263 294H506" stroke="#F4F0E8" stroke-opacity=".2" stroke-width="2"/>
+  <path d="M276 276L323 249L361 268L411 232L477 275" stroke="#C7F34D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="42" y="418" fill="#F4F0E8" font-family="monospace" font-size="18" letter-spacing="3">SISTEMA / PAINEL</text>
+</svg>

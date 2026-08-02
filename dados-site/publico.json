@@ -1,0 +1,21 @@
+{
+  "empresa": {
+    "nome": "Imperial Volt",
+    "cidade": "Petrópolis",
+    "estado": "RJ",
+    "endereco": "Estr. das Arcas, 1772 - Itaipava, Petrópolis - RJ, 25745-122",
+    "telefoneExibicao": "+55 24 99214-4995",
+    "whatsapp": "5524992144995",
+    "emailComercial": "contato.imperialvolt@gmail.com",
+    "emailSuporte": "suporte.imperialvolt@gmail.com",
+    "site": "https://imperialvolt.com",
+    "instagram": "https://www.instagram.com/imperialvolt",
+    "instagramDescricao": "🚀 Sites, Apps, Marcas & Patentes\n⚡ Atendimento 24h via Voltz-Bot\n🔗 imperialvolt.com"
+  },
+  "google": {
+    "notaCapturada": 5.0,
+    "quantidadeAvaliacoesCapturada": 3,
+    "dataCaptura": "2026-07-31",
+    "linkAvaliacao": "https://g.page/r/CSuYu2CYXArnEAE/review"
+  }
+}

@@ -15,20 +15,14 @@
         {
           "id": "caveira-subida-da-morte",
           "nome": "Caveira Subida da Morte",
-          "preco": 29.90,
+          "preco": 29.9,
           "tipoPreco": "fixo",
           "material": "PLA",
           "descricao": "Peça decorativa produzida em impressão 3D.",
           "personalizavel": true,
           "adicionais": [
-            {
-              "nome": "Personalização simples de texto ou cor",
-              "preco": 10
-            },
-            {
-              "nome": "Modelagem ou adaptação exclusiva",
-              "precoInicial": 50
-            }
+            { "nome": "Personalização simples de texto ou cor", "preco": 10 },
+            { "nome": "Modelagem ou adaptação exclusiva", "precoInicial": 50 }
           ]
         },
         {
@@ -52,11 +46,11 @@
           "gravada": true,
           "regravavel": true,
           "faixas": [
-            { "quantidade": 1, "valorTotal": 24.90, "valorUnitario": 24.90 },
-            { "quantidade": 5, "valorTotal": 109.90, "valorUnitario": 21.98 },
-            { "quantidade": 10, "valorTotal": 199.90, "valorUnitario": 19.99 },
-            { "quantidade": 25, "valorTotal": 449.90, "valorUnitario": 18.00 },
-            { "quantidade": 50, "valorTotal": 799.90, "valorUnitario": 16.00 }
+            { "quantidade": 1, "valorTotal": 24.9, "valorUnitario": 24.9 },
+            { "quantidade": 5, "valorTotal": 109.9, "valorUnitario": 21.98 },
+            { "quantidade": 10, "valorTotal": 199.9, "valorUnitario": 19.99 },
+            { "quantidade": 25, "valorTotal": 449.9, "valorUnitario": 18 },
+            { "quantidade": 50, "valorTotal": 799.9, "valorUnitario": 16 }
           ]
         },
         {
@@ -66,11 +60,11 @@
           "gravada": true,
           "regravavel": true,
           "faixas": [
-            { "quantidade": 1, "valorTotal": 34.90, "valorUnitario": 34.90 },
-            { "quantidade": 5, "valorTotal": 159.90, "valorUnitario": 31.98 },
-            { "quantidade": 10, "valorTotal": 289.90, "valorUnitario": 28.99 },
-            { "quantidade": 25, "valorTotal": 649.90, "valorUnitario": 26.00 },
-            { "quantidade": 50, "valorTotal": 1149.90, "valorUnitario": 23.00 }
+            { "quantidade": 1, "valorTotal": 34.9, "valorUnitario": 34.9 },
+            { "quantidade": 5, "valorTotal": 159.9, "valorUnitario": 31.98 },
+            { "quantidade": 10, "valorTotal": 289.9, "valorUnitario": 28.99 },
+            { "quantidade": 25, "valorTotal": 649.9, "valorUnitario": 26 },
+            { "quantidade": 50, "valorTotal": 1149.9, "valorUnitario": 23 }
           ]
         }
       ]
