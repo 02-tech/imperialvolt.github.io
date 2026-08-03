@@ -14,7 +14,7 @@ const ROTULOS = {
   software: { titulo: "Sistemas e automação", icone: "02" },
   marcas: { titulo: "Registro de marcas", icone: "03" },
   manutencao: { titulo: "Manutenção e suporte", icone: "04" },
-  "impressao-3d": { titulo: "Impressão 3D", icone: "05" },
+  "impressao-3d": { titulo: "Soluções físicas em impressão 3D", icone: "05" },
   nfc: { titulo: "Tags e chaveiros NFC", icone: "06" }
 };
 

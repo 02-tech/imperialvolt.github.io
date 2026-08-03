@@ -18,6 +18,23 @@
       ]
     },
     {
+      "nome": "Soluções físicas em impressão 3D",
+      "perguntas": [
+        {
+          "pergunta": "Vocês fazem qualquer impressão?",
+          "resposta": "Não. A Imperial Volt trabalha com soluções físicas para uma necessidade específica, como reposição, adaptação, personalização e protótipos, sempre após análise de viabilidade."
+        },
+        {
+          "pergunta": "Como funciona um projeto sob medida?",
+          "resposta": "Cada projeto é avaliado individualmente conforme função, medidas, cenário de uso e complexidade. O escopo de fabricação é alinhado antes do início."
+        },
+        {
+          "pergunta": "Qual é o valor mínimo de um projeto personalizado?",
+          "resposta": "Projetos personalizados começam em R$25. O valor final, acabamento, prazo e entrega dependem da análise de cada necessidade."
+        }
+      ]
+    },
+    {
       "nome": "Pagamento",
       "perguntas": [
         {
