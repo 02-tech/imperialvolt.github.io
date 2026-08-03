@@ -9,8 +9,8 @@
   "categorias": [
     {
       "id": "impressao-3d",
-      "nome": "Impressão 3D",
-      "descricao": "Produtos prontos, peças personalizadas e produção sob demanda.",
+      "nome": "Soluções físicas em impressão 3D",
+      "descricao": "Reposição, adaptação, personalização e protótipos avaliados individualmente.",
       "produtos": [
         {
           "id": "caveira-subida-da-morte",
@@ -27,10 +27,10 @@
         },
         {
           "id": "impressao-sob-medida",
-          "nome": "Impressão 3D sob medida",
+          "nome": "Projeto personalizado em impressão 3D",
           "precoMinimo": 25,
           "tipoPreco": "orçamento mínimo",
-          "descricao": "Produção calculada conforme material, tempo de máquina, complexidade e acabamento."
+          "descricao": "Análise de viabilidade, projeto sob medida, fabricação e entrega de uma solução física conforme a necessidade."
         }
       ]
     },

@@ -30,8 +30,8 @@ function renderizar() {
   const opcoes = document.createElement("div");
   opcoes.className = "guided-chat__choices";
   opcoes.append(
-    criarEscolha("Explorar catálogo", () => irPara("catalogo")),
-    criarEscolha("Montar orçamento", () => irPara("orcamento")),
+    criarEscolha("Soluções físicas sob medida", () => irPara("solucoes-fisicas")),
+    criarEscolha("Analisar um projeto", () => irPara("orcamento")),
     criarEscolha("Perguntas frequentes", () => irPara("faq")),
     criarEscolha("Falar no WhatsApp", () => {
       const mensagem = montarMensagem({ origem: "Atendimento guiado" });

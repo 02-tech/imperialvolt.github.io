@@ -136,13 +136,13 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
       campos.appendChild(campo("Finalidade", finalidade));
 
       const personalizacao = criar("textarea", "");
-      personalizacao.placeholder = "Ex.: cor, texto, link, acabamento ou necessidade do projeto";
+      personalizacao.placeholder = "Ex.: medida, peça a repor, adaptação, função, cor ou detalhe necessário";
       personalizacao.value = estado.personalizacao;
       personalizacao.dataset.field = "personalizacao";
-      campos.appendChild(campo("Personalização ou detalhes", personalizacao));
+      campos.appendChild(campo("Detalhes da solução ou personalização", personalizacao));
 
       const observacoes = criar("textarea", "");
-      observacoes.placeholder = "Informe o que ajuda a entender melhor sua solicitação.";
+      observacoes.placeholder = "Informe contexto de uso, medidas, fotos disponíveis ou o que ajuda a analisar a necessidade.";
       observacoes.value = estado.observacoes;
       observacoes.dataset.field = "observacoes";
       campos.appendChild(campo("Observações", observacoes));
@@ -175,7 +175,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
       linha.append(criar("span", "", rotulo), dado);
       resumo.appendChild(linha);
     });
-    resumo.appendChild(criar("p", "quote-summary__note", "Valores e prazos dependentes de escopo são confirmados no atendimento."));
+    resumo.appendChild(criar("p", "quote-summary__note", "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise."));
     const enviar = criar("button", "button button--lime", "Enviar solicitação pelo WhatsApp");
     enviar.type = "button";
     enviar.disabled = !item;
