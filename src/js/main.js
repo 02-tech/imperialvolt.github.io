@@ -1,5 +1,5 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
-import { carregarDados, unificarCategorias } from "./data.js";
+import { carregarDados, precoFormatado, unificarCategorias } from "./data.js";
 import { renderCatalogo, renderDestaques } from "./catalogo.js";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
@@ -135,6 +135,54 @@ function renderFaq(faq) {
   });
 }
 
+function renderComparativoSites(servicos) {
+  const alvo = $("#siteComparison");
+  const categoria = servicos?.categorias?.find((item) => item.id === "sites");
+  const planos = categoria?.servicos?.filter((item) => item.comparativo) || [];
+  if (!alvo || !planos.length) return;
+
+  const recursos = [
+    ["Estrutura", "estrutura"],
+    ["Design e personalização", "design"],
+    ["Captação e contato", "captacao"],
+    ["Conteúdo principal", "conteudo"],
+    ["Catálogo e filtros", "catalogo"],
+    ["Banco de dados e painel", "dados"]
+  ];
+  const rolagem = criar("div", "site-comparison__scroll");
+  const tabela = criar("div", "site-comparison__table");
+  tabela.setAttribute("role", "table");
+
+  const cabecalho = criar("div", "site-comparison__row site-comparison__row--head");
+  cabecalho.setAttribute("role", "row");
+  cabecalho.appendChild(criar("div", "site-comparison__feature", "Recurso"));
+  planos.forEach((plano) => {
+    const celula = criar("div", "site-comparison__plan");
+    celula.setAttribute("role", "columnheader");
+    celula.append(criar("strong", "", plano.nome), criar("small", "", precoFormatado(plano)));
+    cabecalho.appendChild(celula);
+  });
+  tabela.appendChild(cabecalho);
+
+  recursos.forEach(([rotulo, chave]) => {
+    const linha = criar("div", "site-comparison__row");
+    linha.setAttribute("role", "row");
+    linha.appendChild(criar("div", "site-comparison__feature", rotulo));
+    planos.forEach((plano) => {
+      const valor = plano.comparativo[chave] || "Definido no escopo";
+      const celula = criar("div", "site-comparison__cell", valor);
+      celula.setAttribute("role", "cell");
+      if (valor.startsWith("Não")) celula.classList.add("is-excluded");
+      if (valor.includes("escopo")) celula.classList.add("is-scoped");
+      linha.appendChild(celula);
+    });
+    tabela.appendChild(linha);
+  });
+
+  rolagem.appendChild(tabela);
+  alvo.replaceChildren(rolagem);
+}
+
 function dataBrasil(iso) {
   const [ano, mes, dia] = String(iso || "").split("-");
   return ano && mes && dia ? `${dia}/${mes}/${ano}` : "data não informada";
@@ -250,6 +298,7 @@ async function boot() {
     document.querySelectorAll("[data-quote-category]").forEach((link) => {
       link.addEventListener("click", () => quote.selecionar({ categoriaId: link.dataset.quoteCategory }));
     });
+    renderComparativoSites(dados.servicos);
     renderFaq(dados.faq);
     renderProvaSocial(dados);
     preencherContato(dados.publico);
