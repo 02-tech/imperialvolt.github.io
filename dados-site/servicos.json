@@ -226,9 +226,10 @@
         {
           "id": "pedido-registro-marca",
           "nome": "Assessoria para Pedido de Registro de Marca",
-          "preco": 890,
-          "tipoPreco": "fixo",
-          "descricao": "Suporte técnico e documental para preparação, protocolo e acompanhamento inicial do pedido perante o INPI.",
+          "precoInicial": 890,
+          "tipoPreco": "a partir de",
+          "descricao": "Honorários de assessoria técnica e documental para preparação, protocolo e acompanhamento inicial do pedido perante o INPI.",
+          "avisoPreco": "O valor exibido refere-se aos honorários de assessoria. Taxas oficiais do INPI não estão inclusas e são cobradas separadamente conforme o pedido.",
           "inclui": [
             "análise preliminar",
             "orientação da apresentação da marca",

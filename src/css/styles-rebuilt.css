@@ -295,6 +295,7 @@ h1, h2, h3, strong { letter-spacing: -0.035em; }
 .product-card h3 { margin: 1rem 0 0.4rem; font-size: 1.1rem; line-height: 1; }
 .product-card__price { margin-bottom: 0.62rem; color: var(--blue-deep); font-family: "DM Mono", monospace; font-size: 0.8rem; font-weight: 500; }
 .product-card__summary { min-height: 3.7em; margin-bottom: 0.8rem; color: #536056; font-size: 0.82rem; }
+.product-card__notice { margin: -0.1rem 0 0.8rem; padding: 0.65rem 0.7rem; border-left: 2px solid var(--blue); color: #445246; background: #eef2e3; font-size: 0.73rem; line-height: 1.42; }
 .product-card__list { display: grid; gap: 0.28rem; margin: 0 0 0.82rem; padding: 0; color: #48534a; font-size: 0.76rem; list-style: none; }
 .product-card__list li { display: flex; gap: 0.4rem; }
 .product-card__list li::before { color: var(--blue); content: "•"; }

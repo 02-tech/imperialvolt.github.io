@@ -68,6 +68,10 @@ function criarCard(item, categoria, onSelect) {
   const descricao = criar("p", "product-card__summary", item.descricao || "Solicite os detalhes para alinharmos a melhor configuração.");
   card.append(visual, titulo, preco, descricao);
 
+  if (item.avisoPreco) {
+    card.appendChild(criar("p", "product-card__notice", item.avisoPreco));
+  }
+
   if (item.inclui?.length) {
     const lista = criar("ul", "product-card__list");
     item.inclui.slice(0, 2).forEach((texto) => lista.appendChild(criar("li", "", texto)));
