@@ -334,6 +334,25 @@ textarea { min-height: 5.1rem; resize: vertical; }
 .catalog-filter:hover, .catalog-filter.is-active { color: #fff; border-color: var(--ink); background: var(--ink); }
 .catalog-more { display: flex; justify-content: center; margin-top: 1.7rem; }
 
+.site-comparison-section { background: #f1eddf; }
+.site-comparison__scroll { overflow-x: auto; padding-bottom: 0.5rem; scrollbar-color: rgba(17,32,24,0.45) transparent; scrollbar-width: thin; }
+.site-comparison__table { min-width: 66rem; overflow: hidden; border: 1px solid rgba(17,32,24,0.16); border-radius: 1rem; background: #fffcf5; }
+.site-comparison__row { display: grid; grid-template-columns: 10.5rem repeat(5, minmax(10rem, 1fr)); border-top: 1px solid rgba(17,32,24,0.1); }
+.site-comparison__row--head { border-top: 0; background: var(--ink); }
+.site-comparison__feature, .site-comparison__plan, .site-comparison__cell { min-height: 4.2rem; padding: 0.78rem 0.85rem; border-left: 1px solid rgba(17,32,24,0.1); }
+.site-comparison__feature { display: flex; align-items: center; color: #4a574c; border-left: 0; background: #f8f5ea; font-size: 0.74rem; font-weight: 700; line-height: 1.1; }
+.site-comparison__row--head .site-comparison__feature { color: rgba(255,255,255,0.62); background: var(--ink); font-family: "DM Mono", monospace; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; }
+.site-comparison__plan { display: grid; align-content: center; gap: 0.28rem; color: #fff; border-color: rgba(255,255,255,0.12); }
+.site-comparison__plan strong { font-size: 0.82rem; line-height: 1.02; }
+.site-comparison__plan small { color: var(--lime); font-family: "DM Mono", monospace; font-size: 0.64rem; }
+.site-comparison__cell { display: flex; align-items: center; color: #4d594e; font-size: 0.76rem; line-height: 1.25; }
+.site-comparison__cell.is-excluded { color: #8d4d43; background: #fff2ec; }
+.site-comparison__cell.is-scoped { color: #254c9b; background: #eff3ff; }
+.infrastructure-note { display: grid; grid-template-columns: minmax(13rem, 0.58fr) minmax(0, 1.42fr); gap: 1.5rem; align-items: start; margin-top: 1rem; padding: clamp(1rem, 2.5vw, 1.4rem); border: 1px solid rgba(17,32,24,0.14); border-radius: 1rem; background: #dfe8cf; }
+.infrastructure-note span { display: block; margin-bottom: 0.45rem; color: #4d5d1e; font-family: "DM Mono", monospace; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.infrastructure-note strong { display: block; max-width: 18ch; font-size: 1.05rem; line-height: 1.05; }
+.infrastructure-note p { max-width: 56rem; margin: 0; color: #4c594d; font-size: 0.82rem; }
+
 .business-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.68fr); align-items: end; gap: clamp(2rem, 8vw, 8rem); }
 .business-layout__copy > p { color: rgba(255,255,255,0.74); margin-bottom: 1.45rem; }
 .business-layout__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
@@ -516,6 +535,7 @@ textarea { min-height: 5.1rem; resize: vertical; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .category-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .business-layout, .proof-layout, .contact-layout, .faq-layout { gap: 2.5rem; }
+  .infrastructure-note { grid-template-columns: 0.72fr 1.28fr; }
   .physical-solutions__layout { grid-template-columns: minmax(0, 0.72fr) minmax(20rem, 1.2fr); }
   .physical-notice { grid-template-columns: 0.75fr 1fr; }
   .physical-notice p { grid-column: 1 / -1; }
@@ -539,6 +559,7 @@ textarea { min-height: 5.1rem; resize: vertical; }
   .product-grid, .product-grid--featured { grid-template-columns: 1fr; }
   .product-card__visual { min-height: 13rem; }
   .business-layout, .proof-layout, .contact-layout, .faq-layout { grid-template-columns: 1fr; }
+  .infrastructure-note { grid-template-columns: 1fr; gap: 0.75rem; }
   .physical-solutions__layout { grid-template-columns: 1fr; }
   .physical-solutions__grid { grid-template-columns: 1fr 1fr; }
   .physical-notice { grid-column: auto; grid-template-columns: 1fr; gap: 0.55rem; }

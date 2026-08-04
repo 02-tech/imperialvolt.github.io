@@ -18,6 +18,14 @@
           "preco": 397,
           "tipoPreco": "fixo",
           "descricao": "Página profissional de entrada para apresentar um negócio, serviço ou campanha.",
+          "comparativo": {
+            "estrutura": "1 página / até 5 seções",
+            "design": "Layout responsivo",
+            "captacao": "WhatsApp",
+            "conteudo": "Apresentação essencial",
+            "catalogo": "Não incluso",
+            "dados": "Não incluso"
+          },
           "inclui": [
             "1 página",
             "até 5 seções",
@@ -46,6 +54,14 @@
           "preco": 697,
           "tipoPreco": "fixo",
           "descricao": "Página estratégica focada em apresentação, captação de contatos e conversão.",
+          "comparativo": {
+            "estrutura": "1 página / até 8 seções",
+            "design": "Design personalizado",
+            "captacao": "WhatsApp + formulário simples",
+            "conteudo": "Estrutura comercial",
+            "catalogo": "Não incluso",
+            "dados": "Não incluso"
+          },
           "inclui": [
             "design personalizado",
             "estrutura comercial",
@@ -76,6 +92,14 @@
           "preco": 1290,
           "tipoPreco": "fixo",
           "descricao": "Site completo para apresentar empresa, serviços, diferenciais, avaliações e contato.",
+          "comparativo": {
+            "estrutura": "Até 5 páginas",
+            "design": "Design personalizado",
+            "captacao": "WhatsApp",
+            "conteudo": "Avaliações e contato",
+            "catalogo": "Não incluso",
+            "dados": "Não incluso"
+          },
           "inclui": [
             "até 5 páginas",
             "design personalizado",
@@ -105,6 +129,14 @@
           "preco": 1890,
           "tipoPreco": "fixo",
           "descricao": "Site navegável com produtos, serviços, preços e pedidos encaminhados ao WhatsApp.",
+          "comparativo": {
+            "estrutura": "Catálogo navegável",
+            "design": "Layout responsivo",
+            "captacao": "WhatsApp",
+            "conteudo": "Produtos e preços",
+            "catalogo": "Filtros simples quando aplicáveis",
+            "dados": "Não incluso"
+          },
           "inclui": [
             "catálogo navegável",
             "páginas ou modais de produtos",
@@ -135,14 +167,30 @@
           "precoInicial": 2900,
           "tipoPreco": "a partir de",
           "descricao": "Projeto avançado com arquitetura, design e recursos definidos sob medida.",
+          "comparativo": {
+            "estrutura": "Arquitetura sob medida",
+            "design": "Design exclusivo",
+            "captacao": "Integrações previstas no orçamento",
+            "conteudo": "Experiência de navegação avançada",
+            "catalogo": "Quando previsto no escopo",
+            "dados": "Quando previsto no escopo"
+          },
           "inclui": [
             "planejamento de estrutura",
             "design exclusivo",
             "experiência de navegação avançada",
             "animações",
             "integrações previstas no orçamento",
+            "banco de dados quando previsto no escopo",
+            "configuração inicial de infraestrutura quando prevista no escopo",
             "SEO técnico",
             "publicação inicial"
+          ],
+          "naoInclui": [
+            "conta VPS ou hospedagem recorrente",
+            "domínio",
+            "licenças, APIs e serviços externos",
+            "custos recorrentes de terceiros"
           ],
           "prazoEstimadoDiasUteis": {
             "minimo": 20,
