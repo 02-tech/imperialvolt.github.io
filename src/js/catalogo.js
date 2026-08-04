@@ -5,7 +5,7 @@ import { abrirWhatsApp } from "./whatsapp.js";
 const IMAGENS_VITRINE = {
   "tag-nfc-personalizada": "./src/imagens/vitrine/nfc-tag.svg",
   "chaveiro-nfc-personalizado": "./src/imagens/vitrine/nfc-chaveiro.svg",
-  "caveira-subida-da-morte": "./src/imagens/vitrine/decoracao-3d.svg",
+  "apito-morte-asteca": "./src/imagens/produtos/apito-morte-asteca.jpg",
   "impressao-sob-medida": "./src/imagens/vitrine/produto-personalizado.svg",
   sites: "./src/imagens/vitrine/sites.svg",
   software: "./src/imagens/vitrine/sistemas.svg",
