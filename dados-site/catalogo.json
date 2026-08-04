@@ -36,7 +36,8 @@
           "nome": "Projeto personalizado em impressão 3D",
           "precoMinimo": 25,
           "tipoPreco": "orçamento mínimo",
-          "descricao": "Análise de viabilidade, projeto sob medida, fabricação e entrega de uma solução física conforme a necessidade."
+          "descricao": "Análise de viabilidade, projeto sob medida, fabricação e entrega de uma solução física conforme a necessidade.",
+          "avisoPreco": "R$25 é o valor mínimo para iniciar um projeto personalizado. O valor final é confirmado após a análise da necessidade."
         }
       ]
     },

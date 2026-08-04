@@ -283,7 +283,7 @@ async function boot() {
     renderDestaques(categorias, $("#gridDestaques"), [
       "landing-page-profissional",
       "tag-nfc-personalizada",
-      "impressao-sob-medida",
+      "apito-morte-asteca",
       "pedido-registro-marca"
     ], selecionarProduto);
     renderCategorias(categorias, (categoriaId) => {
