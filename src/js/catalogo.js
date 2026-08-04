@@ -54,7 +54,7 @@ function criarCard(item, categoria, onSelect) {
   const imagem = document.createElement("img");
   imagem.src = imagemDoItem(item, categoria);
   imagem.alt = "";
-  imagem.loading = "lazy";
+  imagem.loading = item.id === "apito-morte-asteca" ? "eager" : "lazy";
   imagem.decoding = "async";
   imagem.setAttribute("aria-hidden", "true");
   visual.append(

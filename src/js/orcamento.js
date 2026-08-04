@@ -66,6 +66,12 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     return botao;
   }
 
+  function rotuloPrecoOpcao(item) {
+    if (item.preco != null) return `${precoFormatado(item)} · preço fixo`;
+    if (item.precoMinimo != null) return `${precoFormatado(item)} · valor mínimo`;
+    return precoFormatado(item);
+  }
+
   function campo(label, control) {
     const envoltorio = criar("label", "quote-field");
     envoltorio.append(criar("span", "", label), control);
@@ -99,8 +105,16 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     if (categoria) {
       painel.appendChild(criar("p", "quote-panel__label quote-panel__label--next", "2. Escolha a opção"));
       const itensEl = criar("div", "quote-items");
-      categoria.itens.forEach((item) => itensEl.appendChild(botaoEscolha({ id: item.id, nome: item.nome, preco: precoFormatado(item) }, estado.itemId === item.id, "item", true)));
+      categoria.itens.forEach((item) => itensEl.appendChild(botaoEscolha({ id: item.id, nome: item.nome, preco: rotuloPrecoOpcao(item) }, estado.itemId === item.id, "item", true)));
       painel.appendChild(itensEl);
+
+      if (categoria.id === "impressao-3d") {
+        const itemFixo = categoria.itens.find((item) => item.preco != null);
+        const projetoSobMedida = categoria.itens.find((item) => item.precoMinimo != null);
+        if (itemFixo && projetoSobMedida) {
+          painel.appendChild(criar("p", "quote-items__note", `${itemFixo.nome} tem preço fixo. ${projetoSobMedida.nome} tem valor mínimo de ${formatarMoeda(projetoSobMedida.precoMinimo)} e o valor final é confirmado após análise.`));
+        }
+      }
     }
 
     const item = itemAtual();
@@ -165,7 +179,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     const linhas = [
       ["categoria", "Categoria", categoria?.nome || "Escolha uma categoria"],
       ["item", "Opção", item?.nome || "Escolha uma opção"],
-      ["valor", "Valor de referência", item ? valorAtual() : "--"],
+      ["valor", item?.precoMinimo != null ? "Valor mínimo" : "Valor de referência", item ? valorAtual() : "--"],
       ["quantidade", "Quantidade", quantidadeAtual() || "--"]
     ];
     linhas.forEach(([id, rotulo, valor]) => {
