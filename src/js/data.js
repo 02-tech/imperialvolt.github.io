@@ -70,6 +70,7 @@ function normalizarCategoria(categoria, itens) {
       naoInclui: item.naoInclui || [],
       faixas: item.faixas || [],
       adicionais: item.adicionais || [],
+      avisoPreco: item.avisoPreco || "",
       prazoEstimadoDiasUteis: item.prazoEstimadoDiasUteis || null
     }))
   };

@@ -175,7 +175,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
       linha.append(criar("span", "", rotulo), dado);
       resumo.appendChild(linha);
     });
-    resumo.appendChild(criar("p", "quote-summary__note", "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise."));
+    resumo.appendChild(criar("p", "quote-summary__note", item?.avisoPreco || "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise."));
     const enviar = criar("button", "button button--lime", "Enviar solicitação pelo WhatsApp");
     enviar.type = "button";
     enviar.disabled = !item;

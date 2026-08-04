@@ -70,6 +70,10 @@
         {
           "pergunta": "A aprovação é garantida?",
           "resposta": "Não. A Imperial Volt prepara e acompanha o processo contratado, mas a decisão final é exclusiva do INPI."
+        },
+        {
+          "pergunta": "As taxas oficiais do INPI estão incluídas no valor da assessoria?",
+          "resposta": "Não. O valor exibido corresponde aos honorários de assessoria da Imperial Volt. As taxas oficiais do INPI são cobradas separadamente e variam conforme as condições aplicáveis ao pedido."
         }
       ]
     }
