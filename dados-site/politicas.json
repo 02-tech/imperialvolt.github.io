@@ -2,8 +2,8 @@
   "pagamento": {
     "pixIntegral": {
       "disponivel": true,
-      "descontoPercentual": 5,
-      "descricao": "Pagamento integral antecipado via Pix com 5% de desconto."
+      "descontoPercentual": 15,
+      "descricao": "Pagamento integral antecipado via Pix com 15% de desconto, conforme a condição indicada na proposta."
     },
     "servicosPersonalizados": {
       "modalidade": "50% para iniciar e 50% antes da entrega definitiva",
@@ -14,7 +14,7 @@
     },
     "cartaoCredito": {
       "disponivel": true,
-      "parcelasSemJuros": 3,
+      "parcelasSemJuros": 12,
       "parcelaMinimaServicos": 100,
       "parcelaMinimaProdutos": 50,
       "parcelamentoAdicional": "sujeito aos juros e condições da operadora de pagamento"
@@ -44,6 +44,6 @@
   },
   "textoPublico": {
     "titulo": "Formas de pagamento",
-    "descricao": "No Pix integral, você recebe 5% de desconto. Projetos personalizados também podem ser pagos em duas etapas: 50% para iniciar e 50% antes da entrega definitiva, sem desconto. No cartão de crédito, o pagamento pode ser realizado em até 3 vezes sem juros, respeitando o valor mínimo da parcela. Parcelamentos adicionais estão sujeitos às condições e aos juros da operadora."
+    "descricao": "No Pix integral, você recebe 15% de desconto, conforme a condição indicada na proposta. Projetos personalizados também podem ser pagos em duas etapas: 50% para iniciar e 50% antes da entrega definitiva, sem desconto. No cartão de crédito, o orçamento pode indicar parcelamento em até 12 vezes, conforme as condições da operadora e o valor mínimo da parcela."
   }
 }

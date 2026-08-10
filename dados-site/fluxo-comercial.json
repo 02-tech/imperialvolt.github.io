@@ -4,13 +4,28 @@
     "opcoes": [
       {
         "id": "criar-site",
-        "rotulo": "Site essencial / estático",
-        "destino": "site-essencial"
+        "rotulo": "Landing Page / One-Page",
+        "destino": "landing-page-estatica"
+      },
+      {
+        "id": "site-institucional",
+        "rotulo": "Site institucional completo",
+        "destino": "site-institucional-estatico"
+      },
+      {
+        "id": "site-cms",
+        "rotulo": "Site dinâmico com CMS",
+        "destino": "site-dinamico-cms"
       },
       {
         "id": "criar-app",
-        "rotulo": "Plataforma web / sistema",
-        "destino": "plataforma-web"
+        "rotulo": "Web App / sistema customizado",
+        "destino": "web-app-sistema-customizado"
+      },
+      {
+        "id": "loja-virtual",
+        "rotulo": "E-commerce / loja virtual",
+        "destino": "ecommerce-loja-virtual"
       },
       {
         "id": "automatizar",

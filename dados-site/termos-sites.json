@@ -32,8 +32,10 @@
     "foraDoEscopo": "Novas páginas, novas funções, mudanças estruturais e revisões excedentes serão cobradas."
   },
   "diferencaDeEscopo": {
-    "siteEssencial": "Apresenta informações e contatos com conteúdo predominantemente estático, sem banco de dados próprio, painel administrativo ou funções complexas por padrão.",
-    "plataformaWeb": "Recebe, processa, grava e gerencia informações. Login, usuários, cadastros, pedidos, vagas, estoque, automações, integrações e painéis entram conforme descrição do orçamento.",
+    "landingPage": "Apresenta uma oferta em uma página responsiva, com foco em conversão e sem banco de dados próprio por padrão.",
+    "siteInstitucional": "Organiza até cinco páginas estáticas para apresentar empresa, serviços, galeria e contatos.",
+    "cms": "Permite atualizar e gerenciar conteúdo por meio de estrutura dinâmica, CMS ou painel administrativo conforme o escopo.",
+    "plataformaWeb": "Recebe, processa, grava e gerencia informações. Login, usuários, cadastros, pedidos, estoque, automações, integrações e painéis entram conforme descrição do orçamento.",
     "recorrencia": "Banco de dados, VPS, hospedagem paga, APIs, licenças e outros serviços recorrentes são custos separados, salvo previsão expressa."
   },
   "entrega": {

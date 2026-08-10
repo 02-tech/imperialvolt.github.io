@@ -1,5 +1,5 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
-import { carregarDados, precoFormatado, unificarCategorias } from "./data.js";
+import { carregarDados, formatarMoeda, precoFormatado, unificarCategorias } from "./data.js";
 import { renderCatalogo, renderDestaques } from "./catalogo.js";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
@@ -140,22 +140,27 @@ function renderProjetosDigitais(servicos, selecionar) {
   const ofertas = categoria?.servicos || [];
   const destaqueAlvo = $("#digitalOffers");
   const comparativoAlvo = $("#siteComparison");
-  if (!categoria || !ofertas.length) return;
-
-  const destaques = [
-    ["site-essencial", "Presença digital"],
-    ["plataforma-web", "Operação digital"],
-    ["aplicativo-android-multiplataforma", "Produto mobile"]
+  const idsPrincipais = [
+    "landing-page-estatica",
+    "site-institucional-estatico",
+    "site-dinamico-cms",
+    "web-app-sistema-customizado",
+    "ecommerce-loja-virtual"
   ];
+  const ofertasPrincipais = idsPrincipais.map((id) => ofertas.find((oferta) => oferta.id === id)).filter(Boolean);
+  if (!categoria || !ofertasPrincipais.length) return;
+
   if (destaqueAlvo) {
     destaqueAlvo.replaceChildren();
-    destaques.forEach(([id, selo], indice) => {
-      const oferta = ofertas.find((item) => item.id === id);
-      if (!oferta) return;
-      const card = criar("article", `digital-offer${indice === 1 ? " digital-offer--featured" : ""}`);
+    ofertasPrincipais.forEach((oferta, indice) => {
+      const card = criar("article", `digital-offer${oferta.id === "web-app-sistema-customizado" ? " digital-offer--featured" : ""}`);
       const cabecalho = criar("div", "digital-offer__head");
-      cabecalho.append(criar("span", "digital-offer__eyebrow", selo), criar("span", "digital-offer__index", `0${indice + 1}`));
-      card.append(cabecalho, criar("h3", "", oferta.nome), criar("strong", "digital-offer__price", precoFormatado(oferta)), criar("p", "digital-offer__description", oferta.descricao));
+      cabecalho.append(criar("span", "digital-offer__eyebrow", oferta.comparativo?.tag || "Projeto digital"), criar("span", "digital-offer__index", String(indice + 1).padStart(2, "0")));
+      const precificacao = criar("div", "digital-offer__pricing");
+      precificacao.appendChild(criar("strong", "digital-offer__price", precoFormatado(oferta)));
+      if (oferta.precoPix != null) precificacao.appendChild(criar("small", "digital-offer__pix", `Pix integral: ${formatarMoeda(oferta.precoPix)} (-15%)`));
+      if (oferta.recorrenciaMensal != null) precificacao.appendChild(criar("small", "digital-offer__recurrence", `Manutenção/hospedagem: ${formatarMoeda(oferta.recorrenciaMensal)}/mês, quando contratada`));
+      card.append(cabecalho, criar("h3", "", oferta.nome), precificacao, criar("p", "digital-offer__description", oferta.descricao));
       const lista = criar("ul", "digital-offer__list");
       (oferta.inclui || []).slice(0, 4).forEach((item) => lista.appendChild(criar("li", "", item)));
       card.appendChild(lista);
@@ -169,10 +174,12 @@ function renderProjetosDigitais(servicos, selecionar) {
 
   if (comparativoAlvo) {
     comparativoAlvo.replaceChildren();
-    ofertas.slice(0, 3).forEach((oferta, indice) => {
-      const card = criar("article", `digital-compare-card${indice === 1 ? " digital-compare-card--featured" : ""}`);
-      card.append(criar("span", "digital-compare-card__tag", indice === 0 ? "Comece aqui" : indice === 1 ? "Para operar" : "Sob medida"));
+    ofertasPrincipais.forEach((oferta) => {
+      const card = criar("article", `digital-compare-card${oferta.id === "web-app-sistema-customizado" ? " digital-compare-card--featured" : ""}`);
+      card.append(criar("span", "digital-compare-card__tag", oferta.comparativo?.tag || "Projeto digital"));
       card.append(criar("h3", "", oferta.nome), criar("strong", "digital-compare-card__price", precoFormatado(oferta)));
+      if (oferta.precoPix != null) card.appendChild(criar("small", "digital-compare-card__pix", `Pix: ${formatarMoeda(oferta.precoPix)}`));
+      if (oferta.recorrenciaMensal != null) card.appendChild(criar("small", "digital-compare-card__recurrence", `Recorrência: ${formatarMoeda(oferta.recorrenciaMensal)}/mês`));
       const resultado = oferta.comparativo?.resultado || oferta.descricao;
       card.append(criar("p", "digital-compare-card__result", resultado));
       const detalhes = criar("dl", "digital-compare-card__details");
@@ -282,7 +289,7 @@ async function boot() {
       onSelect: selecionarProduto
     });
     renderDestaques(categorias, $("#gridDestaques"), [
-      "site-essencial",
+      "landing-page-estatica",
       "tag-nfc-personalizada",
       "apito-morte-asteca",
       "pedido-registro-marca"
