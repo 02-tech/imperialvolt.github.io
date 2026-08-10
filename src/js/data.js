@@ -5,6 +5,7 @@ const ARQUIVOS = {
   catalogo: "./dados-site/catalogo-publico.json",
   servicos: "./dados-site/servicos.json",
   politicas: "./dados-site/politicas.json",
+  pagamentos: "./dados-site/pagamentos.json",
   avaliacoes: "./dados-site/avaliacoes.json",
   faq: "./dados-site/faq.json"
 };

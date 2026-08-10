@@ -164,7 +164,7 @@ function renderProjetosDigitais(servicos, selecionar) {
       const lista = criar("ul", "digital-offer__list");
       (oferta.inclui || []).slice(0, 4).forEach((item) => lista.appendChild(criar("li", "", item)));
       card.appendChild(lista);
-      const acao = criar("button", "button button--ink button--small", "Montar solicitação");
+      const acao = criar("button", "button button--ink button--small", "Ver valor e avançar");
       acao.type = "button";
       acao.addEventListener("click", () => selecionar({ categoriaId: categoria.id, itemId: oferta.id }));
       card.appendChild(acao);
@@ -277,7 +277,7 @@ async function boot() {
   try {
     const dados = await carregarDados();
     const categorias = unificarCategorias(dados);
-    const quote = iniciarOrcamento({ raiz: $("#quoteBuilder"), categorias, politicas: dados.politicas });
+    const quote = iniciarOrcamento({ raiz: $("#quoteBuilder"), categorias, politicas: dados.politicas, pagamentos: dados.pagamentos });
     const selecionarProduto = (selecao) => {
       quote.selecionar(selecao);
       rolarPara("orcamento");
