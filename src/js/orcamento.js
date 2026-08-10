@@ -5,7 +5,7 @@ import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 const CATEGORIA_EMPRESAS = {
   id: "empresas-revendedores",
   nome: "Empresas e revendedores",
-  icone: "07",
+  icone: "06",
   itens: [{
     id: "solucao-empresarial",
     nome: "Solução empresarial sob medida",
@@ -30,11 +30,21 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     finalidade: "",
     personalizacao: "",
     observacoes: "",
-    pagamento: ""
+    pagamento: "",
+    plataforma: "",
+    estruturaDados: "",
+    integracoes: "",
+    publicacaoLojas: ""
   };
 
   const categoriaAtual = () => todasCategorias.find((categoria) => categoria.id === estado.categoriaId) || null;
   const itemAtual = () => categoriaAtual()?.itens.find((item) => item.id === estado.itemId) || null;
+  const limparCamposDigitais = () => {
+    estado.plataforma = "";
+    estado.estruturaDados = "";
+    estado.integracoes = "";
+    estado.publicacaoLojas = "";
+  };
 
   const valorAtual = () => {
     const item = itemAtual();
@@ -76,6 +86,18 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     const envoltorio = criar("label", "quote-field");
     envoltorio.append(criar("span", "", label), control);
     return envoltorio;
+  }
+
+  function selectCampo(label, fieldName, opcoes, placeholder) {
+    const select = criar("select", "");
+    select.dataset.field = fieldName;
+    ["", ...opcoes].forEach((opcao) => {
+      const option = criar("option", "", opcao || placeholder);
+      option.value = opcao;
+      option.selected = opcao === estado[fieldName];
+      select.appendChild(option);
+    });
+    return campo(label, select);
   }
 
   function atualizarResumo() {
@@ -120,6 +142,14 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     const item = itemAtual();
     if (item) {
       const campos = criar("div", "quote-fields");
+      if (estado.categoriaId === "projetos-digitais") {
+        campos.appendChild(selectCampo("Onde deve funcionar?", "plataforma", ["Web", "Android", "Android e iOS", "Web + aplicativo", "Ainda não sei"], "Selecione a plataforma"));
+        campos.appendChild(selectCampo("Como o projeto deve lidar com dados?", "estruturaDados", ["Não precisa guardar dados", "Banco de dados e cadastros", "Ainda não sei"], "Selecione uma necessidade"));
+        campos.appendChild(selectCampo("Há integrações ou automações?", "integracoes", ["Sem integrações", "WhatsApp, pagamentos ou APIs", "Automação entre ferramentas", "Ainda não sei"], "Selecione uma opção"));
+        if (item.id === "aplicativo-android-multiplataforma") {
+          campos.appendChild(selectCampo("Publicação em lojas", "publicacaoLojas", ["Não neste momento", "Sim, quero avaliar essa etapa", "Ainda não sei"], "Selecione uma opção"));
+        }
+      }
       if (item.faixas?.length) {
         const select = criar("select", "");
         select.dataset.field = "faixaIndex";
@@ -204,6 +234,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     if (botao.dataset.action === "category") {
       estado.categoriaId = botao.dataset.id;
       estado.itemId = null;
+      limparCamposDigitais();
       estado.faixaIndex = 0;
       estado.quantidade = 1;
       renderizar();
@@ -211,6 +242,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     }
     if (botao.dataset.action === "item") {
       estado.itemId = botao.dataset.id;
+      estado.publicacaoLojas = "";
       estado.faixaIndex = 0;
       estado.quantidade = 1;
       renderizar();
@@ -225,6 +257,10 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
         finalidade: estado.finalidade,
         personalizacao: estado.personalizacao,
         observacoes: estado.observacoes,
+        plataforma: estado.plataforma,
+        estruturaDados: estado.estruturaDados,
+        integracoes: estado.integracoes,
+        publicacaoLojas: estado.publicacaoLojas,
         valor: valorAtual(),
         pagamento: estado.pagamento,
         origem: "Orçamento guiado"
@@ -248,6 +284,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     selecionar({ categoriaId, itemId }) {
       estado.categoriaId = categoriaId;
       estado.itemId = itemId || null;
+      limparCamposDigitais();
       estado.faixaIndex = 0;
       estado.quantidade = 1;
       renderizar();

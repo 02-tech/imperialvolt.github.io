@@ -5,245 +5,170 @@
     "pagamentoDividido": "50% para iniciar e 50% antes da entrega definitiva",
     "cartao": "até 3x sem juros, respeitando parcela mínima",
     "custosTerceirosInclusos": false,
-    "observacao": "Domínio, hospedagem, APIs, licenças, taxas e serviços externos são cobrados separadamente, salvo indicação expressa."
+    "custosTerceiros": [
+      "domínio",
+      "VPS",
+      "hospedagem paga",
+      "banco de dados e serviços externos pagos",
+      "APIs",
+      "serviços de e-mail",
+      "SMS",
+      "WhatsApp API",
+      "serviços de IA",
+      "armazenamento adicional",
+      "licenças",
+      "contas de desenvolvedor",
+      "Google Play Console",
+      "Apple Developer",
+      "taxas das lojas"
+    ],
+    "publicacaoAplicativos": "Não incluída automaticamente. Preparação, submissão, correções e acompanhamento são contratados à parte quando necessário.",
+    "posEntrega": "Novas funções, alterações de escopo, integrações, expansão, manutenção recorrente e aumento de infraestrutura podem gerar novo orçamento.",
+    "observacao": "A estrutura técnica pode ser criada pela Imperial Volt quando prevista no escopo. Contas, assinaturas e custos recorrentes de terceiros são contratados pelo cliente ou incluídos expressamente no orçamento."
   },
   "categorias": [
     {
-      "id": "sites",
-      "nome": "Sites e páginas digitais",
+      "id": "projetos-digitais",
+      "nome": "Projetos digitais",
+      "descricao": "Sites, plataformas web, aplicativos e automações com escopo definido conforme a necessidade.",
       "servicos": [
         {
-          "id": "pagina-express",
-          "nome": "Página Express",
-          "preco": 397,
-          "tipoPreco": "fixo",
-          "descricao": "Página profissional de entrada para apresentar um negócio, serviço ou campanha.",
+          "id": "site-essencial",
+          "nome": "Site essencial / estático",
+          "precoInicial": 300,
+          "tipoPreco": "a partir de",
+          "descricao": "Presença digital simples para apresentar empresa, serviço ou profissional com clareza.",
           "comparativo": {
-            "estrutura": "1 página / até 5 seções",
-            "design": "Layout responsivo",
-            "captacao": "WhatsApp",
-            "conteudo": "Apresentação essencial",
-            "catalogo": "Não incluso",
-            "dados": "Não incluso"
+            "resultado": "Apresenta informações",
+            "estrutura": "Conteúdo predominantemente estático",
+            "dados": "Sem banco de dados próprio",
+            "operacao": "Contatos e links",
+            "proximoNivel": "Avance quando precisar receber e gerenciar dados"
           },
           "inclui": [
-            "1 página",
-            "até 5 seções",
+            "site institucional simples",
+            "conteúdo predominantemente estático",
             "layout responsivo",
-            "botão de WhatsApp",
-            "configuração básica de SEO",
-            "publicação inicial",
-            "1 rodada de ajustes"
+            "apresentação de empresa ou serviço",
+            "contatos e links",
+            "SEO técnico básico quando previsto"
           ],
           "naoInclui": [
-            "domínio",
-            "hospedagem paga",
+            "banco de dados próprio",
             "painel administrativo",
-            "banco de dados",
-            "produção extensa de conteúdo",
-            "identidade visual completa"
+            "login e usuários",
+            "funcionalidades complexas",
+            "domínio, hospedagem paga e serviços externos"
           ],
-          "prazoEstimadoDiasUteis": {
-            "minimo": 3,
-            "maximo": 7
-          }
+          "avisoPreco": "R$ 300 é o ponto de partida para um site simples. Escopos adicionais alteram o orçamento."
         },
         {
-          "id": "landing-page-profissional",
-          "nome": "Landing Page Profissional",
-          "preco": 697,
-          "tipoPreco": "fixo",
-          "descricao": "Página estratégica focada em apresentação, captação de contatos e conversão.",
+          "id": "plataforma-web",
+          "nome": "Plataforma web / sistema completo",
+          "precoInicial": 2500,
+          "tipoPreco": "a partir de",
+          "descricao": "Aplicação web para receber, processar, gravar e gerenciar informações da operação.",
           "comparativo": {
-            "estrutura": "1 página / até 8 seções",
-            "design": "Design personalizado",
-            "captacao": "WhatsApp + formulário simples",
-            "conteudo": "Estrutura comercial",
-            "catalogo": "Não incluso",
-            "dados": "Não incluso"
+            "resultado": "Recebe, processa, grava e gerencia informações",
+            "estrutura": "Aplicação web dinâmica",
+            "dados": "Banco de dados conforme escopo",
+            "operacao": "Login, cadastros e painel quando necessários",
+            "proximoNivel": "Integrações e regras avançadas entram no orçamento"
           },
           "inclui": [
-            "design personalizado",
-            "estrutura comercial",
-            "até 8 seções",
-            "integração com WhatsApp",
-            "formulário simples quando aplicável",
-            "animações discretas",
-            "SEO básico",
-            "publicação inicial",
-            "2 rodadas de ajustes"
+            "aplicação web dinâmica",
+            "banco de dados conforme necessidade",
+            "autenticação quando necessária",
+            "cadastros e regras de negócio",
+            "painel administrativo",
+            "backend e integrações previstas no escopo"
           ],
           "naoInclui": [
-            "domínio",
-            "hospedagem paga",
-            "automação externa",
-            "painel administrativo",
-            "banco de dados",
-            "campanhas de anúncios"
+            "VPS, hospedagem paga e serviços recorrentes",
+            "APIs, licenças e serviços de terceiros",
+            "manutenção ilimitada",
+            "novas funções após a entrega",
+            "publicação de aplicativo em lojas"
           ],
-          "prazoEstimadoDiasUteis": {
-            "minimo": 5,
-            "maximo": 10
-          }
+          "avisoPreco": "R$ 2.500 é o valor de referência para uma plataforma web completa. O preço final depende do escopo."
         },
         {
-          "id": "site-institucional",
-          "nome": "Site Institucional",
-          "preco": 1290,
-          "tipoPreco": "fixo",
-          "descricao": "Site completo para apresentar empresa, serviços, diferenciais, avaliações e contato.",
+          "id": "aplicativo-android-multiplataforma",
+          "nome": "Aplicativos Android e multiplataforma",
+          "tipoPreco": "sob orçamento",
+          "descricao": "Produto digital para Android ou mais de uma plataforma, planejado conforme operação, telas e integrações.",
           "comparativo": {
-            "estrutura": "Até 5 páginas",
-            "design": "Design personalizado",
-            "captacao": "WhatsApp",
-            "conteudo": "Avaliações e contato",
-            "catalogo": "Não incluso",
-            "dados": "Não incluso"
+            "resultado": "Experiência de produto no celular",
+            "estrutura": "Android, iOS ou multiplataforma",
+            "dados": "Backend e banco quando necessários",
+            "operacao": "Autenticação, notificações e integrações conforme escopo",
+            "proximoNivel": "Publicação em lojas é uma contratação específica"
           },
           "inclui": [
-            "até 5 páginas",
-            "design personalizado",
-            "layout responsivo",
-            "integração com WhatsApp",
-            "seção de avaliações",
-            "SEO técnico básico",
-            "publicação inicial",
-            "2 rodadas de ajustes"
+            "análise de funcionalidades",
+            "definição das plataformas",
+            "estrutura técnica conforme o projeto",
+            "backend, banco e autenticação quando necessários"
           ],
           "naoInclui": [
-            "domínio",
-            "hospedagem paga",
-            "painel administrativo",
-            "banco de dados",
-            "e-mail profissional",
-            "manutenção contínua"
+            "taxas de lojas",
+            "contas Google Play ou Apple Developer",
+            "publicação sem contratação expressa",
+            "infraestrutura e serviços externos recorrentes"
           ],
-          "prazoEstimadoDiasUteis": {
-            "minimo": 10,
-            "maximo": 20
-          }
+          "avisoPreco": "Aplicativos são avaliados sob orçamento conforme funcionalidades, backend, integrações e operação."
         },
         {
-          "id": "site-comercial-catalogo",
-          "nome": "Site Comercial com Catálogo",
-          "preco": 1890,
-          "tipoPreco": "fixo",
-          "descricao": "Site navegável com produtos, serviços, preços e pedidos encaminhados ao WhatsApp.",
+          "id": "integracao-automacao",
+          "nome": "Integração / automação",
+          "tipoPreco": "sob orçamento",
+          "descricao": "Fluxos e integrações para reduzir tarefas manuais e conectar ferramentas da operação.",
           "comparativo": {
-            "estrutura": "Catálogo navegável",
-            "design": "Layout responsivo",
-            "captacao": "WhatsApp",
-            "conteudo": "Produtos e preços",
-            "catalogo": "Filtros simples quando aplicáveis",
-            "dados": "Não incluso"
+            "resultado": "Conecta etapas e reduz tarefas manuais",
+            "estrutura": "Fluxo definido por processo",
+            "dados": "Conforme ferramentas envolvidas",
+            "operacao": "Integrações e automações previstas",
+            "proximoNivel": "Complexidade e serviços externos entram no orçamento"
           },
           "inclui": [
-            "catálogo navegável",
-            "páginas ou modais de produtos",
-            "preços visíveis",
-            "filtros simples quando aplicáveis",
-            "mensagem automática para WhatsApp",
-            "layout responsivo",
-            "SEO básico",
-            "publicação inicial",
-            "2 rodadas de ajustes"
+            "mapeamento da rotina",
+            "definição das integrações",
+            "automação do fluxo previsto",
+            "orientação sobre dependências externas"
           ],
           "naoInclui": [
-            "pagamento online",
-            "painel administrativo",
-            "controle de estoque",
-            "banco de dados",
-            "domínio",
-            "hospedagem paga"
+            "assinaturas de terceiros",
+            "APIs pagas",
+            "manutenção recorrente",
+            "fluxos não descritos na proposta"
           ],
-          "prazoEstimadoDiasUteis": {
-            "minimo": 15,
-            "maximo": 30
-          }
+          "avisoPreco": "O valor depende da quantidade de etapas, ferramentas, regras e integrações envolvidas."
         },
         {
-          "id": "site-premium",
-          "nome": "Site Premium Personalizado",
-          "precoInicial": 2900,
-          "tipoPreco": "a partir de",
-          "descricao": "Projeto avançado com arquitetura, design e recursos definidos sob medida.",
+          "id": "projeto-digital-personalizado",
+          "nome": "Projeto personalizado",
+          "tipoPreco": "sob orçamento",
+          "descricao": "Uma solução digital desenhada a partir do problema, do público e da operação do cliente.",
           "comparativo": {
-            "estrutura": "Arquitetura sob medida",
-            "design": "Design exclusivo",
-            "captacao": "Integrações previstas no orçamento",
-            "conteudo": "Experiência de navegação avançada",
-            "catalogo": "Quando previsto no escopo",
-            "dados": "Quando previsto no escopo"
+            "resultado": "Solução definida para o cenário do cliente",
+            "estrutura": "Escopo sob medida",
+            "dados": "Conforme a necessidade",
+            "operacao": "Regras, painéis e integrações quando previstos",
+            "proximoNivel": "A proposta aprovada define o que será entregue"
           },
           "inclui": [
-            "planejamento de estrutura",
-            "design exclusivo",
-            "experiência de navegação avançada",
-            "animações",
-            "integrações previstas no orçamento",
-            "banco de dados quando previsto no escopo",
-            "configuração inicial de infraestrutura quando prevista no escopo",
-            "SEO técnico",
-            "publicação inicial"
+            "levantamento inicial",
+            "análise de viabilidade",
+            "arquitetura compatível com o escopo",
+            "proposta comercial específica"
           ],
           "naoInclui": [
-            "conta VPS ou hospedagem recorrente",
-            "domínio",
-            "licenças, APIs e serviços externos",
-            "custos recorrentes de terceiros"
+            "funcionalidades presumidas",
+            "custos de terceiros não descritos",
+            "desenvolvimento ilimitado",
+            "publicação em lojas sem contratação expressa"
           ],
-          "prazoEstimadoDiasUteis": {
-            "minimo": 20,
-            "maximo": 45
-          }
-        }
-      ]
-    },
-    {
-      "id": "software",
-      "nome": "Aplicativos, sistemas e automações",
-      "servicos": [
-        {
-          "id": "automacao-simples",
-          "nome": "Automação Simples",
-          "precoInicial": 690,
-          "tipoPreco": "a partir de",
-          "descricao": "Automação de uma rotina específica, local e de baixa complexidade."
-        },
-        {
-          "id": "automacao-integrada",
-          "nome": "Automação Integrada",
-          "precoInicial": 1490,
-          "tipoPreco": "a partir de",
-          "descricao": "Automação com múltiplas etapas, arquivos, relatórios, APIs ou serviços externos."
-        },
-        {
-          "id": "aplicativo-desktop",
-          "nome": "Aplicativo Desktop Essencial",
-          "precoInicial": 1990,
-          "tipoPreco": "a partir de",
-          "descricao": "Aplicativo personalizado para computador, com operação local e instalador."
-        },
-        {
-          "id": "aplicativo-mobile",
-          "nome": "Aplicativo Mobile ou PWA",
-          "precoInicial": 2490,
-          "tipoPreco": "a partir de",
-          "descricao": "Aplicativo para celular ou PWA, com funções e telas definidas no escopo."
-        },
-        {
-          "id": "sistema-personalizado",
-          "nome": "Sistema Personalizado",
-          "precoInicial": 2990,
-          "tipoPreco": "a partir de",
-          "descricao": "Sistema com cadastros, regras de negócio, painéis e armazenamento de informações."
-        },
-        {
-          "id": "sistema-avancado",
-          "nome": "Sistema com Login, Banco e Integrações",
-          "precoInicial": 4900,
-          "tipoPreco": "a partir de",
-          "descricao": "Sistema avançado com autenticação, permissões, banco remoto e integrações."
+          "avisoPreco": "A proposta aprovada define escopo, prazo, entregáveis, custos externos e condições específicas."
         }
       ]
     },

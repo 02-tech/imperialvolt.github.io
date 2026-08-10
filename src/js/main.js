@@ -113,7 +113,7 @@ function renderCategorias(categorias, selecionar) {
   const alvo = $("#categoryNav");
   if (!alvo) return;
   alvo.replaceChildren();
-  [...categorias, { id: "empresas-revendedores", nome: "Empresas e revendedores", icone: "07" }].forEach((categoria) => {
+  [...categorias, { id: "empresas-revendedores", nome: "Empresas e revendedores", icone: "06" }].forEach((categoria) => {
     const botao = criar("button", "category-nav__item");
     botao.type = "button";
     botao.append(criar("strong", "", categoria.nome), criar("span", "", categoria.icone));
@@ -135,52 +135,53 @@ function renderFaq(faq) {
   });
 }
 
-function renderComparativoSites(servicos) {
-  const alvo = $("#siteComparison");
-  const categoria = servicos?.categorias?.find((item) => item.id === "sites");
-  const planos = categoria?.servicos?.filter((item) => item.comparativo) || [];
-  if (!alvo || !planos.length) return;
+function renderProjetosDigitais(servicos, selecionar) {
+  const categoria = servicos?.categorias?.find((item) => item.id === "projetos-digitais");
+  const ofertas = categoria?.servicos || [];
+  const destaqueAlvo = $("#digitalOffers");
+  const comparativoAlvo = $("#siteComparison");
+  if (!categoria || !ofertas.length) return;
 
-  const recursos = [
-    ["Estrutura", "estrutura"],
-    ["Design e personalização", "design"],
-    ["Captação e contato", "captacao"],
-    ["Conteúdo principal", "conteudo"],
-    ["Catálogo e filtros", "catalogo"],
-    ["Banco de dados e painel", "dados"]
+  const destaques = [
+    ["site-essencial", "Presença digital"],
+    ["plataforma-web", "Operação digital"],
+    ["aplicativo-android-multiplataforma", "Produto mobile"]
   ];
-  const rolagem = criar("div", "site-comparison__scroll");
-  const tabela = criar("div", "site-comparison__table");
-  tabela.setAttribute("role", "table");
-
-  const cabecalho = criar("div", "site-comparison__row site-comparison__row--head");
-  cabecalho.setAttribute("role", "row");
-  cabecalho.appendChild(criar("div", "site-comparison__feature", "Recurso"));
-  planos.forEach((plano) => {
-    const celula = criar("div", "site-comparison__plan");
-    celula.setAttribute("role", "columnheader");
-    celula.append(criar("strong", "", plano.nome), criar("small", "", precoFormatado(plano)));
-    cabecalho.appendChild(celula);
-  });
-  tabela.appendChild(cabecalho);
-
-  recursos.forEach(([rotulo, chave]) => {
-    const linha = criar("div", "site-comparison__row");
-    linha.setAttribute("role", "row");
-    linha.appendChild(criar("div", "site-comparison__feature", rotulo));
-    planos.forEach((plano) => {
-      const valor = plano.comparativo[chave] || "Definido no escopo";
-      const celula = criar("div", "site-comparison__cell", valor);
-      celula.setAttribute("role", "cell");
-      if (valor.startsWith("Não")) celula.classList.add("is-excluded");
-      if (valor.includes("escopo")) celula.classList.add("is-scoped");
-      linha.appendChild(celula);
+  if (destaqueAlvo) {
+    destaqueAlvo.replaceChildren();
+    destaques.forEach(([id, selo], indice) => {
+      const oferta = ofertas.find((item) => item.id === id);
+      if (!oferta) return;
+      const card = criar("article", `digital-offer${indice === 1 ? " digital-offer--featured" : ""}`);
+      const cabecalho = criar("div", "digital-offer__head");
+      cabecalho.append(criar("span", "digital-offer__eyebrow", selo), criar("span", "digital-offer__index", `0${indice + 1}`));
+      card.append(cabecalho, criar("h3", "", oferta.nome), criar("strong", "digital-offer__price", precoFormatado(oferta)), criar("p", "digital-offer__description", oferta.descricao));
+      const lista = criar("ul", "digital-offer__list");
+      (oferta.inclui || []).slice(0, 4).forEach((item) => lista.appendChild(criar("li", "", item)));
+      card.appendChild(lista);
+      const acao = criar("button", "button button--ink button--small", "Montar solicitação");
+      acao.type = "button";
+      acao.addEventListener("click", () => selecionar({ categoriaId: categoria.id, itemId: oferta.id }));
+      card.appendChild(acao);
+      destaqueAlvo.appendChild(card);
     });
-    tabela.appendChild(linha);
-  });
+  }
 
-  rolagem.appendChild(tabela);
-  alvo.replaceChildren(rolagem);
+  if (comparativoAlvo) {
+    comparativoAlvo.replaceChildren();
+    ofertas.slice(0, 3).forEach((oferta, indice) => {
+      const card = criar("article", `digital-compare-card${indice === 1 ? " digital-compare-card--featured" : ""}`);
+      card.append(criar("span", "digital-compare-card__tag", indice === 0 ? "Comece aqui" : indice === 1 ? "Para operar" : "Sob medida"));
+      card.append(criar("h3", "", oferta.nome), criar("strong", "digital-compare-card__price", precoFormatado(oferta)));
+      const resultado = oferta.comparativo?.resultado || oferta.descricao;
+      card.append(criar("p", "digital-compare-card__result", resultado));
+      const detalhes = criar("dl", "digital-compare-card__details");
+      [["Estrutura", "estrutura"], ["Dados", "dados"], ["Operação", "operacao"]].forEach(([rotulo, chave]) => {
+        detalhes.append(criar("dt", "", rotulo), criar("dd", "", oferta.comparativo?.[chave] || "Definido no escopo"));
+      });
+      comparativoAlvo.appendChild(card);
+    });
+  }
 }
 
 function dataBrasil(iso) {
@@ -281,7 +282,7 @@ async function boot() {
       onSelect: selecionarProduto
     });
     renderDestaques(categorias, $("#gridDestaques"), [
-      "landing-page-profissional",
+      "site-essencial",
       "tag-nfc-personalizada",
       "apito-morte-asteca",
       "pedido-registro-marca"
@@ -298,7 +299,7 @@ async function boot() {
     document.querySelectorAll("[data-quote-category]").forEach((link) => {
       link.addEventListener("click", () => quote.selecionar({ categoriaId: link.dataset.quoteCategory }));
     });
-    renderComparativoSites(dados.servicos);
+    renderProjetosDigitais(dados.servicos, selecionarProduto);
     renderFaq(dados.faq);
     renderProvaSocial(dados);
     preencherContato(dados.publico);

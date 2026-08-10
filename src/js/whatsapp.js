@@ -19,6 +19,10 @@ export function montarMensagem(campos) {
   if (campos.finalidade) linhas.push("Finalidade: " + campos.finalidade);
   if (campos.personalizacao) linhas.push("Personalização desejada: " + campos.personalizacao);
   if (campos.paginaPersonalizada) linhas.push("Interesse em página/aplicação personalizada: " + campos.paginaPersonalizada);
+  if (campos.plataforma) linhas.push("Plataforma: " + campos.plataforma);
+  if (campos.estruturaDados) linhas.push("Dados e operação: " + campos.estruturaDados);
+  if (campos.integracoes) linhas.push("Integrações/automação: " + campos.integracoes);
+  if (campos.publicacaoLojas) linhas.push("Publicação em lojas: " + campos.publicacaoLojas);
   if (campos.observacoes) linhas.push("Observações: " + campos.observacoes);
   if (campos.valor) linhas.push("Valor apresentado no site: " + campos.valor);
   if (campos.pagamento) linhas.push("Forma de pagamento pretendida: " + campos.pagamento);

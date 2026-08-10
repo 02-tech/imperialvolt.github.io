@@ -10,12 +10,11 @@ const ARQUIVOS = {
 };
 
 const ROTULOS = {
-  sites: { titulo: "Sites e páginas digitais", icone: "01" },
-  software: { titulo: "Sistemas e automação", icone: "02" },
-  marcas: { titulo: "Registro de marcas", icone: "03" },
-  manutencao: { titulo: "Manutenção e suporte", icone: "04" },
-  "impressao-3d": { titulo: "Soluções físicas em impressão 3D", icone: "05" },
-  nfc: { titulo: "Tags e chaveiros NFC", icone: "06" }
+  "projetos-digitais": { titulo: "Projetos digitais", icone: "01" },
+  marcas: { titulo: "Registro de marcas", icone: "02" },
+  manutencao: { titulo: "Manutenção e suporte", icone: "03" },
+  "impressao-3d": { titulo: "Soluções físicas em impressão 3D", icone: "04" },
+  nfc: { titulo: "Tags e chaveiros NFC", icone: "05" }
 };
 
 async function carregarJson(caminho) {
