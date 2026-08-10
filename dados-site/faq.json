@@ -1,6 +1,35 @@
 {
   "categorias": [
     {
+      "nome": "Projetos digitais",
+      "perguntas": [
+        {
+          "pergunta": "O que está incluído no site essencial a partir de R$300?",
+          "resposta": "É o ponto de partida para um site institucional simples, responsivo, com apresentação da empresa ou serviço, contatos e links. Conteúdo adicional, banco de dados, painel e funcionalidades complexas alteram o orçamento."
+        },
+        {
+          "pergunta": "Quando preciso de uma plataforma web?",
+          "resposta": "Quando o projeto precisa receber, processar, gravar e gerenciar informações, como login, usuários, cadastros, pedidos, vagas, estoque, painel, automações ou integrações. A referência pública começa em R$2.500 e o valor final depende do escopo."
+        },
+        {
+          "pergunta": "Quanto custa um aplicativo?",
+          "resposta": "Aplicativos Android e multiplataforma são feitos sob orçamento. O valor depende das funcionalidades, backend, banco de dados, autenticação, integrações, plataformas e complexidade operacional."
+        },
+        {
+          "pergunta": "A publicação na Google Play ou App Store está incluída?",
+          "resposta": "Não automaticamente. Preparação, submissão, correções e acompanhamento da publicação só entram quando expressamente contratados. Taxas das lojas e contas de desenvolvedor são custos de terceiros."
+        },
+        {
+          "pergunta": "VPS, domínio e banco de dados estão incluídos?",
+          "resposta": "Não por padrão. A Imperial Volt pode criar a estrutura técnica prevista no escopo, mas domínio, VPS, hospedagem, banco de dados como serviço, APIs, licenças e demais custos recorrentes precisam ser contratados à parte ou indicados expressamente na proposta."
+        },
+        {
+          "pergunta": "O que acontece depois da entrega?",
+          "resposta": "Novas funções, alterações de escopo, integrações, expansão, manutenção recorrente ou aumento de infraestrutura podem gerar novo orçamento. Correção de defeito diretamente relacionado ao escopo contratado é tratada conforme as condições da proposta."
+        }
+      ]
+    },
+    {
       "nome": "Sites",
       "perguntas": [
         {

@@ -24,6 +24,17 @@
     "melhorias": "Novas funções, mudanças de regra e ampliações não são correções e serão cobradas separadamente.",
     "vitalicio": false
   },
+  "publicacao": {
+    "incluidaAutomaticamente": false,
+    "regra": "O desenvolvimento não inclui automaticamente publicação na Google Play, App Store ou outras lojas.",
+    "contratacaoEspecifica": "Configuração, adequação, materiais, submissão, correções exigidas e acompanhamento só serão incluídos quando expressamente especificados no orçamento.",
+    "taxas": "Taxas de Google, Apple e outros provedores são custos de terceiros, salvo indicação expressa.",
+    "aprovacao": "A aprovação depende das regras e decisões da plataforma. Rejeição ou exigência da loja não significa ausência de execução do desenvolvimento contratado."
+  },
+  "infraestrutura": {
+    "custos": "VPS, hospedagem, banco de dados, APIs, serviços em nuvem, armazenamento, SMS, WhatsApp API, IA, licenças e contas de desenvolvedor não estão automaticamente incluídos.",
+    "contas": "Credenciais e contas de serviços devem preferencialmente permanecer em nome e sob propriedade do cliente."
+  },
   "dependencias": [
     "sistemas operacionais",
     "APIs",

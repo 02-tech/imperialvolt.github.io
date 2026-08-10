@@ -14,9 +14,29 @@
   ],
   "precos": [
     "Preços fixos aplicam-se somente ao escopo expressamente indicado.",
-    "Serviços identificados como a partir de dependem da complexidade e do escopo.",
-    "Custos de domínio, hospedagem, APIs, licenças, frete, taxas públicas e terceiros não estão incluídos, salvo indicação expressa.",
-    "Alterações fora do escopo serão cobradas separadamente."
+    "Valores apresentados como a partir de são referências comerciais e dependem da complexidade e do escopo.",
+    "O orçamento aprovado define o escopo efetivamente contratado. Funcionalidades não descritas na proposta não devem ser presumidas como incluídas.",
+    "A Imperial Volt poderá oferecer condição especial ou desconto em uma proposta individual, sem alterar os valores públicos de referência do site.",
+    "Custos de domínio, VPS, hospedagem paga, banco de dados ou serviços externos pagos, APIs, e-mail, SMS, WhatsApp API, IA, armazenamento, licenças, frete, taxas públicas e terceiros não estão incluídos, salvo indicação expressa.",
+    "Alterações fora do escopo, novas funcionalidades, integrações e expansões serão cobradas separadamente."
+  ],
+  "projetosDigitais": {
+    "siteEssencial": "A partir de R$300, para presença digital simples, conteúdo predominantemente estático, responsividade, apresentação, contatos e links. Não inclui banco de dados próprio, painel administrativo ou funcionalidades complexas por padrão.",
+    "plataformaWeb": "A partir de R$2.500, para aplicações web dinâmicas com banco de dados, cadastros, regras de negócio, autenticação, painel, backend e integrações conforme a necessidade do escopo.",
+    "aplicativos": "Aplicativos Android e multiplataforma são desenvolvidos sob orçamento. O valor depende de funcionalidades, backend, banco de dados, autenticação, integrações, plataformas e complexidade operacional.",
+    "publicacaoLojas": "O desenvolvimento de aplicativo não inclui automaticamente publicação na Google Play, App Store ou outras lojas. Preparação, submissão, correções e acompanhamento só entram quando expressamente contratados.",
+    "taxasLojas": "Taxas cobradas por Google, Apple ou outros provedores são custos de terceiros e não fazem parte do desenvolvimento, salvo indicação expressa na proposta.",
+    "aprovacaoLojas": "A aprovação ou rejeição por uma loja depende das regras e decisões da plataforma. Uma rejeição não significa, por si só, ausência de execução do serviço de desenvolvimento."
+  },
+  "posEntrega": [
+    "A entrega de um projeto não cria obrigação de desenvolvimento ilimitado.",
+    "Novas funções, alterações de escopo, integrações adicionais, expansão do sistema, manutenção recorrente e aumento de infraestrutura podem gerar novo orçamento.",
+    "Correções de defeitos diretamente relacionados ao escopo originalmente contratado serão tratadas conforme o período e as condições da proposta. Isso é diferente de uma nova funcionalidade ou mudança de regra."
+  ],
+  "terceirosEContas": [
+    "Serviços externos podem alterar seus próprios preços, limites, políticas e condições independentemente da Imperial Volt.",
+    "Credenciais, domínios, contas de lojas, provedores e serviços essenciais devem preferencialmente permanecer em nome e sob propriedade do cliente.",
+    "Configuração ou criação técnica de banco de dados e infraestrutura não significa inclusão automática da conta VPS, hospedagem ou serviço recorrente."
   ],
   "pagamento": [
     "Pix integral com 5% de desconto.",

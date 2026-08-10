@@ -7,8 +7,7 @@ const IMAGENS_VITRINE = {
   "chaveiro-nfc-personalizado": "./src/imagens/vitrine/nfc-chaveiro.svg",
   "apito-morte-asteca": "./src/imagens/produtos/apito-morte-asteca.jpg",
   "impressao-sob-medida": "./src/imagens/vitrine/produto-personalizado.svg",
-  sites: "./src/imagens/vitrine/sites.svg",
-  software: "./src/imagens/vitrine/sistemas.svg",
+  "projetos-digitais": "./src/imagens/vitrine/sites.svg",
   marcas: "./src/imagens/vitrine/registro-marca.svg",
   manutencao: "./src/imagens/vitrine/automacoes.svg"
 };
@@ -41,7 +40,7 @@ function valorSelecionado(item, faixaIndex = 0) {
 }
 
 function imagemDoItem(item, categoria) {
-  if (item.id.startsWith("automacao")) return "./src/imagens/vitrine/automacoes.svg";
+  if (item.id.includes("automacao") || item.id.includes("integracao")) return "./src/imagens/vitrine/automacoes.svg";
   return IMAGENS_VITRINE[item.id] || IMAGENS_VITRINE[categoria.id] || "./src/imagens/vitrine/produto-personalizado.svg";
 }
 

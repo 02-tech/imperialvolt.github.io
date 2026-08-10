@@ -4,18 +4,28 @@
     "opcoes": [
       {
         "id": "criar-site",
-        "rotulo": "Criar um site",
-        "destino": "servicos-sites"
+        "rotulo": "Site essencial / estático",
+        "destino": "site-essencial"
       },
       {
         "id": "criar-app",
-        "rotulo": "Criar aplicativo ou sistema",
-        "destino": "servicos-software"
+        "rotulo": "Plataforma web / sistema",
+        "destino": "plataforma-web"
       },
       {
         "id": "automatizar",
-        "rotulo": "Automatizar uma tarefa",
-        "destino": "servicos-automacao"
+        "rotulo": "Aplicativo Android ou multiplataforma",
+        "destino": "aplicativo-android-multiplataforma"
+      },
+      {
+        "id": "integrar",
+        "rotulo": "Integração / automação",
+        "destino": "integracao-automacao"
+      },
+      {
+        "id": "personalizar-digital",
+        "rotulo": "Projeto digital personalizado",
+        "destino": "projeto-digital-personalizado"
       },
       {
         "id": "impressao-3d",
