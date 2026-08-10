@@ -34,7 +34,8 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     plataforma: "",
     estruturaDados: "",
     integracoes: "",
-    publicacaoLojas: ""
+    publicacaoLojas: "",
+    manutencao: ""
   };
 
   const categoriaAtual = () => todasCategorias.find((categoria) => categoria.id === estado.categoriaId) || null;
@@ -44,6 +45,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     estado.estruturaDados = "";
     estado.integracoes = "";
     estado.publicacaoLojas = "";
+    estado.manutencao = "";
   };
 
   const valorAtual = () => {
@@ -77,9 +79,9 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
   }
 
   function rotuloPrecoOpcao(item) {
-    if (item.preco != null) return `${precoFormatado(item)} · preço fixo`;
-    if (item.precoMinimo != null) return `${precoFormatado(item)} · valor mínimo`;
-    return precoFormatado(item);
+    const partes = [precoFormatado(item)];
+    if (item.precoPix != null) partes.push(`Pix ${formatarMoeda(item.precoPix)}`);
+    return partes.join(" · ");
   }
 
   function campo(label, control) {
@@ -148,6 +150,9 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
         campos.appendChild(selectCampo("Há integrações ou automações?", "integracoes", ["Sem integrações", "WhatsApp, pagamentos ou APIs", "Automação entre ferramentas", "Ainda não sei"], "Selecione uma opção"));
         if (item.id === "aplicativo-android-multiplataforma") {
           campos.appendChild(selectCampo("Publicação em lojas", "publicacaoLojas", ["Não neste momento", "Sim, quero avaliar essa etapa", "Ainda não sei"], "Selecione uma opção"));
+        }
+        if (item.recorrenciaMensal != null) {
+          campos.appendChild(selectCampo("Manutenção e hospedagem", "manutencao", ["Quero avaliar essa recorrência", "Vou contratar separadamente", "Ainda não sei"], "Selecione uma opção"));
         }
       }
       if (item.faixas?.length) {
@@ -219,7 +224,8 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
       linha.append(criar("span", "", rotulo), dado);
       resumo.appendChild(linha);
     });
-    resumo.appendChild(criar("p", "quote-summary__note", item?.avisoPreco || "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise."));
+    const aviso = [item?.avisoPreco, item?.avisoRecorrencia].filter(Boolean).join(" ") || "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise.";
+    resumo.appendChild(criar("p", "quote-summary__note", aviso));
     const enviar = criar("button", "button button--lime", "Enviar solicitação pelo WhatsApp");
     enviar.type = "button";
     enviar.disabled = !item;
@@ -261,6 +267,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
         estruturaDados: estado.estruturaDados,
         integracoes: estado.integracoes,
         publicacaoLojas: estado.publicacaoLojas,
+        manutencao: estado.manutencao,
         valor: valorAtual(),
         pagamento: estado.pagamento,
         origem: "Orçamento guiado"

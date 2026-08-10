@@ -1,7 +1,7 @@
 {
   "regrasGerais": {
     "moeda": "BRL",
-    "pixIntegralDescontoPercentual": 5,
+    "pixIntegralDescontoPercentual": 15,
     "freteIncluso": false,
     "producaoAposPagamento": true,
     "observacao": "Produtos personalizados exigem aprovação dos dados antes da produção."

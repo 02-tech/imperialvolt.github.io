@@ -1,6 +1,6 @@
 {
   "titulo": "Termos Gerais de Uso e Contratação",
-  "ultimaAtualizacao": "2026-07-31",
+  "ultimaAtualizacao": "2026-08-10",
   "identificacao": {
     "nome": "Imperial Volt",
     "cnpj": "60.179.279/0001-44",
@@ -21,9 +21,13 @@
     "Alterações fora do escopo, novas funcionalidades, integrações e expansões serão cobradas separadamente."
   ],
   "projetosDigitais": {
-    "siteEssencial": "A partir de R$300, para presença digital simples, conteúdo predominantemente estático, responsividade, apresentação, contatos e links. Não inclui banco de dados próprio, painel administrativo ou funcionalidades complexas por padrão.",
-    "plataformaWeb": "A partir de R$2.500, para aplicações web dinâmicas com banco de dados, cadastros, regras de negócio, autenticação, painel, backend e integrações conforme a necessidade do escopo.",
+    "landingPage": "Preço de referência de R$1.200, ou R$1.020 no Pix integral, para uma página responsiva focada em apresentação, vendas e conversão.",
+    "siteInstitucional": "Preço de referência de R$2.200, ou R$1.870 no Pix integral, para até cinco páginas estáticas responsivas.",
+    "cms": "Preço de referência de R$4.200, ou R$3.570 no Pix integral, para site dinâmico com CMS ou painel administrativo conforme escopo.",
+    "webApp": "A partir de R$7.800, ou R$6.630 no Pix integral, para Web App ou sistema customizado com backend, banco, autenticação, APIs e regras de negócio conforme escopo.",
+    "ecommerce": "Preço de referência de R$5.500, ou R$4.675 no Pix integral, para e-commerce com catálogo, estoque, pagamentos e frete conforme escopo.",
     "aplicativos": "Aplicativos Android e multiplataforma são desenvolvidos sob orçamento. O valor depende de funcionalidades, backend, banco de dados, autenticação, integrações, plataformas e complexidade operacional.",
+    "recorrencia": "Manutenção e hospedagem podem ser contratadas separadamente. As referências mensais são R$80, R$120, R$190, R$350 e R$250 conforme a modalidade digital escolhida. Custos de terceiros podem ser adicionais.",
     "publicacaoLojas": "O desenvolvimento de aplicativo não inclui automaticamente publicação na Google Play, App Store ou outras lojas. Preparação, submissão, correções e acompanhamento só entram quando expressamente contratados.",
     "taxasLojas": "Taxas cobradas por Google, Apple ou outros provedores são custos de terceiros e não fazem parte do desenvolvimento, salvo indicação expressa na proposta.",
     "aprovacaoLojas": "A aprovação ou rejeição por uma loja depende das regras e decisões da plataforma. Uma rejeição não significa, por si só, ausência de execução do serviço de desenvolvimento."
@@ -39,10 +43,10 @@
     "Configuração ou criação técnica de banco de dados e infraestrutura não significa inclusão automática da conta VPS, hospedagem ou serviço recorrente."
   ],
   "pagamento": [
-    "Pix integral com 5% de desconto.",
+    "Pix integral com 15% de desconto, conforme a condição indicada na proposta.",
     "Serviços personalizados podem ser pagos em 50% para início e 50% antes da entrega definitiva, sem desconto.",
-    "Cartão de crédito em até 3 vezes sem juros, respeitando o valor mínimo de parcela.",
-    "Parcelamentos adicionais estão sujeitos aos juros e condições da operadora."
+    "Cartão de crédito em até 12 vezes, conforme as condições da operadora e o valor mínimo de parcela.",
+    "Parcelamento, juros e condições definitivas serão informados no orçamento aprovado."
   ],
   "inicioDosTrabalhos": [
     "O prazo começa após confirmação do pagamento aplicável.",
