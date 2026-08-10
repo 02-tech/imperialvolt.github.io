@@ -1,9 +1,9 @@
 {
   "regrasGerais": {
     "moeda": "BRL",
-    "pixIntegralDescontoPercentual": 5,
+    "pixIntegralDescontoPercentual": 15,
     "pagamentoDividido": "50% para iniciar e 50% antes da entrega definitiva",
-    "cartao": "até 3x sem juros, respeitando parcela mínima",
+    "cartao": "até 12x, conforme condições da operadora e do orçamento",
     "custosTerceirosInclusos": false,
     "custosTerceiros": [
       "domínio",
@@ -30,27 +30,62 @@
     {
       "id": "projetos-digitais",
       "nome": "Projetos digitais",
-      "descricao": "Sites, plataformas web, aplicativos e automações com escopo definido conforme a necessidade.",
+      "descricao": "Sites, sistemas, aplicativos, lojas e automações com escopo definido conforme a necessidade.",
       "servicos": [
         {
-          "id": "site-essencial",
-          "nome": "Site essencial / estático",
-          "precoInicial": 300,
-          "tipoPreco": "a partir de",
-          "descricao": "Presença digital simples para apresentar empresa, serviço ou profissional com clareza.",
+          "id": "landing-page-estatica",
+          "nome": "Landing Page / One-Page estática",
+          "preco": 1200,
+          "precoPix": 1020,
+          "recorrenciaMensal": 80,
+          "tipoPreco": "preço de referência",
+          "descricao": "Página rápida para apresentação ou vendas, com foco em conversão e SEO local básico.",
           "comparativo": {
-            "resultado": "Apresenta informações",
-            "estrutura": "Conteúdo predominantemente estático",
+            "tag": "Para começar",
+            "resultado": "Apresenta uma oferta com clareza",
+            "estrutura": "Uma página responsiva",
             "dados": "Sem banco de dados próprio",
             "operacao": "Contatos e links",
-            "proximoNivel": "Avance quando precisar receber e gerenciar dados"
+            "proximoNivel": "Avance para mais páginas e conteúdo"
           },
           "inclui": [
-            "site institucional simples",
-            "conteúdo predominantemente estático",
+            "landing page ou one-page",
             "layout responsivo",
-            "apresentação de empresa ou serviço",
+            "estrutura focada em conversão",
             "contatos e links",
+            "SEO local básico quando previsto"
+          ],
+          "naoInclui": [
+            "banco de dados próprio",
+            "painel administrativo",
+            "login e usuários",
+            "funcionalidades complexas",
+            "domínio, hospedagem paga e serviços externos"
+          ],
+          "avisoPreco": "Preço de referência de R$ 1.200 ou R$ 1.020 no Pix integral. A recorrência mensal é contratada separadamente quando aplicável.",
+          "avisoRecorrencia": "Manutenção e hospedagem: R$ 80/mês, quando contratadas."
+        },
+        {
+          "id": "site-institucional-estatico",
+          "nome": "Site institucional estático completo",
+          "preco": 2200,
+          "precoPix": 1870,
+          "recorrenciaMensal": 120,
+          "tipoPreco": "preço de referência",
+          "descricao": "Até cinco páginas institucionais, rápidas e responsivas para apresentar a empresa com autoridade.",
+          "comparativo": {
+            "tag": "Presença completa",
+            "resultado": "Organiza a presença digital da empresa",
+            "estrutura": "Até cinco páginas estáticas",
+            "dados": "Sem banco de dados próprio",
+            "operacao": "Contato, galeria e links",
+            "proximoNivel": "Avance quando precisar gerenciar conteúdo"
+          },
+          "inclui": [
+            "até cinco páginas estáticas",
+            "layout responsivo",
+            "apresentação institucional",
+            "galeria, serviços e contato",
             "SEO técnico básico quando previsto"
           ],
           "naoInclui": [
@@ -60,53 +95,125 @@
             "funcionalidades complexas",
             "domínio, hospedagem paga e serviços externos"
           ],
-          "avisoPreco": "R$ 300 é o ponto de partida para um site simples. Escopos adicionais alteram o orçamento."
+          "avisoPreco": "Preço de referência de R$ 2.200 ou R$ 1.870 no Pix integral. O escopo final é confirmado na proposta.",
+          "avisoRecorrencia": "Manutenção e hospedagem: R$ 120/mês, quando contratadas."
         },
         {
-          "id": "plataforma-web",
-          "nome": "Plataforma web / sistema completo",
-          "precoInicial": 2500,
-          "tipoPreco": "a partir de",
-          "descricao": "Aplicação web para receber, processar, gravar e gerenciar informações da operação.",
+          "id": "site-dinamico-cms",
+          "nome": "Site dinâmico com CMS / painel admin",
+          "preco": 4200,
+          "precoPix": 3570,
+          "recorrenciaMensal": 190,
+          "tipoPreco": "preço de referência",
+          "descricao": "Estrutura com dados para gerir blog, catálogo, imóveis, notícias ou outro conteúdo operacional.",
           "comparativo": {
-            "resultado": "Recebe, processa, grava e gerencia informações",
-            "estrutura": "Aplicação web dinâmica",
+            "tag": "Gestão de conteúdo",
+            "resultado": "Permite atualizar e organizar informações",
+            "estrutura": "Site dinâmico com CMS",
             "dados": "Banco de dados conforme escopo",
-            "operacao": "Login, cadastros e painel quando necessários",
-            "proximoNivel": "Integrações e regras avançadas entram no orçamento"
+            "operacao": "Painel administrativo",
+            "proximoNivel": "Avance para regras de negócio e área logada"
           },
           "inclui": [
-            "aplicação web dinâmica",
+            "estrutura dinâmica",
+            "CMS ou painel administrativo",
             "banco de dados conforme necessidade",
-            "autenticação quando necessária",
-            "cadastros e regras de negócio",
-            "painel administrativo",
-            "backend e integrações previstas no escopo"
+            "layout responsivo",
+            "cadastro e gestão do conteúdo previsto"
           ],
           "naoInclui": [
-            "VPS, hospedagem paga e serviços recorrentes",
-            "APIs, licenças e serviços de terceiros",
-            "manutenção ilimitada",
             "novas funções após a entrega",
-            "publicação de aplicativo em lojas"
+            "integrações não descritas",
+            "manutenção ilimitada",
+            "domínio, VPS e serviços recorrentes",
+            "taxas e serviços de terceiros"
           ],
-          "avisoPreco": "R$ 2.500 é o valor de referência para uma plataforma web completa. O preço final depende do escopo."
+          "avisoPreco": "Preço de referência de R$ 4.200 ou R$ 3.570 no Pix integral. O valor final depende do escopo.",
+          "avisoRecorrencia": "Manutenção e hospedagem: R$ 190/mês, quando contratadas."
+        },
+        {
+          "id": "web-app-sistema-customizado",
+          "nome": "Web App / sistema customizado",
+          "precoInicial": 7800,
+          "precoPix": 6630,
+          "recorrenciaMensal": 350,
+          "tipoPreco": "a partir de",
+          "descricao": "Sistema sob medida com usuários, autenticação, APIs, banco de dados e regras de negócio.",
+          "comparativo": {
+            "tag": "Operação sob medida",
+            "resultado": "Recebe, processa, grava e gerencia informações",
+            "estrutura": "Web App com backend",
+            "dados": "Banco de dados e autenticação",
+            "operacao": "Área logada, APIs e regras",
+            "proximoNivel": "Expansões e infraestrutura entram no escopo"
+          },
+          "inclui": [
+            "banco de dados completo",
+            "área logada e autenticação",
+            "backend e regras de negócio",
+            "APIs e integrações previstas",
+            "painel ou gestão de informações conforme escopo"
+          ],
+          "naoInclui": [
+            "infraestrutura recorrente",
+            "APIs, licenças e serviços externos",
+            "novas funções após a entrega",
+            "manutenção ilimitada",
+            "publicação de aplicativo em lojas",
+            "taxas de terceiros"
+          ],
+          "avisoPreco": "A partir de R$ 7.800 ou R$ 6.630 no Pix integral. O preço final depende do escopo técnico e operacional.",
+          "avisoRecorrencia": "Manutenção e hospedagem: R$ 350/mês, quando contratadas."
+        },
+        {
+          "id": "ecommerce-loja-virtual",
+          "nome": "E-commerce / loja virtual",
+          "preco": 5500,
+          "precoPix": 4675,
+          "recorrenciaMensal": 250,
+          "tipoPreco": "preço de referência",
+          "descricao": "Loja virtual com catálogo, estoque, pagamentos, frete e gestão conforme o escopo contratado.",
+          "comparativo": {
+            "tag": "Venda online",
+            "resultado": "Organiza produtos e pedidos digitais",
+            "estrutura": "Loja virtual dinâmica",
+            "dados": "Produtos, estoque e pedidos",
+            "operacao": "Pagamento e frete conforme integração",
+            "proximoNivel": "Operações avançadas entram no escopo"
+          },
+          "inclui": [
+            "catálogo e gestão de produtos",
+            "estoque conforme escopo",
+            "integração de pagamento prevista",
+            "cálculo de frete quando integrado",
+            "estrutura responsiva"
+          ],
+          "naoInclui": [
+            "taxas de gateways e intermediadores",
+            "serviços externos recorrentes",
+            "integrações não descritas",
+            "manutenção ilimitada",
+            "domínio, hospedagem e infraestrutura paga"
+          ],
+          "avisoPreco": "Preço de referência de R$ 5.500 ou R$ 4.675 no Pix integral. Integrações e custos de terceiros são avaliados separadamente.",
+          "avisoRecorrencia": "Manutenção e hospedagem: R$ 250/mês, quando contratadas."
         },
         {
           "id": "aplicativo-android-multiplataforma",
           "nome": "Aplicativos Android e multiplataforma",
           "tipoPreco": "sob orçamento",
-          "descricao": "Produto digital para Android ou mais de uma plataforma, planejado conforme operação, telas e integrações.",
+          "descricao": "Produto mobile planejado conforme funcionalidades, backend, integrações e necessidade de publicação.",
           "comparativo": {
-            "resultado": "Experiência de produto no celular",
-            "estrutura": "Android, iOS ou multiplataforma",
-            "dados": "Backend e banco quando necessários",
-            "operacao": "Autenticação, notificações e integrações conforme escopo",
-            "proximoNivel": "Publicação em lojas é uma contratação específica"
+            "tag": "Produto mobile",
+            "resultado": "Leva a operação para Android ou multiplataforma",
+            "estrutura": "Aplicativo e backend conforme escopo",
+            "dados": "Banco e autenticação quando necessários",
+            "operacao": "Integrações e publicação contratadas à parte",
+            "proximoNivel": "A proposta define plataformas e entregáveis"
           },
           "inclui": [
             "análise de funcionalidades",
-            "definição das plataformas",
+            "definição de plataformas",
             "estrutura técnica conforme o projeto",
             "backend, banco e autenticação quando necessários"
           ],
@@ -116,7 +223,7 @@
             "publicação sem contratação expressa",
             "infraestrutura e serviços externos recorrentes"
           ],
-          "avisoPreco": "Aplicativos são avaliados sob orçamento conforme funcionalidades, backend, integrações e operação."
+          "avisoPreco": "Aplicativos Android e multiplataforma são desenvolvidos sob orçamento. O valor depende do escopo, plataformas e complexidade operacional."
         },
         {
           "id": "integracao-automacao",
@@ -124,6 +231,7 @@
           "tipoPreco": "sob orçamento",
           "descricao": "Fluxos e integrações para reduzir tarefas manuais e conectar ferramentas da operação.",
           "comparativo": {
+            "tag": "Fluxos conectados",
             "resultado": "Conecta etapas e reduz tarefas manuais",
             "estrutura": "Fluxo definido por processo",
             "dados": "Conforme ferramentas envolvidas",
@@ -146,10 +254,11 @@
         },
         {
           "id": "projeto-digital-personalizado",
-          "nome": "Projeto personalizado",
+          "nome": "Projeto digital personalizado",
           "tipoPreco": "sob orçamento",
           "descricao": "Uma solução digital desenhada a partir do problema, do público e da operação do cliente.",
           "comparativo": {
+            "tag": "Sob medida",
             "resultado": "Solução definida para o cenário do cliente",
             "estrutura": "Escopo sob medida",
             "dados": "Conforme a necessidade",

@@ -4,16 +4,20 @@
       "nome": "Projetos digitais",
       "perguntas": [
         {
-          "pergunta": "O que está incluído no site essencial a partir de R$300?",
-          "resposta": "É o ponto de partida para um site institucional simples, responsivo, com apresentação da empresa ou serviço, contatos e links. Conteúdo adicional, banco de dados, painel e funcionalidades complexas alteram o orçamento."
+          "pergunta": "Quais são os valores de referência para projetos digitais?",
+          "resposta": "Landing Page começa em R$ 1.200, site institucional completo em R$ 2.200, CMS em R$ 4.200, Web App a partir de R$ 7.800 e e-commerce em R$ 5.500. O valor final depende do escopo aprovado."
         },
         {
-          "pergunta": "Quando preciso de uma plataforma web?",
-          "resposta": "Quando o projeto precisa receber, processar, gravar e gerenciar informações, como login, usuários, cadastros, pedidos, vagas, estoque, painel, automações ou integrações. A referência pública começa em R$2.500 e o valor final depende do escopo."
+          "pergunta": "Qual é a diferença entre um site e um sistema?",
+          "resposta": "Um site apresenta informações. Um sistema, CMS ou loja recebe, processa, grava e gerencia dados, como usuários, cadastros, pedidos, estoque, painel, automações ou integrações. Essa estrutura muda o escopo e o investimento."
         },
         {
           "pergunta": "Quanto custa um aplicativo?",
           "resposta": "Aplicativos Android e multiplataforma são feitos sob orçamento. O valor depende das funcionalidades, backend, banco de dados, autenticação, integrações, plataformas e complexidade operacional."
+        },
+        {
+          "pergunta": "Existe manutenção ou hospedagem mensal?",
+          "resposta": "Pode existir, quando contratada separadamente. As referências mensais são R$ 80 para Landing Page, R$ 120 para site institucional, R$ 190 para CMS, R$ 350 para Web App e R$ 250 para e-commerce. Custos de terceiros podem ser adicionais."
         },
         {
           "pergunta": "A publicação na Google Play ou App Store está incluída?",
@@ -68,7 +72,7 @@
       "perguntas": [
         {
           "pergunta": "Existe desconto no Pix?",
-          "resposta": "Sim. O pagamento integral antecipado via Pix possui 5% de desconto."
+          "resposta": "Sim. O pagamento integral antecipado via Pix possui 15% de desconto, conforme a condição indicada na proposta."
         },
         {
           "pergunta": "Posso pagar metade no início?",
@@ -76,7 +80,7 @@
         },
         {
           "pergunta": "Aceita cartão?",
-          "resposta": "Sim. É possível pagar em até 3 vezes sem juros, respeitando o valor mínimo de parcela. Parcelamentos maiores seguem as condições da operadora."
+          "resposta": "Sim. O orçamento pode indicar parcelamento em até 12 vezes, conforme as condições da operadora, análise do projeto e valor mínimo de parcela."
         }
       ]
     },
