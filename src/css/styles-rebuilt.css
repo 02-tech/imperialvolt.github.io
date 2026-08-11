@@ -182,6 +182,7 @@ h1, h2, h3, strong { letter-spacing: -0.035em; }
   min-height: min(43rem, calc(100vh - 5rem));
   padding-block: clamp(3.8rem, 8vw, 6.75rem);
 }
+.hero__copy { width: 100%; max-width: 100%; min-width: 0; }
 .eyebrow {
   margin-bottom: 1rem;
   color: var(--lime);
@@ -199,9 +200,10 @@ h1, h2, h3, strong { letter-spacing: -0.035em; }
   font-size: clamp(3rem, 7.15vw, 6.7rem);
   font-weight: 700;
   line-height: 0.91;
+  overflow-wrap: break-word;
 }
 .hero h1 em { color: var(--lime); font-style: normal; }
-.hero__lead { max-width: 39rem; margin-bottom: 1.65rem; color: rgba(255, 255, 255, 0.72); font-size: clamp(1rem, 1.6vw, 1.18rem); }
+.hero__lead { width: 100%; max-width: 39rem; margin-bottom: 1.65rem; color: rgba(255, 255, 255, 0.72); font-size: clamp(1rem, 1.6vw, 1.18rem); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .hero__caption { margin: 1.35rem 0 0; color: rgba(255, 255, 255, 0.56); font-size: 0.76rem; }
 .hero__text-link { display: inline-flex; gap: 0.35rem; align-items: center; margin-top: 1.25rem; color: rgba(255, 255, 255, 0.86); font-size: 0.78rem; font-weight: 700; text-underline-offset: 0.25rem; }
@@ -680,7 +682,8 @@ textarea { min-height: 5.1rem; resize: vertical; }
   .brand__copy strong { font-size: 0.91rem; }
   .brand__copy small { max-width: 13rem; font-size: 0.59rem; }
   .hero__grid { grid-template-columns: 1fr; min-height: auto; gap: 1.8rem; padding-block: 3rem 2.8rem; }
-  .hero h1 { max-width: 10.5ch; font-size: clamp(2.75rem, 12.5vw, 4.15rem); letter-spacing: -0.052em; }
+  .hero h1 { width: 100%; max-width: 100%; font-size: clamp(2.35rem, 10.5vw, 4.15rem); letter-spacing: -0.052em; }
+  .hero__lead, .hero__caption { max-width: calc(100vw - 1.5rem); overflow-wrap: anywhere; }
   .hero__lead { font-size: 0.98rem; }
   .hero__text-link { margin-top: 1rem; }
   .hero__art { min-height: 25rem; border-radius: 1.5rem; }
