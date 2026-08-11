@@ -19,7 +19,7 @@ const ROTULOS = {
   "servicos-impressao-3d": { titulo: "Impressão 3D sob medida", icone: "06", origem: "servico" },
   marcas: { titulo: "Registro de marcas", icone: "07", origem: "servico" },
   manutencao: { titulo: "Manutenção e suporte", icone: "08", origem: "servico" },
-  "impressao-3d": { titulo: "Soluções físicas em impressão 3D", icone: "09", origem: "catalogo" },
+  "impressao-3d": { titulo: "Produtos físicos personalizados", icone: "09", origem: "catalogo" },
   nfc: { titulo: "Tags e chaveiros NFC", icone: "10", origem: "catalogo" }
 };
 
@@ -149,3 +149,4 @@ export function categoriasDeServicos(categorias) {
 export function categoriasDeCatalogo(categorias) {
   return categorias.filter((categoria) => categoria.origem === "catalogo");
 }
+
