@@ -1,5 +1,5 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
-import { carregarDados, formatarMoeda, precoFormatado, unificarCategorias } from "./data.js";
+import { carregarDados, categoriasDeCatalogo, categoriasDeServicos, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "./data.js";
 import { renderCatalogo, renderDestaques } from "./catalogo.js";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
@@ -144,78 +144,102 @@ function renderFaq(faq) {
   });
 }
 
-function renderProjetosDigitais(servicos, selecionar) {
-  const categoria = servicos?.categorias?.find((item) => item.id === "projetos-digitais");
-  const ofertas = categoria?.servicos || [];
-  const destaqueAlvo = $("#digitalOffers");
+function renderServicosComerciais(servicoCategorias, selecionar) {
+  const categorias = (servicoCategorias || []).filter((categoria) => categoria.itens?.length).map((categoria) => ({ ...categoria, servicos: categoria.itens }));
+  const tabsAlvo = $("#serviceTabs");
+  const ofertasAlvo = $("#serviceOffers") || $("#digitalOffers");
   const comparativoAlvo = $("#siteComparison");
-  const idsPrincipais = [
-    "landing-page-estatica",
-    "site-institucional-estatico",
-    "site-dinamico-cms",
-    "web-app-sistema-customizado",
-    "ecommerce-loja-virtual",
-    "aplicativo-android-multiplataforma"
-  ];
-  const ofertasPrincipais = idsPrincipais.map((id) => ofertas.find((oferta) => oferta.id === id)).filter(Boolean);
-  if (!categoria || !ofertasPrincipais.length) return;
+  if (!categorias.length || !ofertasAlvo) return;
 
-  if (destaqueAlvo) {
-    destaqueAlvo.replaceChildren();
-    ofertasPrincipais.forEach((oferta, indice) => {
-      const card = criar("article", `digital-offer${oferta.id === "web-app-sistema-customizado" ? " digital-offer--featured" : ""}`);
+  const criarLista = (itens, classe = "digital-offer__list") => {
+    const lista = criar("ul", classe);
+    (itens || []).slice(0, 5).forEach((item) => lista.appendChild(criar("li", "", item)));
+    return lista;
+  };
+
+  const renderCategoria = (categoriaId) => {
+    const categoria = categorias.find((item) => item.id === categoriaId) || categorias[0];
+    if (!categoria) return;
+    if (tabsAlvo) {
+      tabsAlvo.querySelectorAll("button").forEach((botao) => {
+        const ativo = botao.dataset.serviceCategory === categoria.id;
+        botao.classList.toggle("is-active", ativo);
+        botao.setAttribute("aria-pressed", String(ativo));
+      });
+    }
+    ofertasAlvo.replaceChildren();
+    categoria.servicos.forEach((oferta, indice) => {
+      const destaque = oferta.id === "site-institucional-estatico" || oferta.id === "sistema-web-painel-administrativo" || oferta.id === "automacao-simples";
+      const card = criar("article", `digital-offer${destaque ? " digital-offer--featured" : ""}`);
       const cabecalho = criar("div", "digital-offer__head");
-      cabecalho.append(criar("span", "digital-offer__eyebrow", oferta.comparativo?.tag || "Projeto digital"), criar("span", "digital-offer__index", String(indice + 1).padStart(2, "0")));
+      cabecalho.append(criar("span", "digital-offer__eyebrow", categoria.nome), criar("span", "digital-offer__index", String(indice + 1).padStart(2, "0")));
       const precificacao = criar("div", "digital-offer__pricing");
       precificacao.appendChild(criar("strong", "digital-offer__price", precoFormatado(oferta)));
       if (oferta.precoPix != null) precificacao.appendChild(criar("small", "digital-offer__pix", `Pix integral: ${formatarMoeda(oferta.precoPix)} (-15%)`));
-      if (oferta.recorrenciaMensal != null) precificacao.appendChild(criar("small", "digital-offer__recurrence", `Manutenção/hospedagem: ${formatarMoeda(oferta.recorrenciaMensal)}/mês, quando contratada`));
+      precificacao.appendChild(criar("small", "digital-offer__deadline", `Prazo estimado: ${prazoFormatado(oferta)}`));
       card.append(cabecalho, criar("h3", "", oferta.nome), precificacao, criar("p", "digital-offer__description", oferta.descricao));
+      if (oferta.mensagemComercial) card.appendChild(criar("p", "digital-offer__message", `“${oferta.mensagemComercial}”`));
       if (oferta.idealPara) {
         const indicado = criar("p", "digital-offer__audience");
         indicado.append(criar("strong", "", "Ideal para: "), criar("span", "", oferta.idealPara));
         card.appendChild(indicado);
       }
-      const lista = criar("ul", "digital-offer__list");
-      (oferta.inclui || []).slice(0, 4).forEach((item) => lista.appendChild(criar("li", "", item)));
+      if (oferta.quandoUsar) {
+        const quando = criar("p", "digital-offer__when");
+        quando.append(criar("strong", "", "Quando usar: "), criar("span", "", oferta.quandoUsar));
+        card.appendChild(quando);
+      }
+      card.appendChild(criar("span", "digital-offer__included-label", "Normalmente inclui"));
+      card.appendChild(criarLista(oferta.inclui));
       const detalhes = criar("details", "digital-offer__details");
-      detalhes.appendChild(criar("summary", "", "Ver o que entra e o que fica de fora"));
+      detalhes.appendChild(criar("summary", "", "Ver limites e custos externos"));
       const detalhesGrid = criar("div", "digital-offer__details-grid");
-      const naoInclui = criar("div", "digital-offer__detail-block digital-offer__detail-block--muted");
-      naoInclui.appendChild(criar("strong", "", "Não inclui automaticamente"));
-      const naoIncluiLista = criar("ul", "digital-offer__list");
-      (oferta.naoInclui || []).slice(0, 5).forEach((item) => naoIncluiLista.appendChild(criar("li", "", item)));
-      naoInclui.appendChild(naoIncluiLista);
-      const avancar = criar("div", "digital-offer__detail-block");
-      avancar.appendChild(criar("strong", "", "Quando avançar"));
-      avancar.appendChild(criar("p", "digital-offer__detail-copy", oferta.comparativo?.proximoNivel || "Quando a necessidade exigir mais recursos."));
-      detalhesGrid.append(naoInclui, avancar);
+      const naoNecessario = criar("div", "digital-offer__detail-block digital-offer__detail-block--muted");
+      naoNecessario.appendChild(criar("strong", "", "Quando não é necessário"));
+      naoNecessario.appendChild(criar("p", "digital-offer__detail-copy", oferta.quandoNaoNecessario || "Quando outra solução menor já resolve o objetivo."));
+      const custos = criar("div", "digital-offer__detail-block");
+      custos.appendChild(criar("strong", "", "Custos externos"));
+      custos.appendChild(criarLista(oferta.custosExternos, "digital-offer__list digital-offer__list--external"));
+      detalhesGrid.append(naoNecessario, custos);
       detalhes.appendChild(detalhesGrid);
-      card.append(lista, detalhes);
-      const proximoNivel = oferta.comparativo?.proximoNivel;
-      if (proximoNivel) card.appendChild(criar("p", "digital-offer__next", `Próximo passo: ${proximoNivel}.`));
-      const acao = criar("button", "button button--ink button--small", "Escolher esta opção");
+      card.appendChild(detalhes);
+      if (oferta.observacao) card.appendChild(criar("p", "digital-offer__next", oferta.observacao));
+      const acao = criar("button", "button button--ink button--small", "Solicitar esta opção");
       acao.type = "button";
       acao.addEventListener("click", () => selecionar({ categoriaId: categoria.id, itemId: oferta.id }));
       card.appendChild(acao);
-      destaqueAlvo.appendChild(card);
+      ofertasAlvo.appendChild(card);
+    });
+  };
+
+  if (tabsAlvo) {
+    tabsAlvo.replaceChildren();
+    categorias.forEach((categoria) => {
+      const botao = criar("button", "service-tabs__item", categoria.nome);
+      botao.type = "button";
+      botao.dataset.serviceCategory = categoria.id;
+      botao.setAttribute("aria-pressed", "false");
+      botao.addEventListener("click", () => renderCategoria(categoria.id));
+      tabsAlvo.appendChild(botao);
     });
   }
+  renderCategoria(categorias[0].id);
 
   if (comparativoAlvo) {
+    const todos = categorias.flatMap((categoria) => categoria.servicos);
+    const idsComparacao = ["landing-page-estatica", "site-institucional-estatico", "site-institucional-avancado", "site-dinamico-cms", "ecommerce-loja-virtual"];
     comparativoAlvo.replaceChildren();
-    ofertasPrincipais.forEach((oferta) => {
-      const card = criar("article", `digital-compare-card${oferta.id === "web-app-sistema-customizado" ? " digital-compare-card--featured" : ""}`);
-      card.append(criar("span", "digital-compare-card__tag", oferta.comparativo?.tag || "Projeto digital"));
+    idsComparacao.map((id) => todos.find((oferta) => oferta.id === id)).filter(Boolean).forEach((oferta) => {
+      const card = criar("article", `digital-compare-card${oferta.id === "site-institucional-estatico" ? " digital-compare-card--featured" : ""}`);
+      card.append(criar("span", "digital-compare-card__tag", oferta.id === "site-institucional-estatico" ? "Mais escolhido" : "Formato"));
       card.append(criar("h3", "", oferta.nome), criar("strong", "digital-compare-card__price", precoFormatado(oferta)));
-      if (oferta.precoPix != null) card.appendChild(criar("small", "digital-compare-card__pix", `Pix: ${formatarMoeda(oferta.precoPix)}`));
-      if (oferta.recorrenciaMensal != null) card.appendChild(criar("small", "digital-compare-card__recurrence", `Recorrência: ${formatarMoeda(oferta.recorrenciaMensal)}/mês`));
-      const resultado = oferta.comparativo?.resultado || oferta.descricao;
-      card.append(criar("p", "digital-compare-card__result", resultado));
+      card.appendChild(criar("small", "digital-compare-card__deadline", `Prazo: ${prazoFormatado(oferta)}`));
+      card.appendChild(criar("p", "digital-compare-card__result", oferta.idealPara || oferta.descricao));
       const detalhes = criar("dl", "digital-compare-card__details");
-      [["Estrutura", "estrutura"], ["Dados", "dados"], ["Operação", "operacao"]].forEach(([rotulo, chave]) => {
-        detalhes.append(criar("dt", "", rotulo), criar("dd", "", oferta.comparativo?.[chave] || "Definido no escopo"));
+      [["Quando usar", oferta.quandoUsar], ["O que resolve", oferta.descricao]].forEach(([rotulo, valor]) => {
+        detalhes.append(criar("dt", "", rotulo), criar("dd", "", valor || "Definido no escopo"));
       });
+      card.appendChild(detalhes);
       comparativoAlvo.appendChild(card);
     });
   }
@@ -334,19 +358,20 @@ async function boot() {
       obterOrcamento: () => quote.obterOrcamento(),
       limparOrcamento: () => quote.limpar()
     };
-    const catalogo = renderCatalogo(categorias, {
+    const catalogo = renderCatalogo(categoriasDeCatalogo(categorias), {
       gridEl: $("#gridCatalogo"),
       filtrosEl: $("#catalogFilters"),
       maisEl: $("#catalogMore"),
       onSelect: selecionarProduto
     });
     renderDestaques(categorias, $("#gridDestaques"), [
+      "perfil-empresa-google",
       "landing-page-estatica",
       "tag-nfc-personalizada",
       "apito-morte-asteca",
       "pedido-registro-marca"
     ], selecionarProduto);
-    renderCategorias(categorias, (categoriaId) => {
+    renderCategorias(categoriasDeCatalogo(categorias), (categoriaId) => {
       if (categoriaId === "empresas-revendedores") {
         quote.selecionar({ categoriaId });
         rolarPara("orcamento");
@@ -358,7 +383,7 @@ async function boot() {
     document.querySelectorAll("[data-quote-category]").forEach((link) => {
       link.addEventListener("click", () => quote.selecionar({ categoriaId: link.dataset.quoteCategory }));
     });
-    renderProjetosDigitais(dados.servicos, selecionarProduto);
+    renderServicosComerciais(categoriasDeServicos(categorias), selecionarProduto);
     renderFaq(dados.faq);
     renderConversionStrip(dados);
     renderProvaSocial(dados);
