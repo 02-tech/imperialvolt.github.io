@@ -154,7 +154,8 @@ function renderProjetosDigitais(servicos, selecionar) {
     "site-institucional-estatico",
     "site-dinamico-cms",
     "web-app-sistema-customizado",
-    "ecommerce-loja-virtual"
+    "ecommerce-loja-virtual",
+    "aplicativo-android-multiplataforma"
   ];
   const ofertasPrincipais = idsPrincipais.map((id) => ofertas.find((oferta) => oferta.id === id)).filter(Boolean);
   if (!categoria || !ofertasPrincipais.length) return;
@@ -170,10 +171,30 @@ function renderProjetosDigitais(servicos, selecionar) {
       if (oferta.precoPix != null) precificacao.appendChild(criar("small", "digital-offer__pix", `Pix integral: ${formatarMoeda(oferta.precoPix)} (-15%)`));
       if (oferta.recorrenciaMensal != null) precificacao.appendChild(criar("small", "digital-offer__recurrence", `Manutenção/hospedagem: ${formatarMoeda(oferta.recorrenciaMensal)}/mês, quando contratada`));
       card.append(cabecalho, criar("h3", "", oferta.nome), precificacao, criar("p", "digital-offer__description", oferta.descricao));
+      if (oferta.idealPara) {
+        const indicado = criar("p", "digital-offer__audience");
+        indicado.append(criar("strong", "", "Ideal para: "), criar("span", "", oferta.idealPara));
+        card.appendChild(indicado);
+      }
       const lista = criar("ul", "digital-offer__list");
       (oferta.inclui || []).slice(0, 4).forEach((item) => lista.appendChild(criar("li", "", item)));
-      card.appendChild(lista);
-      const acao = criar("button", "button button--ink button--small", "Ver valor e avançar");
+      const detalhes = criar("details", "digital-offer__details");
+      detalhes.appendChild(criar("summary", "", "Ver o que entra e o que fica de fora"));
+      const detalhesGrid = criar("div", "digital-offer__details-grid");
+      const naoInclui = criar("div", "digital-offer__detail-block digital-offer__detail-block--muted");
+      naoInclui.appendChild(criar("strong", "", "Não inclui automaticamente"));
+      const naoIncluiLista = criar("ul", "digital-offer__list");
+      (oferta.naoInclui || []).slice(0, 5).forEach((item) => naoIncluiLista.appendChild(criar("li", "", item)));
+      naoInclui.appendChild(naoIncluiLista);
+      const avancar = criar("div", "digital-offer__detail-block");
+      avancar.appendChild(criar("strong", "", "Quando avançar"));
+      avancar.appendChild(criar("p", "digital-offer__detail-copy", oferta.comparativo?.proximoNivel || "Quando a necessidade exigir mais recursos."));
+      detalhesGrid.append(naoInclui, avancar);
+      detalhes.appendChild(detalhesGrid);
+      card.append(lista, detalhes);
+      const proximoNivel = oferta.comparativo?.proximoNivel;
+      if (proximoNivel) card.appendChild(criar("p", "digital-offer__next", `Próximo passo: ${proximoNivel}.`));
+      const acao = criar("button", "button button--ink button--small", "Escolher esta opção");
       acao.type = "button";
       acao.addEventListener("click", () => selecionar({ categoriaId: categoria.id, itemId: oferta.id }));
       card.appendChild(acao);
