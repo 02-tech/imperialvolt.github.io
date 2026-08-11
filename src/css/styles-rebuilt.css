@@ -204,6 +204,8 @@ h1, h2, h3, strong { letter-spacing: -0.035em; }
 .hero__lead { max-width: 39rem; margin-bottom: 1.65rem; color: rgba(255, 255, 255, 0.72); font-size: clamp(1rem, 1.6vw, 1.18rem); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .hero__caption { margin: 1.35rem 0 0; color: rgba(255, 255, 255, 0.56); font-size: 0.76rem; }
+.hero__text-link { display: inline-flex; gap: 0.35rem; align-items: center; margin-top: 1.25rem; color: rgba(255, 255, 255, 0.86); font-size: 0.78rem; font-weight: 700; text-underline-offset: 0.25rem; }
+.hero__text-link span { color: var(--lime); font-size: 1.05rem; }
 .hero__art {
   position: relative;
   min-height: 27rem;
@@ -219,6 +221,18 @@ h1, h2, h3, strong { letter-spacing: -0.035em; }
 .hero__art-overlay strong { max-width: 19ch; font-size: clamp(1rem, 2vw, 1.45rem); line-height: 1.05; }
 .hero__art-overlay a { width: fit-content; margin-top: 0.3rem; color: #fff; font-size: 0.78rem; font-weight: 700; text-underline-offset: 0.22rem; }
 .hero__art-overlay a span { color: var(--lime); font-family: inherit; font-size: 1em; letter-spacing: normal; text-transform: none; }
+
+.conversion-strip { color: #fff; background: var(--ink); border-top: 1px solid rgba(216, 255, 69, 0.18); border-bottom: 1px solid rgba(255, 255, 255, 0.11); }
+.conversion-strip__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: 0.8rem; align-items: stretch; }
+.conversion-strip__item { display: flex; min-width: 0; align-items: center; gap: 0.75rem; padding: 1.05rem 0.9rem; }
+.conversion-strip__value { flex: 0 0 auto; color: var(--lime); font-family: "DM Mono", monospace; font-size: 1.05rem; letter-spacing: -0.04em; }
+.conversion-strip__value > span:last-child { font-size: 0.78rem; }
+.conversion-strip__copy { display: grid; min-width: 0; gap: 0.12rem; }
+.conversion-strip__copy strong { font-size: 0.77rem; line-height: 1.05; }
+.conversion-strip__copy small { color: rgba(255, 255, 255, 0.55); font-size: 0.65rem; line-height: 1.2; }
+.conversion-strip__link { display: inline-flex; align-items: center; justify-content: center; gap: 0.38rem; min-width: 10rem; padding: 0.9rem 1rem; color: var(--ink); background: var(--lime); font-size: 0.72rem; font-weight: 800; text-align: center; text-decoration: none; transition: background 180ms ease, transform 180ms ease; }
+.conversion-strip__link:hover { background: var(--lime-bright); transform: translateY(-1px); }
+.conversion-strip__link span { font-size: 1rem; }
 
 .physical-solutions { padding-block: clamp(3.75rem, 7vw, 6.8rem); background: #e5ecd7; }
 .physical-solutions__layout { display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(20rem, 1.28fr); gap: 1.1rem clamp(1.5rem, 6vw, 6rem); }
@@ -621,6 +635,9 @@ textarea { min-height: 5.1rem; resize: vertical; }
   .physical-notice { grid-template-columns: 0.75fr 1fr; }
   .physical-notice p { grid-column: 1 / -1; }
   .physical-notice .button { justify-self: start; }
+  .conversion-strip__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .conversion-strip__item { padding-inline: 0.5rem; }
+  .conversion-strip__link { grid-column: 1 / -1; min-height: 3rem; border-radius: 0.72rem; }
 }
 @media (max-width: 700px) {
   .container { width: min(100% - 1.5rem, var(--container)); }
@@ -631,6 +648,7 @@ textarea { min-height: 5.1rem; resize: vertical; }
   .hero__grid { grid-template-columns: 1fr; min-height: auto; gap: 1.8rem; padding-block: 3rem 2.8rem; }
   .hero h1 { max-width: 10.5ch; font-size: clamp(2.75rem, 12.5vw, 4.15rem); letter-spacing: -0.052em; }
   .hero__lead { font-size: 0.98rem; }
+  .hero__text-link { margin-top: 1rem; }
   .hero__art { min-height: 25rem; border-radius: 1.5rem; }
   .hero__portrait { min-height: 25rem; }
   .hero__art-overlay { right: 1rem; bottom: 1rem; left: 1rem; }
@@ -660,6 +678,9 @@ textarea { min-height: 5.1rem; resize: vertical; }
   .site-footer__meta { text-align: left; }
   :root { --fab-size: 3.4rem; --fab-offset: 0.9rem; --fab-gap: 0.85rem; }
   .guided-chat { right: 0.75rem; width: min(23rem, calc(100vw - 1.5rem)); }
+  .conversion-strip__grid { gap: 0; padding-block: 0.35rem; }
+  .conversion-strip__item { padding-block: 0.8rem; }
+  .conversion-strip__copy small { font-size: 0.6rem; }
 }
 @media (max-width: 400px) {
   .brand__copy small { max-width: 10.5rem; }

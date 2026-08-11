@@ -242,6 +242,22 @@ function renderProvaSocial(dados) {
   }
 }
 
+function renderConversionStrip(dados) {
+  const google = dados.publico?.google;
+  const score = $("#trustGoogleScore");
+  const count = $("#trustGoogleCount");
+  const link = $("#trustGoogleLink");
+  if (score && google?.notaCapturada != null) {
+    score.textContent = String(google.notaCapturada).replace(".", ",");
+  }
+  if (count && google?.quantidadeAvaliacoesCapturada != null) {
+    count.textContent = `${google.quantidadeAvaliacoesCapturada} avaliações no Google`;
+  }
+  if (link && google?.linkAvaliacao) {
+    link.href = google.linkAvaliacao;
+  }
+}
+
 function preencherContato(publico) {
   const empresa = publico?.empresa;
   if (!empresa) return;
@@ -323,6 +339,7 @@ async function boot() {
     });
     renderProjetosDigitais(dados.servicos, selecionarProduto);
     renderFaq(dados.faq);
+    renderConversionStrip(dados);
     renderProvaSocial(dados);
     preencherContato(dados.publico);
   } catch (erro) {
