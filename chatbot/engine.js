@@ -1,5 +1,5 @@
 /* Voltz-Bot: atendimento guiado conectado aos dados publicos do site. */
-import { carregarDados, formatarMoeda, precoFormatado, unificarCategorias } from "../src/js/data.js";
+import { carregarDados, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "../src/js/data.js";
 import { linkWhatsApp, montarMensagem } from "../src/js/whatsapp.js";
 
 const estado = {
@@ -129,7 +129,7 @@ function respostaInicial() {
 
 function opcoesIniciais(alvo) {
   alvo.append(
-    criarEscolha("Criar site, sistema ou aplicativo", () => mostrarProjetosDigitais()),
+    criarEscolha("Escolher pelo problema que quero resolver", () => mostrarProjetosDigitais()),
     criarEscolha("Comprar solução física ou NFC", () => mostrarCategoriasFisicas()),
     criarEscolha("Ver preços e desconto no Pix", () => mostrarPrecos()),
     criarEscolha("Ir direto para o orçamento", () => irParaOrcamento()),
@@ -142,11 +142,11 @@ function opcoesIniciais(alvo) {
 }
 
 function mostrarProjetosDigitais() {
-  adicionarHistorico("assistant", "Claro. Escolha o tipo de projeto e eu mostro o ponto de partida, o que entra no escopo e o próximo passo.");
-  const categoria = encontrarCategoria("projetos-digitais");
-  estado.opcoes = (categoria?.itens || []).slice(0, 8).map((item) => ({
-    texto: item.nome,
-    acao: () => mostrarItem("projetos-digitais", item.id)
+  adicionarHistorico("assistant", "Claro. Você não precisa conhecer os termos técnicos. Escolha o resultado que procura e eu mostro as opções, valores e prazos publicados.");
+  const categorias = estado.categorias.filter((categoria) => categoria.origem === "servico");
+  estado.opcoes = categorias.map((categoria) => ({
+    texto: categoria.entradaRotulo || categoria.nome,
+    acao: () => mostrarCategoria(categoria.id)
   }));
   estado.opcoes.push({ texto: "Voltar ao início", acao: iniciarConversa });
 }
@@ -154,7 +154,8 @@ function mostrarProjetosDigitais() {
 function mostrarCategoriasFisicas() {
   adicionarHistorico("assistant", "Posso te levar para uma compra do catálogo ou para uma solução sob medida. Escolha uma frente:");
   estado.opcoes = [
-    { texto: "Soluções físicas em impressão 3D", acao: () => mostrarCategoria("impressao-3d") },
+    { texto: "Soluções sob medida em impressão 3D", acao: () => mostrarCategoria("servicos-impressao-3d") },
+    { texto: "Comprar um produto 3D", acao: () => mostrarCategoria("impressao-3d") },
     { texto: "Tags e chaveiros NFC", acao: () => mostrarCategoria("nfc") },
     { texto: "Empresas e revendedores", acao: () => irParaOrcamento() },
     { texto: "Voltar ao início", acao: iniciarConversa }
@@ -180,10 +181,14 @@ function mostrarItem(categoriaId, itemId) {
     return;
   }
 
-  const linhas = [item.nome, item.descricao, `Valor: ${precoFormatado(item)}.`];
+  const linhas = [item.nome, item.descricao, `Valor: ${precoFormatado(item)}.`, `Prazo estimado: ${prazoFormatado(item)}.`];
   if (item.precoPix != null) linhas.push(`Pix integral: ${formatarMoeda(item.precoPix)} (-15%).`);
   if (item.recorrenciaMensal != null) linhas.push(`Recorrência: ${formatarMoeda(item.recorrenciaMensal)}/mês, quando contratada.`);
+  if (item.mensagemComercial) linhas.push(item.mensagemComercial);
+  if (item.idealPara) linhas.push(`Ideal para: ${item.idealPara}`);
+  if (item.quandoUsar) linhas.push(`Quando usar: ${item.quandoUsar}`);
   if (item.inclui?.length) linhas.push(`Inclui: ${item.inclui.slice(0, 3).join("; ")}.`);
+  if (item.custosExternos?.length) linhas.push(`Custos externos: ${item.custosExternos.slice(0, 2).join("; ")}.`);
   if (item.naoInclui?.length) linhas.push(`Fica fora por padrão: ${item.naoInclui.slice(0, 2).join("; ")}.`);
   estado.memoria.ultimoItem = { categoriaId: categoria?.id || categoriaId, itemId: item.id, nome: item.nome };
   persistirMemoria();
@@ -196,15 +201,14 @@ function mostrarItem(categoriaId, itemId) {
 }
 
 function mostrarPrecos() {
-  const categoria = encontrarCategoria("projetos-digitais");
-  const ids = ["landing-page-estatica", "site-institucional-estatico", "site-dinamico-cms", "web-app-sistema-customizado", "ecommerce-loja-virtual", "aplicativo-android-multiplataforma"];
-  const resumo = (categoria?.itens || [])
-    .filter((item) => ids.includes(item.id))
-    .map((item) => `${item.nome}: ${precoFormatado(item)}`)
+  const ids = ["perfil-empresa-google", "landing-page-estatica", "site-institucional-estatico", "site-dinamico-cms", "sistema-web-painel-administrativo", "aplicativo-android", "automacao-simples", "assistente-ia", "impressao-arquivo-pronto"];
+  const itens = ids.map((id) => encontrarItem(id).item).filter(Boolean);
+  const resumo = itens
+    .map((item) => `${item.nome}: ${precoFormatado(item)} · ${prazoFormatado(item)}`)
     .join("\n");
-  adicionarHistorico("assistant", `Aqui estão os valores públicos de referência:\n${resumo}\n\nO Pix integral tem 15% de desconto quando indicado. Custos externos e recorrências só entram quando contratados.`);
+  adicionarHistorico("assistant", `Aqui estão alguns valores públicos de referência:\n${resumo}\n\nO site organiza todos os serviços por categoria. O Pix integral tem 15% de desconto quando indicado; custos externos e recorrências ficam separados quando aplicáveis.`);
   estado.opcoes = [
-    { texto: "Comparar planos no site", acao: () => irParaSecao("planos-sites") },
+    { texto: "Ver todos os serviços, preços e prazos", acao: () => irParaSecao("servicos-precos") },
     { texto: "Calcular meu orçamento", acao: irParaOrcamento },
     { texto: "Voltar ao início", acao: iniciarConversa }
   ];
@@ -277,23 +281,40 @@ function limparOrcamentoConversa() {
 function encontrarItemPorTexto(texto) {
   const termo = normalizar(texto);
   const atalhos = [
+    ["perfil da empresa", "perfil-empresa-google"],
+    ["google maps", "perfil-empresa-google"],
+    ["otimizar google", "otimizacao-perfil-google"],
+    ["cartao digital", "pagina-links-cartao-digital"],
     ["site institucional", "site-institucional-estatico"],
+    ["site avancado", "site-institucional-avancado"],
     ["site completo", "site-institucional-estatico"],
     ["landing", "landing-page-estatica"],
     ["one page", "landing-page-estatica"],
     ["painel", "site-dinamico-cms"],
     ["cms", "site-dinamico-cms"],
-    ["web app", "web-app-sistema-customizado"],
-    ["sistema", "web-app-sistema-customizado"],
-    ["banco de dados", "web-app-sistema-customizado"],
-    ["aplicativo", "aplicativo-android-multiplataforma"],
-    ["app", "aplicativo-android-multiplataforma"],
+    ["web app", "sistema-web-painel-administrativo"],
+    ["sistema", "sistema-web-painel-administrativo"],
+    ["banco de dados", "sistema-web-painel-administrativo"],
+    ["desktop", "aplicativo-desktop-electron"],
+    ["electron", "aplicativo-desktop-electron"],
+    ["android e ios", "aplicativo-android-ios"],
+    ["android", "aplicativo-android"],
+    ["iphone", "aplicativo-ios"],
+    ["aplicativo", "aplicativo-android"],
+    ["app", "aplicativo-android"],
     ["loja virtual", "ecommerce-loja-virtual"],
     ["ecommerce", "ecommerce-loja-virtual"],
-    ["automacao", "integracao-automacao"],
-    ["integracao", "integracao-automacao"],
+    ["automacao", "automacao-simples"],
+    ["integracao", "integracao-api"],
+    ["pix", "integracao-pagamento"],
+    ["pagamento", "integracao-pagamento"],
+    ["bot", "bot-atendimento-automatizado"],
+    ["ia", "assistente-ia"],
     ["chaveiro", "chaveiro-nfc-personalizado"],
     ["nfc", "tag-nfc-personalizada"],
+    ["impressao 3d", "impressao-arquivo-pronto"],
+    ["reposicao", "peca-reposicao-personalizada"],
+    ["adaptacao", "ajuste-adaptacao-modelo-3d"],
     ["apito", "apito-morte-asteca"]
   ];
   const atalho = atalhos.find(([palavra]) => termo.includes(palavra));
@@ -340,13 +361,17 @@ function interpretarEntrada(texto, adicionarUsuario = true) {
   persistirMemoria();
   if (tratarComandosDeOrcamento(termo)) return;
   if (/(pix|preco|valor|pagamento|parcel)/.test(termo)) return mostrarPrecos();
-  if (/(aplicativo|app|android|ios|mobile)/.test(termo)) return mostrarItem("projetos-digitais", "aplicativo-android-multiplataforma");
-  if (/(sistema|web app|painel|banco de dados|login)/.test(termo)) return mostrarItem("projetos-digitais", "web-app-sistema-customizado");
+  if (/(perfil|google maps|aparecer no google)/.test(termo)) return mostrarItem("presenca-digital", "perfil-empresa-google");
+  if (/(seo|analytics|search console)/.test(termo)) return mostrarItem("servicos-avulsos", termo.includes("seo") ? "seo-inicial" : "analytics-search-console");
+  if (/(desktop|electron|computador)/.test(termo)) return mostrarItem("sistemas-aplicativos", "aplicativo-desktop-electron");
+  if (/(android.*ios|ios.*android)/.test(termo)) return mostrarItem("sistemas-aplicativos", "aplicativo-android-ios");
+  if (/(aplicativo|app|android|ios|iphone|mobile)/.test(termo)) return mostrarItem("sistemas-aplicativos", termo.includes("ios") || termo.includes("iphone") ? "aplicativo-ios" : "aplicativo-android");
+  if (/(sistema|web app|painel|banco de dados|login)/.test(termo)) return mostrarItem("sistemas-aplicativos", "sistema-web-painel-administrativo");
   if (/(landing|one page)/.test(termo)) return mostrarItem("projetos-digitais", "landing-page-estatica");
   if (/(institucional)/.test(termo)) return mostrarItem("projetos-digitais", "site-institucional-estatico");
   if (/(ecommerce|e-commerce|loja virtual)/.test(termo)) return mostrarItem("projetos-digitais", "ecommerce-loja-virtual");
   if (/(site|pagina)/.test(termo)) return mostrarProjetosDigitais();
-  if (/(3d|impressao|peca|reposicao|adaptacao)/.test(termo)) return mostrarCategoria("impressao-3d");
+  if (/(3d|impressao|peca|reposicao|adaptacao)/.test(termo)) return mostrarCategoria("servicos-impressao-3d");
   if (/(nfc|tag|chaveiro)/.test(termo)) return mostrarCategoria("nfc");
   if (/(faq|duvida|dominio|vps|loja|publicar|manutencao|orcamento|inpi|taxa)/.test(termo)) return mostrarFaq(termo);
   encaminharPergunta(texto);

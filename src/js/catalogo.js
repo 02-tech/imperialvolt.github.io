@@ -1,5 +1,5 @@
 /* Catálogo comercial: filtros leves, variações e encaminhamento contextual. */
-import { formatarMoeda, precoFormatado } from "./data.js";
+import { formatarMoeda, prazoFormatado, precoFormatado } from "./data.js";
 import { abrirWhatsApp } from "./whatsapp.js";
 
 const IMAGENS_VITRINE = {
@@ -7,7 +7,12 @@ const IMAGENS_VITRINE = {
   "chaveiro-nfc-personalizado": "./src/imagens/vitrine/nfc-chaveiro.svg",
   "apito-morte-asteca": "./src/imagens/produtos/apito-morte-asteca.jpg",
   "impressao-sob-medida": "./src/imagens/vitrine/produto-personalizado.svg",
+  "presenca-digital": "./src/imagens/vitrine/sites.svg",
   "projetos-digitais": "./src/imagens/vitrine/sites.svg",
+  "sistemas-aplicativos": "./src/imagens/vitrine/sistemas.svg",
+  "automacoes-ia": "./src/imagens/vitrine/automacoes.svg",
+  "servicos-avulsos": "./src/imagens/vitrine/sites.svg",
+  "servicos-impressao-3d": "./src/imagens/vitrine/produto-personalizado.svg",
   marcas: "./src/imagens/vitrine/registro-marca.svg",
   manutencao: "./src/imagens/vitrine/automacoes.svg"
 };
@@ -99,9 +104,8 @@ function criarCard(item, categoria, onSelect) {
   const naoInclui = detalhes("O que não está incluso", item.naoInclui);
   [incluiDetalhes, adicionais, naoInclui].filter(Boolean).forEach((bloco) => card.appendChild(bloco));
 
-  if (item.prazoEstimadoDiasUteis) {
-    const prazo = item.prazoEstimadoDiasUteis;
-    card.appendChild(criar("p", "product-card__meta", `Prazo estimado: ${prazo.minimo}-${prazo.maximo} dias úteis`));
+  if (item.prazoEstimadoDiasUteis || item.prazoTexto) {
+    card.appendChild(criar("p", "product-card__meta", `Prazo: ${prazoFormatado(item)}`));
   }
 
   const acoes = criar("div", "product-card__actions");
@@ -117,6 +121,8 @@ function criarCard(item, categoria, onSelect) {
       produto: item.nome,
       quantidade: selecionado.quantidade,
       valor: selecionado.valor,
+      prazo: item.prazoEstimadoDiasUteis || item.prazoTexto ? prazoFormatado(item) : "",
+      idealPara: item.idealPara,
       origem: `Catálogo - ${categoria.nome}`
     });
   });

@@ -1,46 +1,46 @@
 {
   "entrada": {
     "titulo": "O que você precisa?",
-    "opcoes": [
-      {
+      "opcoes": [
+        {
+        "id": "aparecer-google",
+        "rotulo": "Quero aparecer melhor no Google",
+        "destino": "presenca-digital"
+        },
+        {
         "id": "criar-site",
-        "rotulo": "Landing Page / One-Page",
-        "destino": "landing-page-estatica"
-      },
-      {
-        "id": "site-institucional",
-        "rotulo": "Site institucional completo",
-        "destino": "site-institucional-estatico"
-      },
-      {
-        "id": "site-cms",
-        "rotulo": "Site dinâmico com CMS",
-        "destino": "site-dinamico-cms"
-      },
-      {
-        "id": "criar-app",
-        "rotulo": "Web App / sistema customizado",
-        "destino": "web-app-sistema-customizado"
-      },
-      {
-        "id": "loja-virtual",
-        "rotulo": "E-commerce / loja virtual",
-        "destino": "ecommerce-loja-virtual"
-      },
-      {
+        "rotulo": "Quero um site ou loja",
+        "destino": "projetos-digitais"
+        },
+        {
+        "id": "criar-sistema",
+        "rotulo": "Quero criar um sistema ou aplicativo",
+        "destino": "sistemas-aplicativos"
+        },
+        {
         "id": "automatizar",
-        "rotulo": "Aplicativo Android ou multiplataforma",
-        "destino": "aplicativo-android-multiplataforma"
-      },
-      {
-        "id": "integrar",
-        "rotulo": "Integração / automação",
-        "destino": "integracao-automacao"
-      },
-      {
-        "id": "personalizar-digital",
-        "rotulo": "Projeto digital personalizado",
-        "destino": "projeto-digital-personalizado"
+        "rotulo": "Quero automatizar uma tarefa ou usar IA",
+        "destino": "automacoes-ia"
+        },
+        {
+        "id": "resolver-tarefa",
+        "rotulo": "Quero resolver uma tarefa específica",
+        "destino": "servicos-avulsos"
+        },
+        {
+        "id": "impressao-3d",
+        "rotulo": "Quero resolver algo com impressão 3D",
+        "destino": "servicos-impressao-3d"
+        },
+        {
+        "id": "registro-marca",
+        "rotulo": "Quero registrar uma marca",
+        "destino": "marcas"
+        },
+        {
+        "id": "manutencao",
+        "rotulo": "Quero manutenção ou suporte",
+        "destino": "manutencao"
       },
       {
         "id": "impressao-3d",

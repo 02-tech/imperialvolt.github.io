@@ -26,6 +26,9 @@ export function montarMensagem(campos) {
   if (campos.manutencao) linhas.push("Manutenção/hospedagem mensal: " + campos.manutencao);
   if (campos.observacoes) linhas.push("Observações: " + campos.observacoes);
   if (campos.valor) linhas.push("Valor apresentado no site: " + campos.valor);
+  if (campos.valorPix) linhas.push("Valor estimado no Pix integral: " + campos.valorPix);
+  if (campos.prazo) linhas.push("Prazo estimado publicado: " + campos.prazo);
+  if (campos.idealPara) linhas.push("Indicação do serviço: " + campos.idealPara);
   if (campos.pagamento) linhas.push("Forma de pagamento pretendida: " + campos.pagamento);
   if (campos.origem) linhas.push("Origem: " + campos.origem);
 

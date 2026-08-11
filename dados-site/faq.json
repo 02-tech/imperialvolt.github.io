@@ -5,7 +5,7 @@
       "perguntas": [
         {
           "pergunta": "Quais são os valores de referência para projetos digitais?",
-          "resposta": "Landing Page começa em R$ 1.200, site institucional completo em R$ 2.200, CMS em R$ 4.200, Web App a partir de R$ 7.800 e e-commerce em R$ 5.500. O valor final depende do escopo aprovado."
+          "resposta": "A tabela oficial publica Landing Page por R$ 450, site institucional a partir de R$ 600, site institucional avançado a partir de R$ 900, site dinâmico/CMS a partir de R$ 1.200 e loja virtual a partir de R$ 1.500. Sistemas, aplicativos, automações e serviços avulsos aparecem nas respectivas categorias com preço inicial e prazo."
         },
         {
           "pergunta": "Qual é a diferença entre um site e um sistema?",
@@ -13,15 +13,15 @@
         },
         {
           "pergunta": "Quanto custa um aplicativo?",
-          "resposta": "Aplicativos Android e multiplataforma são feitos sob orçamento. O valor depende das funcionalidades, backend, banco de dados, autenticação, integrações, plataformas e complexidade operacional."
+          "resposta": "O aplicativo Android começa em R$ 1.400, iOS em R$ 1.800 e Android + iOS em R$ 2.200. PWA começa em R$ 1.200, desktop em R$ 900 e desktop avançado em R$ 1.400. Sistemas personalizados complexos começam em R$ 2.500; o prazo final depende do escopo."
         },
         {
           "pergunta": "Existe manutenção ou hospedagem mensal?",
-          "resposta": "Pode existir, quando contratada separadamente. As referências mensais são R$ 80 para Landing Page, R$ 120 para site institucional, R$ 190 para CMS, R$ 350 para Web App e R$ 250 para e-commerce. Custos de terceiros podem ser adicionais."
+          "resposta": "Sim, quando contratada separadamente. Manutenção de site começa em R$ 99/mês e manutenção de sistema ou aplicativo em R$ 199/mês. Domínio, hospedagem, VPS, banco, APIs e outros custos de terceiros podem ser adicionais."
         },
         {
-          "pergunta": "Como faço para comprar um serviço com preço definido?",
-          "resposta": "Escolha a modalidade no orçamento guiado, confira o valor de referência e a condição do Pix, depois avance pelo WhatsApp ou pelo checkout online quando ele estiver disponível para aquela opção."
+          "pergunta": "Como faço para contratar um serviço com preço publicado?",
+          "resposta": "Escolha uma categoria no orçamento guiado, selecione o serviço, confira preço, prazo e custos externos e avance pelo WhatsApp. A mensagem já leva o contexto da opção escolhida."
         },
         {
           "pergunta": "A publicação na Google Play ou App Store está incluída?",
@@ -67,7 +67,7 @@
         },
         {
           "pergunta": "Qual é o valor mínimo de um projeto personalizado?",
-          "resposta": "Projetos personalizados começam em R$25. O valor final, acabamento, prazo e entrega dependem da análise de cada necessidade."
+          "resposta": "A impressão de arquivo pronto começa em R$15 e a personalização simples em R$25. Peso, material, tempo de impressão, complexidade, acabamento, quantidade e entrega influenciam o valor final."
         }
       ]
     },

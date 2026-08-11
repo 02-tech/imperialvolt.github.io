@@ -22,397 +22,761 @@
       "Apple Developer",
       "taxas das lojas"
     ],
-    "publicacaoAplicativos": "Não incluída automaticamente. Preparação, submissão, correções e acompanhamento são contratados à parte quando necessário.",
+    "publicacaoAplicativos": "O desenvolvimento não inclui automaticamente publicação em lojas. Preparação, submissão, correções e acompanhamento são contratados à parte quando necessário.",
     "posEntrega": "Novas funções, alterações de escopo, integrações, expansão, manutenção recorrente e aumento de infraestrutura podem gerar novo orçamento.",
-    "observacao": "A estrutura técnica pode ser criada pela Imperial Volt quando prevista no escopo. Contas, assinaturas e custos recorrentes de terceiros são contratados pelo cliente ou incluídos expressamente no orçamento."
+    "observacao": "O valor publicado é uma referência comercial para o escopo descrito. O orçamento aprovado define os entregáveis, prazo, custos externos e condições específicas."
   },
   "categorias": [
     {
+      "id": "presenca-digital",
+      "nome": "Presença digital e Google",
+      "entradaRotulo": "Quero aparecer melhor no Google",
+      "descricao": "Serviços para colocar o negócio no mapa, organizar seus canais e facilitar o contato.",
+      "servicos": [
+        {
+          "id": "perfil-empresa-google",
+          "nome": "Perfil da Empresa no Google",
+          "preco": 220,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 1, "maximo": 2 },
+          "descricao": "Criação, configuração e organização profissional do Perfil da Empresa no Google para melhorar a presença na Pesquisa Google e no Google Maps.",
+          "mensagemComercial": "Se alguém procura o que você faz no Google e não encontra sua empresa, provavelmente encontra outra.",
+          "idealPara": "Negócios que ainda não possuem um perfil organizado ou precisam começar a aparecer no Google e no Maps.",
+          "quandoUsar": "Quando o cliente precisa encontrar endereço, telefone, horário, fotos e informações básicas do negócio.",
+          "quandoNaoNecessario": "Se o perfil já está completo, atualizado e bem configurado, pode ser mais útil contratar apenas uma otimização.",
+          "inclui": [ "criação ou organização do perfil", "configuração de dados comerciais", "categorias, descrição e contatos", "orientação para fotos e informações" ],
+          "custosExternos": [ "O Perfil da Empresa no Google é gratuito.", "Eventual verificação ou aprovação final depende do Google." ],
+          "observacao": "O valor corresponde ao serviço profissional da Imperial Volt, não a uma cobrança do Google."
+        },
+        {
+          "id": "otimizacao-perfil-google",
+          "nome": "Otimização de Perfil da Empresa no Google",
+          "preco": 180,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 1, "maximo": 2 },
+          "descricao": "Revisão e melhoria de um perfil existente para corrigir informações, imagens, categorias e apresentação.",
+          "idealPara": "Empresas que já possuem perfil, mas estão com informações incompletas, imagens ruins, categoria inadequada ou configuração fraca.",
+          "quandoUsar": "Quando o perfil existe, mas não transmite confiança ou não apresenta o negócio de forma clara.",
+          "quandoNaoNecessario": "Se o perfil foi revisado recentemente e todas as informações estão corretas, talvez não seja necessário contratar novamente.",
+          "inclui": [ "revisão dos dados públicos", "ajuste de categoria e descrição", "organização de imagens e contatos", "orientações de melhoria" ],
+          "custosExternos": [ "O Perfil da Empresa no Google é gratuito.", "Resultados e aprovação dependem do Google." ]
+        },
+        {
+          "id": "pagina-links-cartao-digital",
+          "nome": "Página de links / cartão digital",
+          "preco": 150,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 1, "maximo": 2 },
+          "descricao": "Uma página rápida para centralizar WhatsApp, Instagram, endereço, Google Maps, contatos e links importantes.",
+          "idealPara": "Profissionais e empresas que precisam de um único endereço para compartilhar todos os seus canais.",
+          "quandoUsar": "Quando o cliente chega pelo Instagram, NFC ou QR Code e precisa encontrar o próximo passo rapidamente.",
+          "quandoNaoNecessario": "Se a empresa já possui um site com todos os contatos bem organizados, uma página separada pode ser dispensável.",
+          "inclui": [ "página responsiva", "links e botões de contato", "organização dos canais fornecidos", "publicação conforme a estrutura contratada" ],
+          "custosExternos": [ "Domínio próprio, se desejado, é contratado separadamente.", "Hospedagem paga ou serviços externos podem ser adicionais." ]
+        }
+      ]
+    },
+    {
       "id": "projetos-digitais",
-      "nome": "Projetos digitais",
-      "descricao": "Sites, sistemas, aplicativos, lojas e automações com escopo definido conforme a necessidade.",
+      "nome": "Sites e lojas",
+      "entradaRotulo": "Quero um site ou loja",
+      "descricao": "Páginas e lojas para apresentar uma empresa, uma oferta ou uma operação de venda online.",
       "servicos": [
         {
           "id": "landing-page-estatica",
-          "nome": "Landing Page / One-Page estática",
-          "preco": 1200,
-          "precoPix": 1020,
-          "recorrenciaMensal": 80,
-          "tipoPreco": "preço de referência",
-          "descricao": "Página rápida para apresentação ou vendas, com foco em conversão e SEO local básico.",
-          "idealPara": "Quem precisa apresentar uma oferta, serviço ou campanha em uma única página.",
-          "comparativo": {
-            "tag": "Para começar",
-            "resultado": "Uma página para apresentar e vender uma oferta",
-            "estrutura": "Uma página responsiva",
-            "dados": "Sem banco de dados próprio",
-            "operacao": "Contatos e links",
-            "proximoNivel": "Avance para mais páginas e conteúdo"
-          },
-          "inclui": [
-            "landing page ou one-page",
-            "layout responsivo",
-            "estrutura focada em conversão",
-            "contatos e links",
-            "SEO local básico quando previsto"
-          ],
-          "naoInclui": [
-            "banco de dados próprio",
-            "painel administrativo",
-            "login e usuários",
-            "funcionalidades complexas",
-            "domínio, hospedagem paga e serviços externos"
-          ],
-          "avisoPreco": "Preço de referência de R$ 1.200 ou R$ 1.020 no Pix integral. A recorrência mensal é contratada separadamente quando aplicável.",
-          "avisoRecorrencia": "Manutenção e hospedagem: R$ 80/mês, quando contratadas."
+          "nome": "Landing Page",
+          "preco": 450,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 2, "maximo": 5 },
+          "descricao": "Uma página focada em uma oferta, serviço ou campanha, com caminho claro para o contato.",
+          "mensagemComercial": "Uma oferta. Uma página. Um objetivo.",
+          "idealPara": "Campanhas, anúncios, produtos específicos, serviços específicos e captação de contatos.",
+          "quandoUsar": "Quando existe uma oferta principal e o objetivo é apresentar, convencer e gerar uma ação.",
+          "quandoNaoNecessario": "Se o negócio precisa apresentar várias áreas, história, equipe e serviços, um site institucional é mais adequado.",
+          "inclui": [ "uma página responsiva", "estrutura focada em conversão", "contatos e links", "SEO básico quando previsto" ],
+          "custosExternos": [ "Domínio e hospedagem paga não estão incluídos automaticamente.", "Anúncios e ferramentas de terceiros são contratados separadamente." ]
         },
         {
           "id": "site-institucional-estatico",
-          "nome": "Site institucional estático completo",
-          "preco": 2200,
-          "precoPix": 1870,
-          "recorrenciaMensal": 120,
-          "tipoPreco": "preço de referência",
-          "descricao": "Até cinco páginas institucionais, rápidas e responsivas para apresentar a empresa com autoridade.",
-          "idealPara": "Empresas que precisam mostrar sua história, serviços, galeria, contato e diferenciais.",
-          "comparativo": {
-            "tag": "Presença completa",
-            "resultado": "Até cinco páginas para apresentar uma empresa com clareza",
-            "estrutura": "Até cinco páginas estáticas",
-            "dados": "Sem banco de dados próprio",
-            "operacao": "Contato, galeria e links",
-            "proximoNivel": "Avance quando precisar gerenciar conteúdo"
-          },
-          "inclui": [
-            "até cinco páginas estáticas",
-            "layout responsivo",
-            "apresentação institucional",
-            "galeria, serviços e contato",
-            "SEO técnico básico quando previsto"
-          ],
-          "naoInclui": [
-            "banco de dados próprio",
-            "painel administrativo",
-            "login e usuários",
-            "funcionalidades complexas",
-            "domínio, hospedagem paga e serviços externos"
-          ],
-          "avisoPreco": "Preço de referência de R$ 2.200 ou R$ 1.870 no Pix integral. O escopo final é confirmado na proposta.",
-          "avisoRecorrencia": "Manutenção e hospedagem: R$ 120/mês, quando contratadas."
+          "nome": "Site institucional estático",
+          "precoInicial": 600,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 3, "maximo": 7 },
+          "descricao": "Site responsivo para apresentar empresa, serviços, localização, fotos, WhatsApp e informações institucionais.",
+          "mensagemComercial": "Quando seu negócio precisa ser encontrado, entendido e contatado — sem precisar de um sistema complexo.",
+          "idealPara": "Empresas, autônomos, pousadas, restaurantes, lojas e prestadores de serviço.",
+          "quandoUsar": "Quando o conteúdo é principalmente informativo e não precisa de login, usuários, estoque, pedidos ou banco de dados complexo.",
+          "quandoNaoNecessario": "Se a operação precisa receber, processar e gerenciar informações continuamente, vale avaliar um sistema ou site dinâmico.",
+          "inclui": [ "páginas institucionais conforme escopo", "layout responsivo", "serviços, localização e contato", "links, galeria e SEO básico quando previsto" ],
+          "custosExternos": [ "Domínio, hospedagem paga e e-mail profissional são separados.", "Banco de dados, painel e integrações não fazem parte deste formato por padrão." ]
+        },
+        {
+          "id": "site-institucional-avancado",
+          "nome": "Site institucional avançado",
+          "precoInicial": 900,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 5, "maximo": 10 },
+          "descricao": "Projeto institucional maior, com mais páginas, conteúdo, elementos personalizados e recursos adicionais.",
+          "idealPara": "Empresas que precisam de uma apresentação mais completa e personalizada do que um site institucional de entrada.",
+          "quandoUsar": "Quando há várias áreas, públicos, serviços, projetos ou conteúdos que precisam de hierarquia própria.",
+          "quandoNaoNecessario": "Se uma única oferta resolve o objetivo, uma Landing Page pode ser mais rápida e econômica.",
+          "inclui": [ "estrutura com mais páginas", "componentes visuais personalizados", "conteúdo organizado por áreas", "responsividade e SEO básico quando previsto" ],
+          "custosExternos": [ "Domínio, hospedagem paga, licenças e serviços externos ficam à parte." ]
         },
         {
           "id": "site-dinamico-cms",
-          "nome": "Site dinâmico com CMS / painel admin",
-          "preco": 4200,
-          "precoPix": 3570,
-          "recorrenciaMensal": 190,
-          "tipoPreco": "preço de referência",
-          "descricao": "Estrutura com dados para gerir blog, catálogo, imóveis, notícias ou outro conteúdo operacional.",
-          "idealPara": "Quem precisa cadastrar e atualizar conteúdos, produtos, imóveis, notícias ou blog.",
-          "comparativo": {
-            "tag": "Gestão de conteúdo",
-            "resultado": "Um painel para cadastrar e atualizar informações",
-            "estrutura": "Site dinâmico com CMS",
-            "dados": "Banco de dados conforme escopo",
-            "operacao": "Painel administrativo",
-            "proximoNivel": "Avance para regras de negócio e área logada"
-          },
-          "inclui": [
-            "estrutura dinâmica",
-            "CMS ou painel administrativo",
-            "banco de dados conforme necessidade",
-            "layout responsivo",
-            "cadastro e gestão do conteúdo previsto"
-          ],
-          "naoInclui": [
-            "novas funções após a entrega",
-            "integrações não descritas",
-            "manutenção ilimitada",
-            "domínio, VPS e serviços recorrentes",
-            "taxas e serviços de terceiros"
-          ],
-          "avisoPreco": "Preço de referência de R$ 4.200 ou R$ 3.570 no Pix integral. O valor final depende do escopo.",
-          "avisoRecorrencia": "Manutenção e hospedagem: R$ 190/mês, quando contratadas."
-        },
-        {
-          "id": "web-app-sistema-customizado",
-          "nome": "Web App / sistema customizado",
-          "precoInicial": 7800,
-          "precoPix": 6630,
-          "recorrenciaMensal": 350,
+          "nome": "Site dinâmico / CMS",
+          "precoInicial": 1200,
           "tipoPreco": "a partir de",
-          "descricao": "Sistema sob medida com usuários, autenticação, APIs, banco de dados e regras de negócio.",
-          "idealPara": "Operações com usuários, login, clientes, pedidos, vagas, estoque, automações ou integrações.",
-          "comparativo": {
-            "tag": "Operação sob medida",
-            "resultado": "Uma operação digital com usuários, dados e regras",
-            "estrutura": "Web App com backend",
-            "dados": "Banco de dados e autenticação",
-            "operacao": "Área logada, APIs e regras",
-            "proximoNivel": "Expansões e infraestrutura entram no escopo"
-          },
-          "inclui": [
-            "banco de dados completo",
-            "área logada e autenticação",
-            "backend e regras de negócio",
-            "APIs e integrações previstas",
-            "painel ou gestão de informações conforme escopo"
-          ],
-          "naoInclui": [
-            "infraestrutura recorrente",
-            "APIs, licenças e serviços externos",
-            "novas funções após a entrega",
-            "manutenção ilimitada",
-            "publicação de aplicativo em lojas",
-            "taxas de terceiros"
-          ],
-          "avisoPreco": "A partir de R$ 7.800 ou R$ 6.630 no Pix integral. O preço final depende do escopo técnico e operacional.",
-          "avisoRecorrencia": "Manutenção e hospedagem: R$ 350/mês, quando contratadas."
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 7, "maximo": 15 },
+          "descricao": "Site com estrutura dinâmica para atualizar conteúdo, catálogo, blog, notícias ou outras informações.",
+          "idealPara": "Clientes que precisam cadastrar e atualizar conteúdo sem depender de alteração manual em cada página.",
+          "quandoUsar": "Quando a informação muda com frequência ou existe uma equipe que precisa gerenciar conteúdo.",
+          "quandoNaoNecessario": "Se a empresa raramente altera o conteúdo, um site estático costuma ser mais simples e suficiente.",
+          "inclui": [ "estrutura dinâmica", "CMS ou painel conforme escopo", "banco de dados quando previsto", "cadastro e gestão do conteúdo descrito" ],
+          "custosExternos": [ "Hospedagem, banco de dados como serviço, domínio, licenças e integrações pagas são separados.", "Novos módulos após a entrega geram novo orçamento." ]
         },
         {
           "id": "ecommerce-loja-virtual",
-          "nome": "E-commerce / loja virtual",
-          "preco": 5500,
-          "precoPix": 4675,
-          "recorrenciaMensal": 250,
-          "tipoPreco": "preço de referência",
-          "descricao": "Loja virtual com catálogo, estoque, pagamentos, frete e gestão conforme o escopo contratado.",
-          "idealPara": "Quem quer vender online com produtos, pedidos, estoque e integrações previstas.",
-          "comparativo": {
-            "tag": "Venda online",
-            "resultado": "Uma loja para organizar produtos, pedidos e vendas",
-            "estrutura": "Loja virtual dinâmica",
-            "dados": "Produtos, estoque e pedidos",
-            "operacao": "Pagamento e frete conforme integração",
-            "proximoNivel": "Operações avançadas entram no escopo"
-          },
-          "inclui": [
-            "catálogo e gestão de produtos",
-            "estoque conforme escopo",
-            "integração de pagamento prevista",
-            "cálculo de frete quando integrado",
-            "estrutura responsiva"
-          ],
-          "naoInclui": [
-            "taxas de gateways e intermediadores",
-            "serviços externos recorrentes",
-            "integrações não descritas",
-            "manutenção ilimitada",
-            "domínio, hospedagem e infraestrutura paga"
-          ],
-          "avisoPreco": "Preço de referência de R$ 5.500 ou R$ 4.675 no Pix integral. Integrações e custos de terceiros são avaliados separadamente.",
-          "avisoRecorrencia": "Manutenção e hospedagem: R$ 250/mês, quando contratadas."
+          "nome": "Loja virtual / e-commerce",
+          "precoInicial": 1500,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 10, "maximo": 25 },
+          "descricao": "Loja online para catálogo, carrinho, pedidos e integração de pagamentos conforme o escopo.",
+          "idealPara": "Quem quer vender produtos pela internet e organizar catálogo, pedidos e estoque.",
+          "quandoUsar": "Quando a venda precisa acontecer online com uma jornada de compra estruturada.",
+          "quandoNaoNecessario": "Se o negócio só precisa apresentar produtos e receber pedidos pelo WhatsApp, um site ou catálogo pode bastar.",
+          "inclui": [ "catálogo e gestão de produtos", "carrinho e pedidos conforme escopo", "integração de pagamento prevista", "estrutura responsiva" ],
+          "custosExternos": [ "Gateways, taxas de pagamento, frete, domínio, hospedagem e serviços recorrentes são separados.", "Integrações não descritas não são presumidas como incluídas." ]
+        }
+      ]
+    },
+    {
+      "id": "sistemas-aplicativos",
+      "nome": "Sistemas e aplicativos",
+      "entradaRotulo": "Quero criar um sistema ou aplicativo",
+      "descricao": "Software para organizar operações, automatizar rotinas e acompanhar usuários ou equipes.",
+      "servicos": [
+        {
+          "id": "aplicativo-desktop-electron",
+          "nome": "Aplicativo para computador / Desktop / Electron",
+          "precoInicial": 900,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 5, "maximo": 15 },
+          "descricao": "Aplicativo instalado no computador para ferramentas internas, utilitários e rotinas empresariais.",
+          "mensagemComercial": "Se a tarefa acontece todos os dias no computador, talvez o computador possa fazer parte dela por você.",
+          "idealPara": "Ferramentas internas, automações, sistemas administrativos e utilitários que não precisam estar sempre na internet.",
+          "quandoUsar": "Quando a operação acontece principalmente em computadores específicos ou precisa de uma interface local.",
+          "quandoNaoNecessario": "Se várias pessoas precisam acessar de lugares diferentes, um sistema web pode ser mais adequado.",
+          "inclui": [ "interface do aplicativo", "fluxo principal definido no escopo", "empacotamento para computador", "orientação de uso" ],
+          "custosExternos": [ "Licenças, banco de dados, serviços em nuvem e infraestrutura ficam separados quando aplicáveis." ]
         },
         {
-          "id": "aplicativo-android-multiplataforma",
-          "nome": "Aplicativos Android e multiplataforma",
-          "tipoPreco": "sob orçamento",
-          "descricao": "Produto mobile planejado conforme funcionalidades, backend, integrações e necessidade de publicação.",
-          "idealPara": "Quem precisa levar uma operação para Android ou construir um produto mobile próprio.",
-          "comparativo": {
-            "tag": "Produto mobile",
-            "resultado": "Um aplicativo planejado para a operação do cliente",
-            "estrutura": "Aplicativo e backend conforme escopo",
-            "dados": "Banco e autenticação quando necessários",
-            "operacao": "Integrações e publicação contratadas à parte",
-            "proximoNivel": "A proposta define plataformas e entregáveis"
-          },
-          "inclui": [
-            "análise de funcionalidades",
-            "definição de plataformas",
-            "estrutura técnica conforme o projeto",
-            "backend, banco e autenticação quando necessários"
-          ],
-          "naoInclui": [
-            "taxas de lojas",
-            "contas Google Play ou Apple Developer",
-            "publicação sem contratação expressa",
-            "infraestrutura e serviços externos recorrentes"
-          ],
-          "avisoPreco": "Aplicativos Android e multiplataforma são desenvolvidos sob orçamento. O valor depende do escopo, plataformas e complexidade operacional."
+          "id": "aplicativo-desktop-avancado",
+          "nome": "Aplicativo Desktop avançado",
+          "precoInicial": 1400,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 10, "maximo": 25 },
+          "descricao": "Aplicativo para computador com banco de dados, várias telas, módulos, integrações ou regras mais complexas.",
+          "idealPara": "Empresas que precisam de uma ferramenta interna mais completa do que um utilitário simples.",
+          "quandoUsar": "Quando há múltiplas etapas, perfis, telas ou fontes de dados na rotina do computador.",
+          "quandoNaoNecessario": "Se a necessidade é apenas uma apresentação ou uma automação curta, uma solução menor pode resolver.",
+          "inclui": [ "módulos conforme escopo", "telas e regras de negócio definidas", "banco de dados quando previsto", "integrações descritas na proposta" ],
+          "custosExternos": [ "Banco, APIs, licenças e infraestrutura recorrente não estão automaticamente incluídos." ]
         },
         {
-          "id": "integracao-automacao",
-          "nome": "Integração / automação",
-          "tipoPreco": "sob orçamento",
-          "descricao": "Fluxos e integrações para reduzir tarefas manuais e conectar ferramentas da operação.",
-          "comparativo": {
-            "tag": "Fluxos conectados",
-            "resultado": "Conecta etapas e reduz tarefas manuais",
-            "estrutura": "Fluxo definido por processo",
-            "dados": "Conforme ferramentas envolvidas",
-            "operacao": "Integrações e automações previstas",
-            "proximoNivel": "Complexidade e serviços externos entram no orçamento"
-          },
-          "inclui": [
-            "mapeamento da rotina",
-            "definição das integrações",
-            "automação do fluxo previsto",
-            "orientação sobre dependências externas"
-          ],
-          "naoInclui": [
-            "assinaturas de terceiros",
-            "APIs pagas",
-            "manutenção recorrente",
-            "fluxos não descritos na proposta"
-          ],
-          "avisoPreco": "O valor depende da quantidade de etapas, ferramentas, regras e integrações envolvidas."
+          "id": "sistema-web-painel-administrativo",
+          "nome": "Sistema web / painel administrativo",
+          "precoInicial": 1500,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 10, "maximo": 30 },
+          "descricao": "Sistema acessado pelo navegador para controlar clientes, estoque, reservas, pedidos, funcionários ou processos.",
+          "mensagemComercial": "Quando planilhas, mensagens e memória já não acompanham a operação.",
+          "idealPara": "Negócios que precisam registrar, consultar e acompanhar dados de uma operação.",
+          "quandoUsar": "Quando mais de uma pessoa precisa acessar informações organizadas e seguir regras de trabalho.",
+          "quandoNaoNecessario": "Se o objetivo é somente apresentar a empresa, um site institucional não precisa de painel administrativo.",
+          "inclui": [ "telas conforme fluxo aprovado", "cadastros e consultas previstos", "login ou perfis quando necessários", "banco de dados conforme escopo" ],
+          "custosExternos": [ "VPS, hospedagem, banco de dados como serviço, APIs e serviços externos são separados." ]
         },
         {
-          "id": "projeto-digital-personalizado",
-          "nome": "Projeto digital personalizado",
-          "tipoPreco": "sob orçamento",
-          "descricao": "Uma solução digital desenhada a partir do problema, do público e da operação do cliente.",
-          "comparativo": {
-            "tag": "Sob medida",
-            "resultado": "Solução definida para o cenário do cliente",
-            "estrutura": "Escopo sob medida",
-            "dados": "Conforme a necessidade",
-            "operacao": "Regras, painéis e integrações quando previstos",
-            "proximoNivel": "A proposta aprovada define o que será entregue"
-          },
-          "inclui": [
-            "levantamento inicial",
-            "análise de viabilidade",
-            "arquitetura compatível com o escopo",
-            "proposta comercial específica"
-          ],
-          "naoInclui": [
-            "funcionalidades presumidas",
-            "custos de terceiros não descritos",
-            "desenvolvimento ilimitado",
-            "publicação em lojas sem contratação expressa"
-          ],
-          "avisoPreco": "A proposta aprovada define escopo, prazo, entregáveis, custos externos e condições específicas."
+          "id": "pwa-web-app-instalavel",
+          "nome": "PWA / Web App instalável",
+          "precoInicial": 1200,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 7, "maximo": 20 },
+          "descricao": "Aplicação web que pode ser instalada no dispositivo e acessada com uma experiência próxima de aplicativo.",
+          "idealPara": "Projetos que querem praticidade mobile sem começar necessariamente por uma publicação em loja.",
+          "quandoUsar": "Quando o usuário precisa acessar a solução pelo celular e o navegador atende à operação.",
+          "quandoNaoNecessario": "Se o projeto depende de recursos nativos específicos ou publicação obrigatória em loja, avalie um aplicativo nativo ou multiplataforma.",
+          "inclui": [ "interface responsiva", "instalação como atalho quando compatível", "fluxos web definidos", "backend quando previsto" ],
+          "custosExternos": [ "Hospedagem, domínio, banco, APIs e infraestrutura são separados." ]
+        },
+        {
+          "id": "aplicativo-android",
+          "nome": "Aplicativo Android",
+          "precoInicial": 1400,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 10, "maximo": 30 },
+          "descricao": "Aplicativo Android planejado conforme funcionalidades, telas, dados e operação do cliente.",
+          "mensagemComercial": "Quando a solução precisa acompanhar o usuário, o software vai com ele.",
+          "idealPara": "Produtos e operações que precisam estar disponíveis em celulares Android.",
+          "quandoUsar": "Quando o público ou a equipe utiliza Android e a experiência mobile é parte central da solução.",
+          "quandoNaoNecessario": "Se o uso pode acontecer bem pelo navegador, uma PWA pode reduzir custo e dependências de loja.",
+          "inclui": [ "análise das funcionalidades", "telas previstas no escopo", "estrutura Android conforme projeto", "backend e autenticação quando necessários" ],
+          "custosExternos": [ "Conta Google Play, taxa de publicação, APIs, backend, hospedagem e serviços externos não estão automaticamente incluídos." ]
+        },
+        {
+          "id": "aplicativo-ios",
+          "nome": "Aplicativo iOS / iPhone",
+          "precoInicial": 1800,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 15, "maximo": 35 },
+          "descricao": "Aplicativo para iPhone planejado conforme funcionalidades, telas, dados e operação do cliente.",
+          "idealPara": "Produtos e operações que precisam atender usuários de iPhone e iPad conforme o escopo.",
+          "quandoUsar": "Quando o público utiliza iOS e a presença na plataforma é necessária para o produto.",
+          "quandoNaoNecessario": "Se o público pode usar navegador ou Android, comece pela plataforma mais relevante para o projeto.",
+          "inclui": [ "análise das funcionalidades", "telas previstas no escopo", "estrutura iOS conforme projeto", "backend e autenticação quando necessários" ],
+          "custosExternos": [ "Conta Apple Developer, taxa de publicação, APIs, backend, hospedagem e serviços externos ficam à parte." ]
+        },
+        {
+          "id": "aplicativo-android-ios",
+          "nome": "Aplicativo Android + iOS",
+          "precoInicial": 2200,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 15, "maximo": 45 },
+          "descricao": "Produto mobile planejado para Android e iOS, com escopo e backend definidos conforme a operação.",
+          "idealPara": "Produtos que precisam atender os dois principais ecossistemas móveis desde o início.",
+          "quandoUsar": "Quando o público está dividido entre Android e iPhone e a experiência precisa ser consistente.",
+          "quandoNaoNecessario": "Se o projeto ainda está validando a ideia, começar por uma plataforma ou PWA pode ser mais racional.",
+          "inclui": [ "definição das plataformas", "telas e fluxos previstos", "estrutura mobile conforme projeto", "backend e integrações quando necessários" ],
+          "custosExternos": [ "Contas e taxas das lojas, APIs, backend, hospedagem e serviços externos não estão automaticamente incluídos." ]
+        },
+        {
+          "id": "sistema-personalizado-complexo",
+          "nome": "Sistema personalizado complexo",
+          "precoInicial": 2500,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise do escopo.",
+          "descricao": "Sistema sob medida para operações com regras, usuários, dados, integrações e módulos próprios.",
+          "idealPara": "Projetos que não cabem em um site, painel ou aplicativo de entrada e precisam de uma arquitetura própria.",
+          "quandoUsar": "Quando a operação tem regras específicas, múltiplos perfis, integrações ou processos que precisam ser desenhados do zero.",
+          "quandoNaoNecessario": "Se uma página, automação simples ou sistema de entrada atende ao objetivo, não há motivo para começar por uma solução complexa.",
+          "inclui": [ "levantamento do problema", "análise de viabilidade", "arquitetura conforme escopo", "módulos e integrações descritos na proposta" ],
+          "custosExternos": [ "VPS, banco de dados, APIs, licenças, armazenamento, contas e serviços recorrentes são separados." ],
+          "observacao": "A partir de R$ 2.500 — prazo definido após análise do projeto."
+        }
+      ]
+    },
+    {
+      "id": "automacoes-ia",
+      "nome": "Automações, integrações e IA",
+      "entradaRotulo": "Quero automatizar uma tarefa ou usar IA",
+      "descricao": "Fluxos para reduzir tarefas repetitivas, conectar ferramentas e apoiar o atendimento.",
+      "servicos": [
+        {
+          "id": "automacao-simples",
+          "nome": "Automação simples",
+          "precoInicial": 300,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 2, "maximo": 7 },
+          "descricao": "Automação de um processo curto e bem definido para reduzir uma tarefa manual repetitiva.",
+          "mensagemComercial": "Se você repete o mesmo processo, existe uma boa chance de ele poder ser automatizado.",
+          "idealPara": "Rotinas simples de cadastro, avisos, organização, respostas ou transferência de informações.",
+          "quandoUsar": "Quando há uma tarefa repetida, com começo, regra e resultado previsíveis.",
+          "quandoNaoNecessario": "Se o processo muda a cada caso ou depende de decisão humana complexa, primeiro é preciso mapear a rotina.",
+          "inclui": [ "entendimento do fluxo", "automação do processo descrito", "testes do caminho principal", "orientação de uso" ],
+          "custosExternos": [ "Ferramentas, APIs e assinaturas de terceiros podem ser cobradas separadamente." ]
+        },
+        {
+          "id": "automacao-avancada",
+          "nome": "Automação avançada",
+          "precoInicial": 600,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 5, "maximo": 15 },
+          "descricao": "Automação com várias etapas, regras, condições, ferramentas ou rotinas de exceção.",
+          "idealPara": "Operações que já identificaram um fluxo repetitivo, mas precisam de mais de uma regra ou integração.",
+          "quandoUsar": "Quando a automação simples não cobre as etapas, decisões e exceções do processo.",
+          "quandoNaoNecessario": "Se ainda não há um processo definido, o primeiro passo é organizar a rotina antes de automatizar.",
+          "inclui": [ "mapeamento do processo", "regras e etapas previstas", "integrações descritas", "testes dos cenários combinados" ],
+          "custosExternos": [ "APIs, plataformas, licenças e serviços recorrentes não estão automaticamente incluídos." ]
+        },
+        {
+          "id": "integracao-api",
+          "nome": "Integração com API",
+          "precoInicial": 450,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 3, "maximo": 10 },
+          "descricao": "Conexão entre sistemas para que informações possam circular sem cópia manual.",
+          "mensagemComercial": "Pare de copiar informações de um sistema para outro.",
+          "idealPara": "Empresas que usam ferramentas diferentes e precisam sincronizar dados ou ações.",
+          "quandoUsar": "Quando existe uma API documentada e um fluxo claro entre as ferramentas.",
+          "quandoNaoNecessario": "Se a ferramenta não oferece integração adequada ou a rotina acontece poucas vezes, pode não compensar.",
+          "inclui": [ "análise da documentação disponível", "configuração do fluxo previsto", "testes de envio e recebimento", "orientação sobre dependências" ],
+          "custosExternos": [ "Acesso à API, limites, planos pagos e serviços externos são de responsabilidade do cliente ou entram separadamente." ]
+        },
+        {
+          "id": "integracao-pagamento",
+          "nome": "Integração de pagamento",
+          "precoInicial": 500,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 3, "maximo": 10 },
+          "descricao": "Integração de Pix, gateway, checkout e confirmação automática conforme o provedor escolhido.",
+          "idealPara": "Sites, lojas e sistemas que precisam registrar ou confirmar pagamentos dentro de um fluxo.",
+          "quandoUsar": "Quando o negócio já escolheu um provedor e precisa conectá-lo à experiência digital.",
+          "quandoNaoNecessario": "Se o cliente ainda não definiu o provedor, primeiro é preciso escolher a conta e as condições comerciais.",
+          "inclui": [ "configuração do fluxo previsto", "integração com o provedor escolhido", "testes em ambiente disponível", "orientação sobre retorno de pagamento" ],
+          "custosExternos": [ "Taxas, conta, antifraude e condições do gateway são custos do provedor." ]
+        },
+        {
+          "id": "bot-atendimento-automatizado",
+          "nome": "Bot / atendimento automatizado",
+          "precoInicial": 450,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 3, "maximo": 10 },
+          "descricao": "Fluxo automatizado para responder dúvidas conhecidas, apresentar opções e encaminhar contatos.",
+          "idealPara": "Negócios que recebem perguntas repetitivas e querem orientar o cliente antes do atendimento humano.",
+          "quandoUsar": "Quando já existem respostas, opções e caminhos que podem ser organizados em um fluxo.",
+          "quandoNaoNecessario": "Se cada atendimento é totalmente único, o bot deve ser limitado a triagem ou pode não ser a melhor primeira solução.",
+          "inclui": [ "roteiro de atendimento", "respostas cadastradas", "opções e encaminhamentos", "integração prevista no escopo" ],
+          "custosExternos": [ "WhatsApp API, plataforma de bot, IA, hospedagem e serviços externos ficam à parte quando aplicáveis." ]
+        },
+        {
+          "id": "assistente-ia",
+          "nome": "Assistente com IA",
+          "precoInicial": 700,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": { "minimo": 5, "maximo": 15 },
+          "descricao": "Assistente preparado para apoiar perguntas, triagem, conteúdo ou rotinas definidas no projeto.",
+          "mensagemComercial": "IA não precisa substituir sua operação. Pode assumir justamente a parte repetitiva dela.",
+          "idealPara": "Empresas que já sabem quais perguntas, documentos ou tarefas querem acelerar.",
+          "quandoUsar": "Quando há uma base de informações e um uso claro para o assistente.",
+          "quandoNaoNecessario": "Se o objetivo ainda não está definido ou não existe conteúdo confiável para orientar a IA, comece pelo mapeamento.",
+          "inclui": [ "definição do fluxo", "configuração conforme escopo", "base de respostas fornecida", "testes de cenários previstos" ],
+          "custosExternos": [ "Uso de APIs de IA, modelos, armazenamento, hospedagem e serviços de terceiros são cobrados separadamente." ]
+        }
+      ]
+    },
+    {
+      "id": "servicos-avulsos",
+      "nome": "Serviços avulsos",
+      "entradaRotulo": "Quero resolver uma tarefa específica",
+      "descricao": "Ajustes e configurações pontuais para quem já possui uma estrutura e precisa avançar uma etapa.",
+      "servicos": [
+        {
+          "id": "configuracao-dominio",
+          "nome": "Configuração de domínio próprio",
+          "preco": 120,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "descricao": "Configuração técnica de um domínio já contratado para apontar para o serviço previsto.",
+          "idealPara": "Quem já possui um domínio e precisa conectá-lo ao site ou serviço.",
+          "quandoUsar": "Quando a estrutura está pronta e falta realizar o apontamento correto.",
+          "quandoNaoNecessario": "Se o domínio ainda não foi registrado ou os acessos não estão disponíveis, a contratação precisa esperar essa etapa.",
+          "inclui": [ "conferência dos dados fornecidos", "configuração do apontamento previsto", "teste de acesso quando possível" ],
+          "custosExternos": [ "Registro e renovação do domínio são pagos ao registrador." ]
+        },
+        {
+          "id": "email-profissional",
+          "nome": "Configuração de e-mail profissional",
+          "preco": 150,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "descricao": "Configuração de endereço de e-mail profissional conforme o provedor escolhido.",
+          "idealPara": "Empresas que querem atender usando um endereço com o próprio domínio.",
+          "quandoUsar": "Quando o domínio já existe e o provedor de e-mail foi escolhido.",
+          "quandoNaoNecessario": "Se a empresa ainda não definiu o provedor ou não precisa de e-mail no domínio.",
+          "inclui": [ "configuração técnica prevista", "orientação inicial de acesso", "teste de envio quando possível" ],
+          "custosExternos": [ "Assinatura, caixas e limites do provedor de e-mail são pagos separadamente." ]
+        },
+        {
+          "id": "analytics-search-console",
+          "nome": "Google Analytics + Search Console",
+          "preco": 180,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "descricao": "Configuração inicial das ferramentas do Google para acompanhar acesso e presença nas buscas.",
+          "idealPara": "Sites que querem começar a acompanhar visitas, indexação e sinais básicos de busca.",
+          "quandoUsar": "Depois que o site está publicado e as contas necessárias estão disponíveis.",
+          "quandoNaoNecessario": "Se o projeto ainda não tem tráfego ou não possui contas organizadas, primeiro prepare a estrutura.",
+          "inclui": [ "configuração inicial", "vinculação conforme acessos fornecidos", "teste de coleta quando possível", "orientação básica" ],
+          "custosExternos": [ "As ferramentas do Google podem ter regras próprias; o serviço não garante ranking ou tráfego." ]
+        },
+        {
+          "id": "seo-inicial",
+          "nome": "SEO inicial / organização para Google",
+          "preco": 300,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "descricao": "Organização inicial de títulos, descrições, estrutura e informações para facilitar a compreensão do site pelos buscadores.",
+          "idealPara": "Sites que precisam começar com uma base técnica e textual mais clara para o Google.",
+          "quandoUsar": "Quando a página existe, mas ainda não está organizada para ser entendida e encontrada.",
+          "quandoNaoNecessario": "Se o escopo já inclui SEO inicial ou se a necessidade é uma estratégia contínua, avalie um plano específico.",
+          "inclui": [ "revisão de títulos e descrições", "organização básica de estrutura", "orientações de conteúdo", "configurações previstas no escopo" ],
+          "custosExternos": [ "Não inclui anúncios, compra de links ou garantia de posição nos resultados." ]
+        },
+        {
+          "id": "qr-code-pagina-destino",
+          "nome": "QR Code profissional + página de destino",
+          "preco": 150,
+          "tipoPreco": "fixo",
+          "pixElegivel": true,
+          "descricao": "QR Code ligado a uma página de destino organizada para uma ação específica.",
+          "idealPara": "Cardápios, materiais impressos, eventos, produtos e campanhas que precisam levar alguém a um link.",
+          "quandoUsar": "Quando o acesso pelo celular deve ser simples e mensurável dentro do escopo escolhido.",
+          "quandoNaoNecessario": "Se um link curto já resolve e não existe material físico ou ponto de acesso por câmera.",
+          "inclui": [ "geração do QR Code", "página de destino conforme escopo", "link e ação principal", "teste de leitura" ],
+          "custosExternos": [ "Impressão do material físico e domínio próprio são separados." ]
+        },
+        {
+          "id": "alteracao-simples-site",
+          "nome": "Alteração simples em site",
+          "precoInicial": 90,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Pequena alteração de texto, link, imagem ou informação em um site existente.",
+          "idealPara": "Quem precisa corrigir ou atualizar um item pontual sem contratar um novo projeto.",
+          "quandoUsar": "Quando a mudança é isolada e o acesso ao projeto está disponível.",
+          "quandoNaoNecessario": "Se a alteração muda estrutura, layout ou comportamento, pode ser necessária uma correção ou novo escopo.",
+          "inclui": [ "análise do pedido", "alteração pontual", "teste básico da página" ],
+          "custosExternos": [ "Acesso, hospedagem e ferramentas do site devem estar disponíveis." ]
+        },
+        {
+          "id": "correcao-tecnica-site",
+          "nome": "Correção técnica em site",
+          "precoInicial": 120,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Investigação e correção de um problema técnico em site existente.",
+          "idealPara": "Sites com erro, link quebrado, problema visual ou comportamento que precisa ser analisado.",
+          "quandoUsar": "Quando existe um defeito reproduzível e o acesso necessário foi fornecido.",
+          "quandoNaoNecessario": "Se o objetivo é criar uma função nova, isso deve ser tratado como novo desenvolvimento.",
+          "inclui": [ "análise inicial", "correção do problema identificado", "teste do cenário corrigido" ],
+          "custosExternos": [ "Serviços de terceiros, hospedagem ou licenças podem gerar custos adicionais." ]
+        },
+        {
+          "id": "migracao-site",
+          "nome": "Migração de site",
+          "precoInicial": 250,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Transferência de um site para outra hospedagem, domínio ou estrutura conforme o escopo.",
+          "idealPara": "Quem precisa trocar de provedor ou reorganizar a hospedagem do site.",
+          "quandoUsar": "Quando os acessos, backups e destino da migração estão definidos.",
+          "quandoNaoNecessario": "Se o problema é apenas apontar um domínio, a configuração de domínio pode ser suficiente.",
+          "inclui": [ "análise da origem e destino", "transferência do escopo acordado", "ajustes de configuração", "teste após a migração" ],
+          "custosExternos": [ "Novo domínio, hospedagem, VPS, e-mail e serviços do destino são contratados separadamente." ]
+        },
+        {
+          "id": "integracao-whatsapp-simples",
+          "nome": "Integração simples com WhatsApp",
+          "precoInicial": 120,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Inclusão de links, botões ou mensagens pré-preenchidas para encaminhar contatos ao WhatsApp.",
+          "idealPara": "Sites e páginas que precisam transformar uma visita em conversa com contexto.",
+          "quandoUsar": "Quando o atendimento acontece pelo WhatsApp e o caminho de contato precisa ser curto.",
+          "quandoNaoNecessario": "Se já existe um fluxo funcional e a necessidade é um bot ou API, avalie uma integração mais completa.",
+          "inclui": [ "botão ou link contextual", "mensagem pré-preenchida", "teste do encaminhamento" ],
+          "custosExternos": [ "WhatsApp API e plataformas oficiais não estão incluídos automaticamente." ]
+        },
+        {
+          "id": "formulario-captacao",
+          "nome": "Formulário profissional / captação",
+          "precoInicial": 150,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Formulário para captar dados de contato, pedido, interesse ou necessidade.",
+          "idealPara": "Sites que precisam organizar informações antes do atendimento.",
+          "quandoUsar": "Quando perguntas estruturadas ajudam a reduzir troca de mensagens e melhorar o atendimento.",
+          "quandoNaoNecessario": "Se basta um botão de WhatsApp com mensagem pronta, o formulário pode ser excesso.",
+          "inclui": [ "campos definidos no escopo", "validação básica", "encaminhamento previsto", "orientação de uso" ],
+          "custosExternos": [ "Serviço de e-mail, banco de dados, automação ou CRM podem ser adicionais." ]
+        }
+      ]
+    },
+    {
+      "id": "servicos-impressao-3d",
+      "nome": "Impressão 3D sob medida",
+      "entradaRotulo": "Quero resolver algo com impressão 3D",
+      "descricao": "Soluções físicas para reposição, adaptação, personalização e protótipos, avaliadas individualmente.",
+      "servicos": [
+        {
+          "id": "impressao-arquivo-pronto",
+          "nome": "Impressão de arquivo pronto",
+          "precoInicial": 15,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise do arquivo e da fila de produção.",
+          "descricao": "Fabricação a partir de um arquivo fornecido pelo cliente, depois de verificar se ele é adequado ao uso.",
+          "idealPara": "Quem já tem o modelo 3D e precisa transformar o arquivo em uma peça física.",
+          "quandoUsar": "Quando o arquivo está pronto e a peça não precisa de alteração estrutural.",
+          "quandoNaoNecessario": "Se o arquivo não existe, está incorreto ou precisa ser adaptado, escolha um serviço de modelagem ou ajuste.",
+          "inclui": [ "análise básica do arquivo", "preparação para fabricação", "impressão conforme configuração aprovada" ],
+          "custosExternos": [ "Peso, material, tempo de impressão, acabamento, quantidade e entrega influenciam o valor final." ]
+        },
+        {
+          "id": "personalizacao-3d-simples",
+          "nome": "Personalização simples",
+          "precoInicial": 25,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido conforme a peça e a personalização.",
+          "descricao": "Personalização pontual de texto, cor, identificação ou detalhe simples em uma peça.",
+          "idealPara": "Quem quer adaptar uma peça existente sem criar um modelo complexo do zero.",
+          "quandoUsar": "Quando a alteração é pequena e a base do objeto já está definida.",
+          "quandoNaoNecessario": "Se a personalização muda a função ou exige nova geometria, será necessário um projeto sob medida.",
+          "inclui": [ "análise da alteração", "ajuste simples do modelo", "fabricação conforme aprovação" ],
+          "custosExternos": [ "Material, tempo, acabamento, quantidade e entrega são avaliados separadamente." ]
+        },
+        {
+          "id": "ajuste-adaptacao-modelo-3d",
+          "nome": "Ajuste / adaptação de modelo",
+          "precoInicial": 35,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise do modelo e das medidas.",
+          "descricao": "Alteração de encaixe, medida ou função em um modelo existente.",
+          "idealPara": "Quem tem uma peça ou modelo, mas precisa que ele se adapte melhor ao uso real.",
+          "quandoUsar": "Quando a base existe e o problema está em medida, encaixe ou adaptação.",
+          "quandoNaoNecessario": "Se a peça precisa ser criada sem referência aproveitável, a modelagem sob medida é mais adequada.",
+          "inclui": [ "análise do modelo", "ajuste previsto", "validação básica das medidas fornecidas" ],
+          "custosExternos": [ "Complexidade, testes, material, produção e entrega podem alterar o valor final." ]
+        },
+        {
+          "id": "modelagem-simples-sob-medida",
+          "nome": "Modelagem simples sob medida",
+          "precoInicial": 50,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido conforme medidas, referências e função.",
+          "descricao": "Criação de um modelo 3D simples a partir de medidas, referências e objetivo de uso.",
+          "idealPara": "Quem sabe o que precisa, mas ainda não possui um arquivo 3D pronto.",
+          "quandoUsar": "Quando a solução é relativamente simples e as medidas necessárias estão disponíveis.",
+          "quandoNaoNecessario": "Se a geometria ou função é muito complexa, será necessário um desenvolvimento 3D mais amplo.",
+          "inclui": [ "levantamento das medidas fornecidas", "modelagem compatível com o escopo", "prévia ou validação antes da fabricação" ],
+          "custosExternos": [ "Testes, material, acabamento, produção e entrega são avaliados conforme o projeto." ]
+        },
+        {
+          "id": "peca-reposicao-personalizada",
+          "nome": "Peça de reposição personalizada",
+          "precoInicial": 50,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise da peça, medidas e função.",
+          "descricao": "Desenvolvimento de uma peça para substituir ou recuperar uma função física específica.",
+          "idealPara": "Quando a peça original não é encontrada, saiu de linha ou não atende mais ao uso.",
+          "quandoUsar": "Quando existe uma necessidade real de reposição e medidas ou referências podem ser fornecidas.",
+          "quandoNaoNecessario": "Se a peça original está disponível e atende ao uso, a fabricação sob medida pode não compensar.",
+          "inclui": [ "análise de viabilidade", "projeto da reposição", "fabricação conforme aprovação" ],
+          "custosExternos": [ "Material, testes, tolerâncias, acabamento, quantidade e entrega influenciam o valor." ]
+        },
+        {
+          "id": "prototipo-funcional-3d",
+          "nome": "Protótipo funcional",
+          "precoInicial": 75,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido conforme função e número de iterações.",
+          "descricao": "Modelo físico para validar uma ideia, testar uma função ou avançar um projeto.",
+          "idealPara": "Quem precisa testar forma, encaixe, medida ou uso antes de produzir uma versão final.",
+          "quandoUsar": "Quando o aprendizado com um protótipo ajuda a evitar erro em uma produção maior.",
+          "quandoNaoNecessario": "Se a peça já está validada e o objetivo é apenas produzir, escolha o serviço de fabricação adequado.",
+          "inclui": [ "análise do objetivo", "desenvolvimento ou ajuste previsto", "fabricação do protótipo" ],
+          "custosExternos": [ "Iterações adicionais, materiais, acabamento e produção em quantidade são separados." ]
+        },
+        {
+          "id": "desenvolvimento-3d-complexo",
+          "nome": "Desenvolvimento 3D mais complexo",
+          "precoInicial": 120,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise de viabilidade e escopo.",
+          "descricao": "Projeto físico mais elaborado, com geometria, função, testes ou personalização que exigem mais desenvolvimento.",
+          "idealPara": "Empresas e pessoas com uma solução física que não se encaixa em uma modelagem simples.",
+          "quandoUsar": "Quando o problema exige projeto, validação e fabricação com etapas definidas.",
+          "quandoNaoNecessario": "Se a necessidade é apenas imprimir um arquivo pronto ou fazer uma alteração pequena.",
+          "inclui": [ "análise de viabilidade", "projeto sob medida", "alinhamento de fabricação", "entrega conforme escopo" ],
+          "custosExternos": [ "Peso, material, tempo de impressão, acabamento, testes, lote e entrega influenciam o valor final." ],
+          "observacao": "Se a peça que você precisa não existe, podemos desenvolver uma."
+        },
+        {
+          "id": "producao-3d-quantidade",
+          "nome": "Produção em quantidade",
+          "tipoPreco": "por lote",
+          "precoTexto": "Preço por lote",
+          "prazoTexto": "Definido conforme quantidade e fila de produção.",
+          "descricao": "Produção de várias unidades com análise de quantidade, personalização e processo de fabricação.",
+          "idealPara": "Empresas, revendedores e projetos que precisam de mais de uma unidade.",
+          "quandoUsar": "Quando a quantidade pode reduzir o custo unitário ou atender uma operação maior.",
+          "quandoNaoNecessario": "Se é apenas uma unidade para validar a ideia, um protótipo pode ser o primeiro passo.",
+          "inclui": [ "análise do lote", "definição da produção", "fabricação conforme aprovação" ],
+          "custosExternos": [ "Material, acabamento, embalagem, frete e quantidade influenciam a proposta final." ]
         }
       ]
     },
     {
       "id": "marcas",
       "nome": "Registro de marcas",
+      "entradaRotulo": "Quero registrar uma marca",
+      "descricao": "Assessoria para preparar e acompanhar etapas do pedido de registro de marca.",
       "servicos": [
         {
           "id": "analise-preliminar-marca",
-          "nome": "Análise Preliminar de Marca",
+          "nome": "Análise preliminar de marca",
           "preco": 197,
           "tipoPreco": "fixo",
+          "pixElegivel": true,
           "descricao": "Busca preliminar, análise inicial de riscos e indicação de classe para o pedido de marca.",
-          "inclui": [
-            "levantamento inicial",
-            "busca preliminar de anterioridades",
-            "análise do nome e da apresentação",
-            "indicação preliminar de uma classe",
-            "relatório resumido de riscos"
-          ],
-          "naoInclui": [
-            "protocolo",
-            "taxa do INPI",
-            "garantia de deferimento",
-            "parecer jurídico"
-          ]
+          "idealPara": "Quem quer avaliar o nome antes de investir no pedido.",
+          "quandoUsar": "Antes do protocolo, para reduzir incertezas iniciais.",
+          "quandoNaoNecessario": "Se a análise já foi feita recentemente para a mesma marca e classe.",
+          "inclui": [ "levantamento inicial", "busca preliminar", "análise do nome", "relatório resumido" ],
+          "custosExternos": [ "Taxas oficiais do INPI não estão incluídas." ]
         },
         {
           "id": "pedido-registro-marca",
-          "nome": "Assessoria para Pedido de Registro de Marca",
+          "nome": "Assessoria para pedido de registro de marca",
           "precoInicial": 890,
           "tipoPreco": "a partir de",
-          "descricao": "Honorários de assessoria técnica e documental para preparação, protocolo e acompanhamento inicial do pedido perante o INPI.",
-          "avisoPreco": "O valor exibido refere-se aos honorários de assessoria. Taxas oficiais do INPI não estão inclusas e são cobradas separadamente conforme o pedido.",
-          "inclui": [
-            "análise preliminar",
-            "orientação da apresentação da marca",
-            "definição preliminar de uma classe",
-            "conferência dos dados do requerente",
-            "preparação documental",
-            "geração ou orientação da GRU",
-            "protocolo do pedido",
-            "organização do comprovante",
-            "acompanhamento por 12 meses",
-            "avisos sobre movimentações identificadas"
-          ],
-          "naoInclui": [
-            "taxas oficiais do INPI",
-            "classes adicionais",
-            "oposição",
-            "manifestação",
-            "exigência complexa",
-            "recurso administrativo",
-            "processo judicial",
-            "acompanhamento após 12 meses"
-          ],
-          "observacao": "O protocolo não garante deferimento. A decisão final compete exclusivamente ao INPI."
+          "pixElegivel": true,
+          "descricao": "Suporte técnico e documental para preparação, protocolo e acompanhamento inicial do pedido perante o INPI.",
+          "idealPara": "Quem quer organizar o pedido com apoio técnico e documental.",
+          "quandoUsar": "Quando a marca está definida e o cliente quer iniciar o processo de registro.",
+          "quandoNaoNecessario": "Se o cliente só quer uma análise inicial, a análise preliminar é suficiente.",
+          "inclui": [ "análise preliminar", "orientação da apresentação", "preparação documental", "protocolo e acompanhamento inicial" ],
+          "custosExternos": [ "Taxas oficiais do INPI são cobradas separadamente.", "A decisão final e eventual aprovação dependem exclusivamente do INPI." ],
+          "observacao": "O valor exibido corresponde aos honorários de assessoria."
         },
         {
           "id": "classe-adicional-marca",
-          "nome": "Classe Adicional",
+          "nome": "Classe adicional de marca",
           "preco": 390,
-          "tipoPreco": "por classe, além das taxas"
+          "tipoPreco": "por classe, além das taxas",
+          "pixElegivel": true,
+          "descricao": "Assessoria para uma classe adicional além da classe principal.",
+          "inclui": [ "orientação da classe adicional", "organização da etapa contratada" ],
+          "custosExternos": [ "Taxa oficial do INPI é separada." ]
         },
         {
           "id": "renovacao-acompanhamento-marca",
-          "nome": "Renovação do Acompanhamento",
+          "nome": "Renovação do acompanhamento de marca",
           "preco": 149,
-          "tipoPreco": "por 12 meses"
+          "tipoPreco": "por 12 meses",
+          "pixElegivel": true,
+          "descricao": "Acompanhamento contratado por mais 12 meses.",
+          "inclui": [ "acompanhamento do período contratado", "avisos sobre movimentações identificadas" ],
+          "custosExternos": [ "Taxas oficiais e novas medidas são separadas." ]
         },
         {
           "id": "exigencia-marca",
-          "nome": "Cumprimento de Exigência",
+          "nome": "Cumprimento de exigência",
           "precoInicial": 290,
-          "tipoPreco": "a partir de"
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Análise e preparação da resposta a uma exigência conforme o caso.",
+          "inclui": [ "análise da exigência", "orientação documental", "manifestação dentro do escopo" ],
+          "custosExternos": [ "Taxas oficiais e medidas fora do escopo são separadas." ]
         },
         {
           "id": "manifestacao-oposicao",
-          "nome": "Manifestação contra Oposição",
+          "nome": "Manifestação contra oposição",
           "precoInicial": 590,
-          "tipoPreco": "a partir de"
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Preparação de manifestação técnica conforme a oposição recebida.",
+          "inclui": [ "análise do caso", "organização da manifestação", "protocolo quando previsto" ],
+          "custosExternos": [ "Taxas e medidas jurídicas não estão incluídas automaticamente." ]
         },
         {
           "id": "recurso-marca",
-          "nome": "Recurso Administrativo",
+          "nome": "Recurso administrativo de marca",
           "precoInicial": 790,
-          "tipoPreco": "a partir de"
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "descricao": "Preparação de recurso administrativo conforme a decisão e o escopo contratado.",
+          "inclui": [ "análise do caso", "organização do recurso", "protocolo quando previsto" ],
+          "custosExternos": [ "Taxas oficiais e atuação jurídica especializada são separadas." ]
         },
         {
           "id": "alteracao-cadastral-marca",
-          "nome": "Alteração de Titularidade ou Dados",
+          "nome": "Alteração de titularidade ou dados",
           "precoInicial": 290,
-          "tipoPreco": "a partir de, além das taxas"
+          "tipoPreco": "a partir de, além das taxas",
+          "pixElegivel": true,
+          "descricao": "Assessoria para alteração cadastral ou de titularidade conforme o caso.",
+          "inclui": [ "análise da solicitação", "orientação documental", "preparação da etapa contratada" ],
+          "custosExternos": [ "Taxas oficiais do INPI são separadas." ]
         }
       ]
     },
     {
       "id": "manutencao",
       "nome": "Manutenção e suporte",
+      "entradaRotulo": "Quero manutenção ou suporte",
+      "descricao": "Acompanhamento recorrente e suporte depois que uma estrutura já existe.",
       "servicos": [
         {
-          "id": "alteracao-avulsa",
-          "nome": "Alteração Pequena Avulsa",
-          "precoInicial": 80,
-          "tipoPreco": "a partir de"
+          "id": "manutencao-site",
+          "nome": "Manutenção de site",
+          "precoInicial": 99,
+          "tipoPreco": "mensal",
+          "unidadePreco": "/mês",
+          "pixElegivel": false,
+          "descricao": "Acompanhamento recorrente para atualizações e cuidados previstos no plano.",
+          "idealPara": "Empresas que preferem contar com apoio contínuo depois da publicação.",
+          "quandoUsar": "Quando haverá alterações, acompanhamento ou suporte recorrente.",
+          "quandoNaoNecessario": "Se o site não muda e o cliente consegue cuidar das atualizações pontuais.",
+          "inclui": [ "manutenção prevista no plano", "suporte dentro das condições contratadas", "alterações recorrentes conforme limite definido" ],
+          "custosExternos": [ "Hospedagem, domínio, APIs e serviços de terceiros não estão automaticamente incluídos." ]
+        },
+        {
+          "id": "manutencao-sistema-aplicativo",
+          "nome": "Manutenção de sistema ou aplicativo",
+          "precoInicial": 199,
+          "tipoPreco": "mensal",
+          "unidadePreco": "/mês",
+          "pixElegivel": false,
+          "descricao": "Acompanhamento recorrente de sistema ou aplicativo conforme o plano contratado.",
+          "idealPara": "Operações que dependem de uma aplicação e precisam de acompanhamento contínuo.",
+          "quandoUsar": "Quando correções, atualizações e suporte precisam de uma rotina definida.",
+          "quandoNaoNecessario": "Se o projeto ainda não foi entregue ou não exige acompanhamento recorrente.",
+          "inclui": [ "suporte conforme plano", "correções diretamente relacionadas ao escopo", "acompanhamento recorrente definido" ],
+          "custosExternos": [ "VPS, banco, APIs, lojas, licenças e serviços externos ficam à parte." ]
         },
         {
           "id": "hora-tecnica",
-          "nome": "Hora Técnica",
+          "nome": "Hora técnica",
           "preco": 100,
-          "tipoPreco": "por hora"
-        },
-        {
-          "id": "manutencao-basica",
-          "nome": "Manutenção Básica Mensal",
-          "preco": 149,
-          "tipoPreco": "mensal"
-        },
-        {
-          "id": "manutencao-comercial",
-          "nome": "Manutenção Comercial Mensal",
-          "preco": 299,
-          "tipoPreco": "mensal"
-        },
-        {
-          "id": "prioridade",
-          "nome": "Atendimento ou Entrega Prioritária",
-          "acrescimoPercentual": 30,
-          "tipoPreco": "acréscimo"
+          "tipoPreco": "por hora",
+          "pixElegivel": true,
+          "descricao": "Atendimento técnico pontual para análise ou execução conforme a necessidade.",
+          "idealPara": "Demandas que não se encaixam em uma alteração simples ou plano mensal.",
+          "quandoUsar": "Quando o cliente precisa de uma análise técnica delimitada.",
+          "quandoNaoNecessario": "Se a demanda já tem escopo claro, pode ser melhor contratar o serviço específico.",
+          "inclui": [ "tempo técnico contratado", "análise ou execução dentro do limite", "orientação sobre próximos passos" ],
+          "custosExternos": [ "Serviços externos e licenças são separados." ]
         }
       ]
     }

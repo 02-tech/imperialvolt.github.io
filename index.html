@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.7 seconds
-Output:
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -26,7 +23,7 @@ Output:
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
   <link rel="preload" as="image" href="./src/imagens/portfolio.jpeg">
-  <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20260811-digital-detail-fix">
+  <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20260811-commercial-base">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -54,6 +51,7 @@ Output:
 
       <nav class="desktop-nav" aria-label="Navegação principal">
         <a href="#solucoes">Soluções</a>
+        <a href="#servicos-precos">Serviços e preços</a>
         <a href="#catalogo">Catálogo</a>
         <a href="#empresas">Para empresas</a>
         <a href="#orcamento">Orçamento</a>
@@ -69,6 +67,7 @@ Output:
 
     <nav id="mobileNav" class="mobile-nav" aria-label="Navegação móvel" hidden>
       <a href="#solucoes">Soluções</a>
+      <a href="#servicos-precos">Serviços e preços</a>
       <a href="#catalogo">Catálogo</a>
       <a href="#empresas">Para empresas</a>
       <a href="#orcamento">Orçamento</a>
@@ -136,7 +135,7 @@ Output:
         <aside class="physical-notice reveal" aria-label="Aviso sobre projetos personalizados">
           <span>Aviso profissional</span>
           <strong>Cada projeto é avaliado individualmente.</strong>
-          <p>Viabilidade, medidas, funcionalidade, acabamento, prazo e entrega são definidos conforme o projeto e o processo de fabricação. Projetos personalizados a partir de R$25.</p>
+          <p>Impressão de arquivo pronto a partir de R$15. Viabilidade, medidas, funcionalidade, acabamento, prazo e entrega são definidos conforme cada projeto.</p>
           <a class="button button--ink button--small" href="#orcamento">Analisar minha necessidade</a>
         </aside>
       </div>
@@ -166,17 +165,18 @@ Output:
       </div>
     </section>
 
-    <section class="section site-comparison-section" id="planos-sites">
+    <section class="section site-comparison-section" id="servicos-precos">
       <div class="container">
         <div class="section-heading section-heading--split reveal">
           <div>
-            <p class="eyebrow eyebrow--ink">Projetos digitais</p>
-            <h2>Escolha pelo que você precisa fazer.</h2>
+            <p class="eyebrow eyebrow--ink">Serviços, preços e prazos</p>
+            <h2>Entenda, compare e avance com clareza.</h2>
           </div>
-          <p>Para leigos: um site apresenta informações. Um painel gerencia dados. Um sistema ou aplicativo executa regras e operações.</p>
+          <p>Você não precisa saber o nome técnico. Escolha o problema que quer resolver, veja o que normalmente entra e avance com contexto.</p>
         </div>
-        <div id="digitalOffers" class="digital-offers reveal" aria-label="Ofertas de projetos digitais"></div>
-        <p class="digital-price-note reveal">Os valores abaixo são referências de desenvolvimento. O Pix integral tem 15% de desconto quando indicado, e a mensalidade é opcional quando contratada. Domínio, hospedagem, VPS, serviços externos e taxas de terceiros ficam separados.</p>
+        <div id="serviceTabs" class="service-tabs reveal" role="group" aria-label="Categorias de serviços"></div>
+        <div id="serviceOffers" class="digital-offers service-offers reveal" aria-label="Serviços, preços e prazos"></div>
+        <p class="digital-price-note reveal">Os valores publicados são referências comerciais para o escopo descrito. O Pix integral tem 15% de desconto quando indicado; mensalidades, domínio, hospedagem, VPS, serviços externos e taxas de terceiros ficam separados quando aplicáveis.</p>
         <div class="digital-difference reveal">
           <div>
             <span class="digital-difference__label">Site estático</span>
@@ -189,7 +189,7 @@ Output:
             <p>CMS, sistemas e lojas entram em cena quando a operação precisa de banco de dados, usuários, pedidos, estoque ou integrações.</p>
           </div>
         </div>
-        <p class="digital-comparison__intro">A diferença não está só no visual: ela está no que o projeto precisa fazer.</p>
+        <p class="digital-comparison__intro">A diferença entre um site de apresentação e uma operação digital está no que o projeto precisa fazer.</p>
         <div id="siteComparison" class="digital-comparison site-comparison reveal" aria-label="Comparativo dos formatos de site"></div>
         <aside class="infrastructure-note reveal" aria-label="Infraestrutura, banco de dados e VPS">
           <div><span>Infraestrutura e banco de dados</span><strong>Implantação não é a mesma coisa que custo recorrente.</strong></div>
@@ -244,9 +244,9 @@ Output:
         <div class="quote-section__head reveal">
           <p class="eyebrow eyebrow--ink">Orçamento guiado</p>
           <h2>Conte o que precisa resolver.</h2>
-          <p>Veja o valor de referência, o desconto no Pix e as formas de avançar. Serviços com preço definido já saem com uma solicitação pronta para pagamento.</p>
+          <p>Escolha uma opção, veja o preço inicial e o prazo de referência. A mensagem para o WhatsApp já sai com o contexto do que você selecionou.</p>
         </div>
-        <p class="quote-section__notice">O Pix integral tem 15% de desconto. O cartão pode ser parcelado conforme as condições do checkout, em até 12x quando disponível. Serviços com preço fixo mostram o valor final e os próximos passos; aplicativos, integrações e projetos personalizados continuam sob orçamento.</p>
+        <p class="quote-section__notice">O Pix integral tem 15% de desconto quando indicado. O cartão pode ser parcelado conforme as condições da operadora, em até 12x quando disponível. O orçamento mostra preço, prazo, custos externos e próximos passos.</p>
         <div id="quoteBuilder" class="quote-builder reveal"></div>
       </div>
     </section>
@@ -322,8 +322,7 @@ Output:
     <div id="chatBody" class="guided-chat__body" aria-live="polite"></div>
   </aside>
 
-  <script type="module" src="./chatbot/engine.js?v=20260811-digital-detail"></script>
-  <script type="module" src="./src/js/main.js?v=20260811-digital-detail"></script>
+  <script type="module" src="./chatbot/engine.js?v=20260811-commercial-base"></script>
+  <script type="module" src="./src/js/main.js?v=20260811-commercial-base"></script>
 </body>
 </html>
-
