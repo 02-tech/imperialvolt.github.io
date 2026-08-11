@@ -1,5 +1,5 @@
 /* Orçamento guiado de uma tela: seleção clara e envio contextual ao WhatsApp. */
-import { formatarMoeda, precoFormatado } from "./data.js";
+import { formatarMoeda, prazoFormatado, precoFormatado } from "./data.js";
 import { obterLinkCheckout } from "./checkout.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
@@ -70,18 +70,22 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
       const faixa = item.faixas[estado.faixaIndex] || item.faixas[0];
       return `${formatarMoeda(faixa.valorTotal)} (${formatarMoeda(faixa.valorUnitario)}/un)`;
     }
-    if (item.preco != null) {
+    if (item.preco != null && estado.categoriaId === "impressao-3d") {
       const total = estado.categoriaId === "impressao-3d" ? item.preco * estado.quantidade : item.preco;
       return formatarMoeda(total);
     }
-    if (item.precoInicial != null || item.precoMinimo != null) return precoFormatado(item);
-    return "Sob orçamento";
+    return precoFormatado(item);
   };
 
   const quantidadeAtual = () => {
     const item = itemAtual();
     if (item?.faixas?.length) return String((item.faixas[estado.faixaIndex] || item.faixas[0]).quantidade);
     return estado.categoriaId === "impressao-3d" ? String(estado.quantidade) : "";
+  };
+
+  const possuiValorDefinido = () => {
+    const item = itemAtual();
+    return Boolean(item?.preco != null || item?.precoInicial != null || item?.precoMinimo != null || item?.faixas?.length);
   };
 
   function botaoEscolha(item, ativo, acao, pequeno) {
@@ -96,6 +100,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
   function rotuloPrecoOpcao(item) {
     const partes = [precoFormatado(item)];
     if (item.precoPix != null) partes.push(`Pix ${formatarMoeda(item.precoPix)}`);
+    if (item.prazoEstimadoDiasUteis || item.prazoTexto) partes.push(prazoFormatado(item));
     return partes.join(" · ");
   }
 
@@ -137,7 +142,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
     const painel = criar("div", "quote-panel");
     painel.appendChild(criar("p", "quote-panel__label", "1. Selecione a categoria"));
     const categoriasEl = criar("div", "quote-categories");
-    todasCategorias.forEach((categoria) => categoriasEl.appendChild(botaoEscolha({ id: categoria.id, nome: categoria.nome, icone: categoria.icone }, estado.categoriaId === categoria.id, "category")));
+    todasCategorias.forEach((categoria) => categoriasEl.appendChild(botaoEscolha({ id: categoria.id, nome: categoria.entradaRotulo || categoria.nome, icone: categoria.nome }, estado.categoriaId === categoria.id, "category")));
     painel.appendChild(categoriasEl);
 
     const categoria = categoriaAtual();
@@ -159,11 +164,11 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
     const item = itemAtual();
     if (item) {
       const campos = criar("div", "quote-fields");
-      if (estado.categoriaId === "projetos-digitais") {
+      if (["projetos-digitais", "sistemas-aplicativos", "automacoes-ia"].includes(estado.categoriaId)) {
         campos.appendChild(selectCampo("Onde deve funcionar?", "plataforma", ["Web", "Android", "Android e iOS", "Web + aplicativo", "Ainda não sei"], "Selecione a plataforma"));
         campos.appendChild(selectCampo("Como o projeto deve lidar com dados?", "estruturaDados", ["Não precisa guardar dados", "Banco de dados e cadastros", "Ainda não sei"], "Selecione uma necessidade"));
         campos.appendChild(selectCampo("Há integrações ou automações?", "integracoes", ["Sem integrações", "WhatsApp, pagamentos ou APIs", "Automação entre ferramentas", "Ainda não sei"], "Selecione uma opção"));
-        if (item.id === "aplicativo-android-multiplataforma") {
+        if (["aplicativo-android", "aplicativo-ios", "aplicativo-android-ios", "pwa-web-app-instalavel"].includes(item.id)) {
           campos.appendChild(selectCampo("Publicação em lojas", "publicacaoLojas", ["Não neste momento", "Sim, quero avaliar essa etapa", "Ainda não sei"], "Selecione uma opção"));
         }
         if (item.recorrenciaMensal != null) {
@@ -239,10 +244,15 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
       linha.append(criar("span", "", rotulo), dado);
       resumo.appendChild(linha);
     });
-    const aviso = [item?.avisoPreco, item?.avisoRecorrencia].filter(Boolean).join(" ") || "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise.";
+    const aviso = [
+      item?.avisoPreco,
+      item?.avisoRecorrencia,
+      item?.observacao,
+      item ? `Prazo estimado: ${prazoFormatado(item)}.` : ""
+    ].filter(Boolean).join(" ") || "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise.";
     resumo.appendChild(criar("p", "quote-summary__note", aviso));
     const linkCheckout = item ? obterLinkCheckout(pagamentos, item.id) : "";
-    const temValorDefinido = Boolean(item?.preco != null || item?.precoInicial != null || item?.precoMinimo != null);
+    const temValorDefinido = possuiValorDefinido();
     if (temValorDefinido) {
       const checkout = criar("div", "quote-checkout");
       checkout.appendChild(criar("strong", "quote-checkout__title", linkCheckout ? "Pagamento online" : "Compra com valor fechado"));
@@ -299,7 +309,10 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
         publicacaoLojas: estado.publicacaoLojas,
         manutencao: estado.manutencao,
         valor: valorAtual(),
-        valorFechado: temValorDefinido,
+        valorPix: item.precoPix != null ? formatarMoeda(item.precoPix) : "",
+        prazo: prazoFormatado(item),
+        idealPara: item.idealPara,
+        valorFechado: possuiValorDefinido(),
         pagamento: estado.pagamento,
         origem: "Orçamento guiado"
       });
