@@ -5,7 +5,8 @@ import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
-const CHAT_AUTO_CLOSE_MS = 3500;
+const CHAT_AUTO_CLOSE_MS = 5000;
+const CHAT_ACTIVE_CLOSE_MS = 18000;
 
 function criar(tag, className, texto) {
   const elemento = document.createElement(tag);
@@ -61,24 +62,26 @@ function setupChat() {
   if (!fab || !caixa || !fecharBotao) return;
 
   let temporizador;
+  let conversaAtiva = false;
   const limparTimer = () => window.clearTimeout(temporizador);
   const fechar = () => {
     limparTimer();
     caixa.hidden = true;
     fab.setAttribute("aria-expanded", "false");
   };
-  const reiniciarTimer = () => {
+  const reiniciarTimer = (interacao = true) => {
     if (caixa.hidden) return;
+    if (interacao) conversaAtiva = true;
     limparTimer();
-    // Small margin keeps the visible time within the promised five seconds.
-    temporizador = window.setTimeout(fechar, CHAT_AUTO_CLOSE_MS);
+    temporizador = window.setTimeout(fechar, conversaAtiva ? CHAT_ACTIVE_CLOSE_MS : CHAT_AUTO_CLOSE_MS);
   };
   const abrir = () => {
+    conversaAtiva = false;
     caixa.hidden = false;
     fab.setAttribute("aria-expanded", "true");
     window.IV_CHAT?.boot?.();
     window.IV_CHAT?.reset?.();
-    reiniciarTimer();
+    reiniciarTimer(false);
   };
 
   caixa.hidden = true;
@@ -96,9 +99,9 @@ function setupChat() {
     fechar();
   });
   caixa.addEventListener("pointerdown", (evento) => {
-    if (!evento.target.closest("#chatClose")) reiniciarTimer();
+    if (!evento.target.closest("#chatClose")) reiniciarTimer(true);
   });
-  caixa.addEventListener("keydown", reiniciarTimer);
+  caixa.addEventListener("keydown", () => reiniciarTimer(true));
   document.addEventListener("pointerdown", (evento) => {
     if (!caixa.hidden && !caixa.contains(evento.target) && !fab.contains(evento.target)) fechar();
   });
@@ -106,7 +109,13 @@ function setupChat() {
     if (evento.key === "Escape") fechar();
   });
 
-  window.ImperialVoltApp = { ...(window.ImperialVoltApp || {}), abrirChat: abrir, fecharChat: fechar, reiniciarChat: reiniciarTimer };
+  window.ImperialVoltApp = {
+    ...(window.ImperialVoltApp || {}),
+    abrirChat: abrir,
+    fecharChat: fechar,
+    reiniciarChat: () => reiniciarTimer(true),
+    marcarInteracao: () => reiniciarTimer(true)
+  };
 }
 
 function renderCategorias(categorias, selecionar) {
@@ -282,6 +291,7 @@ async function boot() {
       quote.selecionar(selecao);
       rolarPara("orcamento");
     };
+    window.ImperialVoltApp = { ...(window.ImperialVoltApp || {}), selecionarProduto };
     const catalogo = renderCatalogo(categorias, {
       gridEl: $("#gridCatalogo"),
       filtrosEl: $("#catalogFilters"),
