@@ -8,10 +8,60 @@ const estado = {
   inicializacao: null,
   historico: [],
   opcoes: null,
-  digitando: false
+  digitando: false,
+  memoria: {}
 };
 
 const $ = (seletor) => document.querySelector(seletor);
+const MEMORIA_KEY = "imperialvolt:voltzbot:session:v1";
+const MEMORIA_MAX_MS = 24 * 60 * 60 * 1000;
+
+function storageLocal() {
+  try {
+    return window.sessionStorage;
+  } catch {
+    return null;
+  }
+}
+
+function persistirMemoria() {
+  const storage = storageLocal();
+  if (!storage) return;
+  try {
+    storage.setItem(MEMORIA_KEY, JSON.stringify({
+      atualizadoEm: Date.now(),
+      historico: estado.historico.slice(-36),
+      memoria: estado.memoria
+    }));
+  } catch {
+    // A conversa continua funcionando mesmo se o navegador bloquear o storage.
+  }
+}
+
+function restaurarMemoria() {
+  const storage = storageLocal();
+  if (!storage) return false;
+  try {
+    const salvo = JSON.parse(storage.getItem(MEMORIA_KEY) || "null");
+    if (!salvo || Date.now() - Number(salvo.atualizadoEm) > MEMORIA_MAX_MS) {
+      storage.removeItem(MEMORIA_KEY);
+      return false;
+    }
+    estado.historico = Array.isArray(salvo.historico) ? salvo.historico.filter((item) => item?.tipo && item?.texto) : [];
+    estado.memoria = salvo.memoria && typeof salvo.memoria === "object" ? salvo.memoria : {};
+    return estado.historico.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function apagarMemoria() {
+  try {
+    storageLocal()?.removeItem(MEMORIA_KEY);
+  } catch {
+    // O estado em memoria ainda pode ser limpo normalmente.
+  }
+}
 
 function normalizar(texto) {
   return String(texto || "")
@@ -38,7 +88,10 @@ function encontrarItem(itemId, categoriaId) {
 }
 
 function adicionarHistorico(tipo, texto) {
-  if (texto) estado.historico.push({ tipo, texto });
+  if (!texto) return;
+  estado.historico.push({ tipo, texto });
+  estado.historico = estado.historico.slice(-36);
+  persistirMemoria();
 }
 
 function criarMensagem(tipo, texto) {
@@ -83,6 +136,9 @@ function opcoesIniciais(alvo) {
     criarEscolha("Perguntas frequentes", () => mostrarFaq()),
     criarEscolha("Falar com a equipe", () => falarNoWhatsApp({ origem: "Voltz-Bot" }))
   );
+  if (estado.historico.length > 1) {
+    alvo.appendChild(criarEscolha("Limpar conversa e começar de novo", () => iniciarConversa(true)));
+  }
 }
 
 function mostrarProjetosDigitais() {
@@ -129,6 +185,8 @@ function mostrarItem(categoriaId, itemId) {
   if (item.recorrenciaMensal != null) linhas.push(`Recorrência: ${formatarMoeda(item.recorrenciaMensal)}/mês, quando contratada.`);
   if (item.inclui?.length) linhas.push(`Inclui: ${item.inclui.slice(0, 3).join("; ")}.`);
   if (item.naoInclui?.length) linhas.push(`Fica fora por padrão: ${item.naoInclui.slice(0, 2).join("; ")}.`);
+  estado.memoria.ultimoItem = { categoriaId: categoria?.id || categoriaId, itemId: item.id, nome: item.nome };
+  persistirMemoria();
   adicionarHistorico("assistant", linhas.join("\n"));
   estado.opcoes = [
     { texto: "Selecionar no orçamento", acao: () => irParaOrcamento(categoria?.id, item.id) },
@@ -155,8 +213,14 @@ function mostrarPrecos() {
 function mostrarFaq(perguntaFiltrada = "") {
   const perguntas = (estado.dados?.faq?.categorias || []).flatMap((categoria) => categoria.perguntas || []);
   const termo = normalizar(perguntaFiltrada);
+  const palavras = termo.split(/\s+/).filter((palavra) => palavra.length > 2 && !["qual", "como", "onde", "para", "uma", "tem", "estao", "esta"].includes(palavra));
   const encontradas = termo
-    ? perguntas.filter((pergunta) => normalizar(`${pergunta.pergunta} ${pergunta.resposta}`).includes(termo)).slice(0, 2)
+    ? perguntas
+      .map((pergunta) => ({ pergunta, pontos: palavras.filter((palavra) => normalizar(`${pergunta.pergunta} ${pergunta.resposta}`).includes(palavra)).length }))
+      .filter(({ pontos }) => pontos >= Math.max(1, palavras.length - 1))
+      .sort((a, b) => b.pontos - a.pontos)
+      .slice(0, 2)
+      .map(({ pergunta }) => pergunta)
     : perguntas.slice(0, 5);
   if (!encontradas.length) return encaminharPergunta(perguntaFiltrada);
   adicionarHistorico("assistant", "Encontrei estas respostas no conteúdo oficial do site:");
@@ -176,10 +240,105 @@ function encaminharPergunta(texto) {
   ];
 }
 
+function obterResumoOrcamento() {
+  return window.ImperialVoltApp?.obterOrcamento?.() || null;
+}
+
+function mostrarOrcamentoAtual() {
+  const resumo = obterResumoOrcamento();
+  if (!resumo?.item) {
+    adicionarHistorico("assistant", "Seu orçamento ainda está vazio. Posso mostrar as opções ou você pode me dizer o que deseja adicionar.");
+    estado.opcoes = [
+      { texto: "Escolher uma solução", acao: mostrarProjetosDigitais },
+      { texto: "Voltar ao início", acao: iniciarConversa }
+    ];
+    return;
+  }
+  adicionarHistorico("assistant", `No orçamento está selecionado:\n${resumo.item}\nCategoria: ${resumo.categoria}\nValor atual: ${resumo.valor}\nQuantidade: ${resumo.quantidade || "não se aplica"}.`);
+  estado.opcoes = [
+    { texto: "Remover do orçamento", acao: limparOrcamentoConversa },
+    { texto: "Trocar a solução", acao: mostrarProjetosDigitais },
+    { texto: "Abrir orçamento completo", acao: () => irParaSecao("orcamento") }
+  ];
+}
+
+function limparOrcamentoConversa() {
+  window.ImperialVoltApp?.limparOrcamento?.();
+  estado.memoria.orcamento = null;
+  estado.memoria.ultimoItem = null;
+  persistirMemoria();
+  adicionarHistorico("assistant", "Removi a seleção do orçamento. Nada foi enviado ou contratado. Escolha outra solução quando quiser.");
+  estado.opcoes = [
+    { texto: "Escolher uma solução", acao: mostrarProjetosDigitais },
+    { texto: "Voltar ao início", acao: iniciarConversa }
+  ];
+}
+
+function encontrarItemPorTexto(texto) {
+  const termo = normalizar(texto);
+  const atalhos = [
+    ["site institucional", "site-institucional-estatico"],
+    ["site completo", "site-institucional-estatico"],
+    ["landing", "landing-page-estatica"],
+    ["one page", "landing-page-estatica"],
+    ["painel", "site-dinamico-cms"],
+    ["cms", "site-dinamico-cms"],
+    ["web app", "web-app-sistema-customizado"],
+    ["sistema", "web-app-sistema-customizado"],
+    ["banco de dados", "web-app-sistema-customizado"],
+    ["aplicativo", "aplicativo-android-multiplataforma"],
+    ["app", "aplicativo-android-multiplataforma"],
+    ["loja virtual", "ecommerce-loja-virtual"],
+    ["ecommerce", "ecommerce-loja-virtual"],
+    ["automacao", "integracao-automacao"],
+    ["integracao", "integracao-automacao"],
+    ["chaveiro", "chaveiro-nfc-personalizado"],
+    ["nfc", "tag-nfc-personalizada"],
+    ["apito", "apito-morte-asteca"]
+  ];
+  const atalho = atalhos.find(([palavra]) => termo.includes(palavra));
+  if (atalho) return encontrarItem(atalho[1]);
+  return { categoria: null, item: null };
+}
+
+function selecionarPorComando(texto) {
+  const { categoria, item } = encontrarItemPorTexto(texto);
+  if (!item) return false;
+  window.ImperialVoltApp?.selecionarProduto?.({ categoriaId: categoria.id, itemId: item.id });
+  estado.memoria.ultimoItem = { categoriaId: categoria.id, itemId: item.id, nome: item.nome };
+  estado.memoria.orcamento = item.nome;
+  persistirMemoria();
+  adicionarHistorico("assistant", `Adicionei ${item.nome} ao orçamento. Você pode pedir para trocar, remover ou abrir o orçamento completo.`);
+  estado.opcoes = [
+    { texto: "Abrir orçamento completo", acao: () => irParaSecao("orcamento") },
+    { texto: "Ver o resumo atual", acao: mostrarOrcamentoAtual },
+    { texto: "Remover esta seleção", acao: limparOrcamentoConversa }
+  ];
+  return true;
+}
+
+function tratarComandosDeOrcamento(termo) {
+  const falaSobreOrcamento = /(orcamento|pedido|selecao|escolhido|carrinho)/.test(termo)
+    || (estado.memoria.orcamento && /(isso|ele|item|selecao|quanto ficou|quanto ta|quanto esta|o que escolhi)/.test(termo));
+  if (/(limpar|zerar|remover|tirar|excluir|apagar|cancelar)/.test(termo) && falaSobreOrcamento) {
+    limparOrcamentoConversa();
+    return true;
+  }
+  if (/(ver|mostrar|qual|quanto|quanto ficou|resumo|voltar|abrir|o que escolhi)/.test(termo) && falaSobreOrcamento) {
+    mostrarOrcamentoAtual();
+    return true;
+  }
+  if (/(adicionar|colocar|trocar|mudar|selecionar|escolher|quero)/.test(termo) && selecionarPorComando(termo)) return true;
+  return false;
+}
+
 function interpretarEntrada(texto, adicionarUsuario = true) {
   const termo = normalizar(texto);
   if (!termo) return;
   if (adicionarUsuario) adicionarHistorico("user", texto);
+  estado.memoria.ultimaPergunta = texto;
+  persistirMemoria();
+  if (tratarComandosDeOrcamento(termo)) return;
   if (/(pix|preco|valor|pagamento|parcel)/.test(termo)) return mostrarPrecos();
   if (/(aplicativo|app|android|ios|mobile)/.test(termo)) return mostrarItem("projetos-digitais", "aplicativo-android-multiplataforma");
   if (/(sistema|web app|painel|banco de dados|login)/.test(termo)) return mostrarItem("projetos-digitais", "web-app-sistema-customizado");
@@ -189,7 +348,7 @@ function interpretarEntrada(texto, adicionarUsuario = true) {
   if (/(site|pagina)/.test(termo)) return mostrarProjetosDigitais();
   if (/(3d|impressao|peca|reposicao|adaptacao)/.test(termo)) return mostrarCategoria("impressao-3d");
   if (/(nfc|tag|chaveiro)/.test(termo)) return mostrarCategoria("nfc");
-  if (/(faq|duvida|dominio|vps|loja|publicar|manutencao|orcamento)/.test(termo)) return mostrarFaq(termo);
+  if (/(faq|duvida|dominio|vps|loja|publicar|manutencao|orcamento|inpi|taxa)/.test(termo)) return mostrarFaq(termo);
   encaminharPergunta(texto);
 }
 
@@ -199,7 +358,16 @@ function irParaSecao(id) {
 }
 
 function irParaOrcamento(categoriaId, itemId) {
-  if (categoriaId && itemId) window.ImperialVoltApp?.selecionarProduto?.({ categoriaId, itemId });
+  if (categoriaId && itemId) {
+    window.ImperialVoltApp?.selecionarProduto?.({ categoriaId, itemId });
+    const { categoria, item } = encontrarItem(itemId, categoriaId);
+    if (item) {
+      estado.memoria.ultimoItem = { categoriaId: categoria?.id || categoriaId, itemId: item.id, nome: item.nome };
+      estado.memoria.orcamento = item.nome;
+      persistirMemoria();
+      adicionarHistorico("assistant", `Selecionei ${item.nome} no orçamento. Você pode revisar os detalhes antes de enviar pelo WhatsApp.`);
+    }
+  }
   else if (categoriaId) window.ImperialVoltApp?.selecionarProduto?.({ categoriaId });
   irParaSecao("orcamento");
 }
@@ -209,8 +377,13 @@ function falarNoWhatsApp(campos = {}) {
   window.ImperialVoltApp?.fecharChat?.();
 }
 
-function iniciarConversa() {
-  estado.historico = [{ tipo: "assistant", texto: respostaInicial() }];
+function iniciarConversa(novaConversa = false) {
+  if (novaConversa) {
+    estado.historico = [];
+    estado.memoria = {};
+    apagarMemoria();
+  }
+  adicionarHistorico("assistant", estado.historico.length ? "Continuo com você. Escolha um caminho ou me diga o que deseja ajustar." : respostaInicial());
   estado.opcoes = null;
 }
 
@@ -270,15 +443,22 @@ function boot() {
   if (estado.inicializacao) return estado.inicializacao;
   estado.historico = [{ tipo: "assistant", texto: "Só um instante. Estou carregando as opções atualizadas do site." }];
   estado.opcoes = [];
+  estado.digitando = true;
   renderizar();
   estado.inicializacao = carregarDados().then((dados) => {
     estado.dados = dados;
     estado.categorias = unificarCategorias(dados);
-    iniciarConversa();
+    estado.historico = [];
+    estado.memoria = {};
+    const voltou = restaurarMemoria();
+    if (voltou) adicionarHistorico("assistant", "Encontrei a conversa desta aba. Podemos continuar de onde paramos ou começar de novo.");
+    else iniciarConversa();
+    estado.digitando = false;
     renderizar();
   }).catch(() => {
     estado.historico = [{ tipo: "assistant", texto: "Não consegui carregar o catálogo agora. Posso encaminhar você diretamente para o WhatsApp." }];
     estado.opcoes = [{ texto: "Falar no WhatsApp", acao: () => falarNoWhatsApp({ origem: "Voltz-Bot" }) }];
+    estado.digitando = false;
     renderizar();
   });
   return estado.inicializacao;
@@ -286,7 +466,7 @@ function boot() {
 
 function reset() {
   if (!estado.dados) return boot();
-  iniciarConversa();
+  estado.digitando = false;
   renderizar();
 }
 

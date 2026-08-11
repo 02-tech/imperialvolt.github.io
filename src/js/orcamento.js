@@ -48,6 +48,20 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
     estado.publicacaoLojas = "";
     estado.manutencao = "";
   };
+  const limparSelecao = () => {
+    Object.assign(estado, {
+      categoriaId: null,
+      itemId: null,
+      quantidade: 1,
+      faixaIndex: 0,
+      finalidade: "",
+      personalizacao: "",
+      observacoes: "",
+      pagamento: ""
+    });
+    limparCamposDigitais();
+    renderizar();
+  };
 
   const valorAtual = () => {
     const item = itemAtual();
@@ -312,6 +326,21 @@ export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
       estado.faixaIndex = 0;
       estado.quantidade = 1;
       renderizar();
+    },
+    obterOrcamento() {
+      const categoria = categoriaAtual();
+      const item = itemAtual();
+      return {
+        categoriaId: categoria?.id || null,
+        categoria: categoria?.nome || "Nenhuma categoria",
+        itemId: item?.id || null,
+        item: item?.nome || null,
+        valor: item ? valorAtual() : "Nenhum valor selecionado",
+        quantidade: quantidadeAtual()
+      };
+    },
+    limpar() {
+      limparSelecao();
     }
   };
 }
