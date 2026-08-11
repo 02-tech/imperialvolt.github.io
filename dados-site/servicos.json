@@ -131,16 +131,16 @@
         },
         {
           "id": "site-dinamico-cms",
-          "nome": "Site dinâmico / CMS",
+          "nome": "Site dinâmico / CMS com banco de dados",
           "precoInicial": 1200,
           "tipoPreco": "a partir de",
           "pixElegivel": true,
           "prazoEstimadoDiasUteis": { "minimo": 7, "maximo": 15 },
-          "descricao": "Site com estrutura dinâmica para atualizar conteúdo, catálogo, blog, notícias ou outras informações.",
+          "descricao": "Site com banco de dados e estrutura dinâmica para atualizar conteúdo, catálogo, blog, notícias ou outras informações.",
           "idealPara": "Clientes que precisam cadastrar e atualizar conteúdo sem depender de alteração manual em cada página.",
           "quandoUsar": "Quando a informação muda com frequência ou existe uma equipe que precisa gerenciar conteúdo.",
           "quandoNaoNecessario": "Se a empresa raramente altera o conteúdo, um site estático costuma ser mais simples e suficiente.",
-          "inclui": [ "estrutura dinâmica", "CMS ou painel conforme escopo", "banco de dados quando previsto", "cadastro e gestão do conteúdo descrito" ],
+          "inclui": [ "estrutura dinâmica", "CMS ou painel conforme escopo", "banco de dados do projeto conforme escopo", "cadastro e gestão do conteúdo descrito" ],
           "custosExternos": [ "Hospedagem, banco de dados como serviço, domínio, licenças e integrações pagas são separados.", "Novos módulos após a entrega geram novo orçamento." ]
         },
         {
