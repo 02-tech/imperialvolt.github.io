@@ -9,16 +9,16 @@
   "categorias": [
     {
       "id": "impressao-3d",
-      "nome": "Soluções físicas em impressão 3D",
-      "descricao": "Reposição, adaptação, personalização e protótipos avaliados individualmente.",
+      "nome": "Produtos físicos personalizados",
+      "descricao": "Artes de parede, nomes personalizados, acessórios funcionais e organizadores sob medida, com avaliação do projeto antes da produção.",
       "produtos": [
         {
           "id": "apito-morte-asteca",
           "nome": "Apito da Morte Asteca",
-          "preco": 29.90,
+          "preco": 29.9,
           "tipoPreco": "fixo",
           "material": "PLA",
-          "descricao": "Apito da Morte Asteca produzido em impressão 3D.",
+          "descricao": "Peça decorativa com presença, inspirada na estética asteca e pronta para compor sua coleção ou ambiente.",
           "personalizavel": true,
           "adicionais": [
             {
@@ -32,12 +32,138 @@
           ]
         },
         {
+          "id": "arte-parede-automotiva",
+          "nome": "Arte de parede automotiva",
+          "precoInicial": 69.9,
+          "tipoPreco": "a partir de",
+          "descricao": "Relevo decorativo para parede, garagem, escritório ou ambiente de quem gosta de carros.",
+          "idealPara": "Quem quer uma peça de presença para compor parede, garagem ou espaço de trabalho.",
+          "quandoUsar": "Quando a decoração precisa de um elemento personalizado e com volume, sem ocupar espaço no piso.",
+          "inclui": [
+            "Peça no tamanho definido no pedido",
+            "Conferência dos dados antes da produção",
+            "Orientação básica de instalação"
+          ],
+          "naoInclui": [
+            "Instalação na parede",
+            "Frete ou entrega",
+            "Alterações depois da aprovação"
+          ],
+          "adicionais": [
+            {
+              "nome": "Ajuste de tamanho ou personalização",
+              "precoInicial": 20
+            }
+          ],
+          "avisoPreco": "Valor inicial para uma configuração de entrada. Tamanho, desenho, acabamento e quantidade alteram o orçamento.",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": {
+            "minimo": 4,
+            "maximo": 8
+          }
+        },
+        {
+          "id": "nome-personalizado-decorativo",
+          "nome": "Nome personalizado decorativo",
+          "precoInicial": 89.9,
+          "tipoPreco": "a partir de",
+          "descricao": "Nome em relevo para parede, painel, prateleira ou mesa, com composição definida para o ambiente.",
+          "idealPara": "Quartos, escritórios, recepções, festas, lojas e presentes personalizados.",
+          "quandoUsar": "Quando o ambiente precisa de identificação ou de uma peça decorativa com o nome escolhido.",
+          "inclui": [
+            "Composição com o nome aprovado",
+            "Conferência dos dados antes da produção",
+            "Orientação básica de instalação"
+          ],
+          "naoInclui": [
+            "Instalação na parede",
+            "Frete ou entrega",
+            "Alterações depois da aprovação"
+          ],
+          "adicionais": [
+            {
+              "nome": "Tamanho maior ou palavra adicional",
+              "precoInicial": 25
+            }
+          ],
+          "avisoPreco": "O valor inicial considera uma composição de entrada. Tamanho, quantidade de palavras e acabamento alteram o orçamento.",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": {
+            "minimo": 5,
+            "maximo": 10
+          }
+        },
+        {
+          "id": "kit-suporte-celular-antipoeira",
+          "nome": "Kit suporte para celular + proteção anti-poeira",
+          "precoInicial": 59.9,
+          "tipoPreco": "a partir de",
+          "descricao": "Conjunto funcional para apoiar o celular e proteger a entrada de conexão contra poeira, conforme compatibilidade confirmada.",
+          "idealPara": "Quem quer uma solução compacta para apoiar o aparelho e manter a entrada protegida.",
+          "quandoUsar": "Quando a rotina precisa de um apoio de mesa e uma proteção simples para o conector do aparelho.",
+          "inclui": [
+            "Suporte para celular",
+            "Proteção anti-poeira compatível com o modelo informado",
+            "Conferência da compatibilidade antes da produção"
+          ],
+          "naoInclui": [
+            "Celular",
+            "Instalação ou adaptação no aparelho",
+            "Garantia de compatibilidade sem confirmação do modelo"
+          ],
+          "avisoPreco": "Confirme o modelo do aparelho antes do pedido. Dimensões, encaixe e personalização podem alterar o valor.",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": {
+            "minimo": 3,
+            "maximo": 7
+          }
+        },
+        {
+          "id": "organizador-parede-sob-medida",
+          "nome": "Organizador de parede sob medida",
+          "precoInicial": 49.9,
+          "tipoPreco": "a partir de",
+          "descricao": "Suporte compacto para organizar controles, acessórios ou pequenos objetos em parede.",
+          "idealPara": "Quartos, escritórios, salas, bancadas e ambientes que precisam liberar espaço.",
+          "quandoUsar": "Quando um objeto precisa ter lugar definido e ficar acessível sem ocupar a superfície principal.",
+          "inclui": [
+            "Um organizador nas dimensões aprovadas",
+            "Conferência das medidas antes da produção",
+            "Orientação básica de fixação"
+          ],
+          "naoInclui": [
+            "Instalação na parede",
+            "Parafusos ou acessórios não descritos no pedido",
+            "Uso para cargas acima da capacidade informada"
+          ],
+          "avisoPreco": "A capacidade e a fixação dependem das medidas e do uso informado. O valor final é confirmado após essa análise.",
+          "pixElegivel": true,
+          "prazoEstimadoDiasUteis": {
+            "minimo": 4,
+            "maximo": 8
+          }
+        },
+        {
           "id": "impressao-sob-medida",
-          "nome": "Projeto personalizado em impressão 3D",
-          "precoMinimo": 25,
-          "tipoPreco": "orçamento mínimo",
-          "descricao": "Análise de viabilidade, projeto sob medida, fabricação e entrega de uma solução física conforme a necessidade.",
-          "avisoPreco": "R$25 é o valor mínimo para iniciar um projeto personalizado. O valor final é confirmado após a análise da necessidade."
+          "nome": "Projeto físico sob medida",
+          "precoMinimo": 50,
+          "tipoPreco": "a partir de",
+          "descricao": "Quando o catálogo não resolve, analisamos a necessidade e desenhamos uma solução física para o seu uso.",
+          "idealPara": "Reposições, adaptações, protótipos e objetos funcionais que precisam de medidas ou encaixe próprios.",
+          "quandoUsar": "Quando você tem um problema físico específico, mas ainda não existe um produto pronto que resolva bem.",
+          "inclui": [
+            "Análise inicial de viabilidade",
+            "Orientação sobre medidas e uso",
+            "Definição do escopo de desenvolvimento"
+          ],
+          "naoInclui": [
+            "Fabricação final sem aprovação do escopo",
+            "Frete ou entrega",
+            "Alterações fora do projeto aprovado"
+          ],
+          "avisoPreco": "A partir de R$50 para análise e desenvolvimento inicial. Fabricação, acabamento, quantidade e entrega são definidos após a avaliação do projeto.",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise do projeto"
         }
       ]
     },
@@ -53,11 +179,31 @@
           "gravada": true,
           "regravavel": true,
           "faixas": [
-            { "quantidade": 1, "valorTotal": 24.90, "valorUnitario": 24.90 },
-            { "quantidade": 5, "valorTotal": 109.90, "valorUnitario": 21.98 },
-            { "quantidade": 10, "valorTotal": 199.90, "valorUnitario": 19.99 },
-            { "quantidade": 25, "valorTotal": 449.90, "valorUnitario": 18.00 },
-            { "quantidade": 50, "valorTotal": 799.90, "valorUnitario": 16.00 }
+            {
+              "quantidade": 1,
+              "valorTotal": 24.9,
+              "valorUnitario": 24.9
+            },
+            {
+              "quantidade": 5,
+              "valorTotal": 109.9,
+              "valorUnitario": 21.98
+            },
+            {
+              "quantidade": 10,
+              "valorTotal": 199.9,
+              "valorUnitario": 19.99
+            },
+            {
+              "quantidade": 25,
+              "valorTotal": 449.9,
+              "valorUnitario": 18
+            },
+            {
+              "quantidade": 50,
+              "valorTotal": 799.9,
+              "valorUnitario": 16
+            }
           ]
         },
         {
@@ -67,11 +213,31 @@
           "gravada": true,
           "regravavel": true,
           "faixas": [
-            { "quantidade": 1, "valorTotal": 34.90, "valorUnitario": 34.90 },
-            { "quantidade": 5, "valorTotal": 159.90, "valorUnitario": 31.98 },
-            { "quantidade": 10, "valorTotal": 289.90, "valorUnitario": 28.99 },
-            { "quantidade": 25, "valorTotal": 649.90, "valorUnitario": 26.00 },
-            { "quantidade": 50, "valorTotal": 1149.90, "valorUnitario": 23.00 }
+            {
+              "quantidade": 1,
+              "valorTotal": 34.9,
+              "valorUnitario": 34.9
+            },
+            {
+              "quantidade": 5,
+              "valorTotal": 159.9,
+              "valorUnitario": 31.98
+            },
+            {
+              "quantidade": 10,
+              "valorTotal": 289.9,
+              "valorUnitario": 28.99
+            },
+            {
+              "quantidade": 25,
+              "valorTotal": 649.9,
+              "valorUnitario": 26
+            },
+            {
+              "quantidade": 50,
+              "valorTotal": 1149.9,
+              "valorUnitario": 23
+            }
           ]
         }
       ]
