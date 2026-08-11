@@ -34,7 +34,7 @@
   "diferencaDeEscopo": {
     "landingPage": "Apresenta uma oferta em uma página responsiva, com foco em conversão e sem banco de dados próprio por padrão.",
     "siteInstitucional": "Organiza até cinco páginas estáticas para apresentar empresa, serviços, galeria e contatos.",
-    "cms": "Permite atualizar e gerenciar conteúdo por meio de estrutura dinâmica, CMS ou painel administrativo conforme o escopo.",
+    "cms": "Permite atualizar e gerenciar conteúdo por meio de estrutura dinâmica, CMS ou painel administrativo com banco de dados conforme o escopo.",
     "plataformaWeb": "Recebe, processa, grava e gerencia informações. Login, usuários, cadastros, pedidos, estoque, automações, integrações e painéis entram conforme descrição do orçamento.",
     "recorrencia": "Banco de dados, VPS, hospedagem paga, APIs, licenças e outros serviços recorrentes são custos separados, salvo previsão expressa."
   },
