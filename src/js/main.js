@@ -291,7 +291,12 @@ async function boot() {
       quote.selecionar(selecao);
       rolarPara("orcamento");
     };
-    window.ImperialVoltApp = { ...(window.ImperialVoltApp || {}), selecionarProduto };
+    window.ImperialVoltApp = {
+      ...(window.ImperialVoltApp || {}),
+      selecionarProduto,
+      obterOrcamento: () => quote.obterOrcamento(),
+      limparOrcamento: () => quote.limpar()
+    };
     const catalogo = renderCatalogo(categorias, {
       gridEl: $("#gridCatalogo"),
       filtrosEl: $("#catalogFilters"),
