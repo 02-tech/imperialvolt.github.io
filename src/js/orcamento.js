@@ -1,5 +1,6 @@
 /* Orçamento guiado de uma tela: seleção clara e envio contextual ao WhatsApp. */
 import { formatarMoeda, precoFormatado } from "./data.js";
+import { obterLinkCheckout } from "./checkout.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
 const CATEGORIA_EMPRESAS = {
@@ -20,7 +21,7 @@ function criar(tag, className, texto) {
   return elemento;
 }
 
-export function iniciarOrcamento({ raiz, categorias, politicas }) {
+export function iniciarOrcamento({ raiz, categorias, politicas, pagamentos }) {
   const todasCategorias = [...categorias, CATEGORIA_EMPRESAS];
   const estado = {
     categoriaId: null,
@@ -226,7 +227,22 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
     });
     const aviso = [item?.avisoPreco, item?.avisoRecorrencia].filter(Boolean).join(" ") || "Projetos personalizados são avaliados individualmente. Valores, acabamento, prazo e entrega são confirmados após análise.";
     resumo.appendChild(criar("p", "quote-summary__note", aviso));
-    const enviar = criar("button", "button button--lime", "Enviar solicitação pelo WhatsApp");
+    const linkCheckout = item ? obterLinkCheckout(pagamentos, item.id) : "";
+    const temValorDefinido = Boolean(item?.preco != null || item?.precoInicial != null || item?.precoMinimo != null);
+    if (temValorDefinido) {
+      const checkout = criar("div", "quote-checkout");
+      checkout.appendChild(criar("strong", "quote-checkout__title", linkCheckout ? "Pagamento online" : "Compra com valor fechado"));
+      checkout.appendChild(criar("p", "quote-checkout__text", linkCheckout ? "Escolha Pix ou cartão no checkout seguro." : (pagamentos?.checkout?.mensagemQuandoInativo || "O pedido já sai com o valor indicado. Solicite o link de pagamento pelo WhatsApp.")));
+      if (linkCheckout) {
+        const pagar = criar("a", "button button--lime quote-checkout__button", "Pagar online");
+        pagar.href = linkCheckout;
+        pagar.target = "_blank";
+        pagar.rel = "noopener";
+        checkout.appendChild(pagar);
+      }
+      resumo.appendChild(checkout);
+    }
+    const enviar = criar("button", "button button--lime", temValorDefinido ? "Continuar pelo WhatsApp" : "Enviar solicitação pelo WhatsApp");
     enviar.type = "button";
     enviar.disabled = !item;
     enviar.dataset.action = "send";
@@ -269,6 +285,7 @@ export function iniciarOrcamento({ raiz, categorias, politicas }) {
         publicacaoLojas: estado.publicacaoLojas,
         manutencao: estado.manutencao,
         valor: valorAtual(),
+        valorFechado: temValorDefinido,
         pagamento: estado.pagamento,
         origem: "Orçamento guiado"
       });

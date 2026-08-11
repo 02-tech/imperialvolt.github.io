@@ -29,7 +29,7 @@ export function montarMensagem(campos) {
   if (campos.pagamento) linhas.push("Forma de pagamento pretendida: " + campos.pagamento);
   if (campos.origem) linhas.push("Origem: " + campos.origem);
 
-  linhas.push("Poderia confirmar o orçamento e o prazo?");
+  linhas.push(campos.valorFechado ? "Quero seguir com este valor e receber os próximos passos." : "Poderia confirmar o orçamento e o prazo?");
   return linhas.join("\n");
 }
 
