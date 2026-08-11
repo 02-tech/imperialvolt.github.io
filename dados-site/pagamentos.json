@@ -1,0 +1,20 @@
+{
+  "checkout": {
+    "ativo": false,
+    "provedor": "InfinitePay",
+    "modalidades": [
+      "Pix",
+      "Cartão de crédito em até 12x, conforme as condições exibidas no checkout"
+    ],
+    "links": {},
+    "mensagemQuandoInativo": "O valor já é calculado no site. O link de pagamento será liberado após a configuração do checkout da Imperial Volt."
+  },
+  "recorrencia": {
+    "ativo": false,
+    "provedorPreferencial": "Asaas ou outro serviço com cobrança recorrente",
+    "mensagem": "Manutenção e hospedagem mensais dependem de contratação específica e configuração da conta de cobrança."
+  },
+  "seguranca": {
+    "observacao": "Este arquivo não deve conter API keys, tokens, senhas ou credenciais. Links públicos de checkout podem ser cadastrados quando a conta estiver ativa."
+  }
+}
