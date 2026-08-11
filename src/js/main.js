@@ -1,6 +1,6 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, categoriasDeCatalogo, categoriasDeServicos, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "./data.js";
-import { renderCatalogo, renderDestaques } from "./catalogo.js";
+import { renderCatalogo } from "./catalogo.js";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
@@ -364,13 +364,6 @@ async function boot() {
       maisEl: $("#catalogMore"),
       onSelect: selecionarProduto
     });
-    renderDestaques(categorias, $("#gridDestaques"), [
-      "perfil-empresa-google",
-      "landing-page-estatica",
-      "tag-nfc-personalizada",
-      "apito-morte-asteca",
-      "pedido-registro-marca"
-    ], selecionarProduto);
     renderCategorias(categoriasDeCatalogo(categorias), (categoriaId) => {
       if (categoriaId === "empresas-revendedores") {
         quote.selecionar({ categoriaId });
