@@ -7,7 +7,8 @@ const estado = {
   categorias: [],
   inicializacao: null,
   historico: [],
-  opcoes: null
+  opcoes: null,
+  digitando: false
 };
 
 const $ = (seletor) => document.querySelector(seletor);
@@ -56,9 +57,15 @@ function criarEscolha(texto, acao, classe = "") {
   botao.textContent = texto;
   botao.addEventListener("click", () => {
     adicionarHistorico("user", texto);
-    acao();
+    estado.digitando = true;
     renderizar();
-    window.ImperialVoltApp?.reiniciarChat?.();
+    window.ImperialVoltApp?.marcarInteracao?.();
+    window.setTimeout(() => {
+      acao();
+      estado.digitando = false;
+      renderizar();
+      window.ImperialVoltApp?.reiniciarChat?.();
+    }, 480);
   });
   return botao;
 }
@@ -169,10 +176,10 @@ function encaminharPergunta(texto) {
   ];
 }
 
-function interpretarEntrada(texto) {
+function interpretarEntrada(texto, adicionarUsuario = true) {
   const termo = normalizar(texto);
   if (!termo) return;
-  adicionarHistorico("user", texto);
+  if (adicionarUsuario) adicionarHistorico("user", texto);
   if (/(pix|preco|valor|pagamento|parcel)/.test(termo)) return mostrarPrecos();
   if (/(aplicativo|app|android|ios|mobile)/.test(termo)) return mostrarItem("projetos-digitais", "aplicativo-android-multiplataforma");
   if (/(sistema|web app|painel|banco de dados|login)/.test(termo)) return mostrarItem("projetos-digitais", "web-app-sistema-customizado");
@@ -218,17 +225,23 @@ function renderizarOpcoes(corpo) {
 function renderizarEntrada(corpo) {
   const formulario = document.createElement("form");
   formulario.className = "guided-chat__input";
-  formulario.innerHTML = '<input id="chatMessage" name="message" type="text" autocomplete="off" placeholder="Digite uma dúvida..." aria-label="Digite uma dúvida para o Voltz-Bot"><button type="submit" aria-label="Enviar pergunta">Enviar</button>';
+  formulario.innerHTML = `<input id="chatMessage" name="message" type="text" autocomplete="off" placeholder="${estado.digitando ? "Aguarde a resposta..." : "Digite uma dúvida..."}" aria-label="Digite uma dúvida para o Voltz-Bot"${estado.digitando ? " disabled" : ""}><button type="submit" aria-label="Enviar pergunta"${estado.digitando ? " disabled" : ""}>Enviar</button>`;
   formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
     const campo = formulario.elements.message;
     const texto = campo.value.trim();
     if (!texto) return;
-    estado.opcoes = null;
-    interpretarEntrada(texto);
+    estado.opcoes = [];
+    estado.digitando = true;
     campo.value = "";
     renderizar();
-    window.ImperialVoltApp?.reiniciarChat?.();
+    window.ImperialVoltApp?.marcarInteracao?.();
+    window.setTimeout(() => {
+      interpretarEntrada(texto, false);
+      estado.digitando = false;
+      renderizar();
+      window.ImperialVoltApp?.reiniciarChat?.();
+    }, 480);
   });
   corpo.appendChild(formulario);
 }
@@ -240,8 +253,15 @@ function renderizar() {
   const conversa = document.createElement("div");
   conversa.className = "guided-chat__conversation";
   estado.historico.forEach(({ tipo, texto }) => conversa.appendChild(criarMensagem(tipo, texto)));
+  if (estado.digitando) {
+    const indicador = document.createElement("article");
+    indicador.className = "guided-chat__typing";
+    indicador.setAttribute("aria-label", "Voltz-Bot está digitando");
+    indicador.innerHTML = "<span></span><span></span><span></span>";
+    conversa.appendChild(indicador);
+  }
   corpo.appendChild(conversa);
-  renderizarOpcoes(corpo);
+  if (!estado.digitando) renderizarOpcoes(corpo);
   renderizarEntrada(corpo);
   requestAnimationFrame(() => { corpo.scrollTop = corpo.scrollHeight; });
 }
