@@ -1,6 +1,6 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, categoriasDeCatalogo, categoriasDeServicos, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "./data.js";
-import { renderCatalogo } from "./catalogo.js";
+import { renderCatalogo } from "./catalogo.js?v=20260811-produtos-fisicos";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 
@@ -389,3 +389,4 @@ async function boot() {
 }
 
 boot();
+

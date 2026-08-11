@@ -6,6 +6,10 @@ const IMAGENS_VITRINE = {
   "tag-nfc-personalizada": "./src/imagens/vitrine/nfc-tag.svg",
   "chaveiro-nfc-personalizado": "./src/imagens/vitrine/nfc-chaveiro.svg",
   "apito-morte-asteca": "./src/imagens/produtos/apito-morte-asteca.jpg",
+  "arte-parede-automotiva": "./src/imagens/produtos/arte-parede-automotiva.webp",
+  "nome-personalizado-decorativo": "./src/imagens/produtos/decoracao-nome-personalizado.webp",
+  "kit-suporte-celular-antipoeira": "./src/imagens/produtos/suporte-celular-antipoeira.webp",
+  "organizador-parede-sob-medida": "./src/imagens/produtos/organizador-parede-sob-medida.webp",
   "impressao-sob-medida": "./src/imagens/vitrine/produto-personalizado.svg",
   "presenca-digital": "./src/imagens/vitrine/sites.svg",
   "projetos-digitais": "./src/imagens/vitrine/sites.svg",
@@ -57,7 +61,7 @@ function criarCard(item, categoria, onSelect) {
   const visual = criar("div", "product-card__visual");
   const imagem = document.createElement("img");
   imagem.src = imagemDoItem(item, categoria);
-  imagem.alt = "";
+  imagem.alt = item.nome;
   imagem.loading = item.id === "apito-morte-asteca" ? "eager" : "lazy";
   imagem.decoding = "async";
   imagem.setAttribute("aria-hidden", "true");
@@ -176,3 +180,4 @@ export function renderCatalogo(categorias, { gridEl, filtrosEl, maisEl, onSelect
   selecionarFiltro("todos");
   return { filtrar: selecionarFiltro };
 }
+
