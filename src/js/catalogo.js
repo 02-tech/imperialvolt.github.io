@@ -176,12 +176,3 @@ export function renderCatalogo(categorias, { gridEl, filtrosEl, maisEl, onSelect
   selecionarFiltro("todos");
   return { filtrar: selecionarFiltro };
 }
-
-export function renderDestaques(categorias, destaquesEl, idsDestaque, onSelect) {
-  destaquesEl.replaceChildren();
-  const itens = categorias.flatMap((categoria) => categoria.itens.map((item) => ({ categoria, item })));
-  idsDestaque.forEach((id) => {
-    const encontrado = itens.find(({ item }) => item.id === id);
-    if (encontrado) destaquesEl.appendChild(criarCard(encontrado.item, encontrado.categoria, onSelect));
-  });
-}
