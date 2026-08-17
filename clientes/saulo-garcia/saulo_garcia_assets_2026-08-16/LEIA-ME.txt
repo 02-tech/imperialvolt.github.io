@@ -1,0 +1,24 @@
+Pacote de assets organizados para o site do cliente Saulo Garcia.
+
+Conteúdo revisado e organizado:
+
+1) logo/logo-transfer-executivo-itaipava-transparent.png
+   - Logo preparada para uso no site.
+   - Fundo transparente.
+   - Ideal para header, rodapé e áreas de marca.
+
+2) fotos/vinicolas/passeio-vinicola-porto-di-vino.jpg
+   - Foto para a seção de vinícolas.
+
+3) fotos/city-tour/city-tour-catedral-petropolis.jpg
+   - Foto principal sugerida para a seção de City Tour.
+
+4) fotos/city-tour/city-tour-exemplo-referencia.jpg
+   - Imagem de referência visual/textual do exemplo de City Tour.
+   - Não é para copiar o layout; serve como base de ideia.
+
+5) referencias/google/google-avaliacoes-exemplo.png
+   - Referência visual da ideia de avaliações em carrossel/rolagem.
+
+6) _originais/logo/logo-original-referencia.jpg
+   - Logo original enviada, mantida para referência.
