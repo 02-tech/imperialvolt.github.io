@@ -11,7 +11,6 @@ Este repositório contém o site oficial da Imperial Volt.
 - Tecnologia: HTML, CSS e JavaScript estáticos
 - Não utilizar CMS
 - Não utilizar construtores visuais
-- Não publicar sem aprovação expressa
 
 ## Objetivo futuro
 
@@ -62,8 +61,7 @@ Não inventar:
 - otimizar imagens;
 - não usar conteúdo protegido sem licença;
 - não substituir arquivos existentes sem criar uma estratégia de migração;
-- testar antes de qualquer commit;
-- não fazer push na main.
+- testar antes de qualquer commit.
 
 ## Estado atual
 
