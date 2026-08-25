@@ -99,8 +99,9 @@
   margin-top:32px;
 }
 
-.service-card:nth-last-child(-n+2){
+.service-card:last-child{
   border-bottom:0;
+  border-right:0;
 }
 
 @media(max-width:640px){
