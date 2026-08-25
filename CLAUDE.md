@@ -1,3 +1,12 @@
+<!-- AI-GOVERNANCE-NOTICE: v1 -->
+> [!IMPORTANT]
+> **Governança obrigatória para qualquer inteligência artificial**
+> Antes de usar, interpretar ou atualizar esta memória ou instrução, a IA deve: identificar-se explicitamente (agente, sessão/tarefa e projeto); confirmar o diretório canônico; consultar as memórias globais e do projeto; e cumprir os protocolos, padrões, estados e decisões de `C:\Users\FAGUITAL\PROJETOS\0_CENTRAL_ENGENHARIA`.
+> Leitura mínima obrigatória: `00_GOVERNANCA\AI_CODING_RULES.md`, `08_AI\CONTEXT_RULES.md`, `08_AI\MEMORY_POLICY.md`, `08_AI\SESSION_BOOTSTRAP.md` e as instruções específicas do projeto.
+> Antes de escrever, deve verificar autoria, ownership/lock e trabalho concorrente; preservar o conteúdo existente; não sobrescrever trabalho alheio; e registrar autoria, timestamp, arquivos, comandos relevantes, resultado, validações, rollback e pendências.
+> Em caso de divergência, o estado real verificado, a fonte canônica do projeto e os protocolos centrais prevalecem. Memória privada de agente não substitui evidência atual.
+<!-- /AI-GOVERNANCE-NOTICE -->
+
 # Projeto Imperial Volt 2.0
 
 ## Estado do projeto
