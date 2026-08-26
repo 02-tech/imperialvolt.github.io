@@ -158,6 +158,109 @@
   }
 }
 
+.review-carousel{
+  position:relative;
+  margin:26px 0 10px;
+  min-height:140px;
+}
+
+.review-carousel-track{
+  position:relative;
+}
+
+.review-carousel-item{
+  margin:0;
+  padding:0;
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .5s ease;
+}
+
+.review-carousel-item.is-active{
+  position:relative;
+  opacity:1;
+  visibility:visible;
+}
+
+.review-carousel-stars{
+  color:#f6c44f;
+  font-size:14px;
+  letter-spacing:.09em;
+  margin-bottom:10px;
+}
+
+.review-carousel-item p{
+  margin:0 0 14px;
+  font:400 clamp(16px,2.2vw,19px)/1.55 var(--serif);
+  color:#fff;
+  max-width:560px;
+}
+
+.review-carousel-item footer{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.review-avatar{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--gold);
+  color:#071a2a;
+  display:grid;
+  place-items:center;
+  font:700 13px var(--sans);
+  flex:0 0 auto;
+}
+
+.review-carousel-item cite{
+  font-style:normal;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.04em;
+  color:#fff;
+}
+
+.review-carousel-date{
+  color:rgba(255,255,255,.45);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+.review-carousel-dots{
+  display:flex;
+  gap:8px;
+  margin-top:18px;
+}
+
+.review-carousel-dots button{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+  transition:background .2s,border-color .2s;
+}
+
+.review-carousel-dots button.is-active{
+  background:var(--gold);
+  border-color:var(--gold);
+}
+
+.review-tags{
+  margin:4px 0 0;
+  color:rgba(255,255,255,.5);
+  font-size:11px;
+  letter-spacing:.03em;
+}
+
 @media(max-width:640px){
   .brand-logo{
     width:62px;

@@ -43,4 +43,37 @@
   }
 
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+
+  const carousel = document.querySelector('[data-review-carousel]');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.review-carousel-item');
+    const dots = carousel.querySelectorAll('.review-carousel-dots button');
+    let index = 0;
+    let timer = null;
+
+    const show = (i) => {
+      index = i;
+      slides.forEach((slide, n) => slide.classList.toggle('is-active', n === i));
+      dots.forEach((dot, n) => {
+        dot.classList.toggle('is-active', n === i);
+        dot.setAttribute('aria-selected', String(n === i));
+      });
+    };
+
+    const next = () => show((index + 1) % slides.length);
+    const stop = () => { if (timer) { window.clearInterval(timer); timer = null; } };
+    const start = () => {
+      stop();
+      if (reducedMotion || slides.length < 2) return;
+      timer = window.setInterval(next, 6000);
+    };
+
+    dots.forEach((dot, n) => dot.addEventListener('click', () => { show(n); start(); }));
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', start);
+
+    start();
+  }
 })();
