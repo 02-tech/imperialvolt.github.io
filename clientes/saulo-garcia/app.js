@@ -65,7 +65,7 @@
     const start = () => {
       stop();
       if (reducedMotion || slides.length < 2) return;
-      timer = window.setInterval(next, 6000);
+      timer = window.setInterval(next, 3200);
     };
 
     dots.forEach((dot, n) => dot.addEventListener('click', () => { show(n); start(); }));

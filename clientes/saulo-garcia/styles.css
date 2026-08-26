@@ -161,7 +161,7 @@
 .review-carousel{
   position:relative;
   margin:26px 0 10px;
-  min-height:140px;
+  min-height:190px;
 }
 
 .review-carousel-track{
@@ -234,8 +234,10 @@
 
 .review-carousel-dots{
   display:flex;
+  flex-wrap:wrap;
   gap:8px;
   margin-top:18px;
+  max-width:340px;
 }
 
 .review-carousel-dots button{
