@@ -1,3 +1,12 @@
+<!-- AI-GOVERNANCE-NOTICE: v1 -->
+> [!IMPORTANT]
+> **Governança obrigatória para qualquer inteligência artificial**
+> Antes de usar, interpretar ou atualizar esta memória ou instrução, a IA deve: identificar-se explicitamente (agente, sessão/tarefa e projeto); confirmar o diretório canônico; consultar as memórias globais e do projeto; e cumprir os protocolos, padrões, estados e decisões de `C:\Users\FAGUITAL\PROJETOS\0_CENTRAL_ENGENHARIA`.
+> Leitura mínima obrigatória: `00_GOVERNANCA\AI_CODING_RULES.md`, `08_AI\CONTEXT_RULES.md`, `08_AI\MEMORY_POLICY.md`, `08_AI\SESSION_BOOTSTRAP.md` e as instruções específicas do projeto.
+> Antes de escrever, deve verificar autoria, ownership/lock e trabalho concorrente; preservar o conteúdo existente; não sobrescrever trabalho alheio; e registrar autoria, timestamp, arquivos, comandos relevantes, resultado, validações, rollback e pendências.
+> Em caso de divergência, o estado real verificado, a fonte canônica do projeto e os protocolos centrais prevalecem. Memória privada de agente não substitui evidência atual.
+<!-- /AI-GOVERNANCE-NOTICE -->
+
 # Projeto Imperial Volt 2.0
 
 ## Estado do projeto
@@ -5,12 +14,20 @@
 Este repositório contém o site oficial da Imperial Volt.
 
 - Produção: branch main
-- Desenvolvimento: branch imperialvolt-2.0
+- Desenvolvimento: branch local de trabalho a partir da main (a antiga `imperialvolt-2.0` é só histórico, não usar)
 - Domínio: imperialvolt.com
 - Hospedagem: GitHub Pages
 - Tecnologia: HTML, CSS e JavaScript estáticos
 - Não utilizar CMS
 - Não utilizar construtores visuais
+
+## Publicação e operação (verificado em 2026-09-24)
+
+- GitHub Pages publica a `main` (raiz): **todo push na main vai ao ar em ~1 min**, sem ambiente de teste.
+- Fluxo de edição, fotos novas e verificação: `docs/RUNBOOK.md`. Estado e pendências: `docs/ESTADO_ATUAL.md`.
+- `_config.yml` impede que arquivos internos (este `CLAUDE.md`, `docs/`, `tools/`) sejam publicados.
+  Arquivo interno novo fora dessas pastas precisa entrar na lista `exclude`.
+- Nunca versionar `novosite/` (projeto separado, contém `.secrets/`) nem site de cliente neste repositório.
 
 ## Objetivo futuro
 
