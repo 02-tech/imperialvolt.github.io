@@ -1,0 +1,9 @@
+# GitHub Pages (Jekyll): arquivos internos que ficam no repositorio mas NAO devem ser publicados.
+# Sem este arquivo, qualquer arquivo versionado vira publico em imperialvolt.com.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - docs/
+  - tools/
+  - _relatorios/
+  - novosite/

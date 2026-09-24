@@ -5,3 +5,13 @@ _relatorios/
 *.log
 .DS_Store
 Thumbs.db
+
+# Projetos/pastas de trabalho que nunca podem entrar no site publicado (GitHub Pages publica o repo inteiro)
+novosite/
+.wrangler/
+.codex-remote-attachments/
+node_modules/
+.secrets/
+.env
+.env.*
+.dev.vars
