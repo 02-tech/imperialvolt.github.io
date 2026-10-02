@@ -25,15 +25,81 @@
   <link rel="preload" as="image" href="./src/imagens/portfolio.jpeg">
   <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20260811-dedup-db">
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://imperialvolt.com/#website",
+      "url": "https://imperialvolt.com/",
+      "name": "Imperial Volt",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://imperialvolt.com/#organization"
+      }
+    },
+    {
       "@type": "Organization",
+      "@id": "https://imperialvolt.com/#organization",
       "name": "Imperial Volt",
       "url": "https://imperialvolt.com/",
+      "description": "Empresa de Petrópolis (RJ) com atendimento remoto: criação de sites, sistemas web, aplicativos, automações, impressão 3D e soluções sob medida.",
       "email": "contato.imperialvolt@gmail.com",
-      "areaServed": ["Petrópolis - RJ", "Atendimento remoto"],
-      "sameAs": ["https://www.instagram.com/imperialvolt"]
+      "taxID": "60.179.279/0001-44",
+      "founder": {
+        "@id": "https://faguital.com.br/#person"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Petrópolis",
+        "addressRegion": "RJ",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        "Petrópolis - RJ",
+        "Atendimento remoto"
+      ],
+      "knowsAbout": [
+        "Criação de sites",
+        "Sistemas web",
+        "Aplicativos",
+        "Automação",
+        "Impressão 3D",
+        "Inteligência artificial"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/imperialvolt"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://faguital.com.br/#person",
+      "name": "Guilherme Carvalho de Andrade",
+      "alternateName": [
+        "FAGUITAL",
+        "Gui Carvalho"
+      ],
+      "url": "https://faguital.com.br/",
+      "sameAs": [
+        "https://www.instagram.com/faguital/",
+        "https://www.facebook.com/faguital",
+        "https://www.youtube.com/@faguital",
+        "https://github.com/02-tech"
+      ]
+    },
+    {
+      "@type": "Project",
+      "@id": "https://tecnofagguard.com.br/#tecnofag-guard",
+      "name": "TECNOFAG GUARD",
+      "alternateName": "TECNOFAG GUARD®",
+      "url": "https://tecnofagguard.com.br/",
+      "description": "Ecossistema brasileiro de identificação digital criado por Guilherme Carvalho de Andrade (FAGUITAL), com pedido de patente de invenção depositado no INPI e marca concedida.",
+      "founder": {
+        "@id": "https://faguital.com.br/#person"
+      }
     }
+  ]
+}
   </script>
 </head>
 <body>
@@ -293,7 +359,7 @@
         <span>CNPJ 60.179.279/0001-44</span>
         <span id="footerCity">Petrópolis - RJ</span>
         <span>© <span id="year"></span> Imperial Volt</span>
-        <a class="site-footer__maker" href="https://faguital.com.br" target="_blank" rel="noopener">Desenvolvido por FAGUITAL</a>
+        <a class="site-footer__maker" href="https://faguital.com.br" target="_blank" rel="noopener">Uma empresa de Guilherme Carvalho de Andrade (FAGUITAL)</a>
       </div>
     </div>
   </footer>
