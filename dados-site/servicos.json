@@ -86,24 +86,9 @@
       "descricao": "Páginas e lojas para apresentar uma empresa, uma oferta ou uma operação de venda online.",
       "servicos": [
         {
-          "id": "landing-page-estatica",
-          "nome": "Landing Page",
-          "preco": 450,
-          "tipoPreco": "fixo",
-          "pixElegivel": true,
-          "prazoEstimadoDiasUteis": { "minimo": 2, "maximo": 5 },
-          "descricao": "Uma página focada em uma oferta, serviço ou campanha, com caminho claro para o contato.",
-          "mensagemComercial": "Uma oferta. Uma página. Um objetivo.",
-          "idealPara": "Campanhas, anúncios, produtos específicos, serviços específicos e captação de contatos.",
-          "quandoUsar": "Quando existe uma oferta principal e o objetivo é apresentar, convencer e gerar uma ação.",
-          "quandoNaoNecessario": "Se o negócio precisa apresentar várias áreas, história, equipe e serviços, um site institucional é mais adequado.",
-          "inclui": [ "uma página responsiva", "estrutura focada em conversão", "contatos e links", "SEO básico quando previsto" ],
-          "custosExternos": [ "Domínio e hospedagem paga não estão incluídos automaticamente.", "Anúncios e ferramentas de terceiros são contratados separadamente." ]
-        },
-        {
           "id": "site-institucional-estatico",
-          "nome": "Site institucional estático",
-          "precoInicial": 600,
+          "nome": "Site vitrine / institucional",
+          "precoInicial": 890,
           "tipoPreco": "a partir de",
           "pixElegivel": true,
           "prazoEstimadoDiasUteis": { "minimo": 3, "maximo": 7 },
@@ -113,26 +98,13 @@
           "quandoUsar": "Quando o conteúdo é principalmente informativo e não precisa de login, usuários, estoque, pedidos ou banco de dados complexo.",
           "quandoNaoNecessario": "Se a operação precisa receber, processar e gerenciar informações continuamente, vale avaliar um sistema ou site dinâmico.",
           "inclui": [ "páginas institucionais conforme escopo", "layout responsivo", "serviços, localização e contato", "links, galeria e SEO básico quando previsto" ],
-          "custosExternos": [ "Domínio, hospedagem paga e e-mail profissional são separados.", "Banco de dados, painel e integrações não fazem parte deste formato por padrão." ]
-        },
-        {
-          "id": "site-institucional-avancado",
-          "nome": "Site institucional avançado",
-          "precoInicial": 900,
-          "tipoPreco": "a partir de",
-          "pixElegivel": true,
-          "prazoEstimadoDiasUteis": { "minimo": 5, "maximo": 10 },
-          "descricao": "Projeto institucional maior, com mais páginas, conteúdo, elementos personalizados e recursos adicionais.",
-          "idealPara": "Empresas que precisam de uma apresentação mais completa e personalizada do que um site institucional de entrada.",
-          "quandoUsar": "Quando há várias áreas, públicos, serviços, projetos ou conteúdos que precisam de hierarquia própria.",
-          "quandoNaoNecessario": "Se uma única oferta resolve o objetivo, uma Landing Page pode ser mais rápida e econômica.",
-          "inclui": [ "estrutura com mais páginas", "componentes visuais personalizados", "conteúdo organizado por áreas", "responsividade e SEO básico quando previsto" ],
-          "custosExternos": [ "Domínio, hospedagem paga, licenças e serviços externos ficam à parte." ]
+          "custosExternos": [ "Domínio, hospedagem paga e e-mail profissional são separados.", "Banco de dados, painel e integrações não fazem parte deste formato por padrão." ],
+          "observacao": "O valor mínimo vale para o escopo básico do formato; o orçamento final depende do que o projeto precisa."
         },
         {
           "id": "site-dinamico-cms",
           "nome": "Site dinâmico / CMS com banco de dados",
-          "precoInicial": 1200,
+          "precoInicial": 1690,
           "tipoPreco": "a partir de",
           "pixElegivel": true,
           "prazoEstimadoDiasUteis": { "minimo": 7, "maximo": 15 },
@@ -141,12 +113,13 @@
           "quandoUsar": "Quando a informação muda com frequência ou existe uma equipe que precisa gerenciar conteúdo.",
           "quandoNaoNecessario": "Se a empresa raramente altera o conteúdo, um site estático costuma ser mais simples e suficiente.",
           "inclui": [ "estrutura dinâmica", "CMS ou painel conforme escopo", "banco de dados do projeto conforme escopo", "cadastro e gestão do conteúdo descrito" ],
-          "custosExternos": [ "Hospedagem, banco de dados como serviço, domínio, licenças e integrações pagas são separados.", "Novos módulos após a entrega geram novo orçamento." ]
+          "custosExternos": [ "Hospedagem, banco de dados como serviço, domínio, licenças e integrações pagas são separados.", "Novos módulos após a entrega geram novo orçamento." ],
+          "observacao": "O valor mínimo vale para o escopo básico do formato; o orçamento final depende do que o projeto precisa."
         },
         {
           "id": "ecommerce-loja-virtual",
           "nome": "Loja virtual / e-commerce",
-          "precoInicial": 1500,
+          "precoInicial": 2990,
           "tipoPreco": "a partir de",
           "pixElegivel": true,
           "prazoEstimadoDiasUteis": { "minimo": 10, "maximo": 25 },
@@ -155,7 +128,31 @@
           "quandoUsar": "Quando a venda precisa acontecer online com uma jornada de compra estruturada.",
           "quandoNaoNecessario": "Se o negócio só precisa apresentar produtos e receber pedidos pelo WhatsApp, um site ou catálogo pode bastar.",
           "inclui": [ "catálogo e gestão de produtos", "carrinho e pedidos conforme escopo", "integração de pagamento prevista", "estrutura responsiva" ],
-          "custosExternos": [ "Gateways, taxas de pagamento, frete, domínio, hospedagem e serviços recorrentes são separados.", "Integrações não descritas não são presumidas como incluídas." ]
+          "custosExternos": [ "Gateways, taxas de pagamento, frete, domínio, hospedagem e serviços recorrentes são separados.", "Integrações não descritas não são presumidas como incluídas." ],
+          "observacao": "O valor mínimo vale para o escopo básico do formato; o orçamento final depende do que o projeto precisa."
+        },
+        {
+          "id": "projeto-web-personalizado",
+          "nome": "Projeto web personalizado",
+          "precoInicial": 3990,
+          "tipoPreco": "a partir de",
+          "pixElegivel": true,
+          "prazoTexto": "Definido após análise do projeto",
+          "descricao": "Projeto web sob medida, com regras do seu negócio, áreas exclusivas, integrações ou funcionalidades que não cabem nos formatos padrão.",
+          "idealPara": "Empresas com um processo próprio que precisa virar ferramenta na internet.",
+          "quandoUsar": "Quando o projeto exige funcionalidades específicas, várias integrações ou uma experiência fora do comum.",
+          "quandoNaoNecessario": "Se um site vitrine, um site dinâmico ou uma loja virtual já resolvem, comece por eles.",
+          "inclui": [
+            "levantamento do que o projeto precisa",
+            "escopo e etapas definidos antes de começar",
+            "desenvolvimento sob medida",
+            "publicação conforme o escopo"
+          ],
+          "custosExternos": [
+            "Domínio, hospedagem, serviços externos, APIs e taxas de terceiros são separados.",
+            "Manutenção e suporte futuro são contratados à parte."
+          ],
+          "observacao": "O valor inicial vale para o escopo básico; o orçamento final depende do que o projeto precisa."
         }
       ]
     },
@@ -518,6 +515,8 @@
     },
     {
       "id": "servicos-impressao-3d",
+      "publico": false,
+      "pendencia": "Fora da oferta pública desde 2026-10-03: modelagem, adaptação, reposição e protótipos passam a ser projeto personalizado sob orçamento (comando de Guilherme); presentes físicos em preparação.",
       "nome": "Impressão 3D sob medida",
       "entradaRotulo": "Quero resolver algo com impressão 3D",
       "descricao": "Soluções físicas para reposição, adaptação, personalização e protótipos, avaliadas individualmente.",

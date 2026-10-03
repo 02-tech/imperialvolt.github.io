@@ -1,11 +1,32 @@
 {
   "categorias": [
     {
+      "nome": "Presentes e homenagens",
+      "perguntas": [
+        {
+          "pergunta": "O que é a homenagem digital personalizada?",
+          "resposta": "É uma experiência digital criada para uma ocasião especial, com fotos, mensagem, música e pequenas surpresas, entregue por link para abrir no celular. Os valores são R$ 99,90 (7 dias), R$ 109,90 (14 dias), R$ 119,90 (30 dias) e R$ 149,90 (60 dias), com 15% de desconto no Pix ou condição promocional vigente."
+        },
+        {
+          "pergunta": "Por quanto tempo a homenagem fica disponível?",
+          "resposta": "Pelo período escolhido no pedido: 7, 14, 30 ou 60 dias. Depois disso, o endereço passa a mostrar uma mensagem de encerramento com o convite para criar uma nova homenagem."
+        },
+        {
+          "pergunta": "O que é a experiência por aproximação?",
+          "resposta": "É um elemento discreto no presente ou na embalagem: a pessoa aproxima o celular e acessa o conteúdo que você escolher, como um perfil, um vídeo, uma playlist ou uma homenagem. Avulsa custa R$ 49,90; somada a um presente físico elegível, sai por + R$ 34,90. Funciona em celulares com NFC ativado e a experiência pode variar conforme o aparelho."
+        },
+        {
+          "pergunta": "Como faço o pedido?",
+          "resposta": "Escolha o presente, adicione ao pedido, ajuste período, quantidade e adicionais e toque em Finalizar pelo WhatsApp. A mensagem chega pronta para nós; valores, prazo e entrega são confirmados no atendimento."
+        }
+      ]
+    },
+    {
       "nome": "Projetos digitais",
       "perguntas": [
         {
           "pergunta": "Quais são os valores de referência para projetos digitais?",
-          "resposta": "A tabela oficial publica Landing Page por R$ 450, site institucional a partir de R$ 600, site institucional avançado a partir de R$ 900, site dinâmico/CMS com banco de dados a partir de R$ 1.200 e loja virtual a partir de R$ 1.500. Sistemas, aplicativos, automações e serviços avulsos aparecem nas respectivas categorias com preço inicial e prazo."
+          "resposta": "Os valores de referência são: site vitrine ou institucional a partir de R$ 890, site dinâmico ou CMS a partir de R$ 1.690, loja virtual a partir de R$ 2.990 e projeto web personalizado a partir de R$ 3.990. São valores \"a partir de\": valem para o escopo básico de cada formato, e o orçamento final depende do que o projeto precisa. Domínio, hospedagem e serviços de terceiros ficam separados."
         },
         {
           "pergunta": "Qual é a diferença entre um site e um sistema?",
@@ -55,7 +76,7 @@
       ]
     },
     {
-      "nome": "Produtos físicos personalizados",
+      "nome": "Presentes físicos e projetos personalizados",
       "perguntas": [
         {
           "pergunta": "Vocês fazem qualquer impressão?",
@@ -67,7 +88,7 @@
         },
         {
           "pergunta": "Qual é o valor mínimo de um projeto personalizado?",
-          "resposta": "Os produtos publicados têm valores de entrada: Apito da Morte Asteca por R$29,90, organizador de parede a partir de R$49,90, kit suporte para celular + proteção anti-poeira a partir de R$59,90, arte de parede automotiva a partir de R$69,90 e nome personalizado decorativo a partir de R$89,90. Tamanho, compatibilidade, acabamento, quantidade e entrega podem alterar o valor."
+          "resposta": "Projeto personalizado não tem preço fechado: nova modelagem, mudança estrutural, medidas específicas ou acabamento incomum são avaliados e orçados pelo WhatsApp. Pintura e acabamento manual também são sob orçamento. A coleção própria de presentes físicos da Imperial Volt está em preparação."
         }
       ]
     },

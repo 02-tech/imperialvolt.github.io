@@ -29,7 +29,9 @@
               "nome": "Modelagem ou adaptação exclusiva",
               "precoInicial": 50
             }
-          ]
+          ],
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: produção e licença comercial do modelo ainda não validadas (comando de Guilherme). Voltar somente após validação."
         },
         {
           "id": "arte-parede-automotiva",
@@ -60,7 +62,9 @@
           "prazoEstimadoDiasUteis": {
             "minimo": 4,
             "maximo": 8
-          }
+          },
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: produção e licença comercial do modelo ainda não validadas (comando de Guilherme). Voltar somente após validação."
         },
         {
           "id": "nome-personalizado-decorativo",
@@ -91,7 +95,9 @@
           "prazoEstimadoDiasUteis": {
             "minimo": 5,
             "maximo": 10
-          }
+          },
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: produção e licença comercial do modelo ainda não validadas (comando de Guilherme). Voltar somente após validação."
         },
         {
           "id": "kit-suporte-celular-antipoeira",
@@ -116,7 +122,9 @@
           "prazoEstimadoDiasUteis": {
             "minimo": 3,
             "maximo": 7
-          }
+          },
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: produção e licença comercial do modelo ainda não validadas (comando de Guilherme). Voltar somente após validação."
         },
         {
           "id": "organizador-parede-sob-medida",
@@ -141,7 +149,9 @@
           "prazoEstimadoDiasUteis": {
             "minimo": 4,
             "maximo": 8
-          }
+          },
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: produção e licença comercial do modelo ainda não validadas (comando de Guilherme). Voltar somente após validação."
         },
         {
           "id": "impressao-sob-medida",
@@ -163,7 +173,9 @@
           ],
           "avisoPreco": "A partir de R$50 para análise e desenvolvimento inicial. Fabricação, acabamento, quantidade e entrega são definidos após a avaliação do projeto.",
           "pixElegivel": true,
-          "prazoTexto": "Definido após análise do projeto"
+          "prazoTexto": "Definido após análise do projeto",
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: produção e licença comercial do modelo ainda não validadas (comando de Guilherme). Voltar somente após validação."
         }
       ]
     },
@@ -208,7 +220,9 @@
           "exemplo": {
             "texto": "Ver exemplos de homenagem",
             "url": "https://homenagem-exemplo.pages.dev/"
-          }
+          },
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: substituído pela Experiência por aproximação (dados-site/presentes.json). Pedidos de empresas em quantidade seguem pelo orçamento."
         },
         {
           "id": "chaveiro-nfc-personalizado",
@@ -246,7 +260,9 @@
           "exemplo": {
             "texto": "Ver exemplos de homenagem",
             "url": "https://homenagem-exemplo.pages.dev/"
-          }
+          },
+          "publico": false,
+          "pendencia": "Fora da oferta pública desde 2026-10-03: substituído pela Experiência por aproximação (dados-site/presentes.json). Pedidos de empresas em quantidade seguem pelo orçamento."
         }
       ]
     }

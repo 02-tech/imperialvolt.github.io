@@ -83,3 +83,28 @@
   - Commit local, **sem push** (handoff: publicar é com Guilherme). Depois do push: `pwsh -File tools/verificar-site.ps1`.
   - Atenção técnica: este repositório tem arquivos com terminações de linha misturadas (CRLF/LF); editar preservando o
     original (o commit foi feito com `core.autocrlf=false` para o diff conter só as linhas alteradas).
+
+## Atualização (2026-10-03, CLAUDE/SITES nucleo-faguital, sessão eef558ae): atualização comercial
+
+- Executado o comando de Guilherme `COMANDO_SITE_IMPERIAL_VOLT_ATUALIZACAO_COMERCIAL`. Operação e esquema de dados:
+  `docs/COMERCIAL.md`. Estudo anterior (pacotes descartados): `docs/ESTUDO_PRESENTE_NFC.md`; o commit local antigo
+  (`83b2930`) **não foi publicado**: tirado da fila e guardado só na branch local `arquivo/catalogo-virtual-v1-descartado`.
+- Presentes (`dados-site/presentes.json` + `src/js/pedido.js`): homenagem digital personalizada 7/14/30/60 dias
+  (R$ 99,90 / 109,90 / 119,90 destaque / 149,90); experiência por aproximação R$ 49,90 avulsa ou + R$ 34,90 em físico;
+  homenagem 30 dias em combo + R$ 99,90 (oferecida depois da aproximação; vale também para a aproximação avulsa, que já a
+  inclui); personalização simples + R$ 19,90; pintura e projeto personalizado sob orçamento. Pix 15% OU promoção, sem
+  somar; estrutura de campanhas pronta (nenhuma ativa).
+- Carrinho como montador de pedido (sem pagamento online): botão "Pedido" no cabeçalho, painel com quantidade, período,
+  adicionais, preço por item, Pix, promoções, total, nome e observações, salvo no navegador; finaliza no WhatsApp com a
+  mensagem organizada. Upsell leve e opcional ("Adicionar ao presente" / "Continuar sem adicionar").
+- Físicos: nenhum à venda. Produtos antigos (apito, arte automotiva, nome decorativo, suporte, organizador, sob medida) e
+  tag/chaveiro NFC com `"publico": false` + motivo (produção/licença não validadas ou substituídos pela experiência);
+  categoria de serviço "Impressão 3D sob medida" fora da oferta (modelagem passa a projeto personalizado sob orçamento).
+  Seção "Presentes físicos Imperial Volt: em preparação" com CTA "Quero um projeto personalizado".
+- Sites: vitrine/institucional a partir de R$ 890, dinâmico/CMS R$ 1.690, loja virtual R$ 2.990, projeto web
+  personalizado R$ 3.990 ("a partir de"); landing page e site avançado saíram da tabela. Nota de domínio, hospedagem e
+  continuidade (sem nada permanente incluído). FAQ e termos atualizados.
+- Topo: "Presentes que emocionam. Sites que vendem."; menu: Presentes, Sites e serviços, Sob medida, Para empresas,
+  Orçamento; seção "O que você pode comprar" explica presente digital, físico, interativo, completo, projeto
+  personalizado e presença digital profissional. `homenagem-encerrada.html` = página de continuidade de homenagem expirada.
+- Testes: `tools/testar-pedido.js` (390 e 1366) todos ok; termos sem preço antigo de sites; expiração testada.
