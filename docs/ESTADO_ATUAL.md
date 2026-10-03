@@ -69,3 +69,17 @@
 3. ~~20 branches antigas no GitHub~~ **RESOLVIDO** em 2026-10-02: arquivadas como tags `arquivo/*` e removidas (ver atualização).
 4. Worktree `IMPERIAL_VOLT\imperialvolt.com-saulo-preview` (branch `saulo-preview`) — legado do preview do Saulo; não mexido.
 5. Fotos novas: fluxo pronto (`tools/otimizar-fotos.ps1`), aguardando as fotos.
+
+## Atualização (2026-10-03, CLAUDE/SITES nucleo-faguital, sessão eef558ae)
+
+- Handoff da SITES principal (`20261003-SITES-principal-to-SITES-homenagens-nfc-site-oficial-e-fluxo-guiado.md`), tarefa B:
+  - Nova seção `#homenagens` ("Homenagens que abrem com um toque") logo após o catálogo: 3 cartões (Aniversário, Natal,
+    Ano Novo) abrindo cada exemplo, botão "Ver exemplos" (https://homenagem-exemplo.pages.dev/, nova aba) e "Pedir a minha"
+    (`#orcamento`, categoria `nfc`). Link "Homenagens" no menu (desktop e móvel).
+  - Campo `exemplo` {texto, url} na Tag e no Chaveiro NFC em `dados-site/catalogo-publico.json` (o que o site carrega) e
+    em `dados-site/catalogo.json`; `src/js/data.js` repassa o campo e `src/js/catalogo.js` mostra "Ver exemplos de homenagem ↗".
+  - Nenhum preço, prazo ou depoimento novo. Versões de cache: `?v=20261003-homenagens`.
+  - Testado local (390, 1024, 1366): sem rolagem lateral, sem erros JS/rede, links certos.
+  - Commit local, **sem push** (handoff: publicar é com Guilherme). Depois do push: `pwsh -File tools/verificar-site.ps1`.
+  - Atenção técnica: este repositório tem arquivos com terminações de linha misturadas (CRLF/LF); editar preservando o
+    original (o commit foi feito com `core.autocrlf=false` para o diff conter só as linhas alteradas).
