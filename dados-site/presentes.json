@@ -1,0 +1,86 @@
+{
+  "versao": "2026-10-03",
+  "origem": "Comando de Guilherme: COMANDO_SITE_IMPERIAL_VOLT_ATUALIZACAO_COMERCIAL (2026-10-03).",
+  "regras": {
+    "pixPercentual": 15,
+    "pixTexto": "15% no Pix OU condição promocional vigente, conforme a oferta.",
+    "promocaoAcumulaComPix": false,
+    "pagamento": "Pedido montado no site e finalizado pelo WhatsApp. Valores, prazo e entrega são confirmados no atendimento."
+  },
+  "promocoes": [],
+  "promocoesModelo": {
+    "comentario": "Para criar uma campanha, copie este modelo para a lista promocoes e ajuste. Campanhas não somam com o Pix: vale a condição mais vantajosa para o cliente em cada item.",
+    "exemplo": { "id": "campanha-exemplo", "ativa": false, "nome": "Nome da campanha", "percentual": 20, "aplicaA": ["homenagem-digital"], "inicio": "2026-12-01", "fim": "2026-12-24" }
+  },
+  "produtos": [
+    {
+      "id": "homenagem-digital",
+      "tipo": "digital",
+      "nome": "Homenagem digital personalizada",
+      "chamada": "Uma experiência digital personalizada para uma ocasião especial.",
+      "descricao": "Criamos para a pessoa uma experiência com fotos, mensagem, música e pequenas surpresas, entregue por link para abrir no celular.",
+      "inclui": ["fotos e mensagem de quem presenteia", "música e abertura especial", "interações do tema da ocasião", "um ajuste depois de pronta"],
+      "condicao": "Fica disponível pelo período escolhido.",
+      "pixElegivel": true,
+      "exemplos": "https://homenagem-exemplo.pages.dev/",
+      "variantes": [
+        { "id": "7-dias", "rotulo": "7 dias", "preco": 99.9 },
+        { "id": "14-dias", "rotulo": "14 dias", "preco": 109.9 },
+        { "id": "30-dias", "rotulo": "30 dias", "preco": 119.9, "destaque": true },
+        { "id": "60-dias", "rotulo": "60 dias", "preco": 149.9 }
+      ],
+      "varianteInicial": "30-dias"
+    },
+    {
+      "id": "experiencia-aproximacao",
+      "tipo": "interativo",
+      "nome": "Experiência por aproximação",
+      "chamada": "Torne o seu presente interativo.",
+      "descricao": "Com uma aproximação do celular, a pessoa acessa o conteúdo especial que você escolher: um perfil, um vídeo, uma playlist ou uma homenagem.",
+      "inclui": ["elemento discreto para o presente ou a embalagem", "configurado com o conteúdo que você escolher", "testado antes da entrega"],
+      "condicao": "Funciona em celulares com NFC ativado; a experiência pode variar conforme o aparelho.",
+      "pixElegivel": true,
+      "preco": 49.9,
+      "campoConteudo": "O que a aproximação deve abrir",
+      "extrasPermitidos": ["homenagem-combo-30"]
+    }
+  ],
+  "extras": [
+    {
+      "id": "aproximacao-combo",
+      "nome": "Experiência por aproximação",
+      "descricao": "A pessoa aproxima o celular e acessa o conteúdo que você preparou para ela.",
+      "preco": 34.9,
+      "aplicaEm": "produto físico elegível"
+    },
+    {
+      "id": "homenagem-combo-30",
+      "nome": "Homenagem digital personalizada (30 dias)",
+      "descricao": "Experiência com fotos, mensagens e outros detalhes especiais, aberta pela aproximação.",
+      "preco": 99.9,
+      "requer": "aproximacao-combo",
+      "observacao": "Preço de combo: vale quando o presente já tem a experiência por aproximação. A Experiência por aproximação avulsa já inclui a aproximação."
+    },
+    {
+      "id": "personalizacao-simples",
+      "nome": "Personalização simples (nome ou texto)",
+      "descricao": "Nome ou texto curto, sem remodelagem relevante.",
+      "preco": 19.9,
+      "aplicaEm": "produto físico que aceite personalização simples"
+    }
+  ],
+  "fisico": {
+    "status": "em-preparacao",
+    "comentario": "Nenhum produto físico está à venda até validação de produção e de licença comercial. A régua abaixo é arquitetura comercial interna; não é exibida como oferta.",
+    "regua": [
+      { "tamanho": "pequeno", "medida": "7 a 9 cm", "preco": 49.9 },
+      { "tamanho": "medio", "medida": "10 a 12 cm", "preco": 59.9 },
+      { "tamanho": "padrao", "medida": "13 a 15 cm", "preco": 79.9 },
+      { "tamanho": "grande", "medida": "16 a 18 cm", "preco": 99.9 },
+      { "tamanho": "diferenciada", "medida": "peça diferenciada", "precoInicial": 129.9 }
+    ],
+    "pintura": "Pintura e acabamento manual: sob orçamento.",
+    "projetoPersonalizado": "Nova modelagem, mudança estrutural, medidas específicas ou acabamento incomum: sob orçamento, pelo WhatsApp.",
+    "produtos": []
+  }
+}

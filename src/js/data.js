@@ -7,7 +7,8 @@ const ARQUIVOS = {
   politicas: "./dados-site/politicas.json",
   pagamentos: "./dados-site/pagamentos.json",
   avaliacoes: "./dados-site/avaliacoes.json",
-  faq: "./dados-site/faq.json"
+  faq: "./dados-site/faq.json",
+  presentes: "./dados-site/presentes.json"
 };
 
 const ROTULOS = {
@@ -45,13 +46,16 @@ export function unificarCategorias(dados) {
   const descontoPix = dados.servicos?.regrasGerais?.pixIntegralDescontoPercentual ?? dados.catalogo?.regrasGerais?.pixIntegralDescontoPercentual ?? 0;
 
   (dados.servicos?.categorias || []).forEach((categoria) => {
-    if (!ROTULOS[categoria.id]) return;
-    categorias.push(normalizarCategoria(categoria, categoria.servicos || [], "servico", descontoPix));
+    if (!ROTULOS[categoria.id] || categoria.publico === false) return;
+    const cat = normalizarCategoria(categoria, (categoria.servicos || []).filter((item) => item.publico !== false), "servico", descontoPix);
+    if (cat.itens.length) categorias.push(cat);
   });
 
   (dados.catalogo?.categorias || []).forEach((categoria) => {
     if (!ROTULOS[categoria.id]) return;
-    categorias.push(normalizarCategoria(categoria, categoria.produtos || [], "catalogo", descontoPix));
+    // itens com "publico": false ficam fora da oferta (ex.: produção ou licença ainda não validadas)
+    const cat = normalizarCategoria(categoria, (categoria.produtos || []).filter((item) => item.publico !== false), "catalogo", descontoPix);
+    if (cat.itens.length) categorias.push(cat);
   });
 
   return categorias;

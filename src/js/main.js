@@ -1,8 +1,9 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, categoriasDeCatalogo, categoriasDeServicos, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "./data.js";
-import { renderCatalogo } from "./catalogo.js?v=20261003-homenagens";
+import { renderCatalogo } from "./catalogo.js?v=20261003-comercial";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
+import { iniciarPedido } from "./pedido.js?v=20261003-comercial";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
 const CHAT_AUTO_CLOSE_MS = 5000;
@@ -227,7 +228,7 @@ function renderServicosComerciais(servicoCategorias, selecionar) {
 
   if (comparativoAlvo) {
     const todos = categorias.flatMap((categoria) => categoria.servicos);
-    const idsComparacao = ["landing-page-estatica", "site-institucional-estatico", "site-institucional-avancado", "site-dinamico-cms", "ecommerce-loja-virtual"];
+    const idsComparacao = ["site-institucional-estatico", "site-dinamico-cms", "ecommerce-loja-virtual", "projeto-web-personalizado"];
     comparativoAlvo.replaceChildren();
     idsComparacao.map((id) => todos.find((oferta) => oferta.id === id)).filter(Boolean).forEach((oferta) => {
       const card = criar("article", `digital-compare-card${oferta.id === "site-institucional-estatico" ? " digital-compare-card--featured" : ""}`);
@@ -358,24 +359,26 @@ async function boot() {
       obterOrcamento: () => quote.obterOrcamento(),
       limparOrcamento: () => quote.limpar()
     };
-    const catalogo = renderCatalogo(categoriasDeCatalogo(categorias), {
+    // catálogo físico em preparação: só renderiza se a seção existir e houver itens públicos
+    const catalogo = $("#gridCatalogo") ? renderCatalogo(categoriasDeCatalogo(categorias), {
       gridEl: $("#gridCatalogo"),
       filtrosEl: $("#catalogFilters"),
       maisEl: $("#catalogMore"),
       onSelect: selecionarProduto
-    });
+    }) : null;
     renderCategorias(categoriasDeCatalogo(categorias), (categoriaId) => {
       if (categoriaId === "empresas-revendedores") {
         quote.selecionar({ categoriaId });
         rolarPara("orcamento");
         return;
       }
-      catalogo.filtrar(categoriaId);
+      catalogo?.filtrar(categoriaId);
       rolarPara("catalogo");
     });
     document.querySelectorAll("[data-quote-category]").forEach((link) => {
       link.addEventListener("click", () => quote.selecionar({ categoriaId: link.dataset.quoteCategory }));
     });
+    iniciarPedido(dados.presentes);
     renderServicosComerciais(categoriasDeServicos(categorias), selecionarProduto);
     renderFaq(dados.faq);
     renderConversionStrip(dados);
