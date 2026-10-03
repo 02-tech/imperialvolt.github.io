@@ -35,13 +35,37 @@
   Branch `imperialvolt-2.0` mantida intacta.
 - Agora: pasta em `main`, alinhada ao publicado + os commits acima.
 
+## Atualização (2026-10-01, CLAUDE/ORQUESTRADOR nucleo-faguital, sessão 154219e0, via posição SITES)
+
+- **Push já foi feito** (item 1 abaixo, antigo): verificado agora, `main` local = `origin/main` (0 commits de
+  diferença em qualquer direção), HEAD atual `d63f08a` ("perf: otimiza o mascote do Voltz-Bot, 2,2 MB -> 52 KB"),
+  posterior aos commits listados acima. `imperialvolt.com/CLAUDE.md` confirmado 404 no ar (prova de que o
+  `_config.yml`/push desta rodada está publicado). Não houve autorização nesta passagem para rodar
+  `tools/verificar-site.ps1`; isso permanece como próximo passo.
+- Itens 2 e 3 abaixo continuam reais e pendentes de decisão do Guilherme — não verificados de novo nesta
+  passagem além de confirmar que `novosite/` (409 MB, com `.secrets/`) ainda está dentro desta pasta.
+
+## Atualização (2026-10-02, CLAUDE/SITES nucleo-faguital, sessão eef558ae)
+
+- A atualização de 2026-10-01 acima foi escrita pelo ORQUESTRADOR nucleo-faguital (sessão 154219e0) e ficou sem commit;
+  foi salva agora a pedido de Guilherme, com a autoria original preservada.
+- `tools/verificar-site.ps1`: tudo certo (ver item 1).
+- Identidade digital: JSON-LD (WebSite, Organization, Person, Project), `llms.txt`, `humans.txt`, IndexNow e Google Search
+  Console verificado por DNS (Cloudflare, TXT `google-site-verification`; não apagar), sitemap enviado.
+- Branches antigas: as 20 branches remotas de agosto foram arquivadas como tags `arquivo/*` (mais `arquivo/saulo-preview`)
+  e removidas por Guilherme; no GitHub resta só `main`. Lista com SHAs:
+  `0_CENTRAL_ENGENHARIA/09_COLABORACAO_IA/control_plane/evidence/imperialvolt-branches-arquivo-20261002/branches-antes.txt`.
+- `novosite/`: decisão delegada por Guilherme; mantida no lugar por ora (é a fonte do P20 agenda-demo, tem segredos, está
+  fora do Git e do site, privado 404). Mudança de raiz fica para migração própria.
+- `saulo.imperialvolt.store` agora só redireciona para o site atual do cliente (ver ESTADO_ATUAL do Saulo).
+
 ## Pendências
 
-1. **Push** (`git push origin main`) — Guilherme. Depois: `pwsh -File tools/verificar-site.ps1` deve passar tudo.
-2. `novosite/` (409 MB, projeto do Codex com agendamento Cloudflare e `.secrets/`) está dentro desta pasta, fora do
+1. ~~**Push** (`git push origin main`) — Guilherme.~~ **CONCLUÍDO** (ver atualização acima). `tools/verificar-site.ps1`
+   rodado em 2026-10-02: "Tudo certo" (páginas iguais ao local, 14/14 imagens, privados 404, http/www -> https).
+2. **Decisão 2026-10-02: manter por ora** (ver atualização). `novosite/` (409 MB, projeto do Codex com agendamento Cloudflare e `.secrets/`) está dentro desta pasta, fora do
    Git. Deveria ter raiz própria (ex.: `2_APPS\WEB\...` ou `0_AUTOMACAO`) conforme `PROJECT_LOCATION_STANDARD.md`;
    não movido (migração exige decisão e checagem de referências).
-3. 20 branches antigas no GitHub (`agent/*`, `feature/*`, `fix/*`, `dev-ajustes`, `commercial-base-*`) — limpeza opcional,
-   decisão do Guilherme.
+3. ~~20 branches antigas no GitHub~~ **RESOLVIDO** em 2026-10-02: arquivadas como tags `arquivo/*` e removidas (ver atualização).
 4. Worktree `IMPERIAL_VOLT\imperialvolt.com-saulo-preview` (branch `saulo-preview`) — legado do preview do Saulo; não mexido.
 5. Fotos novas: fluxo pronto (`tools/otimizar-fotos.ps1`), aguardando as fotos.
