@@ -112,6 +112,15 @@ function criarCard(item, categoria, onSelect) {
     card.appendChild(criar("p", "product-card__meta", `Prazo: ${prazoFormatado(item)}`));
   }
 
+  // exemplo publicado do produto (ex.: homenagens com NFC), vindo do campo "exemplo" do catálogo
+  if (item.exemplo?.url) {
+    const exemplo = criar("a", "product-card__example", `${item.exemplo.texto || "Ver exemplo"} ↗`);
+    exemplo.href = item.exemplo.url;
+    exemplo.target = "_blank";
+    exemplo.rel = "noopener";
+    card.appendChild(exemplo);
+  }
+
   const acoes = criar("div", "product-card__actions");
   const orçamento = criar("button", "button button--ink button--small", "Montar solicitação");
   const whats = criar("button", "product-card__whats", "WhatsApp");

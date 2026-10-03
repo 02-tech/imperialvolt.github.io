@@ -731,3 +731,32 @@ textarea { min-height: 5.1rem; resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* 2026-10-03: Homenagens com NFC (exemplos publicados em homenagem-exemplo.pages.dev) */
+.homenagens-nfc { color: #fff; background: radial-gradient(120% 90% at 85% 0%, rgba(216, 255, 69, 0.12), transparent 55%), var(--forest-deep); }
+.homenagens-nfc__layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.homenagens-nfc__intro h2 { margin: 0 0 1rem; }
+.homenagens-nfc__intro p:not(.eyebrow) { color: rgba(255, 255, 255, 0.78); max-width: 34rem; }
+.homenagens-nfc__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.6rem; }
+.homenagens-nfc__modelos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+.homenagem-card { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; padding: 1.3rem 1.2rem 1.15rem; border: 1px solid var(--white-line); border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.04); color: #fff; text-decoration: none; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+.homenagem-card:hover { border-color: var(--lime); background: rgba(216, 255, 69, 0.06); transform: translateY(-3px); }
+.homenagem-card:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.homenagem-card svg { width: 2.6rem; height: 2.6rem; margin-bottom: 0.6rem; fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.homenagem-card svg .chama { fill: var(--lime); stroke: var(--lime); }
+.homenagem-card strong { font-size: 1.12rem; }
+.homenagem-card span { color: rgba(255, 255, 255, 0.7); font-size: 0.92rem; line-height: 1.45; }
+.homenagem-card em { margin-top: auto; padding-top: 0.7rem; font-style: normal; font-family: "DM Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); }
+.product-card__example { align-self: flex-start; font-weight: 600; font-size: 0.92rem; color: var(--forest); text-decoration: underline; text-underline-offset: 0.2em; }
+.product-card__example:hover { color: var(--blue-deep); }
+@media (max-width: 900px) {
+  .homenagens-nfc__layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .homenagens-nfc__modelos { grid-template-columns: 1fr; }
+  .homenagem-card { display: grid; grid-template-columns: auto 1fr; column-gap: 0.9rem; align-items: center; }
+  .homenagem-card svg { grid-row: span 3; margin: 0; }
+  .homenagem-card em { padding-top: 0.2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .homenagem-card { transition: none; } .homenagem-card:hover { transform: none; } }

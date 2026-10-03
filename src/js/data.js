@@ -105,7 +105,8 @@ function normalizarItem(item, categoriaId, origem, descontoPix) {
     avisoPreco: item.avisoPreco || "",
     avisoRecorrencia: item.avisoRecorrencia || "",
     prazoEstimadoDiasUteis: item.prazoEstimadoDiasUteis || null,
-    prazoTexto: item.prazoTexto || ""
+    prazoTexto: item.prazoTexto || "",
+    exemplo: item.exemplo?.url ? { texto: item.exemplo.texto || "", url: item.exemplo.url } : null
   };
 }
 

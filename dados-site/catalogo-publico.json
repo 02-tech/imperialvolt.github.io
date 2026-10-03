@@ -204,7 +204,11 @@
               "valorTotal": 799.9,
               "valorUnitario": 16
             }
-          ]
+          ],
+          "exemplo": {
+            "texto": "Ver exemplos de homenagem",
+            "url": "https://homenagem-exemplo.pages.dev/"
+          }
         },
         {
           "id": "chaveiro-nfc-personalizado",
@@ -238,7 +242,11 @@
               "valorTotal": 1149.9,
               "valorUnitario": 23
             }
-          ]
+          ],
+          "exemplo": {
+            "texto": "Ver exemplos de homenagem",
+            "url": "https://homenagem-exemplo.pages.dev/"
+          }
         }
       ]
     }
