@@ -108,3 +108,8 @@
   Orçamento; seção "O que você pode comprar" explica presente digital, físico, interativo, completo, projeto
   personalizado e presença digital profissional. `homenagem-encerrada.html` = página de continuidade de homenagem expirada.
 - Testes: `tools/testar-pedido.js` (390 e 1366) todos ok; termos sem preço antigo de sites; expiração testada.
+- 2026-10-03 (navegação): cabeçalho deixa de acompanhar a rolagem; ao sair da tela recolhe e aparece o raio flutuante
+  (canto superior esquerdo, com nº de itens do pedido) que traz o cabeçalho de volta; recolhe ao escolher destino, Esc,
+  toque fora ou nova rolagem. Botões flutuantes refeitos: WhatsApp verde com símbolo limpo, Voltz-Bot com avatar
+  recortado (`src/imagens/marca/voltz-avatar.png`), acima da barra de gestos, escondidos com o pedido aberto.
+  Testes: `tools/testar-navegacao.js` e `tools/testar-pedido.js`.

@@ -1,9 +1,10 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, categoriasDeCatalogo, categoriasDeServicos, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "./data.js";
-import { renderCatalogo } from "./catalogo.js?v=20261003-comercial";
+import { renderCatalogo } from "./catalogo.js?v=20261003-navegacao";
 import { iniciarOrcamento } from "./orcamento.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
-import { iniciarPedido } from "./pedido.js?v=20261003-comercial";
+import { iniciarPedido } from "./pedido.js?v=20261003-navegacao";
+import { iniciarNavegacao } from "./navegacao.js?v=20261003-navegacao";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
 const CHAT_AUTO_CLOSE_MS = 5000;
@@ -341,6 +342,7 @@ function rolarPara(id) {
 async function boot() {
   setYear();
   setupMenu();
+  iniciarNavegacao();
   setupChat();
   setupReveal();
   window.IV_CHAT?.boot?.();
