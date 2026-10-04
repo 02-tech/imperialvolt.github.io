@@ -116,7 +116,9 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#catalogo">Catálogo e preços</a>
+        <a href="#catalogo" data-aba="presentes">Presentes</a>
+        <a href="#catalogo" data-aba="projetos-digitais">Sites e lojas</a>
+        <a href="#catalogo">Todos os serviços</a>
         <a href="#solucoes-fisicas">Sob medida</a>
         <a href="#empresas">Para empresas</a>
         <a href="#contato">Contato</a>
@@ -135,7 +137,9 @@
     </div>
 
     <nav id="mobileNav" class="mobile-nav" aria-label="Navegação móvel" hidden>
-      <a href="#catalogo">Catálogo e preços</a>
+      <a href="#catalogo" data-aba="presentes">Presentes</a>
+      <a href="#catalogo" data-aba="projetos-digitais">Sites e lojas</a>
+      <a href="#catalogo">Todos os serviços</a>
       <a href="#solucoes-fisicas">Sob medida</a>
       <a href="#empresas">Para empresas</a>
       <a href="#contato">Contato</a>
@@ -153,7 +157,8 @@
             <a class="button button--lime" href="#catalogo" data-aba="presentes">Escolher um presente</a>
             <a id="heroWhats" class="button button--line-light" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
           </div>
-          <a class="hero__text-link" href="#catalogo" data-aba="projetos-digitais">Ver sites e serviços digitais <span aria-hidden="true">↘</span></a>
+          <p class="hero__indice-rotulo">O que vendemos</p>
+          <nav id="heroIndice" class="hero__indice" aria-label="O que vendemos"></nav>
           <p class="hero__caption">Valores de referência publicados. O escopo e as condições ficam claros antes de avançar.</p>
         </div>
 
@@ -191,8 +196,8 @@
         <div class="catalogo__topo reveal">
           <div>
             <p class="eyebrow eyebrow--light">Catálogo e preços</p>
-            <h2 id="catalogoTitulo">Tudo o que fazemos, com preço claro.</h2>
-            <p>Escolha a categoria, adicione ao pedido o que fizer sentido e finalize pelo WhatsApp. Cada preço aparece uma vez, no mesmo formato.</p>
+            <h2 id="catalogoTitulo">Tudo o que vendemos, com preço à vista.</h2>
+            <p>Role e veja todos os presentes e serviços com o valor de cada um. Adicione ao pedido o que fizer sentido e finalize pelo WhatsApp.</p>
           </div>
           <ol class="presentes__passos" aria-label="Como pedir">
             <li><strong>Escolha</strong></li>
@@ -202,11 +207,8 @@
           </ol>
         </div>
 
-        <div id="catalogoAbas" class="catalogo__abas reveal" role="tablist" aria-label="Categorias do catálogo"></div>
-        <div id="catalogoPainel" class="catalogo__painel" role="tabpanel">
-          <p id="catalogoDescricao" class="catalogo__descricao"></p>
-          <div id="catalogoGrade" class="catalogo__grade"></div>
-        </div>
+        <nav id="catalogoIndice" class="catalogo__indice" aria-label="Ir para uma categoria"></nav>
+        <div id="catalogoGrupos" class="catalogo__grupos"></div>
         <p class="presentes__regra">15% de desconto no Pix ou condição promocional vigente, conforme a oferta. Valores "a partir de" são o mínimo do formato. Valores, prazo e entrega são confirmados no atendimento.</p>
 
         <div data-so-aba="presentes">

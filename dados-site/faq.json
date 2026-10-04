@@ -5,7 +5,7 @@
       "perguntas": [
         {
           "pergunta": "O que é a homenagem digital personalizada?",
-          "resposta": "É uma experiência digital criada para uma ocasião especial, com fotos, mensagem, música e pequenas surpresas, entregue por link para abrir no celular. Os valores são R$ 99,90 (7 dias), R$ 109,90 (14 dias), R$ 119,90 (30 dias) e R$ 149,90 (60 dias), com 15% de desconto no Pix ou condição promocional vigente."
+          "resposta": "É uma experiência digital criada para uma ocasião especial, com fotos, mensagem, música e pequenas surpresas, entregue por link para abrir no celular. Você escolhe por quanto tempo ela fica disponível: 7, 14, 30 ou 60 dias. Os valores oficiais estão no Catálogo e preços, nesta página."
         },
         {
           "pergunta": "Por quanto tempo a homenagem fica disponível?",
@@ -13,7 +13,7 @@
         },
         {
           "pergunta": "O que é a experiência por aproximação?",
-          "resposta": "É um elemento discreto no presente ou na embalagem: a pessoa aproxima o celular e acessa o conteúdo que você escolher, como um perfil, um vídeo, uma playlist ou uma homenagem. Avulsa custa R$ 49,90; somada a um presente físico elegível, sai por + R$ 34,90. Funciona em celulares com NFC ativado e a experiência pode variar conforme o aparelho."
+          "resposta": "É um elemento discreto no presente ou na embalagem: a pessoa aproxima o celular e acessa o conteúdo que você escolher, como um perfil, um vídeo, uma playlist ou uma homenagem. Funciona em celulares com NFC ativado e a experiência pode variar conforme o aparelho. Os valores oficiais estão no Catálogo e preços, nesta página."
         },
         {
           "pergunta": "Como faço o pedido?",
@@ -26,7 +26,7 @@
       "perguntas": [
         {
           "pergunta": "Quais são os valores de referência para projetos digitais?",
-          "resposta": "Os valores de referência são: site vitrine ou institucional a partir de R$ 890, site dinâmico ou CMS a partir de R$ 1.690, loja virtual a partir de R$ 2.990 e projeto web personalizado a partir de R$ 3.990. São valores \"a partir de\": valem para o escopo básico de cada formato, e o orçamento final depende do que o projeto precisa. Domínio, hospedagem e serviços de terceiros ficam separados."
+          "resposta": "Estão no Catálogo e preços, no grupo Sites e lojas: site vitrine ou institucional, site dinâmico ou CMS, loja virtual e projeto web personalizado. São valores \"a partir de\": valem para o escopo básico de cada formato, e o orçamento final depende do que o projeto precisa. Domínio, hospedagem e serviços de terceiros ficam separados."
         },
         {
           "pergunta": "Qual é a diferença entre um site e um sistema?",
@@ -34,11 +34,11 @@
         },
         {
           "pergunta": "Quanto custa um aplicativo?",
-          "resposta": "O aplicativo Android começa em R$ 1.400, iOS em R$ 1.800 e Android + iOS em R$ 2.200. PWA começa em R$ 1.200, desktop em R$ 900 e desktop avançado em R$ 1.400. Sistemas personalizados complexos começam em R$ 2.500; o prazo final depende do escopo."
+          "resposta": "Os valores de aplicativos Android, iOS, PWA, desktop e sistemas personalizados estão no Catálogo e preços, no grupo Sistemas e aplicativos. São valores \"a partir de\"; o prazo e o valor final dependem do escopo."
         },
         {
           "pergunta": "Existe manutenção ou hospedagem mensal?",
-          "resposta": "Sim, quando contratada separadamente. Manutenção de site começa em R$ 99/mês e manutenção de sistema ou aplicativo em R$ 199/mês. Domínio, hospedagem, VPS, banco, APIs e outros custos de terceiros podem ser adicionais."
+          "resposta": "Sim, quando contratada separadamente: os valores mensais estão no Catálogo e preços, no grupo Manutenção e suporte. Domínio, hospedagem, VPS, banco, APIs e outros custos de terceiros podem ser adicionais."
         },
         {
           "pergunta": "Como faço para contratar um serviço com preço publicado?",
