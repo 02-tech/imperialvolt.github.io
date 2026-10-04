@@ -895,3 +895,48 @@ body.pedido-aberto .floating-action, body.pedido-aberto .nav-raio { display: non
 .digital-comparison.site-comparison { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1100px) { .digital-comparison.site-comparison { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .digital-comparison.site-comparison { grid-template-columns: 1fr; } }
+/* 2026-10-03: catálogo e preços único (presentes e serviços no mesmo formato de cartão) */
+.catalogo { color: #fff; background: radial-gradient(110% 80% at 90% 0%, rgba(216, 255, 69, 0.13), transparent 55%), var(--forest-deep); }
+.catalogo__topo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: end; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+.catalogo__topo h2 { margin: 0 0 1rem; }
+.catalogo__topo p:not(.eyebrow) { color: rgba(255, 255, 255, 0.8); max-width: 38rem; margin: 0; }
+.catalogo__abas { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.2rem 0.1rem 0.7rem; scrollbar-width: thin; scrollbar-color: rgba(216, 255, 69, 0.4) transparent; }
+.catalogo-aba { flex: 0 0 auto; min-height: 2.6rem; padding: 0 1rem; border: 1px solid var(--white-line); border-radius: 99px; background: transparent; color: #fff; font: 600 0.88rem/1 inherit; cursor: pointer; white-space: nowrap; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.catalogo-aba:hover { border-color: rgba(216, 255, 69, 0.6); }
+.catalogo-aba.is-active { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+.catalogo-aba:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.catalogo__descricao { margin: 0.6rem 0 1.2rem; color: rgba(255, 255, 255, 0.72); max-width: 46rem; }
+.catalogo__grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+.oferta-card { display: flex; flex-direction: column; gap: 0.7rem; height: 100%; padding: clamp(1.15rem, 2.5vw, 1.5rem); border: 1px solid var(--white-line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.04); }
+.oferta-card--destaque { background: rgba(216, 255, 69, 0.06); border-color: rgba(216, 255, 69, 0.4); }
+.oferta-card__topo { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; justify-content: space-between; }
+.oferta-card__tipo { padding: 0.28rem 0.6rem; border-radius: 99px; border: 1px solid var(--white-line); font: 500 0.66rem/1 "DM Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); }
+.oferta-card__selo { padding: 0.28rem 0.55rem; border-radius: 99px; background: var(--lime); color: var(--ink); font: 600 0.62rem/1 "DM Mono", monospace; letter-spacing: 0.05em; text-transform: uppercase; }
+.oferta-card h3 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.4rem); line-height: 1.15; }
+.oferta-card__chamada { margin: 0; font-weight: 600; }
+.oferta-card__variantes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.45rem; margin-top: 0.4rem; }
+.oferta-card .variante { padding: 0.65rem 0.2rem; }
+.oferta-card__preco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; }
+.oferta-card__preco strong { font-size: 1.7rem; color: var(--lime); letter-spacing: -0.02em; line-height: 1.1; }
+.oferta-card__preco s { color: rgba(255, 255, 255, 0.5); }
+.oferta-card__preco small { width: 100%; color: rgba(255, 255, 255, 0.72); font-size: 0.85rem; }
+.oferta-card__preco .oferta-card__prazo { color: rgba(255, 255, 255, 0.55); font-size: 0.8rem; }
+.oferta-card__desc { margin: 0; color: rgba(255, 255, 255, 0.76); line-height: 1.55; font-size: 0.94rem; }
+.oferta-card__lista { margin: 0; padding: 0 0 0 1.1rem; display: grid; gap: 0.28rem; color: rgba(255, 255, 255, 0.74); font-size: 0.88rem; }
+.oferta-card__detalhes { border-top: 1px solid var(--white-line); padding-top: 0.6rem; }
+.oferta-card__detalhes summary { cursor: pointer; color: var(--lime); font-weight: 600; font-size: 0.88rem; }
+.oferta-card__detalhes dl { margin: 0.6rem 0 0; display: grid; gap: 0.25rem; font-size: 0.84rem; }
+.oferta-card__detalhes dt { font-weight: 700; color: #fff; margin-top: 0.35rem; }
+.oferta-card__detalhes dd { margin: 0; color: rgba(255, 255, 255, 0.72); }
+.oferta-card__acoes { margin-top: auto; padding-top: 0.4rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
+.oferta-card__exemplo { color: var(--lime); font-weight: 600; font-size: 0.9rem; }
+.catalogo .presentes__exemplos, .catalogo .presentes-fisicos { margin-top: clamp(2rem, 4vw, 3rem); }
+.catalogo__nota { margin-top: clamp(1.6rem, 3vw, 2.4rem); color: #fff; background: rgba(255, 255, 255, 0.05); border-color: var(--white-line); }
+.catalogo__nota span { color: var(--lime); }
+.catalogo__nota p { color: rgba(255, 255, 255, 0.75); }
+.pedido-item__nome { display: grid; gap: 0.1rem; }
+.pedido-item__nome small { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
+[data-so-aba][hidden] { display: none; }
+@media (max-width: 1000px) { .catalogo__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalogo__topo { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .catalogo__grade { grid-template-columns: 1fr; } .oferta-card__variantes { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 0.85rem; } }
+@media (max-width: 560px) { .catalogo .presentes__passos { grid-template-columns: 1fr 1fr; } .catalogo .presentes__passos li { padding: 0.65rem 0.7rem; font-size: 0.85rem; } }

@@ -379,6 +379,8 @@ function interpretarEntrada(texto, adicionarUsuario = true) {
 
 function irParaSecao(id) {
   window.ImperialVoltApp?.fecharChat?.();
+  // o orçamento agora é o pedido único (painel do cabeçalho)
+  if (id === "orcamento" && window.ImperialVoltApp?.abrirPedido) { window.ImperialVoltApp.abrirPedido(); return; }
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 

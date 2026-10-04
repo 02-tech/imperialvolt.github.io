@@ -1,10 +1,8 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
-import { carregarDados, categoriasDeCatalogo, categoriasDeServicos, formatarMoeda, prazoFormatado, precoFormatado, unificarCategorias } from "./data.js";
-import { renderCatalogo } from "./catalogo.js?v=20261003-navegacao";
-import { iniciarOrcamento } from "./orcamento.js";
+import { carregarDados, categoriasDeServicos, unificarCategorias } from "./data.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
-import { iniciarPedido } from "./pedido.js?v=20261003-navegacao";
-import { iniciarNavegacao } from "./navegacao.js?v=20261003-navegacao";
+import { iniciarPedido, abrirAba, abrirPainel, adicionar, resumoParaChat } from "./pedido.js?v=20261003-catalogo";
+import { iniciarNavegacao } from "./navegacao.js?v=20261003-catalogo";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
 const CHAT_AUTO_CLOSE_MS = 5000;
@@ -120,19 +118,6 @@ function setupChat() {
   };
 }
 
-function renderCategorias(categorias, selecionar) {
-  const alvo = $("#categoryNav");
-  if (!alvo) return;
-  alvo.replaceChildren();
-  [...categorias, { id: "empresas-revendedores", nome: "Empresas e revendedores", icone: "06" }].forEach((categoria) => {
-    const botao = criar("button", "category-nav__item");
-    botao.type = "button";
-    botao.append(criar("strong", "", categoria.nome), criar("span", "", categoria.icone));
-    botao.addEventListener("click", () => selecionar(categoria.id));
-    alvo.appendChild(botao);
-  });
-}
-
 function renderFaq(faq) {
   const alvo = $("#listaFaq");
   if (!alvo || !faq?.categorias) return;
@@ -144,107 +129,6 @@ function renderFaq(faq) {
       alvo.appendChild(detalhes);
     });
   });
-}
-
-function renderServicosComerciais(servicoCategorias, selecionar) {
-  const categorias = (servicoCategorias || []).filter((categoria) => categoria.itens?.length).map((categoria) => ({ ...categoria, servicos: categoria.itens }));
-  const tabsAlvo = $("#serviceTabs");
-  const ofertasAlvo = $("#serviceOffers") || $("#digitalOffers");
-  const comparativoAlvo = $("#siteComparison");
-  if (!categorias.length || !ofertasAlvo) return;
-
-  const criarLista = (itens, classe = "digital-offer__list") => {
-    const lista = criar("ul", classe);
-    (itens || []).slice(0, 5).forEach((item) => lista.appendChild(criar("li", "", item)));
-    return lista;
-  };
-
-  const renderCategoria = (categoriaId) => {
-    const categoria = categorias.find((item) => item.id === categoriaId) || categorias[0];
-    if (!categoria) return;
-    if (tabsAlvo) {
-      tabsAlvo.querySelectorAll("button").forEach((botao) => {
-        const ativo = botao.dataset.serviceCategory === categoria.id;
-        botao.classList.toggle("is-active", ativo);
-        botao.setAttribute("aria-pressed", String(ativo));
-      });
-    }
-    ofertasAlvo.replaceChildren();
-    categoria.servicos.forEach((oferta, indice) => {
-      const destaque = oferta.id === "site-institucional-estatico" || oferta.id === "sistema-web-painel-administrativo" || oferta.id === "automacao-simples";
-      const card = criar("article", `digital-offer${destaque ? " digital-offer--featured" : ""}`);
-      const cabecalho = criar("div", "digital-offer__head");
-      cabecalho.append(criar("span", "digital-offer__eyebrow", categoria.nome), criar("span", "digital-offer__index", String(indice + 1).padStart(2, "0")));
-      const precificacao = criar("div", "digital-offer__pricing");
-      precificacao.appendChild(criar("strong", "digital-offer__price", precoFormatado(oferta)));
-      if (oferta.precoPix != null) precificacao.appendChild(criar("small", "digital-offer__pix", `Pix integral: ${formatarMoeda(oferta.precoPix)} (-15%)`));
-      precificacao.appendChild(criar("small", "digital-offer__deadline", `Prazo estimado: ${prazoFormatado(oferta)}`));
-      card.append(cabecalho, criar("h3", "", oferta.nome), precificacao, criar("p", "digital-offer__description", oferta.descricao));
-      if (oferta.mensagemComercial) card.appendChild(criar("p", "digital-offer__message", `“${oferta.mensagemComercial}”`));
-      if (oferta.idealPara) {
-        const indicado = criar("p", "digital-offer__audience");
-        indicado.append(criar("strong", "", "Ideal para: "), criar("span", "", oferta.idealPara));
-        card.appendChild(indicado);
-      }
-      if (oferta.quandoUsar) {
-        const quando = criar("p", "digital-offer__when");
-        quando.append(criar("strong", "", "Quando usar: "), criar("span", "", oferta.quandoUsar));
-        card.appendChild(quando);
-      }
-      card.appendChild(criar("span", "digital-offer__included-label", "Normalmente inclui"));
-      card.appendChild(criarLista(oferta.inclui));
-      const detalhes = criar("details", "digital-offer__details");
-      detalhes.appendChild(criar("summary", "", "Ver limites e custos externos"));
-      const detalhesGrid = criar("div", "digital-offer__details-grid");
-      const naoNecessario = criar("div", "digital-offer__detail-block digital-offer__detail-block--muted");
-      naoNecessario.appendChild(criar("strong", "", "Quando não é necessário"));
-      naoNecessario.appendChild(criar("p", "digital-offer__detail-copy", oferta.quandoNaoNecessario || "Quando outra solução menor já resolve o objetivo."));
-      const custos = criar("div", "digital-offer__detail-block");
-      custos.appendChild(criar("strong", "", "Custos externos"));
-      custos.appendChild(criarLista(oferta.custosExternos, "digital-offer__list digital-offer__list--external"));
-      detalhesGrid.append(naoNecessario, custos);
-      detalhes.appendChild(detalhesGrid);
-      card.appendChild(detalhes);
-      if (oferta.observacao) card.appendChild(criar("p", "digital-offer__next", oferta.observacao));
-      const acao = criar("button", "button button--ink button--small", "Solicitar esta opção");
-      acao.type = "button";
-      acao.addEventListener("click", () => selecionar({ categoriaId: categoria.id, itemId: oferta.id }));
-      card.appendChild(acao);
-      ofertasAlvo.appendChild(card);
-    });
-  };
-
-  if (tabsAlvo) {
-    tabsAlvo.replaceChildren();
-    categorias.forEach((categoria) => {
-      const botao = criar("button", "service-tabs__item", categoria.nome);
-      botao.type = "button";
-      botao.dataset.serviceCategory = categoria.id;
-      botao.setAttribute("aria-pressed", "false");
-      botao.addEventListener("click", () => renderCategoria(categoria.id));
-      tabsAlvo.appendChild(botao);
-    });
-  }
-  renderCategoria(categorias[0].id);
-
-  if (comparativoAlvo) {
-    const todos = categorias.flatMap((categoria) => categoria.servicos);
-    const idsComparacao = ["site-institucional-estatico", "site-dinamico-cms", "ecommerce-loja-virtual", "projeto-web-personalizado"];
-    comparativoAlvo.replaceChildren();
-    idsComparacao.map((id) => todos.find((oferta) => oferta.id === id)).filter(Boolean).forEach((oferta) => {
-      const card = criar("article", `digital-compare-card${oferta.id === "site-institucional-estatico" ? " digital-compare-card--featured" : ""}`);
-      card.append(criar("span", "digital-compare-card__tag", oferta.id === "site-institucional-estatico" ? "Mais escolhido" : "Formato"));
-      card.append(criar("h3", "", oferta.nome), criar("strong", "digital-compare-card__price", precoFormatado(oferta)));
-      card.appendChild(criar("small", "digital-compare-card__deadline", `Prazo: ${prazoFormatado(oferta)}`));
-      card.appendChild(criar("p", "digital-compare-card__result", oferta.idealPara || oferta.descricao));
-      const detalhes = criar("dl", "digital-compare-card__details");
-      [["Quando usar", oferta.quandoUsar], ["O que resolve", oferta.descricao]].forEach(([rotulo, valor]) => {
-        detalhes.append(criar("dt", "", rotulo), criar("dd", "", valor || "Definido no escopo"));
-      });
-      card.appendChild(detalhes);
-      comparativoAlvo.appendChild(card);
-    });
-  }
 }
 
 function dataBrasil(iso) {
@@ -335,9 +219,6 @@ function preencherContato(publico) {
   if (cidade) cidade.textContent = `${empresa.cidade} - ${empresa.estado}`;
 }
 
-function rolarPara(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
 
 async function boot() {
   setYear();
@@ -350,45 +231,26 @@ async function boot() {
   try {
     const dados = await carregarDados();
     const categorias = unificarCategorias(dados);
-    const quote = iniciarOrcamento({ raiz: $("#quoteBuilder"), categorias, politicas: dados.politicas, pagamentos: dados.pagamentos });
-    const selecionarProduto = (selecao) => {
-      quote.selecionar(selecao);
-      rolarPara("orcamento");
-    };
+    // catálogo e pedido únicos: presentes e serviços no mesmo formato, um só pedido
+    iniciarPedido(dados.presentes, categoriasDeServicos(categorias));
+    // API usada pelo Voltz-Bot (mantida; agora opera o pedido único)
     window.ImperialVoltApp = {
       ...(window.ImperialVoltApp || {}),
-      selecionarProduto,
-      obterOrcamento: () => quote.obterOrcamento(),
-      limparOrcamento: () => quote.limpar()
+      selecionarProduto: ({ categoriaId, itemId } = {}) => {
+        if (itemId && adicionar(itemId, { silencioso: true })) { abrirPainel(); return; }
+        if (categoriaId) abrirAba(categoriaId, { rolar: true });
+      },
+      abrirPedido: abrirPainel,
+      obterOrcamento: () => resumoParaChat(),
+      limparOrcamento: () => window.IVPedido?.limpar()
     };
-    // catálogo físico em preparação: só renderiza se a seção existir e houver itens públicos
-    const catalogo = $("#gridCatalogo") ? renderCatalogo(categoriasDeCatalogo(categorias), {
-      gridEl: $("#gridCatalogo"),
-      filtrosEl: $("#catalogFilters"),
-      maisEl: $("#catalogMore"),
-      onSelect: selecionarProduto
-    }) : null;
-    renderCategorias(categoriasDeCatalogo(categorias), (categoriaId) => {
-      if (categoriaId === "empresas-revendedores") {
-        quote.selecionar({ categoriaId });
-        rolarPara("orcamento");
-        return;
-      }
-      catalogo?.filtrar(categoriaId);
-      rolarPara("catalogo");
-    });
-    document.querySelectorAll("[data-quote-category]").forEach((link) => {
-      link.addEventListener("click", () => quote.selecionar({ categoriaId: link.dataset.quoteCategory }));
-    });
-    iniciarPedido(dados.presentes);
-    renderServicosComerciais(categoriasDeServicos(categorias), selecionarProduto);
     renderFaq(dados.faq);
     renderConversionStrip(dados);
     renderProvaSocial(dados);
     preencherContato(dados.publico);
   } catch (erro) {
     console.error("[Imperial Volt] Falha ao iniciar o site", erro);
-    const destino = $("#quoteBuilder");
+    const destino = $("#catalogoGrade");
     if (destino) destino.textContent = "Não foi possível carregar as opções agora. Fale conosco pelo WhatsApp.";
   }
 }

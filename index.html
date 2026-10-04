@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
   <link rel="preload" as="image" href="./src/imagens/portfolio.jpeg">
-  <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20261003-navegacao">
+  <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20261003-catalogo">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,15 +116,13 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#presentes">Presentes</a>
-        <a href="#servicos-precos">Sites e serviços</a>
+        <a href="#catalogo">Catálogo e preços</a>
         <a href="#solucoes-fisicas">Sob medida</a>
         <a href="#empresas">Para empresas</a>
-        <a href="#orcamento">Orçamento</a>
+        <a href="#contato">Contato</a>
       </nav>
 
       <div class="site-header__actions">
-        <a class="button button--ink button--small site-header__quote" href="#orcamento">Solicitar orçamento</a>
         <button id="pedidoBotao" class="pedido-botao" type="button" aria-controls="pedidoPainel" aria-label="Abrir pedido (vazio)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
           <span class="pedido-botao__txt">Pedido</span>
@@ -137,11 +135,9 @@
     </div>
 
     <nav id="mobileNav" class="mobile-nav" aria-label="Navegação móvel" hidden>
-      <a href="#presentes">Presentes</a>
-      <a href="#servicos-precos">Sites e serviços</a>
+      <a href="#catalogo">Catálogo e preços</a>
       <a href="#solucoes-fisicas">Sob medida</a>
       <a href="#empresas">Para empresas</a>
-      <a href="#orcamento">Orçamento</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
@@ -154,10 +150,10 @@
           <h1>Presentes que emocionam. <em>Sites que vendem.</em></h1>
           <p class="hero__lead">Homenagens digitais personalizadas, presentes interativos por aproximação e sites para o seu negócio, com preço claro e pedido montado direto pelo site.</p>
           <div class="hero__actions">
-            <a class="button button--lime" href="#presentes">Escolher um presente</a>
+            <a class="button button--lime" href="#catalogo" data-aba="presentes">Escolher um presente</a>
             <a id="heroWhats" class="button button--line-light" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
           </div>
-          <a class="hero__text-link" href="#servicos-precos">Ver sites e serviços digitais <span aria-hidden="true">↘</span></a>
+          <a class="hero__text-link" href="#catalogo" data-aba="projetos-digitais">Ver sites e serviços digitais <span aria-hidden="true">↘</span></a>
           <p class="hero__caption">Valores de referência publicados. O escopo e as condições ficam claros antes de avançar.</p>
         </div>
 
@@ -180,7 +176,7 @@
         </div>
         <div class="conversion-strip__item">
           <span class="conversion-strip__value">01</span>
-          <span class="conversion-strip__copy"><strong>Orçamento guiado</strong><small>Escolha o caminho e avance</small></span>
+          <span class="conversion-strip__copy"><strong>Pedido no site</strong><small>Monte e envie pelo WhatsApp</small></span>
         </div>
         <div class="conversion-strip__item">
           <span class="conversion-strip__value">24h</span>
@@ -190,26 +186,31 @@
       </div>
     </section>
 
-    <section class="section presentes" id="presentes" aria-labelledby="presentesTitulo">
+    <section class="section catalogo" id="catalogo" aria-labelledby="catalogoTitulo">
       <div class="container">
-        <div class="presentes__topo reveal">
+        <div class="catalogo__topo reveal">
           <div>
-            <p class="eyebrow eyebrow--light">Presentes Imperial Volt</p>
-            <h2 id="presentesTitulo">Um presente que a pessoa abre, sente e guarda na memória.</h2>
-            <p>Escolha o presente, personalize a experiência, monte o pedido aqui no site e finalize pelo WhatsApp. A gente cuida do resto.</p>
+            <p class="eyebrow eyebrow--light">Catálogo e preços</p>
+            <h2 id="catalogoTitulo">Tudo o que fazemos, com preço claro.</h2>
+            <p>Escolha a categoria, adicione ao pedido o que fizer sentido e finalize pelo WhatsApp. Cada preço aparece uma vez, no mesmo formato.</p>
           </div>
-          <ol class="presentes__passos" aria-label="Como comprar">
-            <li><strong>Escolha o presente</strong></li>
-            <li><strong>Personalize a experiência</strong></li>
+          <ol class="presentes__passos" aria-label="Como pedir">
+            <li><strong>Escolha</strong></li>
+            <li><strong>Personalize</strong></li>
             <li><strong>Monte o pedido</strong></li>
             <li><strong>Finalize pelo WhatsApp</strong></li>
           </ol>
         </div>
 
-        <div id="vitrinePresentes" class="presentes__vitrine reveal" aria-label="Presentes disponíveis"></div>
-        <p class="presentes__regra reveal">15% de desconto no Pix ou condição promocional vigente, conforme a oferta. Valores, prazo e entrega são confirmados no atendimento.</p>
+        <div id="catalogoAbas" class="catalogo__abas reveal" role="tablist" aria-label="Categorias do catálogo"></div>
+        <div id="catalogoPainel" class="catalogo__painel" role="tabpanel">
+          <p id="catalogoDescricao" class="catalogo__descricao"></p>
+          <div id="catalogoGrade" class="catalogo__grade"></div>
+        </div>
+        <p class="presentes__regra">15% de desconto no Pix ou condição promocional vigente, conforme a oferta. Valores "a partir de" são o mínimo do formato. Valores, prazo e entrega são confirmados no atendimento.</p>
 
-        <div class="presentes__exemplos reveal">
+        <div data-so-aba="presentes">
+        <div class="presentes__exemplos">
           <div>
             <h3>Veja como fica uma homenagem</h3>
             <p>Abra no celular, com o som ligado. São exemplos neutros: a sua leva os nomes, as fotos e a mensagem de quem presenteia.</p>
@@ -221,7 +222,7 @@
           </ul>
         </div>
 
-        <div class="presentes-fisicos reveal" id="presentes-fisicos" aria-labelledby="fisicosTitulo">
+        <div class="presentes-fisicos" id="presentes-fisicos" aria-labelledby="fisicosTitulo">
           <div class="presentes-fisicos__texto">
             <span class="presentes-fisicos__selo">Em preparação</span>
             <h3 id="fisicosTitulo">Presentes físicos Imperial Volt</h3>
@@ -235,69 +236,14 @@
             <div><dt>Pintura e acabamento manual</dt><dd>Sob orçamento.</dd></div>
           </dl>
         </div>
-      </div>
-    </section>
+        </div>
 
-    <section class="category-index" id="solucoes">
-      <div class="container">
-        <div class="section-intro reveal">
-          <p class="eyebrow eyebrow--ink">O que você pode comprar</p>
-          <h2>Cada tipo de pedido, do jeito certo.</h2>
-          <p>Do presente que emociona ao projeto da sua empresa, veja a diferença e vá direto ao que precisa.</p>
-        </div>
-        <div class="tipos-compra reveal">
-          <a class="tipo-compra" href="#presentes"><strong>Presente digital</strong><span>Uma homenagem personalizada, entregue por link.</span></a>
-          <a class="tipo-compra tipo-compra--breve" href="#presentes-fisicos"><strong>Presente físico</strong><span>Um objeto produzido e entregue.</span><em>Em preparação</em></a>
-          <a class="tipo-compra" href="#presentes"><strong>Presente interativo</strong><span>Presente com experiência por aproximação do celular.</span></a>
-          <a class="tipo-compra" href="#presentes"><strong>Presente completo</strong><span>Aproximação mais a homenagem digital criada por nós.</span></a>
-          <a class="tipo-compra" href="#solucoes-fisicas"><strong>Projeto personalizado</strong><span>Algo desenvolvido especialmente para você, sob orçamento.</span></a>
-          <a class="tipo-compra" href="#servicos-precos"><strong>Presença digital profissional</strong><span>Sites, lojas virtuais e projetos para empresas.</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section site-comparison-section" id="servicos-precos">
-      <div class="container">
-        <div class="section-heading section-heading--split reveal">
-          <div>
-            <p class="eyebrow eyebrow--ink">Presença digital profissional</p>
-            <h2>Entenda, compare e avance com clareza.</h2>
-          </div>
-          <p>Você não precisa saber o nome técnico. Escolha o problema que quer resolver, veja o que normalmente entra e avance com contexto.</p>
-        </div>
-        <div class="digital-difference reveal">
-          <div>
-            <span class="digital-difference__label">Site vitrine / institucional</span>
-            <strong>A partir de R$ 890.</strong>
-            <p>Para apresentar o negócio, gerar confiança e abrir novos contatos, sem banco de dados próprio.</p>
-          </div>
-          <div>
-            <span class="digital-difference__label">Site dinâmico / CMS</span>
-            <strong>A partir de R$ 1.690.</strong>
-            <p>Para atualizar conteúdo com estrutura dinâmica e banco de dados. Loja virtual a partir de R$ 2.990 e projeto web personalizado a partir de R$ 3.990.</p>
-          </div>
-        </div>
-        <p class="digital-comparison__intro">A diferença entre um site de apresentação e uma operação digital está no que o projeto precisa fazer.</p>
-        <div id="siteComparison" class="digital-comparison site-comparison reveal" aria-label="Comparativo dos formatos de site"></div>
-        <div id="serviceTabs" class="service-tabs reveal" role="group" aria-label="Categorias de serviços"></div>
-        <div id="serviceOffers" class="digital-offers service-offers reveal" aria-label="Serviços, preços e prazos"></div>
-        <p class="digital-price-note reveal">Os valores publicados são referências comerciais para o escopo descrito. O Pix integral tem 15% de desconto quando indicado; mensalidades, domínio, hospedagem, VPS, serviços externos e taxas de terceiros ficam separados quando aplicáveis.</p>
-        <aside class="infrastructure-note reveal" aria-label="Domínio, hospedagem e continuidade">
+        <div data-so-aba="projetos-digitais" hidden>
+        <aside class="infrastructure-note catalogo__nota" aria-label="Domínio, hospedagem e continuidade">
           <div><span>Domínio, hospedagem e continuidade</span><strong>Criar o site é uma coisa. Mantê-lo no ar é outra.</strong></div>
           <p>Separamos criação, implantação, domínio, hospedagem, serviços externos, manutenção e suporte futuro. O domínio fica, de preferência, no nome e na conta do cliente; se fizermos o registro, a taxa oficial do domínio é separada do nosso serviço de configuração. Custos de terceiros ficam à parte. Hospedagem, manutenção e suporte contínuos não estão incluídos na criação: são contratados separadamente, com prazo definido. Os valores "a partir de" valem para o escopo básico de cada formato.</p>
         </aside>
-      </div>
-    </section>
-
-    <section class="section quote-section" id="orcamento">
-      <div class="container">
-        <div class="quote-section__head reveal">
-          <p class="eyebrow eyebrow--ink">Orçamento guiado</p>
-          <h2>Conte o que precisa resolver.</h2>
-          <p>Escolha uma opção, veja o preço inicial e o prazo de referência. A mensagem para o WhatsApp já sai com o contexto do que você selecionou.</p>
         </div>
-        <p class="quote-section__notice">O Pix integral tem 15% de desconto quando indicado. O cartão pode ser parcelado conforme as condições da operadora, em até 12x quando disponível. O orçamento mostra preço, prazo, custos externos e próximos passos.</p>
-        <div id="quoteBuilder" class="quote-builder reveal"></div>
       </div>
     </section>
 
@@ -340,7 +286,7 @@
           <p class="eyebrow eyebrow--light">Empresas e revendedores</p>
           <h2>Escala, função e personalização.</h2>
           <p>Para pedidos em quantidade ou uma solução física e digital desenhada para sua operação.</p>
-          <a class="button button--lime" href="#orcamento" data-quote-category="empresas-revendedores">Montar solicitação empresarial</a>
+          <a class="button button--lime" href="https://wa.me/5524992144995?text=Ol%C3%A1!%20Vi%20no%20site%20da%20Imperial%20Volt%20e%20quero%20montar%20uma%20solicita%C3%A7%C3%A3o%20para%20minha%20empresa." target="_blank" rel="noopener">Montar solicitação empresarial</a>
         </div>
         <div class="business-layout__list reveal" aria-label="Opções para empresas e revendedores">
           <span>Reposição em quantidade</span>
@@ -403,7 +349,9 @@
           <div id="pedidoLinhaPromo" hidden><dt>Preço cheio</dt><dd id="pedidoCheio"></dd><dt>Promoções</dt><dd id="pedidoPromo"></dd></div>
           <div class="pedido-totais__total"><dt>Total estimado</dt><dd id="pedidoTotal"></dd></div>
           <div id="pedidoLinhaPix"><dt>No Pix</dt><dd id="pedidoPix"></dd></div>
+          <div id="pedidoLinhaMensal" hidden><dt>Mensalidade</dt><dd id="pedidoMensal"></dd></div>
         </dl>
+        <p id="pedidoNotaEscopo" class="pedido-painel__regra" hidden></p>
         <p class="pedido-painel__regra">15% no Pix ou condição promocional vigente, conforme a oferta. Valores, prazo e entrega são confirmados no atendimento.</p>
         <label class="pedido-campo"><span>Seu nome <small>(opcional)</small></span><input id="pedidoNome" type="text" autocomplete="given-name"></label>
         <label class="pedido-campo"><span>Observações <small>(opcional)</small></span><textarea id="pedidoObs" rows="2" placeholder="Data do presente, detalhes, dúvidas…"></textarea></label>
@@ -447,7 +395,7 @@
   </aside>
 
   <script type="module" src="./chatbot/engine.js?v=20260811-dedup-db"></script>
-  <script type="module" src="./src/js/main.js?v=20261003-navegacao"></script>
+  <script type="module" src="./src/js/main.js?v=20261003-catalogo"></script>
 </body>
 </html>
 
