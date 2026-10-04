@@ -646,7 +646,7 @@ textarea { min-height: 5.1rem; resize: vertical; }
 .brand__text span { color: var(--muted); font-size: 0.7rem; }
 .nav a { color: var(--ink); font-size: 0.8rem; font-weight: 700; }
 .legalPage { max-width: 56rem; padding-top: 4rem; padding-bottom: 4rem; }
-.legalPage h1 { font-size: clamp(2rem, 5vw, 3.6rem); line-height: 0.95; }
+.legalPage h1, .legalPage .legalDoc__titulo { font-size: clamp(2rem, 5vw, 3.6rem); line-height: 0.95; }
 .legalPage h2 { margin-top: 2rem; font-size: 1.35rem; }
 .legalPage h3 { margin-top: 1.5rem; font-size: 1rem; }
 .legalPage p, .legalPage li { color: #4c584d; }

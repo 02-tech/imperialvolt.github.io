@@ -93,7 +93,7 @@
           "pixElegivel": true,
           "prazoEstimadoDiasUteis": { "minimo": 3, "maximo": 7 },
           "descricao": "Site responsivo para apresentar empresa, serviços, localização, fotos, WhatsApp e informações institucionais.",
-          "mensagemComercial": "Quando seu negócio precisa ser encontrado, entendido e contatado — sem precisar de um sistema complexo.",
+          "mensagemComercial": "Quando seu negócio precisa ser encontrado, entendido e contatado, sem precisar de um sistema complexo.",
           "idealPara": "Empresas, autônomos, pousadas, restaurantes, lojas e prestadores de serviço.",
           "quandoUsar": "Quando o conteúdo é principalmente informativo e não precisa de login, usuários, estoque, pedidos ou banco de dados complexo.",
           "quandoNaoNecessario": "Se a operação precisa receber, processar e gerenciar informações continuamente, vale avaliar um sistema ou site dinâmico.",
@@ -276,7 +276,7 @@
           "quandoNaoNecessario": "Se uma página, automação simples ou sistema de entrada atende ao objetivo, não há motivo para começar por uma solução complexa.",
           "inclui": [ "levantamento do problema", "análise de viabilidade", "arquitetura conforme escopo", "módulos e integrações descritos na proposta" ],
           "custosExternos": [ "VPS, banco de dados, APIs, licenças, armazenamento, contas e serviços recorrentes são separados." ],
-          "observacao": "A partir de R$ 2.500 — prazo definido após análise do projeto."
+          "observacao": "A partir de R$ 2.500, com prazo definido após análise do projeto."
         }
       ]
     },
