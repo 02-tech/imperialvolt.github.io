@@ -17,7 +17,7 @@
         },
         {
           "pergunta": "Como faço o pedido?",
-          "resposta": "Escolha o presente, adicione ao pedido, ajuste período, quantidade e adicionais e toque em Finalizar pelo WhatsApp. A mensagem chega pronta para nós; valores, prazo e entrega são confirmados no atendimento."
+          "resposta": "Escolha no Catálogo e preços, toque em Adicionar ao pedido, ajuste período, quantidade e adicionais no pedido (botão no topo da página) e toque em Finalizar pelo WhatsApp. A mensagem chega pronta para nós; valores, prazo e entrega são confirmados no atendimento."
         }
       ]
     },
@@ -42,7 +42,7 @@
         },
         {
           "pergunta": "Como faço para contratar um serviço com preço publicado?",
-          "resposta": "Escolha uma categoria no orçamento guiado, selecione o serviço, confira preço, prazo e custos externos e avance pelo WhatsApp. A mensagem já leva o contexto da opção escolhida."
+          "resposta": "No Catálogo e preços, escolha a categoria, confira preço, prazo e detalhes no cartão e toque em Adicionar ao pedido. No pedido (botão no topo da página), revise tudo e toque em Finalizar pelo WhatsApp: a mensagem já sai organizada. Valores \"a partir de\" são confirmados depois de entendermos o escopo."
         },
         {
           "pergunta": "A publicação na Google Play ou App Store está incluída?",

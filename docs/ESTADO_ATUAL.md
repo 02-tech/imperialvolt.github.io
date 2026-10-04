@@ -117,3 +117,10 @@
   preços, **Orçamento guiado**, Sob medida, Como funciona (fabricação), Empresas, FAQ. Dentro de Serviços e preços, os
   preços-base e a comparação vêm antes e os cartões com "Solicitar esta opção" ficam logo acima do orçamento. Distância
   rolada do cartão até o orçamento: computador 3.095 px para 736 px; celular 6.048 px para 2.285 px. Comparação em 4 colunas.
+- 2026-10-03 (catálogo e pedido únicos, a pedido de Guilherme: "duplicidade de valor... discrepância"): Presentes, "O que você
+  pode comprar", "Serviços e preços" (com preços-base e comparação repetidos) e "Orçamento guiado" foram substituídos por uma
+  seção única `#catalogo` ("Catálogo e preços") com abas (Presentes + cada categoria de serviço), todos no mesmo cartão
+  (`src/js/pedido.js`), cada preço uma vez. Um só pedido para presentes e serviços: "a partir de" entra como mínimo,
+  mensalidade soma à parte, serviço não duplica. Voltz-Bot mantém a API (`ImperialVoltApp.selecionarProduto/obterOrcamento/
+  limparOrcamento`, agora sobre o pedido; "Abrir orçamento completo" abre o pedido). Removidos `orcamento.js`, `checkout.js`,
+  `catalogo.js` (sem uso). Menu: Catálogo e preços, Sob medida, Para empresas, Contato.

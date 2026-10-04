@@ -8,9 +8,9 @@ Criado em 2026-10-03 (CLAUDE/SITES nucleo-faguital) ao executar o comando de Gui
 | O quê | Arquivo | Observação |
 |---|---|---|
 | Presentes (homenagem, experiência por aproximação, extras, combos, régua física, promoções) | `dados-site/presentes.json` | lido por `src/js/pedido.js` |
-| Serviços digitais e demais serviços | `dados-site/servicos.json` | abas de "Sites e serviços" e orçamento |
+| Serviços digitais e demais serviços | `dados-site/servicos.json` | abas do Catálogo e preços (mesmo cartão e mesmo pedido dos presentes) |
 | Produtos físicos antigos | `dados-site/catalogo-publico.json` (site) e `catalogo.json` | todos com `"publico": false` + `pendencia` |
-| Textos de preço fixos | `index.html` (bloco "digital-difference"), `faq.json`, `termos-gerais.json`, `termos-sites.json` | manter coerentes ao mudar preço |
+| Textos de preço fixos | `faq.json`, `termos-gerais.json`, `termos-sites.json` e o bloco "Presentes físicos" do `index.html` (+ R$ 19,90) | o catálogo é gerado dos dados; manter os textos coerentes ao mudar preço |
 
 Regra de preço: **15% no Pix OU condição promocional vigente, conforme a oferta** (nunca os dois no mesmo item).
 Proibido: preço cheio artificial, desconto falso, contagem regressiva falsa, "vitalício".
