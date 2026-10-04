@@ -1,8 +1,8 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, categoriasDeServicos, unificarCategorias } from "./data.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
-import { iniciarPedido, abrirAba, abrirPainel, adicionar, resumoParaChat } from "./pedido.js?v=20261003-catalogo";
-import { iniciarNavegacao } from "./navegacao.js?v=20261003-catalogo";
+import { iniciarPedido, abrirAba, abrirPainel, adicionar, resumoParaChat } from "./pedido.js?v=20261004-vitrine";
+import { iniciarNavegacao } from "./navegacao.js?v=20261004-vitrine";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
 const CHAT_AUTO_CLOSE_MS = 5000;
