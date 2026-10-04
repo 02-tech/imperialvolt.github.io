@@ -41,7 +41,7 @@ let falhas = 0; const ok = (c, m) => { console.log(`  ${c ? "ok  " : "FALHA"} ${
       await ev(`document.querySelector('.nav-raio').click();1`); await sleep(500);
       await ev(`document.getElementById('menuBtn').click();1`); await sleep(400);
       await foto(`${w}-3-menu`);
-      await ev(`document.querySelector('#mobileNav a[href="#catalogo"]').click();1`); await sleep(1500);
+      await ev(`document.querySelector('#mobileNav a[href="#catalogo"]:not([data-aba])').click();1`); await sleep(1500);
       e = await estado(); ok(!e.cabecalhoVisivel && e.raio && await ev(`document.getElementById('mobileNav').hidden`), "escolher um item do menu leva à seção e recolhe tudo");
       ok(Math.abs(await ev(`Math.round(document.getElementById('catalogo').getBoundingClientRect().top)`)) < 60, "seção aparece no topo, sem ficar escondida");
     }

@@ -67,7 +67,11 @@ function dePresente(p) {
 function montarCatalogo(presentes, categoriasServico) {
   const presentesItens = [...(presentes.produtos || []), ...(presentes.fisico?.produtos || [])].map(dePresente);
   abas = [{ id: "presentes", nome: "Presentes", descricao: "Homenagens digitais personalizadas e presentes interativos por aproximação. Presentes físicos em preparação.", itens: presentesItens }];
-  (categoriasServico || []).forEach((c) => abas.push({ id: c.id, nome: c.nome, descricao: c.descricao, itens: c.itens.map((i) => deServico(i, c)) }));
+  // sites e lojas logo depois dos presentes: é o serviço mais procurado
+  const ordem = (c) => (c.id === "projetos-digitais" ? 0 : 1);
+  [...(categoriasServico || [])].sort((x, y) => ordem(x) - ordem(y)).forEach((c) => abas.push({ id: c.id, nome: c.nome, descricao: c.descricao, itens: c.itens.map((i) => deServico(i, c)) }));
+  const CURTOS = { presentes: "Presentes", "projetos-digitais": "Sites e lojas", "presenca-digital": "Google", "sistemas-aplicativos": "Sistemas e apps", "automacoes-ia": "Automações e IA", "servicos-avulsos": "Serviços avulsos", marcas: "Registro de marca", manutencao: "Manutenção" };
+  abas.forEach((x) => { x.curto = CURTOS[x.id] || x.nome; });
   produtos = abas.flatMap((a) => a.itens);
 }
 const produto = (id) => produtos.find((p) => p.id === id) || null;
@@ -395,7 +399,8 @@ function cartao(p) {
   const card = criar("article", `oferta-card${DESTAQUES.has(p.id) ? " oferta-card--destaque" : ""}`);
   card.dataset.produto = p.id;
   const topo = criar("div", "oferta-card__topo");
-  topo.appendChild(criar("span", "oferta-card__tipo", p.tipo === "digital" ? "Presente digital" : p.tipo === "interativo" ? "Presente interativo" : p.tipo === "fisico" ? "Presente físico" : p.categoriaNome));
+  // dentro do grupo o nome da categoria já está no título; o rótulo só diferencia os tipos de presente
+  if (p.tipo !== "servico") topo.appendChild(criar("span", "oferta-card__tipo", p.tipo === "digital" ? "Presente digital" : p.tipo === "interativo" ? "Presente interativo" : "Presente físico"));
   if (DESTAQUES.has(p.id)) topo.appendChild(criar("span", "oferta-card__selo", "Mais escolhido"));
   card.appendChild(topo);
   card.appendChild(criar("h3", "", p.nome));
@@ -443,17 +448,20 @@ function cartao(p) {
   atualizarPreco();
   card.appendChild(preco);
   if (p.descricao) card.appendChild(criar("p", "oferta-card__desc", p.descricao));
-  if (p.inclui?.length) {
-    const lista = criar("ul", "oferta-card__lista");
-    p.inclui.slice(0, 4).forEach((t) => lista.appendChild(criar("li", "", t)));
-    card.appendChild(lista);
-  }
-  if (p.detalhes?.length) {
+  // o que inclui e os detalhes ficam recolhidos: a vitrine mostra de cara só nome, frase e preço
+  if (p.inclui?.length || p.detalhes?.length) {
     const det = criar("details", "oferta-card__detalhes");
-    det.appendChild(criar("summary", "", "Ver detalhes"));
-    const dl = criar("dl", "");
-    p.detalhes.forEach(([rotulo, texto]) => dl.append(criar("dt", "", rotulo), criar("dd", "", texto)));
-    det.appendChild(dl);
+    det.appendChild(criar("summary", "", "Ver o que inclui"));
+    if (p.inclui?.length) {
+      const lista = criar("ul", "oferta-card__lista");
+      p.inclui.forEach((t) => lista.appendChild(criar("li", "", t)));
+      det.appendChild(lista);
+    }
+    if (p.detalhes?.length) {
+      const dl = criar("dl", "");
+      p.detalhes.forEach(([rotulo, texto]) => dl.append(criar("dt", "", rotulo), criar("dd", "", texto)));
+      det.appendChild(dl);
+    }
     card.appendChild(det);
   }
   const acoes = criar("div", "oferta-card__acoes");
@@ -470,46 +478,48 @@ function cartao(p) {
   return card;
 }
 
-export function abrirAba(id, { rolar = false } = {}) {
+// leva ao grupo da categoria (nada fica escondido: todos os grupos estão sempre abertos)
+export function abrirAba(id, { rolar = true } = {}) {
   const aba = abas.find((a) => a.id === id) || abas[0];
   if (!aba) return;
   abaAtiva = aba.id;
-  document.querySelectorAll("#catalogoAbas [role=tab]").forEach((b) => {
-    const on = b.dataset.aba === aba.id;
-    b.setAttribute("aria-selected", String(on)); b.tabIndex = on ? 0 : -1; b.classList.toggle("is-active", on);
+  if (rolar) document.getElementById(`grupo-${aba.id}`)?.scrollIntoView({ behavior: reduz() ? "auto" : "smooth", block: "start" });
+}
+
+// atalhos com o nome de cada categoria (sem preço, para não repetir valores)
+function atalhos(alvo, classe) {
+  if (!alvo) return;
+  alvo.replaceChildren();
+  abas.forEach((a) => {
+    const link = criar("a", classe, a.curto || a.nome);
+    link.href = `#grupo-${a.id}`;
+    link.addEventListener("click", (e) => { e.preventDefault(); abrirAba(a.id); });
+    alvo.appendChild(link);
   });
-  // mantém a aba ativa visível na faixa de abas (no celular a faixa rola na horizontal)
-  const ativa = document.getElementById(`aba-${aba.id}`);
-  const faixa = $("#catalogoAbas");
-  if (ativa && faixa) faixa.scrollTo({ left: ativa.offsetLeft - faixa.offsetLeft - 16, behavior: reduz() ? "auto" : "smooth" });
-  const painel = $("#catalogoPainel");
-  painel.setAttribute("aria-labelledby", `aba-${aba.id}`);
-  $("#catalogoDescricao").textContent = aba.descricao || "";
-  const grade = $("#catalogoGrade");
-  grade.replaceChildren(...aba.itens.map(cartao));
-  document.querySelectorAll("[data-so-aba]").forEach((el) => { el.hidden = el.dataset.soAba !== aba.id; });
-  if (rolar) $("#catalogo")?.scrollIntoView({ behavior: reduz() ? "auto" : "smooth", block: "start" });
 }
 
 function renderAbas() {
-  const alvo = $("#catalogoAbas");
-  if (!alvo) return;
-  alvo.replaceChildren();
-  abas.forEach((a, i) => {
-    const b = criar("button", "catalogo-aba", a.nome);
-    b.type = "button"; b.id = `aba-${a.id}`; b.dataset.aba = a.id;
-    b.setAttribute("role", "tab"); b.setAttribute("aria-controls", "catalogoPainel");
-    b.addEventListener("click", () => abrirAba(a.id));
-    b.addEventListener("keydown", (e) => {
-      if (!["ArrowRight", "ArrowLeft"].includes(e.key)) return;
-      e.preventDefault();
-      const k = abas.findIndex((x) => x.id === abaAtiva) + (e.key === "ArrowRight" ? 1 : -1);
-      const prox = abas[(k + abas.length) % abas.length];
-      abrirAba(prox.id); $(`#aba-${prox.id}`).focus();
-    });
-    alvo.appendChild(b);
+  const grupos = $("#catalogoGrupos");
+  if (!grupos) return;
+  // blocos que pertencem a um grupo (exemplos, presentes físicos, nota de domínio) vão para dentro dele
+  const blocos = [...document.querySelectorAll("[data-so-aba]")];
+  grupos.replaceChildren();
+  abas.forEach((a) => {
+    const g = criar("section", "catalogo-grupo");
+    g.id = `grupo-${a.id}`;
+    g.setAttribute("aria-labelledby", `grupo-${a.id}-titulo`);
+    const cab = criar("div", "catalogo-grupo__cabecalho");
+    const h = criar("h3", "", a.nome); h.id = `grupo-${a.id}-titulo`;
+    cab.append(h, criar("p", "", a.descricao || ""));
+    g.appendChild(cab);
+    const grade = criar("div", "catalogo__grade");
+    a.itens.forEach((p) => grade.appendChild(cartao(p)));
+    g.appendChild(grade);
+    blocos.filter((b) => b.dataset.soAba === a.id).forEach((b) => { b.hidden = false; g.appendChild(b); });
+    grupos.appendChild(g);
   });
-  abrirAba(abas[0].id);
+  atalhos($("#catalogoIndice"), "catalogo-atalho");
+  atalhos($("#heroIndice"), "hero-atalho");
 }
 
 // ---------- inicialização ----------

@@ -124,3 +124,9 @@
   mensalidade soma à parte, serviço não duplica. Voltz-Bot mantém a API (`ImperialVoltApp.selecionarProduto/obterOrcamento/
   limparOrcamento`, agora sobre o pedido; "Abrir orçamento completo" abre o pedido). Removidos `orcamento.js`, `checkout.js`,
   `catalogo.js` (sem uso). Menu: Catálogo e preços, Sob medida, Para empresas, Contato.
+- 2026-10-04 (vitrine aberta, a pedido de Guilherme: "Cadê os valores? Cadê os serviços?"; "o vendedor tem poucos segundos";
+  tabela oficial de preços para o cliente conferir): abas trocadas por vitrine aberta, todos os grupos visíveis em sequência
+  (Presentes, Sites e lojas, Google, Sistemas e apps, Automações e IA, Serviços avulsos, Registro de marca, Manutenção), cartões
+  compactos (nome, frase, preço, Pix, prazo, "Ver o que inclui"). "O que vendemos" com atalhos já no topo; topo compacto no
+  computador. Menu: Presentes, Sites e lojas, Todos os serviços, Sob medida, Para empresas, Contato. FAQ não repete preços
+  (aponta para o catálogo). Mesmo valor em dois cartões só quando são serviços diferentes (site vitrine e registro de marca: R$ 890).
