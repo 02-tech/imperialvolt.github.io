@@ -55,7 +55,8 @@ export async function renderDocumentoLegal({ arquivos, alvoId }) {
     const documentos = await Promise.all(specs.map((s) => fetch(s.arquivo).then((r) => r.json())));
     alvo.innerHTML = documentos.map((doc, i) => {
       const titulo = doc.titulo || specs[i].titulo || "";
-      const cabecalho = `<h1>${titulo}</h1>` + (doc.ultimaAtualizacao ? `<p class="muted small">Última atualização: ${doc.ultimaAtualizacao}</p>` : "");
+      // um único h1 por página; os documentos seguintes usam h2 com a mesma aparência
+      const cabecalho = (i === 0 ? `<h1>${titulo}</h1>` : `<h2 class="legalDoc__titulo">${titulo}</h2>`) + (doc.ultimaAtualizacao ? `<p class="muted small">Última atualização: ${doc.ultimaAtualizacao}</p>` : "");
       return `<section class="legalDoc">${cabecalho}${renderObjeto(doc, 2)}</section>`;
     }).join("<hr class='legalDivisor'>");
   } catch (e) {
