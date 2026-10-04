@@ -113,3 +113,7 @@
   toque fora ou nova rolagem. Botões flutuantes refeitos: WhatsApp verde com símbolo limpo, Voltz-Bot com avatar
   recortado (`src/imagens/marca/voltz-avatar.png`), acima da barra de gestos, escondidos com o pedido aberto.
   Testes: `tools/testar-navegacao.js` e `tools/testar-pedido.js`.
+- 2026-10-03 (orçamento perto dos preços): ordem das seções agora é Presentes, O que você pode comprar, Serviços e
+  preços, **Orçamento guiado**, Sob medida, Como funciona (fabricação), Empresas, FAQ. Dentro de Serviços e preços, os
+  preços-base e a comparação vêm antes e os cartões com "Solicitar esta opção" ficam logo acima do orçamento. Distância
+  rolada do cartão até o orçamento: computador 3.095 px para 736 px; celular 6.048 px para 2.285 px. Comparação em 4 colunas.
