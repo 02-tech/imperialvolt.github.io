@@ -26,3 +26,19 @@ Pasta canônica informada pelo runbook: C:\Users\FAGUITAL\PROJETOS\IMPERIAL_VOLT
 Checar em celular e desktop os destinos de WhatsApp/Instagram com JavaScript ligado e desligado; conferir JSON-LD e sitemap XML. Comprovação de publicação deve vir de leitura do domínio e do commit remoto, não só do envio.
 Rollback: reverter apenas o commit desta missão, preservando trabalhos posteriores. Não fazer reset/force-push.
 Arquivos docs/ são excluídos do GitHub Pages pelo _config.yml. São documentação interna ao build, mas o repositório GitHub é público; não colocar dados sigilosos.
+
+## Continuação local (2026-10-12, CLAUDE/SITES principal, sessão 381bb779)
+
+Claim `claim-20261012-sites-principal-continuidade-seo-codex-v1`. Pasta local sincronizada com `dfae159` (fast-forward, árvore limpa).
+
+- Teste de navegador (Chrome headless, site publicado, 390 e 1366, JavaScript ligado e desligado): os 6 destinos do Codex
+  (4 WhatsApp 5524992144995, 2 Instagram imperialvolt) corretos nos 4 cenários, 0 erros de JS.
+- Achado: sem JavaScript, `#contactAddress` e `#contactEmail` ainda tinham `href="#"` e texto vazio. Preenchidos no HTML com os
+  mesmos valores que `src/js/main.js` gera a partir de `dados-site/publico.json` (endereço com link do Google Maps e
+  `mailto:contato.imperialvolt@gmail.com`). Reteste local: 8 de 8 destinos ok nos 4 cenários, nenhum `href="#"` restante.
+- O telefone visível (`+55 24 99214-4995`) é o texto do link do WhatsApp; não há link `tel:` (não é erro, só registro).
+- Spotify (pendência 4): nenhum perfil de artista nem distribuidora em documentos locais (6_SITES, 8_DOCUMENTOS, 5_MIDIA,
+  FAGUITAL, Central). Mantido fora do Schema e dos links. Só Guilherme confirma se o perfil existe.
+- Central (pendência 5): trabalho do CODEX `fd2cb605631e` registrado em `events/EVENTS.jsonl` pela CLAUDE.
+- Pendências 1 a 3 (Search Console, sitemaps, desempenho/Business Profile) exigem navegador logado: ainda abertas.
+- Commit local desta continuação; push é do Guilherme.
