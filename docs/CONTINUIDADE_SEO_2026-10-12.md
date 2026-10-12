@@ -42,3 +42,19 @@ Claim `claim-20261012-sites-principal-continuidade-seo-codex-v1`. Pasta local si
 - Central (pendência 5): trabalho do CODEX `fd2cb605631e` registrado em `events/EVENTS.jsonl` pela CLAUDE.
 - Pendências 1 a 3 (Search Console, sitemaps, desempenho/Business Profile) exigem navegador logado: ainda abertas.
 - Commit local desta continuação; push é do Guilherme.
+
+## Search Console e desempenho (2026-10-12, CLAUDE/SITES principal, leitura no Chrome logado, nada enviado)
+
+Período de desempenho: 01/09 a 11/10/2026. Nenhuma solicitação de indexação nem envio de sitemap (nada mudou que exigisse).
+
+| Propriedade | Indexadas | Não indexadas (motivo) | Sitemap | Cliques / impressões / posição |
+|---|---|---|---|---|
+| imperialvolt.com | 1 (`/`) | 6: 3 redirecionamento (http/www), 2 `noindex` intencional (páginas legais/encerrada), 1 alternativa com canônica | processado, lido 10/10, 1 URL | 10 / 24 / 2,9 (consultas visíveis: "software development", "software") |
+| faguital.com.br | 1 (`/`) | 2: 1 redirecionamento, 1 "detectada, mas não indexada" (provavelmente `/sobre.html`; só a página inicial teve impressões) | processado, lido 12/10, 2 URLs | 13 / 20 / 1,6 (consulta visível: "ele é famoso?") |
+| tecnofagguard.com.br | 1 (`/`) | 0, nenhum problema em 90 dias | processado, lido 05/10, 1 URL | 1 / 5 / 4,6 |
+
+- Inspeção de URL e detalhe dos motivos não abriram: a aba do Chrome em segundo plano congela cliques/digitação. Para
+  confirmar o caso de `/sobre.html`: Guilherme abre a inspeção com a janela em primeiro plano (pedido de indexação já
+  feito em 02/10; não repetir sem mudança).
+- Perfil da Empresa (Business Profile): não lido pelo mesmo motivo. Fica pendente.
+- Spotify: Guilherme confirmou em 12/10 que **não tem conta**. Não incluir.
