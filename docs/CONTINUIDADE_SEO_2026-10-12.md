@@ -67,3 +67,13 @@ Período de desempenho: 01/09 a 11/10/2026. Nenhuma solicitação de indexação
   O teste ao vivo foi iniciado, mas a aba do Chrome congelou antes do resultado; **pedido de indexação NÃO enviado**.
   Próximo passo: com a janela do Chrome visível, "Testar o URL publicado" → se ok, "Solicitar indexação" (uma vez).
 - Perfil da Empresa: não lido (mesmo motivo).
+
+### Concluído com o navegador visível (2026-10-12, mesma sessão; o navegador conectado é o Microsoft Edge deste PC)
+
+- `faguital.com.br/sobre.html`: teste ao vivo **"O URL está disponível para o Google / É possível indexar a página"**
+  (12/10, 12:26). **Indexação solicitada uma vez** (fila de rastreamento prioritário). Não repetir; reconferir em 1 a 2 semanas.
+- Perfil da Empresa "Imperial Volt" (confirmado, código 14047239461582191353), maio a out./2026: **178 interações**, das
+  quais **174 pedidos de rota**, 4 cliques no site, 0 chamadas, 0 cliques no chat. Por mês: setembro 26, outubro 19
+  (até 12/10); pico em agosto. Pedido de rota não é cliente: contatos qualificados vindos do perfil no período = os 4 cliques
+  no site (no máximo). O painel novo não mostra termos de busca nem visualizações.
+- O Google sugere confirmar o horário no feriado de 12/10 (N. Sra. Aparecida) e adicionar foto interna: decisão de Guilherme.
