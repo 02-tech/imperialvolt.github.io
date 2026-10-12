@@ -58,3 +58,12 @@ Período de desempenho: 01/09 a 11/10/2026. Nenhuma solicitação de indexação
   feito em 02/10; não repetir sem mudança).
 - Perfil da Empresa (Business Profile): não lido pelo mesmo motivo. Fica pendente.
 - Spotify: Guilherme confirmou em 12/10 que **não tem conta**. Não incluir.
+
+### Inspeção de `faguital.com.br/sobre.html` (2026-10-12, autorizada por Guilherme)
+
+- Confirmado: "Detectada, mas não indexada no momento". Descoberta pelo `sitemap.xml` e pela página inicial; **nunca
+  rastreada** (último rastreamento N/D). Não é bloqueio do site: o Google ainda não buscou a página.
+- A página mudou depois do pedido de 02/10 (layout restaurado em 05/10, commit 71f885f), então um novo pedido é válido.
+  O teste ao vivo foi iniciado, mas a aba do Chrome congelou antes do resultado; **pedido de indexação NÃO enviado**.
+  Próximo passo: com a janela do Chrome visível, "Testar o URL publicado" → se ok, "Solicitar indexação" (uma vez).
+- Perfil da Empresa: não lido (mesmo motivo).
