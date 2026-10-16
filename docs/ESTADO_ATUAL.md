@@ -153,3 +153,10 @@
   R$ 1,58 por cartão de 20 a 74 (mesmo valor unitário do pacote de 50 = R$ 79,00), R$ 1,50 a partir de 75; porta-cartões
   R$ 15,00 (de R$ 29,00); Pix 15% só nos cartões; aviso "com 75 você paga menos" de 72 a 74. Teste com 7 casos calculados
   à mão (`CASOS=...` em `tools/testar-orcamento.js`). Interpretação do preço de 20 a 74 aguardando confirmação de Guilherme.
+  V5 (16/10, pedidos de Guilherme): porta-cartões 3D com os cartões animados entrando e saindo da bandeja (encaixe
+  verificado contra a malha real: base Y -35.8, Z 4 -> -1, nenhum ponto da peça no volume do cartão), cor branco translúcido
+  ou preto, giro automático; itens independentes (cartões >= 20, porta-cartões, site); site com agenda online R$ 350
+  (referência: site vitrine oficial R$ 890); kit completo -R$ 25 + tag NFC de brinde (valor proposto, aguardando Guilherme);
+  Pix 15% só nos cartões; condições válidas até a data passada ao gerador (publicação + 7 dias), depois a página avisa e
+  volta o porta-cartões a R$ 29 e o site a "sob consulta"; demonstração interativa da agenda (nada é enviado).
+  Gerador: `tools/montar-orcamento-tio-caique.js` (fonte em `docs/orcamentos-fontes/`). Ainda NÃO publicado.
