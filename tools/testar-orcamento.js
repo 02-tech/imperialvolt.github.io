@@ -28,18 +28,27 @@ let falhas = 0; const ok = (c, m) => { console.log(`  ${c ? "ok  " : "FALHA"} ${
     ok(r.og, "og:image para a prévia do link");
     ok(r.pix > 50, `prévia 3D desenhada (${r.pix} amostras com pixel)`);
     ok(/R\$/.test(r.total || ""), `total exibido: ${r.total}`);
+    if (process.env.CASOS && w < 800) { // CASOS='[{"qty":20,"stand":true,"pix":"R$ 41,86","outras":"R$ 46,60"}]' (valores calculados à mão)
+      for (const c of JSON.parse(process.env.CASOS)) {
+        const v = await ev(`(()=>{const q=document.getElementById('qty'),s=document.getElementById('addStand');q.value=${c.qty};q.dispatchEvent(new Event('change'));if(s.checked!==${!!c.stand})s.click();const n=t=>t.replace(/\\u00a0/g," ");return {pix:n(document.getElementById("total").textContent),outras:n(document.getElementById("other").textContent)}})()`);
+        ok(v.pix === c.pix && v.outras.includes(c.outras), `${c.qty} cartões${c.stand ? " + porta-cartões" : ""}: Pix ${v.pix} (esperado ${c.pix}), ${v.outras} (esperado ${c.outras})`);
+      }
+      await send("Page.navigate", { url: URL0 }); await sleep(2500);
+    }
     if (w < 800) {
       const urlZap = await ev(`(()=>{let u='';const o=window.open;window.open=x=>{u=x};document.getElementById('share').click();window.open=o;return u})()`);
       ok(urlZap.startsWith("https://wa.me/5524992144995?text="), "confirmar pedido abre o WhatsApp oficial");
       ok(decodeURIComponent(urlZap).includes("TOTAL"), "mensagem do WhatsApp leva o resumo com total");
-      const barra = async () => ev(`(()=>{const b=document.getElementById('mbar');if(!b)return null;const r=b.getBoundingClientRect();return {vis:!b.classList.contains('hide')&&r.top<innerHeight,txt:document.getElementById('mbarTotal').textContent}})()`);
-      await ev(`document.querySelector('.product-layout').scrollIntoView({block:'start'});1`); await sleep(700);
-      let b = await barra(); ok(b && b.vis && b.txt === r.total, `barra fixa com o total fora do resumo (prévia 3D) (${b && b.txt})`);
-      { const c = await send("Page.captureScreenshot", { format: "png" }); fs.writeFileSync(path.join(OUT, "orcamento-390-barra.png"), Buffer.from(c.result.data, "base64")); }
-      await ev(`document.getElementById('tier75').click();1`); await sleep(300);
-      b = await barra(); ok(b && b.txt === await ev(`document.getElementById('total').textContent`) && b.txt !== r.total, `barra acompanha a mudança de opção (${b && b.txt})`);
-      await ev(`document.getElementById('tier50').click();document.querySelector('.summary-card .actions').scrollIntoView({block:'center'});1`); await sleep(700);
-      b = await barra(); ok(b && !b.vis, "barra some quando o resumo com os botões está na tela");
+      if (await ev("!!document.getElementById('mbar')")) { // barra fixa do total (só nos orçamentos que a têm)
+        const barra = async () => ev(`(()=>{const b=document.getElementById('mbar');if(!b)return null;const r=b.getBoundingClientRect();return {vis:!b.classList.contains('hide')&&r.top<innerHeight,txt:document.getElementById('mbarTotal').textContent}})()`);
+        await ev(`document.querySelector('.product-layout').scrollIntoView({block:'start'});1`); await sleep(700);
+        let b = await barra(); ok(b && b.vis && b.txt === r.total, `barra fixa com o total fora do resumo (prévia 3D) (${b && b.txt})`);
+        { const c = await send("Page.captureScreenshot", { format: "png" }); fs.writeFileSync(path.join(OUT, "orcamento-390-barra.png"), Buffer.from(c.result.data, "base64")); }
+        await ev(`document.getElementById('tier75').click();1`); await sleep(300);
+        b = await barra(); ok(b && b.txt === await ev(`document.getElementById('total').textContent`) && b.txt !== r.total, `barra acompanha a mudança de opção (${b && b.txt})`);
+        await ev(`document.getElementById('tier50').click();document.querySelector('.summary-card .actions').scrollIntoView({block:'center'});1`); await sleep(700);
+        b = await barra(); ok(b && !b.vis, "barra some quando o resumo com os botões está na tela");
+      }
     }
     await send("Emulation.setDeviceMetricsOverride", { width: w, height: r.h, deviceScaleFactor: 1, mobile: w < 800 }); await sleep(900);
     const s = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });

@@ -148,3 +148,8 @@
   WhatsApp" para o número oficial com o link do orçamento na mensagem, barra fixa com o total no celular, cabeçalho e arte do
   cartão ajustados no celular, rodapé com canais oficiais, "expositor" padronizado como "porta-cartões". Preços e textos do
   V2 mantidos. Teste: `tools/testar-orcamento.js` (390 e 1366). Procedimento: `docs/RUNBOOK.md`, seção Orçamentos.
+  V3 do mesmo dia (pedido de Guilherme: "estratégia boa para vender, sem informação demais"): ordem "O que você recebe" (arte
+  do cartão + porta-cartões 3D) → "Seu orçamento" → "Confirmar pelo WhatsApp". Quantidade livre a partir de 20 cartões:
+  R$ 1,58 por cartão de 20 a 74 (mesmo valor unitário do pacote de 50 = R$ 79,00), R$ 1,50 a partir de 75; porta-cartões
+  R$ 15,00 (de R$ 29,00); Pix 15% só nos cartões; aviso "com 75 você paga menos" de 72 a 74. Teste com 7 casos calculados
+  à mão (`CASOS=...` em `tools/testar-orcamento.js`). Interpretação do preço de 20 a 74 aguardando confirmação de Guilherme.
