@@ -1,5 +1,6 @@
 {
   "titulo": "Condições para Impressão 3D",
+  "modalidade": "Somente sob encomenda e personalizada. A Imperial Volt não vende modelos prontos de catálogo; cada peça é produzida a partir do pedido aprovado pelo cliente.",
   "caracteristicas": [
     "Peças impressas podem apresentar linhas de camada, marcas de suporte e pequenas variações de acabamento.",
     "Dimensões possuem tolerâncias inerentes ao processo e ao material.",
@@ -7,7 +8,7 @@
     "Resistência depende de material, geometria, orientação, temperatura e uso."
   ],
   "uso": [
-    "A finalidade decorativa ou funcional será informada em cada produto.",
+    "A finalidade decorativa ou funcional será definida em cada orçamento.",
     "Peças não devem ser usadas como componentes médicos, alimentícios, estruturais, automotivos críticos ou de segurança sem validação específica.",
     "Materiais como PLA podem deformar sob calor elevado."
   ],

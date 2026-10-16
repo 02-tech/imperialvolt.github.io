@@ -76,19 +76,23 @@
       ]
     },
     {
-      "nome": "Presentes físicos e projetos personalizados",
+      "nome": "Impressão 3D sob encomenda",
       "perguntas": [
         {
-          "pergunta": "Vocês fazem qualquer impressão?",
-          "resposta": "Não. A Imperial Volt trabalha com soluções físicas para uma necessidade específica, como reposição, adaptação, personalização e protótipos, sempre após análise de viabilidade."
+          "pergunta": "Vocês vendem peças ou modelos 3D prontos?",
+          "resposta": "Não. A Imperial Volt trabalha com impressão 3D somente sob encomenda e personalizada. Não mantemos catálogo de modelos prontos: cada peça nasce da sua ideia, das suas medidas ou do seu próprio arquivo."
         },
         {
-          "pergunta": "Como funciona um projeto sob medida?",
-          "resposta": "Cada projeto é avaliado individualmente conforme função, medidas, cenário de uso e complexidade. O escopo de fabricação é alinhado antes do início."
+          "pergunta": "Como encomendar uma peça em impressão 3D?",
+          "resposta": "Fale diretamente com a gente pelo WhatsApp e conte o que precisa. Avaliamos função, medidas, cenário de uso, acabamento, prazo e entrega, e o orçamento é feito individualmente antes da produção."
         },
         {
-          "pergunta": "Qual é o valor mínimo de um projeto personalizado?",
-          "resposta": "Projeto personalizado não tem preço fechado: nova modelagem, mudança estrutural, medidas específicas ou acabamento incomum são avaliados e orçados pelo WhatsApp. Pintura e acabamento manual também são sob orçamento. A coleção própria de presentes físicos da Imperial Volt está em preparação."
+          "pergunta": "Posso enviar o meu próprio arquivo 3D?",
+          "resposta": "Sim. Ao enviar um arquivo, você declara ter autorização para produzi-lo. Podemos recusar arquivos que violem direitos de terceiros. Correções, adaptação e modelagem são orçadas à parte."
+        },
+        {
+          "pergunta": "Fazem pintura e acabamento manual?",
+          "resposta": "Sim, sob orçamento, avaliado junto com o pedido."
         }
       ]
     },

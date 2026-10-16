@@ -66,7 +66,7 @@ function dePresente(p) {
 }
 function montarCatalogo(presentes, categoriasServico) {
   const presentesItens = [...(presentes.produtos || []), ...(presentes.fisico?.produtos || [])].map(dePresente);
-  abas = [{ id: "presentes", nome: "Presentes", descricao: "Homenagens digitais personalizadas e presentes interativos por aproximação. Presentes físicos em preparação.", itens: presentesItens }];
+  abas = [{ id: "presentes", nome: "Presentes", descricao: "Homenagens digitais personalizadas e presentes interativos por aproximação. Peças físicas em impressão 3D somente sob encomenda.", itens: presentesItens }];
   // sites e lojas logo depois dos presentes: é o serviço mais procurado
   const ordem = (c) => (c.id === "projetos-digitais" ? 0 : 1);
   [...(categoriasServico || [])].sort((x, y) => ordem(x) - ordem(y)).forEach((c) => abas.push({ id: c.id, nome: c.nome, descricao: c.descricao, itens: c.itens.map((i) => deServico(i, c)) }));
