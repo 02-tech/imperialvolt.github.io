@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imperial Volt | Máscara Floral • Laboratório 3D</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:#28232a;background:#f6f4f6}*{box-sizing:border-box}body{margin:0}header{padding:22px 28px;background:#17131a;color:white;display:flex;align-items:center;justify-content:space-between;gap:12px}header strong{font-size:19px;letter-spacing:.01em}header small{color:#d8c7d4}header span{color:#ffb8d1}main{max-width:1500px;margin:0 auto;padding:20px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(315px,.75fr);gap:18px}.panel{background:white;border:1px solid #e7e1e6;border-radius:17px;box-shadow:0 5px 18px #2a18200a;overflow:hidden}.viewport{position:relative;min-height:640px;background:radial-gradient(circle at 40% 38%,#fff 0%,#fbf4f8 45%,#e5dce2 100%)}canvas{width:100%;height:640px;display:block;touch-action:none;cursor:grab}canvas:active{cursor:grabbing}.float{position:absolute;left:18px;top:16px;font-size:12px;color:#756575;background:#ffffffdf;border-radius:9px;padding:8px 12px}.bottom{position:absolute;bottom:15px;left:17px;right:17px;display:flex;align-items:center;justify-content:space-between;gap:10px}.bottom button{background:white;color:#3d3240;border:1px solid #e7d8e1;border-radius:9px;padding:10px 12px;cursor:pointer}.bottom p{font-size:12px;color:#665961;background:#fff9;padding:8px;border-radius:8px;margin:0}.controls{padding:22px}h1{font-size:23px;margin:0 0 6px}h2{font-size:15px;margin:23px 0 14px}.lede{font-size:13px;color:#7b6b78;line-height:1.5;margin:0 0 17px}.tabs{display:flex;gap:6px;padding:4px;background:#f3eef1;border-radius:10px}.tabs button{flex:1;padding:10px 8px;cursor:pointer;border:0;background:transparent;border-radius:8px;color:#6a5365;font-weight:600}.tabs button.active{background:#fff;color:#a92561;box-shadow:0 1px 5px #40132d1f}.control{margin:17px 0}.control label{display:flex;justify-content:space-between;gap:10px;font-weight:650;font-size:13px;margin-bottom:8px}.control output{color:#b02266;font-weight:750}input[type=range]{width:100%;accent-color:#cf3b7b;cursor:pointer}.mini{font-size:11px;color:#857680;line-height:1.5}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.stat{background:#fcf7fa;border:1px solid #f0e4ec;padding:10px 12px;border-radius:11px}.stat b{display:block;color:#a02a65;font-size:18px}.stat span{font-size:11px;color:#766673}.mainbtn{display:block;width:100%;background:#c02a6b;color:#fff;padding:14px 14px;border:0;border-radius:11px;font-weight:750;cursor:pointer;font-size:14px}.mainbtn:hover{background:#a9205a}.notice{padding:13px 15px;background:#fffaf3;border:1px solid #f0e2cd;border-radius:10px;font-size:12px;line-height:1.6;color:#76624e;margin-top:18px}.status{font-size:12px;margin:12px 0 0;color:#806a78}.footer{font-size:11px;text-align:center;color:#9a8793;padding:16px 0 20px}@media(max-width:900px){main{grid-template-columns:1fr;padding:11px}.viewport{min-height:460px}canvas{height:470px}.controls{padding:18px}header{padding:15px 18px}header strong{font-size:16px}.bottom p{max-width:170px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div><strong>IMPERIAL <span>VOLT</span></strong><br><small>LABORATÓRIO DE MODELAGEM • MÁSCARA FLORAL</small></div><small>Projeto autoral · Protótipo v1</small></header>
+<main>
+<section class="panel viewport"><canvas id="view" aria-label="Visualizador tridimensional giratório das peças"></canvas><div class="float">Arraste para girar · Role ou use dois dedos para aproximar</div><div class="bottom"><button id="reset">↺ Reposicionar</button><p>Prévia em tempo real · unidades em mm</p></div></section>
+<aside class="panel controls"><h1>Flores em relevo</h1><p class="lede">Embalagem personalizada com corpo oco, tampa com rosca helicoidal provisória e alojamento para haste. Modelo próprio para prototipagem.</p>
+<div class="tabs"><button class="active" data-mode="separado">Peças separadas</button><button data-mode="montado">Montado</button></div>
+<h2>Dimensões e acabamento</h2>
+<div class="control"><label for="diametro">Diâmetro externo <output id="v-diametro">23 mm</output></label><input id="diametro" type="range" min="21" max="27" step="0.5" value="23"></div>
+<div class="control"><label for="altura">Altura do corpo <output id="v-altura">76 mm</output></label><input id="altura" type="range" min="65" max="90" step="1" value="76"></div>
+<div class="control"><label for="tampa">Altura da tampa <output id="v-tampa">39 mm</output></label><input id="tampa" type="range" min="34" max="47" step="1" value="39"></div>
+<div class="control"><label for="relevo">Relevo das flores <output id="v-relevo">1,0×</output></label><input id="relevo" type="range" min="0.4" max="1.5" step="0.1" value="1"></div>
+<div class="control"><label for="folga">Folga radial da rosca <output id="v-folga">0,30 mm</output></label><input id="folga" type="range" min="0.2" max="0.6" step="0.05" value="0.3"></div>
+<p class="mini">Passo da rosca: 2,4 mm. A folga é uma estimativa geométrica, não garantia de encaixe. Altura montada = altura do corpo + 3 mm de ombro + tampa.</p>
+<div class="stats"><div class="stat"><b id="stat-total">118 mm</b><span>Altura montada aproximada</span></div><div class="stat"><b id="stat-peças">2</b><span>Peças independentes</span></div></div>
+<button id="export" class="mainbtn">Exportar meu modelo em 3MF</button><p id="status" class="status">Pronto para visualizar e personalizar.</p>
+<div class="notice"><b>Atenção técnica.</b> O arquivo é um protótipo, não uma embalagem cosmética homologada. Não use PLA impresso como reservatório direto de máscara de cílios. Para encaixar a escovinha de verdade, meça a haste, a tampa e a rosca do componente comprado; nenhuma dessas medidas é universal. Faça teste de uma unidade antes de fabricar 50.</div>
+</aside></main>
+<p class="footer">Imperial Volt · modelo floral autoral · HTML local, sem bibliotecas externas · exportação 3MF nativa</p>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),TAU=Math.PI*2,canvas=$('view');
+let mode='separado',yaw=-.47,pitch=.19,zoom=3.35,models=[],meshBuffers=[],gl,program,uniforms,dirty=true,drag=false,lastX=0,lastY=0;
+function smooth(v){v=Math.max(0,Math.min(1,v));return v*v*(3-2*v)}
+function arc(a,b,r=11.5){return (((a-b+Math.PI)%TAU+TAU)%TAU-Math.PI)*r}
+function flower(theta,z,height,relief){let sum=0;
+for(const [offset,phase] of [[.4,.15],[2.8,.9],[4.9,-.3]]){
+ let vt=offset+.42*Math.sin(z*.077+phase),dx=arc(theta,vt);
+ sum+=.6*Math.exp(-Math.pow(dx/.85,2))*smooth((z-3)/3)*smooth((height-3-z)/3);
+ for(let k=0,zc=9;zc<height-4;k++,zc+=10.3){let th=offset+.42*Math.sin(zc*.077+phase),side=(k%2===0?1:-1),cx=th+side*.25,cy=zc+1.7,x=arc(theta,cx),y=z-cy,ang=side*.58;
+ let a=x*Math.cos(ang)+y*Math.sin(ang),b=-x*Math.sin(ang)+y*Math.cos(ang);
+ sum+=.72*Math.exp(-1.4*(a*a/(2.7*2.7)+b*b/(1.25*1.25)));
+ }}
+ let f=height>50?[[.65,18,1],[2.3,49,.82],[5,31,.95],[4.7,65,.63],[.9,64,.54]]:[[.68,16,1],[4.3,24,.7],[2.5,31,.62]];
+ for(const [th,cz,s] of f){let x=arc(theta,th),y=z-cz;
+ for(let j=0;j<5;j++){let ang=TAU*j/5+.32,vx=x-3.05*s*Math.cos(ang),vy=y-3.05*s*Math.sin(ang),a=vx*Math.cos(ang)+vy*Math.sin(ang),b=-vx*Math.sin(ang)+vy*Math.cos(ang);
+ sum+=1.38*Math.exp(-1.6*(a*a/(2.95*s)**2+b*b/(1.70*s)**2));}
+ sum+=1.16*Math.exp(-1.5*(x*x/(1.15*s)**2+y*y/(1.15*s)**2));}
+return relief*Math.min(sum,2.35);
+}
+function helix(th,z,pitch,center,low,high,amp,width){let rel=(((z-center-pitch*th/TAU+pitch/2)%pitch)+pitch)%pitch-pitch/2;return amp*Math.pow(Math.max(0,1-Math.abs(rel)/width),1.5)*smooth((z-low))*smooth((high-z));}
+function buildMesh(part,opt){const N=96,th=Array.from({length:N},(_,i)=>i*TAU/N),R=opt.d/2,B=opt.h,top=part==='body'?B+15:opt.c;
+const outerSteps=part==='body'?148:104,innerSteps=part==='body'?128:110;
+const za=Array.from({length:outerSteps},(_,i)=>top*i/(outerSteps-1));
+const zb=Array.from({length:innerSteps},(_,i)=>part==='body'?2.6+(top-2.6)*i/(innerSteps-1):(top-3.2)*i/(innerSteps-1));
+const v=[],f=[];
+function ring(z,rad){let first=v.length/3;for(let j=0;j<N;j++){let a=th[j],r=rad(a,z);v.push(r*Math.cos(a),r*Math.sin(a),z)}return first}
+const outer=za.map(z=>ring(z,(a,z)=>{let rad=R;
+if(part==='body'){
+rad-=3.35*smooth((z-B)/3);rad-=.35*(1-smooth(z/1.4));rad+=flower(a,z,B,opt.r)*(1-smooth((z-(B-5))/2));rad+=.18*Math.exp(-(((z-1.5)/.7)**2));
+rad+=helix(a,z,2.4,B+5,B+4.2,B+14,.72,.8);
+}else{
+rad-=.3*(1-smooth(z/1.2));rad-=.25*smooth((z-(top-2))/1.7);
+rad+=flower(a,z,top,opt.r)*smooth((z-2)/2)*smooth((top-2-z)/2);rad+=.24*Math.exp(-(((z-1.1)/.48)**2));
+}return rad}));
+const inner=zb.map(z=>ring(z,(a,z)=>{if(part==='body')return (R-2.65)-(R-2.65-(R-3.35-1.95))*smooth((z-(B-.4))/4.1);
+const minor=R-3.35,base=minor+.22+opt.g*.38,groove=helix(a,z,2.4,2,1.2,11,.82,.93);
+let r=base+groove+smooth((1.5-z)/1.5);let taper=smooth((z-15)/5);return Math.max(2.45,r*(1-taper)+2.45*taper);
+}));
+function strips(ids,reverse){for(let k=0;k<ids.length-1;k++)for(let j=0;j<N;j++){let i=ids[k]+j,n=ids[k]+(j+1)%N,u=ids[k+1]+j,w=ids[k+1]+(j+1)%N;
+if(reverse)f.push(i,w,n,i,u,w);else f.push(i,n,w,i,w,u)}}
+strips(outer,false);strips(inner,true);
+function bridge(a,b,top){for(let j=0;j<N;j++){let i=a+j,n=a+(j+1)%N,u=b+j,w=b+(j+1)%N;if(top)f.push(i,n,w,i,w,u);else f.push(i,w,n,i,u,w)}}
+if(part==='body')bridge(outer.at(-1),inner.at(-1),true);else bridge(outer[0],inner[0],false);
+function disk(id,z,flip){let cen=v.length/3;v.push(0,0,z);for(let j=0;j<N;j++){let i=id+j,n=id+(j+1)%N;if(flip)f.push(cen,n,i);else f.push(cen,i,n)}}
+if(part==='body'){disk(outer[0],0,true);disk(inner[0],2.6,false)}else{disk(outer.at(-1),top,false);disk(inner.at(-1),top-3.2,true)}
+const vert=new Float32Array(v),idx=new Uint32Array(f),normal=new Float32Array(vert.length);
+for(let k=0;k<idx.length;k+=3){let i=idx[k]*3,j=idx[k+1]*3,l=idx[k+2]*3,ax=vert[j]-vert[i],ay=vert[j+1]-vert[i+1],az=vert[j+2]-vert[i+2],bx=vert[l]-vert[i],by=vert[l+1]-vert[i+1],bz=vert[l+2]-vert[i+2],nx=ay*bz-az*by,ny=az*bx-ax*bz,nz=ax*by-ay*bx;
+for(const off of [i,j,l]){normal[off]+=nx;normal[off+1]+=ny;normal[off+2]+=nz}}
+for(let i=0;i<normal.length;i+=3){let d=Math.hypot(normal[i],normal[i+1],normal[i+2])||1;normal[i]/=d;normal[i+1]/=d;normal[i+2]/=d}
+return {name:part==='body'?'Corpo floral':'Tampa floral',v:vert,indices:idx,normals:normal};
+}
+function config(){return{d:+$('diametro').value,h:+$('altura').value,c:+$('tampa').value,r:+$('relevo').value,g:+$('folga').value}}
+function update(){let o=config();for(const [a,txt] of [['diametro',`${o.d} mm`],['altura',`${o.h} mm`],['tampa',`${o.c} mm`],['relevo',`${o.r.toFixed(1).replace('.',',')}×`],['folga',`${o.g.toFixed(2).replace('.',',')} mm`]])$('v-'+a).textContent=txt;
+$('stat-total').textContent=`${o.h+3+o.c} mm`;$('status').textContent='Recalculando malhas...';
+setTimeout(()=>{try{models=[buildMesh('body',o),buildMesh('cap',o)];upload();$('status').textContent='Modelo atualizado. Pronto para exportar.'}catch(e){$('status').textContent='Erro na geração: '+e.message;console.error(e)}},15)}
+function compile(type,source){let s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s}
+function setup(){gl=canvas.getContext('webgl2',{antialias:true,alpha:true});if(!gl){$('status').textContent='WebGL2 indisponível. Abra este HTML em um navegador Chrome/Edge atual.';return}
+const vs=`#version 300 es
+precision highp float;
+in vec3 aPos;in vec3 aNormal;
+uniform float uYaw,uPitch,uZoom,uAspect,uDistance;
+uniform vec3 uTranslate,uCenter;
+out vec3 vNormal;out float vDepth;
+void main(){vec3 p=aPos+uTranslate-uCenter;float cy=cos(uYaw),sy=sin(uYaw),cx=cos(uPitch),sx=sin(uPitch);
+vec3 a=vec3(cy*p.x-sy*p.y,sy*p.x+cy*p.y,p.z);vec3 b=vec3(a.x,cx*a.y-sx*a.z,sx*a.y+cx*a.z);
+float depth=max(40.0,uDistance+b.y);
+gl_Position=vec4(b.x*uZoom/uAspect,b.z*uZoom,depth-55.0,depth);
+vec3 n=aNormal;vec3 nr=vec3(cy*n.x-sy*n.y,sy*n.x+cy*n.y,n.z);vNormal=normalize(vec3(nr.x,cx*nr.y-sx*nr.z,sx*nr.y+cx*nr.z));vDepth=depth;
+}`;
+const fs=`#version 300 es
+precision highp float;
+in vec3 vNormal;in float vDepth;uniform vec3 uColor;out vec4 outColor;
+void main(){vec3 n=normalize(vNormal);float diffuse=.38+.62*max(0.0,dot(n,normalize(vec3(-.45,-.8,.9))));float fill=.11*max(0.0,dot(n,normalize(vec3(.7,.3,.5))));vec3 color=uColor*(diffuse+fill);float highlight=pow(max(dot(n,normalize(vec3(-.2,-.55,1.0))),0.0),13.0)*.10;outColor=vec4(color+highlight,1.0);}`;
+program=gl.createProgram();gl.attachShader(program,compile(gl.VERTEX_SHADER,vs));gl.attachShader(program,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
+uniforms={};for(const n of ['uYaw','uPitch','uZoom','uAspect','uDistance','uTranslate','uCenter','uColor'])uniforms[n]=gl.getUniformLocation(program,n);
+gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);gl.cullFace(gl.BACK);requestAnimationFrame(render);
+}
+function upload(){if(!gl)return;for(const m of meshBuffers){gl.deleteBuffer(m.vbo);gl.deleteBuffer(m.nbo);gl.deleteBuffer(m.ibo);gl.deleteVertexArray(m.vao)}meshBuffers=models.map(m=>{let vao=gl.createVertexArray();gl.bindVertexArray(vao);let vbo=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vbo);gl.bufferData(gl.ARRAY_BUFFER,m.v,gl.STATIC_DRAW);let loc=gl.getAttribLocation(program,'aPos');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,0,0);
+let nbo=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,nbo);gl.bufferData(gl.ARRAY_BUFFER,m.normals,gl.STATIC_DRAW);loc=gl.getAttribLocation(program,'aNormal');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,0,0);
+let ibo=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ibo);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,m.indices,gl.STATIC_DRAW);gl.bindVertexArray(null);return{vao,vbo,nbo,ibo,count:m.indices.length}});dirty=true}
+function render(){requestAnimationFrame(render);if(!gl||!dirty)return;dirty=false;let w=Math.max(1,canvas.clientWidth),h=Math.max(1,canvas.clientHeight),dpr=Math.min(devicePixelRatio||1,2);let rw=Math.floor(w*dpr),rh=Math.floor(h*dpr);if(canvas.width!==rw||canvas.height!==rh){canvas.width=rw;canvas.height=rh}gl.viewport(0,0,rw,rh);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(program);
+let o=config(),combined=mode==='montado',position=combined?[[0,0,0],[0,0,o.h+3]]:[[-18,0,0],[21,0,Math.max(0,o.h-39)]];
+let center=combined?[0,0,(o.h+3+o.c)/2]:[1,0,Math.max(o.h+15,o.h-39+o.c)/2];
+gl.uniform1f(uniforms.uYaw,yaw);gl.uniform1f(uniforms.uPitch,pitch);gl.uniform1f(uniforms.uZoom,zoom);gl.uniform1f(uniforms.uAspect,w/h);gl.uniform1f(uniforms.uDistance,205);gl.uniform3fv(uniforms.uCenter,center);
+for(let k=0;k<meshBuffers.length;k++){gl.bindVertexArray(meshBuffers[k].vao);gl.uniform3fv(uniforms.uTranslate,position[k]);gl.uniform3fv(uniforms.uColor,k===0?[.96,.23,.45]:[.99,.35,.59]);gl.drawElements(gl.TRIANGLES,meshBuffers[k].count,gl.UNSIGNED_INT,0)}gl.bindVertexArray(null)}
+// Independent ZIP writer for 3MF (no outside script/library required).
+let crcTable=(()=>{let t=new Uint32Array(256);for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=c&1?0xedb88320^(c>>>1):c>>>1;t[i]=c>>>0}return t})();
+function crc32(b){let c=0xffffffff;for(const x of b)c=crcTable[(c^x)&255]^(c>>>8);return(c^0xffffffff)>>>0}
+function zip(entries){let enc=new TextEncoder(),chunks=[],centers=[],pos=0;const u16=(a,n)=>a.push(n&255,(n>>8)&255),u32=(a,n)=>a.push(n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255);
+function put(arr){chunks.push(arr);pos+=arr.length}for(const [path,str] of entries){let name=enc.encode(path),data=enc.encode(str),crc=crc32(data),off=pos,h=[];u32(h,0x04034b50);u16(h,20);u16(h,0);u16(h,0);u16(h,0);u16(h,0);u32(h,crc);u32(h,data.length);u32(h,data.length);u16(h,name.length);u16(h,0);put(new Uint8Array(h));put(name);put(data);
+let c=[];u32(c,0x02014b50);u16(c,20);u16(c,20);u16(c,0);u16(c,0);u16(c,0);u16(c,0);u32(c,crc);u32(c,data.length);u32(c,data.length);u16(c,name.length);u16(c,0);u16(c,0);u16(c,0);u16(c,0);u32(c,0);u32(c,off);centers.push([new Uint8Array(c),name])}
+let centralStart=pos;for(let item of centers)for(let part of item)put(part);let e=[];u32(e,0x06054b50);u16(e,0);u16(e,0);u16(e,centers.length);u16(e,centers.length);u32(e,pos-centralStart);u32(e,centralStart);u16(e,0);put(new Uint8Array(e));return new Blob(chunks,{type:'model/3mf'})}
+function xmlGeometry(m,id){let v=[],t=[];for(let i=0;i<m.v.length;i+=3)v.push(`<vertex x="${m.v[i].toFixed(4)}" y="${m.v[i+1].toFixed(4)}" z="${m.v[i+2].toFixed(4)}"/>`);for(let i=0;i<m.indices.length;i+=3)t.push(`<triangle v1="${m.indices[i]}" v2="${m.indices[i+1]}" v3="${m.indices[i+2]}"/>`);return `<object id="${id}" type="model" name="${m.name}"><mesh><vertices>${v.join('')}</vertices><triangles>${t.join('')}</triangles></mesh></object>`}
+function create3mf(){let NS='http://schemas.microsoft.com/3dmanufacturing/core/2015/02',o=config();let model=`<?xml version="1.0" encoding="UTF-8"?><model xmlns="${NS}" unit="millimeter" xml:lang="pt-BR"><metadata name="Title">Imperial Volt Mascara Floral - prototipo</metadata><resources>${models.map((m,i)=>xmlGeometry(m,i+1)).join('')}</resources><build><item objectid="1"/><item objectid="2" transform="1 0 0 0 1 0 0 0 1 ${o.d+11} 0 0"/></build></model>`;
+let types=`<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="model" ContentType="application/vnd.ms-package.3dmanufacturing-3dmodel+xml"/></Types>`;
+let rels=`<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Target="/3D/3dmodel.model" Id="rel0" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/></Relationships>`;
+return zip([['[Content_Types].xml',types],['_rels/.rels',rels],['3D/3dmodel.model',model]]);
+}
+$('export').addEventListener('click',()=>{try{if(models.length!==2)throw Error('Aguarde a geração das peças');$('status').textContent='Preparando 3MF...';let b=create3mf(),url=URL.createObjectURL(b),link=document.createElement('a');link.href=url;link.download='imperial_volt_mascara_floral_personalizada.3mf';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),12000);$('status').textContent=`Arquivo 3MF preparado (${(b.size/1048576).toFixed(1)} MB). Verifique no Bambu Studio.`}catch(e){$('status').textContent='Erro ao exportar: '+e.message;console.error(e)}});
+for(let id of ['diametro','altura','tampa','relevo','folga'])$(id).addEventListener('change',update);
+for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));dirty=true});
+canvas.addEventListener('pointerdown',e=>{drag=true;canvas.setPointerCapture(e.pointerId);lastX=e.clientX;lastY=e.clientY});canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-lastX)*.008;pitch=Math.max(-1.3,Math.min(1.3,pitch+(e.clientY-lastY)*.007));lastX=e.clientX;lastY=e.clientY;dirty=true});canvas.addEventListener('pointerup',()=>drag=false);canvas.addEventListener('pointercancel',()=>drag=false);
+canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(2.0,Math.min(6.7,zoom*Math.exp(-e.deltaY*.001)));dirty=true},{passive:false});
+$('reset').addEventListener('click',()=>{yaw=-.47;pitch=.19;zoom=3.35;dirty=true});new ResizeObserver(()=>{dirty=true}).observe(canvas);
+try{setup();update()}catch(e){$('status').textContent='Visualizador: '+e.message;console.error(e)}
+})();
+</script>
+</body></html>

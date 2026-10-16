@@ -160,3 +160,9 @@
   Pix 15% só nos cartões; condições válidas até a data passada ao gerador (publicação + 7 dias), depois a página avisa e
   volta o porta-cartões a R$ 29 e o site a "sob consulta"; demonstração interativa da agenda (nada é enviado).
   Gerador: `tools/montar-orcamento-tio-caique.js` (fonte em `docs/orcamentos-fontes/`). Ainda NÃO publicado.
+- 2026-10-16 (orçamento Martins, porta-escovinha floral; CLAUDE/SITES principal 381bb779): `orcamentos/martins-porta-escovinha-cb7911/`.
+  Peça 3D gerada no navegador com a MESMA geometria do laboratório autoral (fonte em `docs/orcamentos-fontes/`), tampa que
+  desenrosca (passo 2,4 mm) e abre em animação, cores branco translúcido/rosa/lilás/preto. Preços da pesquisa aprovada: Pix
+  R$ 8,00/un branco e R$ 8,50/un outras cores, mínimo 50, -5% a partir de 75 (antes do Pix); "outras formas" = Pix/0,85
+  (50 branco R$ 400,00 / R$ 470,59; 75 cor R$ 605,63 / R$ 712,50). Validade 23/10. Imagens de IA do material original NÃO
+  usadas como foto (só como alternativa sem WebGL, rotulada "ilustrativa"). Gerador: `tools/montar-orcamento-martins.js`.
