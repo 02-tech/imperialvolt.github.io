@@ -152,12 +152,19 @@ function mostrarProjetosDigitais() {
 }
 
 function mostrarCategoriasFisicas() {
-  adicionarHistorico("assistant", "Posso te levar para uma compra do catálogo ou para uma solução sob medida. Escolha uma frente:");
+  adicionarHistorico("assistant", "Escolha uma frente:");
   estado.opcoes = [
-    { texto: "Soluções sob medida em impressão 3D", acao: () => mostrarCategoria("servicos-impressao-3d") },
-    { texto: "Comprar um produto 3D", acao: () => mostrarCategoria("impressao-3d") },
+    { texto: "Impressão 3D sob encomenda", acao: () => mostrarImpressao3d() },
     { texto: "Tags e chaveiros NFC", acao: () => mostrarCategoria("nfc") },
     { texto: "Empresas e revendedores", acao: () => irParaOrcamento() },
+    { texto: "Voltar ao início", acao: iniciarConversa }
+  ];
+}
+
+function mostrarImpressao3d() {
+  adicionarHistorico("assistant", "Na impressão 3D a Imperial Volt trabalha somente sob encomenda: peças personalizadas, reposição, adaptação e protótipos feitos a partir da sua ideia, das suas medidas ou do seu próprio arquivo. Não vendemos modelos prontos de catálogo. Cada pedido é avaliado e orçado individualmente, direto com o responsável pelo WhatsApp.");
+  estado.opcoes = [
+    { texto: "Encomendar uma peça 3D pelo WhatsApp", acao: () => falarNoWhatsApp({ produto: "Impressão 3D sob encomenda", origem: "Voltz-Bot" }) },
     { texto: "Voltar ao início", acao: iniciarConversa }
   ];
 }
@@ -201,7 +208,7 @@ function mostrarItem(categoriaId, itemId) {
 }
 
 function mostrarPrecos() {
-  const ids = ["perfil-empresa-google", "landing-page-estatica", "site-institucional-estatico", "site-dinamico-cms", "sistema-web-painel-administrativo", "aplicativo-android", "automacao-simples", "assistente-ia", "impressao-arquivo-pronto"];
+  const ids = ["perfil-empresa-google", "landing-page-estatica", "site-institucional-estatico", "site-dinamico-cms", "sistema-web-painel-administrativo", "aplicativo-android", "automacao-simples", "assistente-ia"];
   const itens = ids.map((id) => encontrarItem(id).item).filter(Boolean);
   const resumo = itens
     .map((item) => `${item.nome}: ${precoFormatado(item)} · ${prazoFormatado(item)}`)
@@ -311,11 +318,7 @@ function encontrarItemPorTexto(texto) {
     ["bot", "bot-atendimento-automatizado"],
     ["ia", "assistente-ia"],
     ["chaveiro", "chaveiro-nfc-personalizado"],
-    ["nfc", "tag-nfc-personalizada"],
-    ["impressao 3d", "impressao-arquivo-pronto"],
-    ["reposicao", "peca-reposicao-personalizada"],
-    ["adaptacao", "ajuste-adaptacao-modelo-3d"],
-    ["apito", "apito-morte-asteca"]
+    ["nfc", "tag-nfc-personalizada"]
   ];
   const atalho = atalhos.find(([palavra]) => termo.includes(palavra));
   if (atalho) return encontrarItem(atalho[1]);
@@ -371,7 +374,7 @@ function interpretarEntrada(texto, adicionarUsuario = true) {
   if (/(institucional)/.test(termo)) return mostrarItem("projetos-digitais", "site-institucional-estatico");
   if (/(ecommerce|e-commerce|loja virtual)/.test(termo)) return mostrarItem("projetos-digitais", "ecommerce-loja-virtual");
   if (/(site|pagina)/.test(termo)) return mostrarProjetosDigitais();
-  if (/(3d|impressao|peca|reposicao|adaptacao)/.test(termo)) return mostrarCategoria("servicos-impressao-3d");
+  if (/(3d|impressao|peca|reposicao|adaptacao)/.test(termo)) return mostrarImpressao3d();
   if (/(nfc|tag|chaveiro)/.test(termo)) return mostrarCategoria("nfc");
   if (/(faq|duvida|dominio|vps|loja|publicar|manutencao|orcamento|inpi|taxa)/.test(termo)) return mostrarFaq(termo);
   encaminharPergunta(texto);

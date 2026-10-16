@@ -70,17 +70,10 @@
     }
   ],
   "fisico": {
-    "status": "em-preparacao",
-    "comentario": "Nenhum produto físico está à venda até validação de produção e de licença comercial. A régua abaixo é arquitetura comercial interna; não é exibida como oferta.",
-    "regua": [
-      { "tamanho": "pequeno", "medida": "7 a 9 cm", "preco": 49.9 },
-      { "tamanho": "medio", "medida": "10 a 12 cm", "preco": 59.9 },
-      { "tamanho": "padrao", "medida": "13 a 15 cm", "preco": 79.9 },
-      { "tamanho": "grande", "medida": "16 a 18 cm", "preco": 99.9 },
-      { "tamanho": "diferenciada", "medida": "peça diferenciada", "precoInicial": 129.9 }
-    ],
+    "status": "sob-encomenda",
+    "comentario": "Nenhum produto físico pronto à venda (decisão de Guilherme, 2026-10-15: risco de licença de modelos). Peças físicas só sob encomenda, orçadas pelo WhatsApp.",
     "pintura": "Pintura e acabamento manual: sob orçamento.",
-    "projetoPersonalizado": "Nova modelagem, mudança estrutural, medidas específicas ou acabamento incomum: sob orçamento, pelo WhatsApp.",
+    "projetoPersonalizado": "Peça física sob encomenda: avaliada e orçada individualmente, pelo WhatsApp.",
     "produtos": []
   }
 }

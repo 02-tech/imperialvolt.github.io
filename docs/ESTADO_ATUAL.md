@@ -130,3 +130,14 @@
   compactos (nome, frase, preço, Pix, prazo, "Ver o que inclui"). "O que vendemos" com atalhos já no topo; topo compacto no
   computador. Menu: Presentes, Sites e lojas, Todos os serviços, Sob medida, Para empresas, Contato. FAQ não repete preços
   (aponta para o catálogo). Mesmo valor em dois cartões só quando são serviços diferentes (site vitrine e registro de marca: R$ 890).
+- 2026-10-16 (impressão 3D só sob encomenda; CLAUDE/SITES principal, sessão 381bb779, missão de Guilherme repassada por
+  projetos-68 em 15/10: "a gente trabalha com operações 3D sobre encomenda [...] e personalizados [...] eu prefiro não apresentar
+  nenhum modelo no meu site"; motivo: risco de licença de modelos de terceiros). Seção `#solucoes-fisicas` virou "Impressão 3D sob
+  encomenda" (menu "Impressão 3D"); bloco "Presentes físicos: em preparação" virou "Presente físico em impressão 3D: sob encomenda"
+  (sem preço de peça); botões abrem o WhatsApp com "quero encomendar uma peça em impressão 3D". Voltz-Bot: sai "Comprar um
+  produto 3D", entra resposta "sob encomenda" com botão para o WhatsApp. Removidos dos dados publicados: categoria `impressao-3d`
+  (6 produtos, inclusive o apito) de `catalogo.json` e `catalogo-publico.json`, régua de preços por tamanho de `presentes.json`,
+  "Comprar produto 3D" de `fluxo-comercial.json`, as 5 fotos de `src/imagens/produtos/` (cópia fora do repositório em
+  `IMPERIAL_VOLT/_backups/imperialvolt-fotos-3d-20261016/`; versão anterior dos dados no commit pai). FAQ, termos gerais e
+  termos de impressão 3D atualizados ("somente sob encomenda; não vendemos modelos prontos de catálogo"). `llms.txt` e JSON-LD
+  dizem "impressão 3D sob encomenda". Regra: não voltar a exibir modelo, foto ou preço de peça 3D sem nova ordem de Guilherme.

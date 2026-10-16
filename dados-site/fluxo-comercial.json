@@ -43,11 +43,6 @@
         "destino": "manutencao"
       },
       {
-        "id": "impressao-3d",
-        "rotulo": "Comprar produto 3D",
-        "destino": "produtos-3d"
-      },
-      {
         "id": "nfc",
         "rotulo": "Comprar tags ou chaveiros NFC",
         "destino": "produtos-nfc"

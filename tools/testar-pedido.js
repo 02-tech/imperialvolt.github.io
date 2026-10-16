@@ -45,8 +45,8 @@ const reais = v => "R$ " + v.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+
       grupos:[...document.querySelectorAll('.catalogo-grupo')].map(g=>g.id),
       cards:[...document.querySelectorAll('#grupo-presentes .oferta-card h3')].map(e=>e.textContent),
       antigos:['.digital-difference','#siteComparison','#orcamento','#quoteBuilder','#servicos-precos','#presentes'].filter(s=>document.querySelector(s)),
-      proibidos:['vitalíci','Vitalíci','R$ 350','Landing Page','Apito','Asteca','Toque Direto','A partir de R$ 1.200','Tag NFC Personalizada','Orçamento guiado'].filter(p=>tx.includes(p)),
-      fisicos:!!document.querySelector('#presentes-fisicos')&&document.querySelector('#presentes-fisicos').textContent.includes('Em preparação'),
+      proibidos:['vitalíci','Vitalíci','R$ 350','Landing Page','Apito','Asteca','Em preparação','coleção própria','imagens/produtos','Toque Direto','A partir de R$ 1.200','Tag NFC Personalizada','Orçamento guiado'].filter(p=>tx.includes(p)),
+      fisicos:!!document.querySelector('#presentes-fisicos')&&document.querySelector('#presentes-fisicos').textContent.includes('Sob encomenda'),
       produtosFisicos:document.querySelectorAll('.product-card').length}})()`);
     ok(pag.ovx === 0, `sem rolagem lateral (${pag.ovx}px)`);
     ok(pag.ordem.startsWith("topo > conversion-strip > catalogo > solucoes-fisicas"), `ordem das seções: ${pag.ordem}`);
@@ -55,7 +55,7 @@ const reais = v => "R$ " + v.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+
     ok(pag.grupos.length === 8 && pag.grupos[1] === "grupo-projetos-digitais", `todos os grupos abertos na página (${pag.grupos.length})`);
     ok(pag.cards.join("|") === "Homenagem digital personalizada|Experiência por aproximação", `grupo Presentes: ${pag.cards.join(", ")}`);
     ok(!pag.proibidos.length, `sem preço antigo ou termo proibido${pag.proibidos.length ? ": " + pag.proibidos.join(", ") : ""}`);
-    ok(pag.fisicos && pag.produtosFisicos === 0, "presentes físicos em preparação, nenhum produto físico à venda");
+    ok(pag.fisicos && pag.produtosFisicos === 0, "impressão 3D só sob encomenda, nenhum produto físico à venda");
     ok(await ev(`document.querySelector('.oferta-card[data-produto=homenagem-digital] .variante.is-active').textContent.startsWith('30 dias')`) && await ev(`document.querySelector('.oferta-card[data-produto=homenagem-digital] .oferta-card__preco strong').textContent`) === "R$ 119,90", "homenagem abre em 30 dias (R$ 119,90), destacada");
     const sites = await ev(`(()=>{const precos=[...document.querySelectorAll('#grupo-projetos-digitais .oferta-card__preco strong')].map(e=>e.textContent);const n=document.querySelectorAll('.oferta-card[data-produto=site-institucional-estatico]').length+[...document.querySelectorAll('.faq-item')].filter(e=>e.textContent.includes('890')).length;const nota=!!document.querySelector('#grupo-projetos-digitais [data-so-aba=projetos-digitais]:not([hidden])');return {precos,n,nota}})()`);
     ok(sites.precos.join("|") === "a partir de R$ 890,00|a partir de R$ 1.690,00|a partir de R$ 2.990,00|a partir de R$ 3.990,00", `grupo Sites e lojas: ${sites.precos.join(" · ")}`);

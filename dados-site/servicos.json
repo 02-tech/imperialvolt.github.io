@@ -516,7 +516,7 @@
     {
       "id": "servicos-impressao-3d",
       "publico": false,
-      "pendencia": "Fora da oferta pública desde 2026-10-03: modelagem, adaptação, reposição e protótipos passam a ser projeto personalizado sob orçamento (comando de Guilherme); presentes físicos em preparação.",
+      "pendencia": "Fora da oferta pública desde 2026-10-03: modelagem, adaptação, reposição e protótipos passam a ser projeto personalizado sob orçamento (comando de Guilherme). Desde 2026-10-15: impressão 3D somente sob encomenda, sem modelos prontos (risco de licença).",
       "nome": "Impressão 3D sob medida",
       "entradaRotulo": "Quero resolver algo com impressão 3D",
       "descricao": "Soluções físicas para reposição, adaptação, personalização e protótipos, avaliadas individualmente.",
