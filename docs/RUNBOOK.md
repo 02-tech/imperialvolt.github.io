@@ -37,6 +37,22 @@ pwsh -File tools/otimizar-fotos.ps1 -Origem "C:\pasta\com\fotos" -Destino "src/i
 - Depois, referenciar o arquivo no HTML/JSON correspondente e rodar o passo 3.
 - Só usar fotos reais e com direito de uso (regra do `CLAUDE.md`: nada de projeto "supostamente realizado").
 
+## Orçamentos para clientes (área oficial /orcamentos/)
+
+- Cada orçamento fica em `orcamentos/<cliente>-<6 letras/números aleatórios>/index.html` (ex.: `tio-caique-barbearia-fda887`).
+  O sufixo aleatório impede que alguém adivinhe o link de outro cliente. Gerar com
+  `node -e "console.log(require('crypto').randomBytes(3).toString('hex'))"`.
+- `orcamentos/index.html` não lista ninguém: só explica que cada cliente recebe o próprio link.
+- Toda página de orçamento precisa ter: `<meta name="robots" content="noindex,nofollow,noarchive">`; botão de confirmação
+  para o WhatsApp oficial (`wa.me/5524992144995`); og:title/og:description/og:image (prévia do link no WhatsApp,
+  `previa.jpg` 1200x630 na mesma pasta); caminhos relativos para `../../icons/`. Nunca entra no `sitemap.xml`.
+- Testar antes do commit: servidor local numa porta livre (NUNCA 8765, é do channel-pc; ver LESSON-20261016-035649-5D44E9)
+  e `node tools/testar-orcamento.js http://127.0.0.1:<porta>/orcamentos/<pasta>/ <pastaCapturas>`. Com
+  `PREVIA=<caminho>/previa.jpg` o mesmo teste gera a imagem de prévia do link a partir do topo da página.
+- Preços, prazos e textos: só o que Guilherme aprovou para aquele cliente. Modelo 3D só se for autoral/encomenda do
+  próprio cliente (regra de 15/10: nenhum modelo de catálogo no site).
+- Publicar = commit + push na main (como o resto do site). Enviar o link ao cliente é sempre do Guilherme.
+
 ## O que nunca vai ao ar
 
 - `_config.yml` exclui do build: `CLAUDE.md`, `README.md`, `docs/`, `tools/`, `_relatorios/`, `novosite/`.

@@ -141,3 +141,10 @@
   `IMPERIAL_VOLT/_backups/imperialvolt-fotos-3d-20261016/`; versão anterior dos dados no commit pai). FAQ, termos gerais e
   termos de impressão 3D atualizados ("somente sob encomenda; não vendemos modelos prontos de catálogo"). `llms.txt` e JSON-LD
   dizem "impressão 3D sob encomenda". Regra: não voltar a exibir modelo, foto ou preço de peça 3D sem nova ordem de Guilherme.
+- 2026-10-16 (área oficial de orçamentos; CLAUDE/SITES principal, sessão 381bb779; pedido de Guilherme: "melhorias e preparar
+  [...] uma aba que vai ser oficial para publicar orçamentos"): criada `orcamentos/` (página-mãe sem lista, noindex) e o
+  primeiro orçamento `orcamentos/tio-caique-barbearia-fda887/` (cartões de visita + porta-cartões 3D autoral, a partir do V2
+  enviado por Guilherme). Melhorias: noindex, prévia do link (og + `previa.jpg`), marca oficial (raio), "Confirmar pedido pelo
+  WhatsApp" para o número oficial com o link do orçamento na mensagem, barra fixa com o total no celular, cabeçalho e arte do
+  cartão ajustados no celular, rodapé com canais oficiais, "expositor" padronizado como "porta-cartões". Preços e textos do
+  V2 mantidos. Teste: `tools/testar-orcamento.js` (390 e 1366). Procedimento: `docs/RUNBOOK.md`, seção Orçamentos.
