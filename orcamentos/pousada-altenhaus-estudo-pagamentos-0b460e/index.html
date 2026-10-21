@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta name="theme-color" content="#ffffff"/>
+<title>Estudo · Reservas, pagamentos e PMS · Pousada Altenhaus | Imperial Volt</title>
+<meta name="description" content="Estudo preliminar sobre reservas, pagamentos online e opções de PMS para a Pousada Altenhaus."/>
+<link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Imperial Volt"/>
+<meta property="og:title" content="Estudo · Reservas, pagamentos e PMS · Pousada Altenhaus"/>
+<meta property="og:description" content="Modernizar sem ruptura: testar um caminho de pagamento mais simples para o hóspede, sem abandonar o Desbravador."/>
+<meta property="og:url" content="https://imperialvolt.com/orcamentos/pousada-altenhaus-estudo-pagamentos-0b460e/"/>
+<style>
+:root{color-scheme:light;--ink:#1f2a2d;--muted:#66747a;--line:#e5e9e8;--soft:#f4f6f3;--brand:#233e42;--ok:#1d7157;--gold:#b98b2f;--warn:#9a5b1f;--bad:#a6362c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:#fffffff2;backdrop-filter:blur(6px);z-index:20}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-weight:800;letter-spacing:-.03em;white-space:nowrap}
+.brand img{width:34px;height:34px;border-radius:10px;display:block}
+.meta{font-size:12.5px;color:var(--muted);text-align:right;white-space:nowrap}
+.secnav{display:flex;gap:4px;overflow-x:auto;padding:10px 0;border-top:1px solid var(--line);scrollbar-width:none}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{flex:none;font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:999px;white-space:nowrap}
+.secnav a:hover,.secnav a:focus-visible{background:var(--soft);color:var(--ink)}
+.hero{padding:48px 0 8px}
+.eyebrow{margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#4f7a70}
+h1{margin:0;font-size:clamp(30px,5.2vw,46px);line-height:1.07;letter-spacing:-.045em}
+.hero p{margin:14px 0 0;color:var(--muted);max-width:640px;font-size:16.5px}
+.basebox{margin-top:22px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--soft);font-size:14px;color:var(--muted)}
+.basebox b{color:var(--ink)}
+.central{margin-top:20px;border:1.5px solid var(--brand);border-radius:18px;padding:22px 24px;background:linear-gradient(160deg,#f4f7f6,#fff)}
+.central .tag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--brand);margin:0 0 8px}
+.central p{margin:0;color:var(--ink);font-size:16px}
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.quad div{border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px}
+.quad h4{margin:0 0 6px;font-size:13.5px;letter-spacing:-.01em}
+.quad p{margin:0;font-size:12.8px;color:var(--muted)}
+section{padding:46px 0 6px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+.kicker{display:flex;align-items:center;gap:10px;margin:0 0 18px}
+.kicker .n{width:28px;height:28px;border-radius:9px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800;flex:none}
+.kicker h2{margin:0;font-size:24px;letter-spacing:-.03em}
+h3{font-size:17.5px;letter-spacing:-.02em;margin:26px 0 10px}
+p{color:var(--ink)}
+.lede{color:var(--muted);font-size:15.5px;margin:0 0 18px}
+.summary{display:grid;gap:12px;margin:18px 0 8px}
+.summary .item{display:grid;grid-template-columns:120px 1fr;gap:14px;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.summary .item b{font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brand)}
+.summary .item span{color:var(--ink);font-size:14.5px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 6px}
+.tier{border:1px solid var(--line);border-radius:16px;padding:16px}
+.tier .lvl{font-size:11px;font-weight:800;color:#fff;background:var(--muted);display:inline-block;border-radius:999px;padding:3px 9px;margin-bottom:10px}
+.tier:nth-child(1) .lvl{background:var(--ok)}
+.tier:nth-child(2) .lvl{background:var(--gold)}
+.tier:nth-child(3) .lvl{background:var(--bad)}
+.tier h4{margin:0 0 6px;font-size:15px}
+.tier p{margin:0;font-size:13.3px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:14px}
+th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:9px 12px;border-bottom:2px solid var(--line)}
+td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink)}
+td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.tscroll{overflow-x:auto;margin:0 -2px}
+.callout{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:14px 16px;margin:16px 0;background:var(--soft);font-size:14.3px;color:var(--ink)}
+.callout.warn{border-left-color:var(--warn)}
+.callout.ok{border-left-color:var(--ok)}
+.steps{display:grid;gap:10px;margin:18px 0 8px}
+.step{display:grid;grid-template-columns:40px 1fr;gap:14px;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.step .ix{width:40px;height:40px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.step b{display:block;font-size:14.5px;margin-bottom:3px}
+.step span{color:var(--muted);font-size:13.7px}
+.scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.scen div{border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.scen strong{display:block;font-size:22px;letter-spacing:-.03em;color:var(--brand)}
+.scen small{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
+.gains{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+.gains div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.gains h5{margin:0 0 6px;font-size:13.8px}
+.gains p{margin:0;color:var(--muted);font-size:13.2px}
+.secure{display:grid;gap:10px;margin:18px 0 8px}
+.secure li{list-style:none;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--ink)}
+.secure{padding:0}
+.compare{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0 4px}
+.compare div{border:1px solid var(--line);border-radius:14px;padding:16px}
+.compare h5{margin:0 0 8px;font-size:14.5px}
+.compare p{margin:0;color:var(--muted);font-size:13.6px}
+.roadmap{display:grid;gap:10px;margin:18px 0 8px}
+.rstep{border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.rstep b{display:block;font-size:14.2px;margin-bottom:4px;color:var(--brand)}
+.rstep span{color:var(--muted);font-size:13.6px}
+.criteria{margin:16px 0 8px;padding-left:0}
+.criteria li{list-style:none;border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:8px;font-size:13.9px}
+blockquote{margin:16px 0;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--soft);font-size:15px;color:var(--ink);font-style:italic}
+blockquote p{margin:0;color:inherit}
+.sources{columns:2;gap:24px;margin:14px 0 4px;font-size:13.8px;color:var(--muted)}
+.sources li{margin-bottom:6px;break-inside:avoid}
+.closing{margin:40px 0 0;border:1.5px solid var(--brand);border-radius:18px;padding:22px 24px;background:linear-gradient(160deg,#f4f7f6,#fff)}
+.closing .tag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--brand);margin:0 0 8px}
+footer{border-top:1px solid var(--line);margin-top:54px;padding:22px 0 34px;font-size:12.3px;color:var(--muted)}
+footer a{color:inherit}
+footer .disclaimer{margin-top:8px;max-width:720px}
+@media (max-width:760px){
+.quad{grid-template-columns:repeat(2,1fr)}
+.tiers{grid-template-columns:1fr}
+.scen{grid-template-columns:1fr}
+.gains{grid-template-columns:1fr}
+.compare{grid-template-columns:1fr}
+.sources{columns:1}
+.summary .item{grid-template-columns:1fr}
+}
+@media print{header,.secnav{position:static}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="brand" href="https://imperialvolt.com/"><img src="../../icons/imperial-volt-bolt.svg" alt=""/> Imperial Volt</a>
+<div class="meta">Estudo preliminar · Pousada Altenhaus<br/>Consultado em 21/10/2026</div>
+</div>
+<div class="wrap secnav">
+<a href="#direcao">Direção</a>
+<a href="#operacao">Operação</a>
+<a href="#pagamentos">Meios de pagar</a>
+<a href="#financas">Finanças</a>
+<a href="#estrategia">Estratégia</a>
+<a href="#tecnologia">Tecnologia</a>
+<a href="#seguranca">Segurança</a>
+<a href="#pms">PMS</a>
+<a href="#decisao">Decisão</a>
+<a href="#apresentacao">Apresentação</a>
+</div>
+</header>
+
+<main class="wrap">
+
+<section class="hero" id="direcao">
+<p class="eyebrow">Direção</p>
+<h1>Modernizar sem ruptura.</h1>
+<p>Estudo de reservas, pagamentos online e opções de PMS para a Pousada Altenhaus.</p>
+<div class="basebox"><b>Base operacional informada:</b> Desbravador (PMS atual), site existente, cobrança de cartão digitada pela equipe e Getnet (nome da operadora a confirmar).</div>
+
+<div class="central">
+<p class="tag">Proposta central</p>
+<p>Antes de substituir o sistema que a equipe já conhece, testar um caminho de pagamento mais simples para o hóspede: Pix, cartão, parcelamento e confirmação condicionada ao pagamento efetivamente aprovado.</p>
+</div>
+
+<div class="quad">
+<div><h4>Preservar</h4><p>Manter recepção, restaurante e rotinas atuais durante o piloto.</p></div>
+<div><h4>Converter</h4><p>Permitir pagamento pelo próprio hóspede, inclusive fora do expediente.</p></div>
+<div><h4>Controlar</h4><p>Confirmar somente após validação do gateway e da disponibilidade.</p></div>
+<div><h4>Medir</h4><p>Ver reservas concluídas, custo por venda e eventuais ganhos reais.</p></div>
+</div>
+
+<h3>Resumo da decisão</h3>
+<div class="summary">
+<div class="item"><b>Viável</b><span>Mercado Pago e Getnet oferecem soluções digitais para integrar pagamentos a um site. Uma VPS pode hospedar a automação, mas não é obrigatória para iniciar.</span></div>
+<div class="item"><b>Prioridade</b><span>Consultar a Getnet e o motor de reservas do próprio Desbravador antes de assumir custos de uma nova plataforma.</span></div>
+<div class="item"><b>Risco central</b><span>Um checkout isolado não conhece quartos disponíveis. Sem integração ao PMS, a equipe deve liberar a cobrança apenas após confirmar a disponibilidade.</span></div>
+<div class="item"><b>Benefício financeiro</b><span>Pode surgir de novas reservas concluídas, menor trabalho manual e mais vendas diretas. Ainda não há dados da Altenhaus para afirmar aumento de lucro.</span></div>
+</div>
+<div class="callout">Posicionamento sugerido: avaliação complementar e reversível, sem desqualificar o Desbravador nem exigir troca imediata do site criado pela gerência.</div>
+
+<h3>As três possibilidades, em ordem de risco e investimento</h3>
+<div class="tiers">
+<div class="tier"><span class="lvl">1 · Teste simples</span><h4>Link de pagamento</h4><p>Após conferência da reserva pela equipe.</p></div>
+<div class="tier"><span class="lvl">2 · Site integrado</span><h4>Checkout no site atual</h4><p>Getnet ou Mercado Pago, com fluxo de verificação.</p></div>
+<div class="tier"><span class="lvl">3 · Automação completa</span><h4>Backend próprio em VPS</h4><p>Integração formal com a disponibilidade do PMS.</p></div>
+</div>
+</section>
+
+<section id="operacao">
+<div class="kicker"><span class="n">2</span><h2>Operação</h2></div>
+<p class="lede">O que muda na jornada. Separar a facilidade de pagamento da automação das reservas evita expectativas incorretas.</p>
+
+<h3>Cenário informado: pagamento à distância feito pela equipe</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Etapa</th><th>Hoje</th><th>Possibilidade futura</th></tr></thead>
+<tbody>
+<tr><td>Contato do hóspede</td><td>Solicita reserva pelo site ou outro canal.</td><td>Consulta datas e formas de pagamento no canal oficial.</td></tr>
+<tr><td>Pagamento</td><td>Equipe recebe os dados e digita o cartão na máquina.</td><td>Hóspede usa link/checkout autenticado com Pix ou cartão.</td></tr>
+<tr><td>Confirmação</td><td>Equipe confere e efetiva a reserva.</td><td>Site só comunica "pagamento aprovado" após validação técnica; reserva depende do inventário.</td></tr>
+<tr><td>Controle interno</td><td>Operação já habituada ao Desbravador.</td><td>Mantém PMS e registra pagamentos de modo conciliável.</td></tr>
+</tbody>
+</table></div>
+
+<h3>Três níveis que não devem ser confundidos</h3>
+<div class="compare">
+<div><h5>Link seguro</h5><p>Dispensa receber os dados do cartão, mas ainda exige atendimento.</p></div>
+<div><h5>Checkout online</h5><p>Deixa o hóspede pagar sozinho; depende de regra de reserva.</p></div>
+<div><h5>Motor integrado</h5><p>Consulta disponibilidade e sincroniza reserva e pagamento com o PMS.</p></div>
+</div>
+<div class="callout warn">Regra operacional: não cobrar hospedagem como "reserva confirmada" antes de garantir o quarto. Na ausência de integração, disponibilidades e cobranças devem passar por conferência humana.</div>
+
+<h3>A Booking continua existindo</h3>
+<p>O estudo não pressupõe abandonar a Booking. Suas políticas de cobrança, cartões virtuais e comissões devem ser tratadas de acordo com cada reserva. O piloto proposto começa pelas vendas diretas do site, sem alterar o fluxo das OTAs.</p>
+</section>
+
+<section id="pagamentos">
+<div class="kicker"><span class="n">3</span><h2>Meios de pagar</h2></div>
+<p class="lede">Mercado Pago × Getnet. Getnet é uma hipótese provável para "Jetnet". Confirmar a adquirente e consultar as condições específicas do CNPJ da pousada.</p>
+
+<div class="tscroll"><table>
+<thead><tr><th>Critério</th><th>Mercado Pago</th><th>Getnet</th></tr></thead>
+<tbody>
+<tr><td>Integração</td><td>Checkout Pro com redirecionamento; Bricks/transparente para experiência no site.</td><td>Get Checkout com API/iframe; alternativa de link de pagamento.</td></tr>
+<tr><td>Meios</td><td>Pix, cartões e parcelamento; Checkout Pro aceita saldo e crédito do MP.</td><td>Pix, cartões, boleto e carteiras digitais; recursos dependem da contratação.</td></tr>
+<tr><td>Segurança</td><td>Autenticação 3DS e recursos antifraude; regras de cobertura devem ser conferidas.</td><td>Antifraude anunciado; verificar 3DS e responsabilidades no contrato.</td></tr>
+<tr><td>Custo</td><td>Tabela pública de checkout disponível; tarifas variam com prazo e meio.</td><td>Solicitar oferta do Get Checkout; contrato atual da maquininha não basta.</td></tr>
+<tr><td>Vantagem potencial</td><td>Entrada rápida em testes; ampla documentação para integração.</td><td>Unificar recebimentos e conciliação com fornecedor já utilizado.</td></tr>
+</tbody>
+</table></div>
+
+<h3>Referências públicas de tarifas <span style="font-weight:400;color:var(--muted);font-size:13px">(não são propostas para a Altenhaus)</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Operação</th><th>Preço divulgado</th><th>Observação</th></tr></thead>
+<tbody>
+<tr><td>Mercado Pago · Pix no checkout</td><td class="num">0,99%</td><td>R$ 7,92 em venda de R$ 800, antes de desconto.</td></tr>
+<tr><td>Mercado Pago · cartão à vista</td><td class="num">3,98% a 4,98%</td><td>Conforme recebimento em 30 dias ou na hora; parcelado depende da configuração.</td></tr>
+<tr><td>Getnet link · Pix ou wallet</td><td class="num">R$ 0,50/transação (anunciado)</td><td>Anúncio referente ao link; não comprova tarifa total do Get Checkout.</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn">Não existe "Mercado Pago grátis" para essa venda online. Também não foi confirmado que a Getnet aplicará, no checkout do site, as mesmas taxas que cobra na maquininha. Comparar MDR, antecipação, prazo, 3DS, contestação, custo fixo e estorno.</div>
+</section>
+
+<section id="financas">
+<div class="kicker"><span class="n">4</span><h2>Finanças</h2></div>
+<h3>Quanto poderia render?</h3>
+<div class="callout warn"><b>Simulação ilustrativa.</b> NÃO é previsão de faturamento nem lucro da Altenhaus; faltam tráfego, conversão, ticket real e custos operacionais.</div>
+
+<div class="tscroll"><table>
+<thead><tr><th>Premissa</th><th>Valor demonstrativo</th><th>Significado</th></tr></thead>
+<tbody>
+<tr><td>Valor da reserva adicional</td><td class="num">R$ 800</td><td rowspan="2">Receita total da hospedagem por venda nova / margem de contribuição antes do pagamento.</td></tr>
+<tr><td>Margem de contribuição antes de pagamento</td><td class="num">60%</td></tr>
+<tr><td>Custo médio adicional de pagamento</td><td class="num">3%</td><td>Depois de custos variáveis hipotéticos da estadia.</td></tr>
+<tr><td>Custo mensal incremental</td><td class="num">R$ 200</td><td>Hospedagem, suporte e manutenção hipotéticos (taxa ponderada estimada, não tarifa de fornecedor).</td></tr>
+</tbody>
+</table></div>
+<p style="font-size:14px;color:var(--muted)">Contribuição por reserva adicional: R$ 800 × (60% − 3%) = <b style="color:var(--ink)">R$ 456</b>. Resultado incremental mensal = 456 × novas reservas − R$ 200.</p>
+
+<h3>Cenários de novas reservas realmente conquistadas</h3>
+<div class="scen">
+<div><strong>R$ 256</strong><small>+1 reserva/mês</small></div>
+<div><strong>R$ 1.168</strong><small>+3 reservas/mês</small></div>
+<div><strong>R$ 2.536</strong><small>+6 reservas/mês</small></div>
+</div>
+<p style="font-size:14px;color:var(--muted)">Leitura: no exemplo central, 3 novas reservas de R$ 800 gerariam R$ 2.400 de receita adicional e R$ 1.168 de contribuição incremental mensal após as despesas hipotéticas. Não inclui desenvolvimento inicial, impostos adicionais nem efeitos de cancelamentos.</p>
+<div class="callout ok">Condição para a tese funcionar: medir reservas realmente adicionais. Se o hóspede já compraria pelo site, automatizar o pagamento não cria nova receita por si só.</div>
+</section>
+
+<section id="estrategia">
+<div class="kicker"><span class="n">5</span><h2>Estratégia</h2></div>
+<h3>Pix e venda direta: onde há margem</h3>
+<p class="lede">Não presumir que oferecer desconto por Pix melhora sempre o resultado. Calcular o custo líquido de cada forma de pagamento.</p>
+
+<div class="tscroll"><table>
+<thead><tr><th>Pagamento</th><th>Valor recebido pelo hóspede</th><th>Custo total aproximado</th><th>Líquido antes da hospedagem</th></tr></thead>
+<tbody>
+<tr><td>Cartão à vista, 30 dias</td><td class="num">R$ 800,00</td><td class="num">R$ 31,84 (3,98%)</td><td class="num">R$ 768,16</td></tr>
+<tr><td>Pix sem desconto</td><td class="num">R$ 800,00</td><td class="num">R$ 7,92 (0,99%)</td><td class="num">R$ 792,08</td></tr>
+<tr><td>Pix com 1% desconto</td><td class="num">R$ 792,00</td><td class="num">R$ 15,84 (desconto + taxa)</td><td class="num">R$ 784,16</td></tr>
+<tr><td>Pix com 2% desconto</td><td class="num">R$ 784,00</td><td class="num">R$ 23,76 (desconto + taxa)</td><td class="num">R$ 776,24</td></tr>
+<tr><td>Pix com 3% desconto</td><td class="num">R$ 776,00</td><td class="num">R$ 31,68 (desconto + taxa)</td><td class="num">R$ 768,32</td></tr>
+</tbody>
+</table></div>
+<p style="font-size:14px;color:var(--muted)">Neste exemplo, um desconto de 1% no Pix preserva R$ 16,00 a mais por venda do que o cartão de 3,98%, mas exige avaliar prazo de recebimento, comportamento do público e o desconto já concedido pela pousada.</p>
+
+<h3>Dois ganhos diferentes — não somar duas vezes a mesma reserva</h3>
+<div class="gains">
+<div><h5>Nova venda</h5><p>Uma reserva que seria perdida e passa a ser concluída: receita e margem incremental.</p></div>
+<div><h5>Migração de canal</h5><p>Uma reserva que viria por OTA e passa a vir direto: economia líquida de comissão, não nova diária.</p></div>
+<div><h5>Tempo poupado</h5><p>Menos tarefas de cobrança e conferência: ganho operacional, não automaticamente redução de folha.</p></div>
+</div>
+<div class="callout">Exemplo separado de canal: tarifa R$ 800, comissão OTA hipotética de 15% (R$ 120) e custo de pagamento direto de 3% (R$ 24). Economia potencial de R$ 96 por reserva transferida para venda direta. A taxa efetiva da OTA e demais custos ainda precisam ser apurados.</div>
+
+<h3>O que falta para afirmar aumento de lucro</h3>
+<p>Número de visitas ao site, quantas pessoas iniciam pedido de reserva, desistências no pagamento, ticket médio, ocupação, comissão efetiva da Booking, taxas da Getnet, descontos já praticados e despesas de implementação/manutenção.</p>
+</section>
+
+<section id="tecnologia">
+<div class="kicker"><span class="n">6</span><h2>Tecnologia</h2></div>
+<p class="lede">Como funcionaria, com ou sem VPS. O servidor não faz a cobrança sozinho: ele conecta o site, o meio de pagamento e, se houver autorização técnica, o PMS.</p>
+
+<div class="steps">
+<div class="step"><span class="ix">1</span><div><b>Site existente</b><span>Hóspede escolhe datas e tarifa. Usar disponibilidade confiável ou atendimento prévio.</span></div></div>
+<div class="step"><span class="ix">2</span><div><b>Reserva pendente</b><span>Quarto é bloqueado de forma temporária no PMS/motor integrado. Sem isso, a equipe confirma manualmente antes do link.</span></div></div>
+<div class="step"><span class="ix">3</span><div><b>Checkout seguro</b><span>Getnet ou Mercado Pago recebem Pix/cartão diretamente. O site não armazena número completo nem CVV.</span></div></div>
+<div class="step"><span class="ix">4</span><div><b>Confirmação verificada</b><span>Webhook assinado avisa; backend consulta o status verdadeiro, o valor, moeda, referência e eventuais pendências.</span></div></div>
+<div class="step"><span class="ix">5</span><div><b>Atualização e comprovante</b><span>Pagamento aprovado + reserva válida geram confirmação. Falha/expiração libera bloqueio, com regras contra duplicidade.</span></div></div>
+</div>
+
+<h3>A escolha de hospedagem</h3>
+<div class="compare">
+<div><h5>Sem VPS própria</h5><p>Checkout hospedado pelo fornecedor; domínio existente pode continuar. Menor manutenção e menor exposição técnica.</p></div>
+<div><h5>Com VPS própria</h5><p>Backend para gestão de pedidos e webhooks; logs, segurança, backups, suporte 24/7 e atualização contínua.</p></div>
+</div>
+<div class="callout warn">Condição crítica: verificar com o Desbravador se existe módulo ou integração oficial que permita ler disponibilidade, bloquear quarto e criar reserva. Sem isso, não lançar confirmação automática de hospedagem.</div>
+</section>
+
+<section id="seguranca">
+<div class="kicker"><span class="n">7</span><h2>Segurança</h2></div>
+<p class="lede">Por que a compra pode ficar mais segura. O pagamento efetuado pelo próprio hóspede é melhor documentado, mas contestação continua possível.</p>
+
+<h3>Ganhos potenciais</h3>
+<ul class="secure">
+<li><b>Menos exposição dos dados de cartão:</b> checkout hospedado/tokenizado evita manuseio desnecessário de PAN e CVV pela equipe e pelo servidor da pousada.</li>
+<li><b>Autenticação adicional:</b> 3D Secure pode autenticar o titular e reduzir fraude, mas cobertura e responsabilidade variam conforme a transação.</li>
+<li><b>Registro e conciliação:</b> identificador de pagamento, valor, referência da reserva, hora e status verificável facilitam auditoria e atendimento.</li>
+<li><b>Menos intervenções:</b> Pix aprovado pode ser identificado via notificação oficial, sem confiar em prints enviados pelo hóspede.</li>
+</ul>
+
+<h3>Regras obrigatórias de implantação</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Controle</th><th>Por quê</th></tr></thead>
+<tbody>
+<tr><td>Confirmar via API + webhook validado</td><td>Retorno de tela, comprovante enviado ou e-mail isolado não comprovam liquidação.</td></tr>
+<tr><td>Rever disponibilidade + reserva única</td><td>Evita cobrança de quarto indisponível e dupla confirmação.</td></tr>
+<tr><td>Políticas claras de cancelamento/reembolso</td><td>Serviço de hospedagem ainda pode gerar reclamações legítimas.</td></tr>
+<tr><td>Dados pessoais e logs mínimos (LGPD)</td><td>Coletar apenas o necessário, controlar acesso e prazo de retenção.</td></tr>
+<tr><td>Redundância, backup e suporte</td><td>Falha de VPS, API ou conexão não pode desorganizar a recepção.</td></tr>
+<tr><td>Compatibilizar canais/Booking</td><td>Não replicar automaticamente formas de cobrança fora das regras de cada tarifa.</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn">O que NÃO prometer: "chargeback impossível", "fraude zero", "pagamento sem taxas" ou "reserva automática" enquanto o PMS não estiver integrado e validado.</div>
+</section>
+
+<section id="pms">
+<div class="kicker"><span class="n">8</span><h2>PMS</h2></div>
+<p class="lede">Trocar o Desbravador ou ampliar? O comparativo de sistemas continua válido; pagamentos integrados são um projeto que pode anteceder a troca do PMS.</p>
+
+<div class="tscroll"><table>
+<thead><tr><th>Alternativa</th><th>Razão para avaliar</th><th>Limite/risco a conferir</th></tr></thead>
+<tbody>
+<tr><td>Desbravador</td><td>Operação conhecida; ROL/motor, PDV, financeiro, estoque e channel manager constam no portfólio.</td><td>Pacote atual, ITC, custo dos módulos e integração com checkout desejado.</td></tr>
+<tr><td>Newhotel Cloud</td><td>Gestão hoteleira e módulos de restaurante/estoque.</td><td>Cotação completa, fiscal local, implantação e migração.</td></tr>
+<tr><td>Facility ONE</td><td>Opção brasileira de PMS, com automações e módulos específicos.</td><td>Preço por UHs, PDV, fiscal, motor e pagamentos.</td></tr>
+<tr><td>Cloudbeds One</td><td>Foco em reservas, canais, motor e gestão de distribuição.</td><td>Gateway disponível no Brasil, PDV/fiscal e custos finais.</td></tr>
+<tr><td>Hospedin</td><td>Planos públicos de entrada voltados a pousadas.</td><td>Custos de extras e aderência a bar/restaurante.</td></tr>
+</tbody>
+</table></div>
+
+<h3>E se já usamos o pacote econômico do Desbravador?</h3>
+<p>A tabela pública Light Web 2026 inclui módulos cobrados separadamente, como gerência hoteleira, ROL, PDV e Channel Manager. O valor de um item isolado não é o custo mensal da Altenhaus. Uma oferta de outra empresa só será "pelo mesmo preço" após cotação com igual número de quartos, usuários, fiscal, restaurante, suporte e implantação.</p>
+<div class="callout ok">
+<b>Ordem de cotação sugerida:</b><br/>
+1ª — Desbravador atual + ativação do motor ROL + forma de pagamento online + integração com site existente.<br/>
+2ª — Get Checkout usando a estrutura atual.<br/>
+3ª — Mercado Pago como alternativa de taxas e jornada.<br/>
+Só depois — cotações completas de troca de PMS.
+</div>
+</section>
+
+<section id="decisao">
+<div class="kicker"><span class="n">9</span><h2>Decisão</h2></div>
+<h3>Piloto de 30 a 60 dias</h3>
+<p class="lede">Fazer uma experiência reversível antes de propor migração de todo o sistema ou construir uma VPS customizada.</p>
+
+<div class="roadmap">
+<div class="rstep"><b>Semana 1 — Diagnóstico</b><span>Confirmar adquirente, taxas da maquininha, taxa e-commerce, PMS/módulos, meio de reserva do site e volume de pedidos.</span></div>
+<div class="rstep"><b>Semana 2 — Orçamentos</b><span>Getnet Get Checkout/link, Mercado Pago checkout e Desbravador ROL. Conferir taxa Pix, cartão, parcelado, antifraude, estorno, recorrência e SLA.</span></div>
+<div class="rstep"><b>Semanas 3–4 — Teste restrito</b><span>Inicialmente pagamento por link após conferência da disponibilidade, com cobrança pelo hóspede. Sem alterar a Booking.</span></div>
+<div class="rstep"><b>Semanas 5–8 — Medição</b><span>Acompanhar acessos, pedidos, abandono, pagamentos aprovados, reservas adicionais, tempo de atendimento e reclamações.</span></div>
+<div class="rstep"><b>Depois — Deliberação</b><span>Somente implantar disponibilidade + pagamento automático quando integração e dupla reserva estiverem testadas.</span></div>
+</div>
+
+<h3>Critérios de aceitação antes de autorizar investimento</h3>
+<ul class="criteria">
+<li>Mensalidade completa, implantação, custo de VPS (se houver), manutenção e taxas de cada meio conhecidos por escrito.</li>
+<li>Comprovação de que o sistema não confirma hospedagem sem pagamento validado e quarto disponível.</li>
+<li>Comparativo de desempenho antes e durante o piloto, ajustado por temporada, tarifa e origem dos hóspedes.</li>
+<li>Responsáveis por falha, contestação, estorno e suporte definidos. A operação deve funcionar em contingência.</li>
+</ul>
+
+<div class="closing">
+<p class="tag">Conclusão executiva</p>
+<p>Pesquisar vale a pena; a tese de conversão é plausível. A melhor próxima decisão é comparar Getnet, Mercado Pago e Desbravador, testar um fluxo seguro e só então decidir sobre VPS ou migração de PMS.</p>
+</div>
+</section>
+
+<section id="apresentacao">
+<div class="kicker"><span class="n">10</span><h2>Apresentação</h2></div>
+<p class="lede">Como explicar ao proprietário. Linguagem respeitosa com a gestão existente, focando em oportunidades e evidências.</p>
+
+<h3>Mensagem curta, natural</h3>
+<blockquote><p>"Dei uma estudada em alternativas de hotelaria e pagamentos. O Desbravador continua sendo uma solução boa, mas achei interessante testar uma forma de o hóspede pagar pelo próprio site, com Pix e cartão, sem depender da equipe para digitar os dados. A própria Getnet parece ter essa opção, e o Mercado Pago também. Acho que vale fazer uma comparação de custos antes de qualquer troca."</p></blockquote>
+
+<h3>Se ele pedir uma ideia mais completa</h3>
+<blockquote><p>"A proposta não é mudar o sistema de uma vez. Primeiro, estudar quanto custa aproveitar o site e o Desbravador atuais, integrar pagamentos e medir se aparecem mais reservas concluídas. Se a diferença compensar, a gente avalia uma VPS ou outro PMS. Também podemos testar um pagamento por link, que já reduz a necessidade de receber os dados do cartão manualmente."</p></blockquote>
+
+<h3>Fontes oficiais e condições a verificar</h3>
+<ul class="sources">
+<li>Desbravador — tabela Light Web 2026</li>
+<li>Desbravador — motor de reservas 2026</li>
+<li>Getnet — Get Checkout Brasil</li>
+<li>Getnet — carteiras digitais</li>
+<li>Mercado Pago — checkout e tarifas</li>
+<li>Mercado Pago — notificações e validação</li>
+<li>Mercado Pago — autenticação 3DS</li>
+<li>Mercado Pago — integração com Orders</li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+Imperial Volt · <a href="https://imperialvolt.com/">imperialvolt.com</a> · contato.imperialvolt@gmail.com · CNPJ 60.179.279/0001-44
+<p class="disclaimer">Pousada Altenhaus — estudo preliminar, não é orçamento nem autorização de implantação. Valores e recursos foram consultados em páginas públicas em 21/10/2026. O orçamento contratual, a compatibilidade técnica e a decisão de implantação dependem da autorização e validação da direção.</p>
+</div>
+</footer>
+
+</body>
+</html>
