@@ -37,6 +37,13 @@ h1{margin:0;font-size:clamp(28px,5.6vw,42px);line-height:1.12;letter-spacing:-.0
 .math p.note{margin:16px 0 0;font-size:13.5px;color:var(--muted)}
 section{padding:36px 0 0}
 h2{margin:0 0 14px;font-size:20px;letter-spacing:-.03em}
+.lede{margin:0 0 16px;color:var(--muted);font-size:14.5px;max-width:600px}
+.pmsrow{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+.pmscard{border:1px solid var(--line);border-radius:14px;padding:16px}
+.pmscard.current{background:var(--soft)}
+.pmscard .pmstag{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.pmscard b{display:block;font-size:14.5px;margin-bottom:5px;letter-spacing:-.01em}
+.pmscard span{color:var(--muted);font-size:13px}
 .flow{display:flex;align-items:stretch;gap:0;margin:0 0 10px;flex-wrap:wrap}
 .flow .step{flex:1;min-width:190px;border:1px solid var(--line);border-radius:14px;padding:16px;position:relative}
 .flow .step b{display:block;font-size:14.5px;margin-bottom:4px}
@@ -60,6 +67,7 @@ footer .disclaimer{margin-top:6px;max-width:640px}
 .flow{flex-direction:column}
 .flow .arrow{transform:rotate(90deg);padding:4px 0}
 .nums{grid-template-columns:1fr}
+.pmsrow{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -106,12 +114,21 @@ footer .disclaimer{margin-top:6px;max-width:640px}
 <div><strong>~1% × ~4%</strong><span>Taxa do Pix contra taxa do cartão à vista</span></div>
 <div><strong>R$ 1.168/mês</strong><span>Estimativa com 3 reservas novas de R$ 800, já descontando taxas</span></div>
 </div>
-<div class="callout">Único ponto que trava a automação total: sem integrar ao Desbravador, o sistema não sabe quais quartos estão livres. Até integrar, a confirmação de reserva continua passando por alguém da equipe.</div>
+<div class="callout">Único ponto que trava a automação total: sem integrar ao PMS, o sistema não sabe quais quartos estão livres. Até integrar, a confirmação de reserva continua passando por alguém da equipe.</div>
+</section>
+
+<section>
+<h2>O que confirmar antes de automatizar</h2>
+<p class="lede">Essa integração depende de um módulo do PMS (motor de reservas), não só da VPS. No Desbravador isso costuma ser cobrado à parte do plano básico — por isso o primeiro passo é confirmar com eles, por escrito, se o plano atual já inclui ou quanto custa ativar.</p>
+<div class="pmsrow">
+<div class="pmscard current"><span class="pmstag">Hoje</span><b>Desbravador</b><span>Confirmar se o plano atual libera a integração, ou o custo de ativar.</span></div>
+<div class="pmscard"><span class="pmstag">Comparar</span><b>Cloudbeds One · Facility ONE · Newhotel Cloud · Hospedin</b><span>Opções que já trazem motor de reservas integrado, por valores a cotar — pode sair pelo mesmo investimento.</span></div>
+</div>
 </section>
 
 <div class="cta">
 <p class="tag">Próximo passo</p>
-<p>Testar por <b>30 dias</b> com link de pagamento, sem mexer no site nem no Desbravador. Se as reservas aumentarem de verdade, aí sim entra a VPS automática — pelo preço de um cafezinho por dia.</p>
+<p>Testar por <b>30 dias</b> com link de pagamento, sem mexer no site nem no Desbravador. Em paralelo, cotar a ativação da integração no Desbravador e comparar com as alternativas acima — só então decidir se a VPS automática entra, pelo preço de um cafezinho por dia.</p>
 </div>
 
 </main>
