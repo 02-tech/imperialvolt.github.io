@@ -15,3 +15,12 @@ node_modules/
 .env
 .env.*
 .dev.vars
+
+# Arquivos internos: ficam no repositorio privado imperialvolt.github.io-interno, nunca neste (publico).
+CLAUDE.md
+AGENTS.md
+docs/
+tools/
+.claude/
+clientes/
+.git-interno/
