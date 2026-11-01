@@ -467,8 +467,8 @@ textarea { min-height: 5.1rem; resize: vertical; }
 
 .business-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.68fr); align-items: end; gap: clamp(2rem, 8vw, 8rem); }
 .business-layout__copy > p { color: rgba(255,255,255,0.74); margin-bottom: 1.45rem; }
-.business-layout__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
-.business-layout__list span { padding: 1rem 0.9rem; border: 1px solid rgba(255,255,255,0.28); border-radius: 0.7rem; font-size: 0.84rem; font-weight: 600; }
+.business-layout__list { display: grid; grid-template-columns: 1fr; gap: 0.65rem; }
+.business-layout__list .hero-atalho { justify-content: center; min-height: 3rem; padding-inline: 1rem; text-align: center; }
 .process-strip { padding-block: clamp(3rem, 6vw, 5rem); }
 .process-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 4vw, 4rem); margin: 2rem 0 0; padding: 0; list-style: none; }
 .process-list li { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; }
