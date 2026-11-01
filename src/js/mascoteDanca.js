@@ -7,7 +7,13 @@ const FRAME_SRC = (n) => `./src/imagens/marca/danca/danca-${String(n).padStart(2
 export function iniciarMascoteDanca() {
   const img = document.getElementById("catalogoDanca");
   const secao = document.getElementById("catalogo");
-  if (!img || !secao) return;
+  // o progresso da dança usa a passagem do PRÓPRIO personagem pela tela, não da
+  // seção #catalogo inteira (ela tem milhares de px, o personagem só fica à
+  // vista por uma fração pequena disso - calcular contra a seção inteira
+  // deixava o progresso preso perto de 0 durante todo o tempo em que ele
+  // realmente aparece, então ele nunca avançava de frame visivelmente)
+  const palco = document.querySelector(".catalogo__mascote") || secao;
+  if (!img || !secao || !palco) return;
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   if (!("IntersectionObserver" in window)) return;
 
@@ -26,7 +32,7 @@ export function iniciarMascoteDanca() {
 
   function atualizar() {
     pendente = false;
-    const retangulo = secao.getBoundingClientRect();
+    const retangulo = palco.getBoundingClientRect();
     const percurso = retangulo.height + innerHeight;
     const progresso = Math.min(1, Math.max(0, (innerHeight - retangulo.top) / percurso));
     const indice = 1 + Math.min(TOTAL_FRAMES - 1, Math.floor(progresso * TOTAL_FRAMES));
