@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
   <link rel="preload" as="image" href="./src/imagens/portfolio.jpeg">
-  <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20261004-vitrine">
+  <link rel="stylesheet" href="./src/css/styles-rebuilt.css?v=20261101-mascote-danca">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -199,12 +199,17 @@
             <h2 id="catalogoTitulo">Tudo o que vendemos, com preço à vista.</h2>
             <p>Role e veja todos os presentes e serviços com o valor de cada um. Adicione ao pedido o que fizer sentido e finalize pelo WhatsApp.</p>
           </div>
-          <ol class="presentes__passos" aria-label="Como pedir">
-            <li><strong>Escolha</strong></li>
-            <li><strong>Personalize</strong></li>
-            <li><strong>Monte o pedido</strong></li>
-            <li><strong>Finalize pelo WhatsApp</strong></li>
-          </ol>
+          <div class="catalogo__lado">
+            <div class="catalogo__mascote" aria-hidden="true">
+              <img id="catalogoDanca" src="./src/imagens/marca/danca/danca-01.png" width="315" height="420" alt="" loading="lazy" decoding="async">
+            </div>
+            <ol class="presentes__passos" aria-label="Como pedir">
+              <li><strong>Escolha</strong></li>
+              <li><strong>Personalize</strong></li>
+              <li><strong>Monte o pedido</strong></li>
+              <li><strong>Finalize pelo WhatsApp</strong></li>
+            </ol>
+          </div>
         </div>
 
         <nav id="catalogoIndice" class="catalogo__indice" aria-label="Ir para uma categoria"></nav>
@@ -392,7 +397,7 @@
   </aside>
 
   <script type="module" src="./chatbot/engine.js?v=20260811-dedup-db"></script>
-  <script type="module" src="./src/js/main.js?v=20261004-vitrine"></script>
+  <script type="module" src="./src/js/main.js?v=20261101-mascote-danca"></script>
 </body>
 </html>
 

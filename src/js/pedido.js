@@ -513,7 +513,13 @@ function renderAbas() {
     cab.append(h, criar("p", "", a.descricao || ""));
     g.appendChild(cab);
     const grade = criar("div", "catalogo__grade");
-    a.itens.forEach((p) => grade.appendChild(cartao(p)));
+    // apresenta os cartões em cascata ao rolar (ver setupReveal em main.js); sem JS/observer eles aparecem direto
+    a.itens.forEach((p, indice) => {
+      const card = cartao(p);
+      card.classList.add("reveal");
+      if (!reduz()) card.style.transitionDelay = `${Math.min(indice % 6, 5) * 70}ms`;
+      grade.appendChild(card);
+    });
     g.appendChild(grade);
     blocos.filter((b) => b.dataset.soAba === a.id).forEach((b) => { b.hidden = false; g.appendChild(b); });
     grupos.appendChild(g);

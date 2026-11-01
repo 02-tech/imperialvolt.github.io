@@ -900,6 +900,11 @@ body.pedido-aberto .floating-action, body.pedido-aberto .nav-raio { display: non
 .catalogo__topo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: end; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
 .catalogo__topo h2 { margin: 0 0 1rem; }
 .catalogo__topo p:not(.eyebrow) { color: rgba(255, 255, 255, 0.8); max-width: 38rem; margin: 0; }
+/* 2026-11-01: personagem dançando ao lado dos passos, avança de frame conforme rola pelo catálogo */
+.catalogo__lado { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
+.catalogo__mascote { width: clamp(84px, 11vw, 140px); aspect-ratio: 315 / 420; }
+.catalogo__mascote img { width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 1000px) { .catalogo__lado { flex-direction: row-reverse; justify-content: center; align-items: center; gap: 1.2rem; } .catalogo__mascote { width: clamp(64px, 16vw, 92px); } }
 .catalogo__abas { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.2rem 0.1rem 0.7rem; scrollbar-width: thin; scrollbar-color: rgba(216, 255, 69, 0.4) transparent; }
 .catalogo-aba { flex: 0 0 auto; min-height: 2.6rem; padding: 0 1rem; border: 1px solid var(--white-line); border-radius: 99px; background: transparent; color: #fff; font: 600 0.88rem/1 inherit; cursor: pointer; white-space: nowrap; transition: background 0.2s, border-color 0.2s, color 0.2s; }
 .catalogo-aba:hover { border-color: rgba(216, 255, 69, 0.6); }

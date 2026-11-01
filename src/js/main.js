@@ -1,8 +1,9 @@
 /* Inicializacao da experiencia comercial publica da Imperial Volt. */
 import { carregarDados, categoriasDeServicos, unificarCategorias } from "./data.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
-import { iniciarPedido, abrirAba, abrirPainel, adicionar, resumoParaChat } from "./pedido.js?v=20261004-vitrine";
+import { iniciarPedido, abrirAba, abrirPainel, adicionar, resumoParaChat } from "./pedido.js?v=20261101-mascote-danca";
 import { iniciarNavegacao } from "./navegacao.js?v=20261004-vitrine";
+import { iniciarMascoteDanca } from "./mascoteDanca.js?v=20261101-mascote-danca";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
 const CHAT_AUTO_CLOSE_MS = 5000;
@@ -39,20 +40,31 @@ function setupMenu() {
   });
 }
 
+// observador único e reaproveitável: chamado de novo depois que o catálogo
+// (cartões de preço) é montado em boot(), para também apresentá-los ao rolar
+let revealObserver;
 function setupReveal() {
-  const elementos = document.querySelectorAll(".reveal");
+  const elementos = document.querySelectorAll(".reveal:not([data-reveal-bound])");
   if (!("IntersectionObserver" in window)) {
-    elementos.forEach((elemento) => elemento.classList.add("is-visible"));
+    elementos.forEach((elemento) => {
+      elemento.classList.add("is-visible");
+      elemento.dataset.revealBound = "1";
+    });
     return;
   }
-  const observador = new IntersectionObserver((entradas) => {
-    entradas.forEach((entrada) => {
-      if (!entrada.isIntersecting) return;
-      entrada.target.classList.add("is-visible");
-      observador.unobserve(entrada.target);
-    });
-  }, { threshold: 0.12 });
-  elementos.forEach((elemento) => observador.observe(elemento));
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (!entrada.isIntersecting) return;
+        entrada.target.classList.add("is-visible");
+        revealObserver.unobserve(entrada.target);
+      });
+    }, { threshold: 0.12 });
+  }
+  elementos.forEach((elemento) => {
+    elemento.dataset.revealBound = "1";
+    revealObserver.observe(elemento);
+  });
 }
 
 function setupChat() {
@@ -226,6 +238,7 @@ async function boot() {
   iniciarNavegacao();
   setupChat();
   setupReveal();
+  iniciarMascoteDanca();
   window.IV_CHAT?.boot?.();
 
   try {
@@ -233,6 +246,7 @@ async function boot() {
     const categorias = unificarCategorias(dados);
     // catálogo e pedido únicos: presentes e serviços no mesmo formato, um só pedido
     iniciarPedido(dados.presentes, categoriasDeServicos(categorias));
+    setupReveal(); // cartões recém-montados também entram na apresentação ao rolar
     // API usada pelo Voltz-Bot (mantida; agora opera o pedido único)
     window.ImperialVoltApp = {
       ...(window.ImperialVoltApp || {}),
