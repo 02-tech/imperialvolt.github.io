@@ -2,7 +2,7 @@
 import { carregarDados, categoriasDeServicos, unificarCategorias } from "./data.js";
 import { linkWhatsApp, montarMensagem } from "./whatsapp.js";
 import { iniciarPedido, abrirAba, abrirPainel, adicionar, resumoParaChat } from "./pedido.js?v=20261101-mascote-danca";
-import { iniciarNavegacao } from "./navegacao.js?v=20261004-vitrine";
+import { iniciarNavegacao } from "./navegacao.js?v=20261101-navegacao-agradavel";
 import { iniciarMascoteDanca } from "./mascoteDanca.js?v=20261101-mascote-danca";
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
@@ -26,18 +26,38 @@ function setupMenu() {
   const menu = $("#mobileNav");
   if (!botao || !menu) return;
 
+  const reduz = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let temporizador;
   const fechar = () => {
-    menu.hidden = true;
+    window.clearTimeout(temporizador);
+    menu.classList.remove("is-open");
     botao.setAttribute("aria-expanded", "false");
+    botao.setAttribute("aria-label", "Abrir menu");
+    temporizador = window.setTimeout(() => { menu.hidden = true; }, reduz() ? 0 : 220);
+  };
+  const abrir = () => {
+    window.clearTimeout(temporizador);
+    menu.hidden = false;
+    requestAnimationFrame(() => menu.classList.add("is-open"));
+    botao.setAttribute("aria-expanded", "true");
+    botao.setAttribute("aria-label", "Fechar menu");
   };
   botao.addEventListener("click", () => {
-    const aberto = !menu.hidden;
-    menu.hidden = aberto;
-    botao.setAttribute("aria-expanded", String(!aberto));
+    if (menu.hidden || !menu.classList.contains("is-open")) abrir();
+    else fechar();
   });
   menu.addEventListener("click", (evento) => {
     if (evento.target.closest("a")) fechar();
   });
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key !== "Escape" || menu.hidden) return;
+    fechar();
+    botao.focus({ preventScroll: true });
+  });
+  document.addEventListener("pointerdown", (evento) => {
+    if (!menu.hidden && !menu.contains(evento.target) && !botao.contains(evento.target)) fechar();
+  });
+  document.addEventListener("iv:fechar-menu", fechar);
 }
 
 // observador único e reaproveitável: chamado de novo depois que o catálogo

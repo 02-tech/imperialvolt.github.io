@@ -4,8 +4,48 @@
    com toque fora ou ao voltar a rolar a página. */
 
 const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
+const reduz = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function configurarLinksInternos() {
+  document.addEventListener("click", (evento) => {
+    const link = evento.target.closest('a[href^="#"]');
+    if (!link || evento.defaultPrevented || evento.button !== 0 || evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey) return;
+    const id = decodeURIComponent(link.hash.slice(1));
+    const destino = id && document.getElementById(id);
+    if (!destino) return;
+    evento.preventDefault();
+    destino.scrollIntoView({ behavior: reduz() ? "auto" : "smooth", block: "start" });
+    if (link.classList.contains("skip-link")) destino.focus({ preventScroll: true });
+    history.pushState(null, "", link.hash);
+  });
+}
+
+function configurarScrollSpy() {
+  if (!("IntersectionObserver" in window)) return;
+  const links = [...document.querySelectorAll('.desktop-nav a[href^="#"], #mobileNav a[href^="#"]')];
+  const ids = [...new Set(links.map((link) => link.hash.slice(1)).filter(Boolean))];
+  const secoes = ids.map((id) => document.getElementById(id)).filter((secao) => secao?.matches("main > section"));
+  if (!secoes.length) return;
+
+  const ativar = (id) => links.forEach((link) => {
+    const ativo = link.hash === `#${id}`;
+    link.classList.toggle("nav-link--ativo", ativo);
+    if (ativo) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+  const atualizar = () => {
+    const linha = innerHeight * 0.38;
+    const atual = secoes.reduce((escolhida, secao) => secao.getBoundingClientRect().top <= linha ? secao : escolhida, secoes[0]);
+    ativar(atual.id);
+  };
+  const observador = new IntersectionObserver(atualizar, { rootMargin: "-18% 0px -55% 0px", threshold: [0, 0.15, 0.5] });
+  secoes.forEach((secao) => observador.observe(secao));
+  atualizar();
+}
 
 export function iniciarNavegacao() {
+  configurarLinksInternos();
+  configurarScrollSpy();
   const cabecalho = $(".site-header");
   if (!cabecalho || !("IntersectionObserver" in window)) return;
 
@@ -54,8 +94,8 @@ export function iniciarNavegacao() {
   function fechar(devolverFoco) {
     if (!aberto) return;
     aberto = false;
-    const menu = $("#mobileNav"), botaoMenu = $("#menuBtn");
-    if (menu && !menu.hidden) { menu.hidden = true; botaoMenu?.setAttribute("aria-expanded", "false"); }
+    const menu = $("#mobileNav");
+    if (menu && !menu.hidden) document.dispatchEvent(new CustomEvent("iv:fechar-menu"));
     raio.setAttribute("aria-expanded", "false");
     atualizar();
     if (devolverFoco && fora) raio.focus({ preventScroll: true });
