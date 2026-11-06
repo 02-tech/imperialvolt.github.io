@@ -106,6 +106,13 @@ html.filmando,html.filmando body{overflow:hidden}
 .carregando img{width:44px;height:auto;animation:pulsa 1.1s ease-in-out infinite alternate}
 @keyframes pulsa{from{opacity:.4;transform:scale(.9)}to{opacity:1;transform:scale(1.06);filter:drop-shadow(0 0 14px var(--lima))}}
 .carregando p{font:500 .86rem var(--sans);letter-spacing:.06em;color:var(--papel2)}
+.porta{display:grid;justify-items:center;gap:22px}
+.porta-btn{appearance:none;border:0;display:inline-flex;align-items:center;gap:11px;min-height:58px;padding:14px 26px;border-radius:999px;background:var(--lima);color:#112018;font:700 clamp(1.02rem,4.4vw,1.25rem)/1.2 "Space Grotesk",var(--sans);box-shadow:0 14px 40px rgba(216,255,69,.2);opacity:0;animation:surgeAntes .7s .55s ease-out forwards}
+.porta-btn svg{width:24px;height:24px;flex:none}
+.porta-dica{font:500 .92rem var(--sans);color:var(--papel2);opacity:0;animation:surgeAntes .7s .85s ease-out forwards}
+.porta-tempo{width:min(56vw,220px);height:2px;border-radius:2px;background:rgba(255,255,255,.14);overflow:hidden}
+.porta-tempo b{display:block;height:100%;background:rgba(255,255,255,.62);transform-origin:0 50%;animation:portaTempo 4s linear forwards}
+@keyframes portaTempo{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 .som.pilula{top:auto;right:auto;left:14px;bottom:calc(16px + env(safe-area-inset-bottom));width:auto;height:auto;min-height:44px;max-width:calc(100vw - 112px);border-radius:999px;padding:5px 17px 5px 13px;grid-template-columns:auto 1fr;gap:9px;align-items:center;text-align:left;color:#fff;background:rgba(4,9,10,.45);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(6px);animation:surgeSom .9s .25s ease-out both}
 .som.pilula b{display:block;font-size:.8rem;font-weight:500;line-height:1.25}
 .som.pilula small{display:block;font-size:.7rem;font-weight:400;line-height:1.25;opacity:.72}
@@ -390,6 +397,7 @@ footer a{margin:0 7px}
   /* ---------- som: trilha e efeitos (o navegador só libera depois de um toque) ---------- */
   var ac=null,mestre=null,trilha=null,somLigado=true,botaoSom=document.getElementById("som"),raiz=document.documentElement;
   function estadoSom(){
+    if(emPorta&&!ac){botaoSom.classList.remove("visivel");return}
     var pil=raiz.classList.contains("filmando")&&!ac;
     botaoSom.classList.add("visivel");botaoSom.classList.toggle("pilula",pil);
     if(pil)botaoSom.innerHTML='<svg class="som-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.6L12 18.5v-13L7.6 9.5H4Z" fill="currentColor"/><path class="ondas" d="M15.5 9a4.2 4.2 0 0 1 0 6M18.3 6.4a8 8 0 0 1 0 11.2"/></svg><span><b>Vídeo com som</b><small>Toque aqui e aumente o volume</small></span>';else botaoSom.textContent=ac&&!somLigado?"×":"♪";
@@ -522,8 +530,7 @@ footer a{margin:0 7px}
   /* roteiro: t = início em segundos, d = quanto fica na tela */
   var rolo=null,ITENS=["Natal","Ano Novo","Aniversário","Dia das Mães","Dia dos Pais","Dia dos Namorados","Casamento","Bodas","Formatura","Um vídeo","Uma playlist","Suas fotos","Uma mensagem só sua","O que você imaginar."];
   var ROTEIRO=[
-    {t:.15,d:1.25,fd:"escuro",b:function(){fala("Psiu…","fala--baixo",quadro())}},
-    {t:1.55,d:1.7,som:"sopro",b:function(){fala("Olha só o que chegou pra você.","",quadro())}},
+        {t:1.55,d:1.7,som:"sopro",b:function(){fala("Olha só o que chegou pra você.","",quadro())}},
     {t:3.4,d:2.05,fd:"surpresa",som:"golpe",b:function(){var g=gigante("Surpresa!");quadro().appendChild(g);ajustar(g,.9,.3);clarear();tremer();
       confete(W/2,H*.48,leve?120:220);setTimeout(function(){confete(W*.14,H*.2,70);confete(W*.86,H*.22,70)},280);setTimeout(function(){confete(W*.5,H*.1,80)},620)}},
     {t:5.5,d:1.95,fd:"escuro",som:"sopro",b:function(){fala("Você acabou de abrir um presente* virtual.*","",quadro())}},
@@ -543,10 +550,24 @@ footer a{margin:0 7px}
     {t:24.5,d:2.9,som:"golpe",b:function(){var q=quadro(),m=el("div","marca-filme"),img=el("img");img.src="../icons/imperial-volt-bolt.svg";img.alt="";m.appendChild(img);
       var nome=gigante("IMPERIAL VOLT","#f4ffd0","#d8ff45",.035);nome.classList.add("marca-nome");m.appendChild(nome);m.appendChild(el("div","marca-sub","Presente Virtual"));q.appendChild(m);clarear(.7);confete(W/2,H*.42,leve?70:130)}}
   ];
-  var erroFilme=false;
+  var erroFilme=false,emPorta=false,tPorta=0,portaQ=null,INICIO=1.35,ESPERA_SOM=4000;
+  /* antes do filme: pede o som no centro da tela, onde a pessoa está olhando. Ela toca ou, em 4 s, o filme segue mudo. */
+  function abrirPorta(){
+    emPorta=true;portaQ=quadro();var p=el("div","porta");fala("Ei, psiu…","fala--baixo",p);
+    var b=el("button","porta-btn");b.type="button";b.id="portaSom";
+    b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.6L12 18.5v-13L7.6 9.5H4Z" fill="currentColor"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.3 6.4a8 8 0 0 1 0 11.2"/></svg>';
+    b.appendChild(document.createTextNode((matchMedia("(pointer: fine)").matches?"Clique":"Toque")+" aqui para ativar o som"));p.appendChild(b);
+    p.appendChild(el("div","porta-dica","e aumente o volume"));
+    var t=el("div","porta-tempo");t.appendChild(el("b"));p.appendChild(t);portaQ.appendChild(p);
+    tPorta=setTimeout(fecharPorta,ESPERA_SOM);
+  }
+  function fecharPorta(){
+    if(!emPorta||!portaQ)return;clearTimeout(tPorta);var q=portaQ;portaQ=null;q.classList.add("sai");
+    setTimeout(function(){q.remove();emPorta=false;T=INICIO;estadoSom()},470);
+  }
   function quadroFilme(agora){
     if(!rodando2)return;
-    var dt=Math.min(agora-ultimo,64);ultimo=agora;T+=dt/1000;  /* se o aparelho engasgar, o filme espera em vez de pular cenas */
+    var dt=Math.min(agora-ultimo,64);ultimo=agora;if(!emPorta)T+=dt/1000;  /* se o aparelho engasgar, o filme espera em vez de pular cenas */
     try{
       ROTEIRO.forEach(function(c,i){
         if(!c.foi&&T>=c.t){c.foi=true;filme.dataset.cena=i;if(c.fd)fundo(c.fd);if(c.fx)c.fx();var a=telao.children.length;c.b();c.el=telao.lastElementChild;if(telao.children.length===a)c.el=null;toca(c.som)}
@@ -563,7 +584,7 @@ footer a{margin:0 7px}
     requestAnimationFrame(quadroFilme);
   }
   function encerrarFilme(){
-    if(!rodando2)return;rodando2=false;
+    if(!rodando2)return;rodando2=false;emPorta=false;portaQ=null;clearTimeout(tPorta);
     filme.classList.add("saindo");raiz.classList.remove("filmando");
     window.scrollTo(0,0);principal.classList.add("aberto");estadoSom();
     setTimeout(function(){explodir(innerWidth/2,innerHeight*.4,leve?70:130)},260);
@@ -573,7 +594,7 @@ footer a{margin:0 7px}
     medir2();semear();T=0;parts=[];rolo=null;FX.arvore={on:0,a:0,g:0};FX.neve={on:0,a:0};FX.baloes={on:0,a:0};FX.fogos={on:0,prox:0};
     ROTEIRO.forEach(function(c){c.foi=c.saiu=false;c.el=null});telao.innerHTML="";fundo("escuro");filme.classList.toggle("leve",leve);
     carregando.classList.add("feito");rodando2=true;ultimo=performance.now();
-    if(ac)iniciarTrilha(0);
+    if(ac){iniciarTrilha(0);T=INICIO}else abrirPorta();
     estadoSom();requestAnimationFrame(quadroFilme);
   }
   /* espera o site estabilizar: página carregada, fonte pronta e quadros fluindo. Teto de 4 s para nunca ficar preso. */
@@ -589,7 +610,7 @@ footer a{margin:0 7px}
     })(inicio);
   }
   document.getElementById("pular").addEventListener("click",function(e){e.stopPropagation();encerrarFilme()});
-  filme.addEventListener("click",function(){ligarSom()});
+  filme.addEventListener("click",function(){var novo=!ac;ligarSom();if(novo&&ac&&emPorta){toca("alegria");fecharPorta()}});
   document.getElementById("rever").addEventListener("click",function(){raiz.classList.add("filmando");principal.classList.remove("aberto");window.scrollTo(0,0);comecar()});
   if(raiz.classList.contains("filmando"))aguardarEstabilizar();
   else{principal.classList.add("aberto");estadoSom()}
